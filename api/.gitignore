@@ -1,0 +1,11 @@
+*out.yml
+out.json
+target
+build
+.gradle
+*.zip
+bin
+obj
+Gemfile.lock
+lib
+.DS_Store
