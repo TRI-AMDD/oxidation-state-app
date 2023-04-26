@@ -8,4 +8,7 @@ test('renders Header correctly', async () => {
 
     const faq = screen.getByText('FAQ');
     expect(faq).toBeVisible();
+
+    const aboutUs = screen.getByText('About Us');
+    expect(aboutUs).toBeVisible();
 });
