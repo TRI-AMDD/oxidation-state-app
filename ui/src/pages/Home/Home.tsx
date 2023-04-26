@@ -1,6 +1,7 @@
-import Header from 'pages/Header/Header';
+import Header from 'components/Header/Header';
 import { useQuery } from 'react-query';
 import styles from './Home.module.css';
+import Footer from 'components/Footer/Footer';
 
 function Home() {
     const info = useQuery('getInfo', () =>
@@ -26,6 +27,7 @@ function Home() {
                     Learn React
                 </a>
             </main>
+            <Footer />
         </div>
     );
 }
