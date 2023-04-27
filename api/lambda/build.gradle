@@ -11,7 +11,7 @@ plugins {
     id 'java'
 }
 
-group 'oxs'
+group 'oxs.app.lambda'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -33,6 +33,6 @@ build.dependsOn copyDependencies
 
 jar {
   manifest {
-      attributes 'Main-Class': 'oxs'
+      attributes 'Main-Class': 'oxs.app.lambda'
   }
 }

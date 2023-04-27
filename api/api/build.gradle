@@ -1,0 +1,34 @@
+plugins {
+    id 'application'
+}
+
+group 'oxs.app.api'
+
+apply plugin: 'java'
+
+sourceCompatibility = 11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-simple:2.0.6'
+    implementation 'io.javalin:javalin:5.4.2'
+}
+
+application {
+    mainClass = "oxs.app.api.HelloWorld"
+}
+
+jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+    manifest {
+        attributes 'Main-Class': 'oxs.app.api.HelloWorld'
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}

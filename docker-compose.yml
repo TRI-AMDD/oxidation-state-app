@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: api
+      context: api/api
       dockerfile: Dockerfile
     ports:
-      - 8000:8000
+      - 7070:7070

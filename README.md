@@ -42,14 +42,10 @@ Then commit and push the changes.
 ## Local Run for Debugging
 
 
-
-
 Run the UI in a separate terminal
 
 ```bash
-cd ui
-npm install  # if needed
-npm start
+docker compose up --build
 ```
 
 Browser will automatically load the app at <http://localhost:3000/>
