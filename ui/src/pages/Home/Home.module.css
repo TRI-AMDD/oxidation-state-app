@@ -1,16 +1,10 @@
 .App {
-    text-align: center;
+    background-color: #fff;
 }
 
 .AppMain {
-    background-color: #fff;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: #000;
+    margin-top: 48px !important;
 }
 
 .AppLink {

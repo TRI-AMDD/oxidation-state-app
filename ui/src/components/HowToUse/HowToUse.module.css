@@ -1,0 +1,28 @@
+.container {
+    width: 928px;
+    margin-top: 48px;
+    text-align: start;
+}
+
+.howToCard {
+    background-color: #f3f3f3;
+    padding: 24px 42px;
+    display: flex;
+    justify-content: space-between;
+}
+.howToTitle {
+    margin-bottom: 32px !important;
+}
+.image {
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.ul {
+    padding-inline-start: 15px;
+    margin-block-end: 0;
+}
+
+.compareIcon {
+    margin-top: 60px;
+}

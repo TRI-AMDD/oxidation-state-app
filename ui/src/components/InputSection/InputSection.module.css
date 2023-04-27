@@ -1,0 +1,10 @@
+.container {
+    margin-top: 48px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.marginRight {
+    margin-right: 24px !important;
+}

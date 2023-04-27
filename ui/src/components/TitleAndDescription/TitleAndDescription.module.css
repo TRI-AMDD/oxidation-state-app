@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 32px !important;
+}
+
+.subtext {
+    margin-top: 16px !important;
+}
