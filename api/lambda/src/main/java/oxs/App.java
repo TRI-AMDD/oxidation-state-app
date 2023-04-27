@@ -1,4 +1,4 @@
-package oxs;
+package oxs.app.lambda;
 
 import java.util.HashMap;
 
