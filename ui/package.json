@@ -75,5 +75,5 @@
         "msw": "^0.39.2",
         "prettier": "^2.6.2"
     },
-    "proxy": "http://localhost:8000"
+    "proxy": "http://localhost:7070"
 }

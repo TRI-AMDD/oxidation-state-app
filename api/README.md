@@ -16,6 +16,27 @@ Use the following instructions to deploy the sample application.
 - The Bash shell. For Linux and macOS, this is included by default. In Windows 10, you can install the [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to get a Windows-integrated version of Ubuntu and Bash.
 - [The AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) v1.17 or newer.
 
+# Run APIs locally
+
+    $ docker-compose up api
+
+# Build and Test APIs locally
+
+Build a docker image.
+
+    $ cd api/api
+    $ gradle build
+    $ gradle run
+
+You can now make a GET http://localhost:7070/api
+
+# Test Lambda Locally
+
+Run locally
+
+    $ docker run --rm -p 9000:8080 oxs-state-api-lambda
+
+
 # Build Lambda
 
 Build a docker image.
