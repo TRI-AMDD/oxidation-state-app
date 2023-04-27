@@ -1,0 +1,10 @@
+.container {
+    text-align: start;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bodyText {
+    margin-left: 10px !important;
+}
