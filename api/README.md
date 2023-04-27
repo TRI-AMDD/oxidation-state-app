@@ -30,13 +30,6 @@ Build a docker image.
 
 You can now make a GET http://localhost:7070/api
 
-# Test Lambda Locally
-
-Run locally
-
-    $ docker run --rm -p 9000:8080 oxs-state-api-lambda
-
-
 # Build Lambda
 
 Build a docker image.
