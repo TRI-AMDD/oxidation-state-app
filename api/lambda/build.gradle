@@ -11,7 +11,7 @@ plugins {
     id 'java'
 }
 
-group 'oxs.app.lambda'
+group 'oxs.lambda'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -22,6 +22,7 @@ dependencies {
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
     implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
     implementation 'com.google.code.gson:gson:2.10.1'
+    implementation project(':demo')
 }
 
 task copyDependencies(type: Copy) {
@@ -33,6 +34,6 @@ build.dependsOn copyDependencies
 
 jar {
   manifest {
-      attributes 'Main-Class': 'oxs.app.lambda'
+      attributes 'Main-Class': 'oxs.lambda'
   }
 }

@@ -2,7 +2,7 @@ plugins {
     id 'application'
 }
 
-group 'oxs.app.api'
+group 'oxs.api'
 
 apply plugin: 'java'
 
@@ -15,17 +15,19 @@ repositories {
 dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.6'
     implementation 'io.javalin:javalin:5.4.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
+    implementation project(':demo')
 }
 
 application {
-    mainClass = "oxs.app.api.HelloWorld"
+    mainClass = "oxs.api.HelloWorld"
 }
 
 jar {
     duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 
     manifest {
-        attributes 'Main-Class': 'oxs.app.api.HelloWorld'
+        attributes 'Main-Class': 'oxs.api.HelloWorld'
     }
 
     from {
