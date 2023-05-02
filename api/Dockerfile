@@ -11,4 +11,4 @@ COPY --from=app_build /home/gradle/lambda/build/classes/java/main ${LAMBDA_TASK_
 COPY --from=app_build /home/gradle/lambda/build/dependencies/* ${LAMBDA_TASK_ROOT}/lib/
   
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
-CMD [ "oxs.App::handleRequest" ]
+CMD [ "oxs.lambda.App::handleRequest" ]
