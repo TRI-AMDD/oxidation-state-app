@@ -18,6 +18,7 @@
         "@types/react": "^18.0.8",
         "@types/react-dom": "^18.0.3",
         "aws-amplify": "^4.3.26",
+        "jotai": "^2.0.4",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "react-query": "^3.38.1",
