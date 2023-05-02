@@ -6,6 +6,8 @@ import TitleAndDescription from 'components/TitleAndDescription/TitleAndDescript
 import HowToUse from 'components/HowToUse/HowToUse';
 import GetStarted from 'components/GetStarted/GetStarted';
 import InputSection from 'components/InputSection/InputSection';
+import DataViewer from 'components/DataViewer/DataViewer';
+import React from 'react';
 
 function Home() {
     return (
@@ -33,6 +35,7 @@ function Home() {
                     <InputSection />
                 </Grid>
             </Grid>
+            <DataViewer />
             <Footer />
         </div>
     );
