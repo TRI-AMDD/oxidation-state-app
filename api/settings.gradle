@@ -13,6 +13,6 @@ plugins {
 }
 
 rootProject.name = 'oxs-app'
+include('demo')
 include('lambda')
 include('api')
-include('demo')
