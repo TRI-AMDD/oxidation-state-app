@@ -1,3 +1,11 @@
 plugins {
     id 'java-library'
 }
+
+sourceCompatibility = 11
+
+jar {
+    manifest {
+        attributes('Automatic-Module-Name': 'demo.die')
+    }
+}
