@@ -22,15 +22,3 @@ dependencies {
 application {
     mainClass = "oxs.api.HelloWorld"
 }
-
-jar {
-    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
-
-    manifest {
-        attributes 'Main-Class': 'oxs.api.HelloWorld'
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
