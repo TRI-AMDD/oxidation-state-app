@@ -39,16 +39,14 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
 
 			String body = event.getBody() != null ? event.getBody() : "Empty body";
 
-			Request target2 = gson.fromJson(body, Request.class);
-			System.out.println(target2);
-			// var num = Integer.parseInt(event.get("num"));
+			Request request = gson.fromJson(body, Request.class);
 			var num = 12;
-			Die die = new Die(num);
+			Die die = new Die(request.num);
             int roll = die.roll();
 
 		    headers.put("Content-Type", "text/plain");
-		    // response.setHeaders(headers);
-			response.setBody("Hello " + target2.name + " : " + roll);
+		    response.setHeaders(headers);
+			response.setBody("Hello " + request.name + " : " + roll);
 
 		    return response;		    
 	  }
