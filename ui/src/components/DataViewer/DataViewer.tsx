@@ -2,12 +2,17 @@ import { dataViewerStateAtom } from 'atoms/atoms';
 import styles from './DataViewer.module.css';
 import InitialState from './InitialState/InitialState';
 import { useAtom } from 'jotai';
+import { LoadingState } from 'models/DataViewerModel';
+import LoadedState from './LoadedState/LoadedState';
 
 const DataViewer = () => {
     const [dataViewerState] = useAtom(dataViewerStateAtom);
     return (
         <div className={styles.container}>
-            <InitialState dataState={dataViewerState} />
+            {(dataViewerState === LoadingState.Initial || dataViewerState === LoadingState.Loading) && (
+                <InitialState dataState={dataViewerState} />
+            )}
+            {dataViewerState === LoadingState.Loaded && <LoadedState />}
         </div>
     );
 };
