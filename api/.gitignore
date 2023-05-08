@@ -9,3 +9,4 @@ obj
 Gemfile.lock
 lib
 .DS_Store
+api/input_files

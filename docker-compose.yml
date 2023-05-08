@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: api/api
-      dockerfile: Dockerfile
+      context: api
+      dockerfile: Dockerfile.api
     ports:
       - 7070:7070
