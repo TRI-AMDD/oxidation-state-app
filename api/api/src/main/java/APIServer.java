@@ -21,7 +21,7 @@ public class APIServer {
             
             WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
             ctx.contentType("json");
-            ctx.result(analyzer.getTableData("Li2VO(PO4)"));
+            ctx.result(analyzer.getTableData(req.composition));
         });
 
         app.start(7070);

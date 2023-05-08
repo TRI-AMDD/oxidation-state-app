@@ -28,7 +28,7 @@ Build the gradle application, and run it.
     $ gradle clean build copyInputFiles
     $ gradle run
 
-You can now make a GET http://localhost:7070/api
+You can now make a POST { "composition": "LiFePO4" } to http://localhost:7070/api
 
 # Start API service locally
 
@@ -36,7 +36,7 @@ Build and run the docker API image.
 
     $ docker-compose start api
 
-You can now make a GET http://localhost:7070/api
+You can now make a POST { "composition": "LiFePO4" } to http://localhost:7070/api
 
 
 # Build Lambda
