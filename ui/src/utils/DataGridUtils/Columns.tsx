@@ -1,0 +1,82 @@
+import { GridColDef } from '@mui/x-data-grid';
+import { formatOxidationState } from './OxidationStateFormatter';
+import { Typography } from '@mui/material';
+import HeaderTooltip from './HeaderTooltip';
+
+export const columns: GridColDef[] = [
+    {
+        field: 'oxidationState',
+        renderHeader: () => <strong>Oxidation States</strong>,
+        renderCell(params) {
+            return (
+                <Typography
+                    sx={{
+                        flexDirection: 'row',
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        padding: '16px 0'
+                    }}
+                    variant="body2"
+                    component={'div'}
+                >
+                    {formatOxidationState(params.row.oxidationState)}
+                </Typography>
+            );
+        },
+        width: 284
+    },
+    {
+        field: 'optimalElecChemPotential',
+        renderHeader: () => (
+            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
+                <strong>
+                    &#956;<sub>opt</sub>
+                </strong>
+            </HeaderTooltip>
+        ),
+        renderCell(params) {
+            return <Typography variant="body2">{params.row.optimalElecChemPotential}</Typography>;
+        },
+        flex: 1
+    },
+    {
+        field: 'likelihoodCurrentElecChemPotential',
+        renderHeader: () => (
+            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current electronic chemical potential">
+                <strong>L(&#956;)</strong>
+            </HeaderTooltip>
+        ),
+        renderCell(params) {
+            return <Typography variant="body2">{params.row.likelihoodCurrentElecChemPotential}</Typography>;
+        },
+        flex: 1
+    },
+    {
+        field: 'likelihoodOptimalElecChemPotential',
+        renderHeader: () => (
+            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
+                <strong>
+                    L(&#956;<sub>opt</sub>)
+                </strong>
+            </HeaderTooltip>
+        ),
+        renderCell(params) {
+            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential}</Typography>;
+        },
+        flex: 1
+    },
+
+    {
+        field: 'globalInstabilityIndex',
+        headerName: 'GII',
+        renderHeader: () => (
+            <HeaderTooltip linkPath="/" linkText="Global" bodyText="instability index">
+                <strong>GII</strong>
+            </HeaderTooltip>
+        ),
+        renderCell(params) {
+            return <Typography variant="body2">{params.row.globalInstabilityIndex}</Typography>;
+        },
+        flex: 1
+    }
+];

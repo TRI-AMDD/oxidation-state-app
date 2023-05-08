@@ -20,6 +20,13 @@ const theme = createTheme({
                     textDecorationColor: 'white'
                 }
             }
+        },
+        MuiTooltip: {
+            styleOverrides: {
+                tooltip: {
+                    backgroundColor: 'rgba(97, 97, 97, 1)'
+                }
+            }
         }
     }
 });
