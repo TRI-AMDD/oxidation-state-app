@@ -2,7 +2,7 @@ FROM gradle:8.1-jdk11 as app_build
 
 WORKDIR /home/gradle
 COPY . .
-RUN gradle build
+RUN gradle clean build
 
 FROM public.ecr.aws/lambda/java:11
 
