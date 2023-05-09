@@ -4,4 +4,4 @@ plugins {
 
 apply plugin: 'java' 
 
-sourceCompatibility = 11
+sourceCompatibility = 17

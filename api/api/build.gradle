@@ -6,7 +6,7 @@ group 'oxs.api'
 
 apply plugin: 'java'
 
-sourceCompatibility = 11
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
@@ -16,9 +16,21 @@ dependencies {
     implementation 'org.slf4j:slf4j-simple:2.0.6'
     implementation 'io.javalin:javalin:5.4.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
-    implementation project(':demo')
+    implementation project(':oxidationStates')
+}
+
+tasks.register('copyInputFiles', Copy) {
+    from "$rootDir/oxidationStates/input_files"
+    into "$rootDir/api/input_files"
 }
 
 application {
-    mainClass = "oxs.api.HelloWorld"
+    mainClass = "oxs.api.APIServer"
 }
+
+jar {
+  manifest {
+      attributes 'Main-Class': 'oxs.api.APIServer'
+  }
+}
+
