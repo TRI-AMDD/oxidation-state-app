@@ -11,8 +11,9 @@ import com.google.gson.GsonBuilder;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-import demo.die.Die;
-import java.util.Map;
+import tri.oxidationstates.webapi.TableRow;
+import tri.oxidationstates.webapi.WebOxidationAnalyzer;
+
 
 /**
  * A Sample request handler for HTTP APIs using the standard RequestHandler input method 
@@ -38,15 +39,16 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
 		    HashMap<String, String> headers = new HashMap<String, String>();
 
 			String body = event.getBody() != null ? event.getBody() : "Empty body";
-
 			Request request = gson.fromJson(body, Request.class);
-			var num = 12;
-			Die die = new Die(request.num);
-            int roll = die.roll();
 
-		    headers.put("Content-Type", "text/plain");
+			String paramFileName = "input_files/oxidation_parameters.txt";
+            String polyIonDir = "input_files/polyatomic_ions_web";
+            
+            WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
+
+		    headers.put("Content-Type", "text/json");
 		    response.setHeaders(headers);
-			response.setBody("Hello " + request.name + " : " + roll);
+			response.setBody(analyzer.getTableData(request.composition));
 
 		    return response;		    
 	  }
