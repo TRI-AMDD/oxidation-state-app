@@ -1,6 +1,8 @@
 package oxs.lambda;
 
 import oxs.lambda.Request;
+
+import java.util.Base64;
 import java.util.HashMap;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -14,42 +16,51 @@ import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
 import tri.oxidationstates.webapi.TableRow;
 import tri.oxidationstates.webapi.WebOxidationAnalyzer;
 
-
 /**
- * A Sample request handler for HTTP APIs using the standard RequestHandler input method 
+ * A Sample request handler for HTTP APIs using the standard RequestHandler
+ * input method
  * Payload v2.0
+ * 
  * @author georgmao
  *
  */
-public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse>{
-	  Gson gson = new GsonBuilder().setPrettyPrinting().create();
-	  
-	  @Override
-	  
-	  public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context)
-	  {
+public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
+	Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-		    LambdaLogger logger = context.getLogger();
-			logger.log("EVENT TYPE: " + event.getClass().toString());
-		    
-		    APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
-		    response.setIsBase64Encoded(false);
-		    response.setStatusCode(200);
-	
-		    HashMap<String, String> headers = new HashMap<String, String>();
+	@Override
 
-			String body = event.getBody() != null ? event.getBody() : "Empty body";
-			Request request = gson.fromJson(body, Request.class);
+	public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
 
-			String paramFileName = "input_files/oxidation_parameters.txt";
-            String polyIonDir = "input_files/polyatomic_ions_web";
-            
-            WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
+		LambdaLogger logger = context.getLogger();
+		logger.log("EVENT TYPE: " + event.getClass().toString());
 
-		    headers.put("Content-Type", "text/json");
-		    response.setHeaders(headers);
-			response.setBody(analyzer.getTableData(request.composition));
+		APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
+		response.setIsBase64Encoded(false);
+		response.setStatusCode(200);
 
-		    return response;		    
-	  }
+		HashMap<String, String> headers = new HashMap<String, String>();
+
+		String body = event.getBody() != null ? event.getBody() : "Empty body";
+		String compositionReq = body;
+		
+		logger.log("EVENT ENCODE: " + event.getIsBase64Encoded());
+		if (event.getIsBase64Encoded()) {
+			byte[] decodedBytes = Base64.getDecoder().decode(body);
+			compositionReq = new String(decodedBytes);
+		}
+		
+		logger.log("REQUST: " + compositionReq);
+		Request request = gson.fromJson(compositionReq, Request.class);
+
+		String paramFileName = "input_files/oxidation_parameters.txt";
+		String polyIonDir = "input_files/polyatomic_ions_web";
+
+		WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
+
+		headers.put("Content-Type", "text/json");
+		response.setHeaders(headers);
+		response.setBody(analyzer.getTableData(request.composition));
+
+		return response;
+	}
 }
