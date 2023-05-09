@@ -43,13 +43,13 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
 		String body = event.getBody() != null ? event.getBody() : "Empty body";
 		String compositionReq = body;
 		
-		logger.log("EVENT ENCODE: " + event.getIsBase64Encoded());
+		logger.log("EVENT IS ENCODED: " + event.getIsBase64Encoded());
 		if (event.getIsBase64Encoded()) {
 			byte[] decodedBytes = Base64.getDecoder().decode(body);
 			compositionReq = new String(decodedBytes);
 		}
 		
-		logger.log("REQUST: " + compositionReq);
+		logger.log("REQUEST: " + compositionReq);
 		Request request = gson.fromJson(compositionReq, Request.class);
 
 		String paramFileName = "input_files/oxidation_parameters.txt";
