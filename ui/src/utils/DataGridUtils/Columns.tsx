@@ -1,5 +1,4 @@
 import { GridColDef } from '@mui/x-data-grid';
-import { formatOxidationState } from './OxidationStateFormatter';
 import { Typography } from '@mui/material';
 import HeaderTooltip from './HeaderTooltip';
 
@@ -19,7 +18,7 @@ export const columns: GridColDef[] = [
                     variant="body2"
                     component={'div'}
                 >
-                    {formatOxidationState(params.row.oxidationState)}
+                    {params.row.oxidationState}
                 </Typography>
             );
         },
@@ -35,7 +34,7 @@ export const columns: GridColDef[] = [
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.optimalElecChemPotential}</Typography>;
+            return <Typography variant="body2">{params.row.optimalElecChemPotential.toFixed(2)}</Typography>;
         },
         flex: 1
     },
@@ -61,7 +60,7 @@ export const columns: GridColDef[] = [
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential}</Typography>;
+            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential.toFixed(2)}</Typography>;
         },
         flex: 1
     },

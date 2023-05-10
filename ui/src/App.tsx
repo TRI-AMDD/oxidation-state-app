@@ -1,6 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { Provider as JotaiProvider } from 'jotai';
 import CognitoProvider from './Cognito';
 // import  { CognitoProvider } from './Cognito'
 import { ThemeProvider, createTheme } from '@mui/material';
@@ -35,13 +36,15 @@ const App = () => (
     <QueryClientProvider client={queryClient}>
         <CognitoProvider>
             <ThemeProvider theme={theme}>
-                <Router>
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                        </Routes>
-                    </Suspense>
-                </Router>
+                <JotaiProvider>
+                    <Router>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                            </Routes>
+                        </Suspense>
+                    </Router>
+                </JotaiProvider>
             </ThemeProvider>
         </CognitoProvider>
     </QueryClientProvider>

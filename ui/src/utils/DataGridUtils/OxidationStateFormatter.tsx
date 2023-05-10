@@ -1,39 +1,60 @@
+import { OxidationStatesTableItem, TableRowAPI } from 'models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
 
-const ELECTRIC_CHARGE = ['+', '-'];
-
-export const formatOxidationState = (oxidationState: string) => {
-    let item = {
-        element: '',
-        state: ''
-    };
+export const formatOxidationState = ({ counts, oxidationStates, symbols }: TableRowAPI) => {
     const finalArr = [];
-    for (let i = 0; i < oxidationState.length; i++) {
-        if (ELECTRIC_CHARGE.includes(oxidationState[i])) {
-            item.state = oxidationState[i - 1].concat(oxidationState[i]);
-            item.element = item.element.slice(0, -1);
-
-            finalArr.push(item);
-
-            item = {
-                element: '',
-                state: ''
-            };
-        } else {
-            item = { ...item, element: item.element.concat(oxidationState[i]) };
-        }
-    }
-
-    if (finalArr.length > 0) {
-        return finalArr.map((element, index) => {
-            return (
-                <div key={`oxidationState-${index}`}>
-                    {element.element}
-                    <sup className={styles.super}>{element.state}</sup>
-                </div>
-            );
+    if (counts.length > 0 && oxidationStates.length > 0 && symbols.length > 0) {
+        symbols.forEach((symbol, index) => {
+            let oxidationState;
+            if (oxidationStates[index] > 0) {
+                oxidationState = `${oxidationStates[index]}+`;
+            } else {
+                oxidationState = `${Math.abs(oxidationStates[index])}-`;
+            }
+            if (counts[index] === 1.0) {
+                finalArr.push(
+                    <div key={`oxidationState- ${index}`}>
+                        {symbol}
+                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+                    </div>
+                );
+            } else if (counts[index] % 1 === 0) {
+                finalArr.push(
+                    <div key={`oxidationState- ${index}`}>
+                        {~~counts[index] + symbol}
+                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+                    </div>
+                );
+            } else {
+                finalArr.push(
+                    <div key={`oxidationState- ${index}`}>
+                        {counts[index].toFixed(2) + symbol}
+                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+                    </div>
+                );
+            }
         });
     } else {
-        return <></>;
+        finalArr.push(<></>);
     }
+    return finalArr;
+};
+
+export const parseAPITableData = (data: TableRowAPI[]) => {
+    const returnObject: OxidationStatesTableItem[] = [];
+
+    data.forEach((item, index) => {
+        const oxidationState = formatOxidationState(item);
+
+        returnObject.push({
+            oxidationState,
+            likelihoodCurrentElecChemPotential: 0,
+            likelihoodOptimalElecChemPotential: item.optimalLikelihood,
+            optimalElecChemPotential: item.optimalChemicalPotential,
+            globalInstabilityIndex: item.globalInstabilityIndex,
+            id: index
+        });
+    });
+
+    return returnObject;
 };
