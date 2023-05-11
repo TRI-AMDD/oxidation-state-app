@@ -6,9 +6,18 @@ export enum LoadingState {
 
 export interface OxidationStatesTableItem {
     id: number;
-    oxidationState: string;
+    oxidationState: JSX.Element[];
     likelihoodCurrentElecChemPotential: number;
     likelihoodOptimalElecChemPotential: number;
     optimalElecChemPotential: number;
-    globalInstabilityIndex: number;
+    globalInstabilityIndex: number | 'NaN';
+}
+
+export interface TableRowAPI {
+    counts: number[];
+    optimalLikelihood: number;
+    symbols: string[];
+    oxidationStates: number[];
+    optimalChemicalPotential: number;
+    globalInstabilityIndex: number | 'NaN';
 }
