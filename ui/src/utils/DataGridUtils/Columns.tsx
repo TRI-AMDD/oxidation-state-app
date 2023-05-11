@@ -25,16 +25,16 @@ export const columns: GridColDef[] = [
         width: 284
     },
     {
-        field: 'optimalElecChemPotential',
+        field: 'likelihoodOptimalElecChemPotential',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
+            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
                 <strong>
-                    &#956;<sub>opt</sub>
+                    L(&#956;<sub>opt</sub>)
                 </strong>
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.optimalElecChemPotential.toFixed(2)}</Typography>;
+            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential.toFixed(2)}</Typography>;
         },
         flex: 1
     },
@@ -51,20 +51,19 @@ export const columns: GridColDef[] = [
         flex: 1
     },
     {
-        field: 'likelihoodOptimalElecChemPotential',
+        field: 'optimalElecChemPotential',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
+            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
                 <strong>
-                    L(&#956;<sub>opt</sub>)
+                    &#956;<sub>opt</sub>
                 </strong>
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential.toFixed(2)}</Typography>;
+            return <Typography variant="body2">{params.row.optimalElecChemPotential.toFixed(2)}</Typography>;
         },
         flex: 1
     },
-
     {
         field: 'globalInstabilityIndex',
         headerName: 'GII',
