@@ -40,8 +40,9 @@ const InputSection = () => {
             <Typography variant="body2" component={'div'} className={styles.marginRight}>
                 Or
             </Typography>
-            <Button variant="contained" size="large" startIcon={<UploadIcon />}>
+            <Button variant="contained" component="label" size="large" startIcon={<UploadIcon />}>
                 UPLOAD STRUCTURE
+                <input hidden type="file" />
             </Button>
         </div>
     );
