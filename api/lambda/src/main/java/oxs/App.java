@@ -1,7 +1,5 @@
 package oxs.lambda;
 
-import oxs.lambda.Request;
-
 import java.util.Base64;
 import java.util.HashMap;
 
@@ -13,8 +11,8 @@ import com.google.gson.GsonBuilder;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-import tri.oxidationstates.webapi.TableData;
-import tri.oxidationstates.webapi.WebOxidationAnalyzer;
+import oxs.helper.Request;
+import oxs.helper.OxsHelper;
 
 /**
  * A Sample request handler for HTTP APIs using the standard RequestHandler
@@ -50,14 +48,9 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
 		}
 		
 		logger.log("REQUEST: " + compositionReq);
-		Request request = gson.fromJson(compositionReq, Request.class);
-
-		String paramFileName = "input_files/oxidation_parameters.txt";
-		String polyIonDir = "input_files/polyatomic_ions_web";
-
-		WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
-        TableData tableData = analyzer.getTableDataFromComposition(request.composition);
-		String result = tableData.toJSON();
+		Request req = gson.fromJson(compositionReq, Request.class);
+		OxsHelper oxsHelper = new OxsHelper();
+		String result = oxsHelper.GetOxidationJSON(req);
 
 		headers.put("Content-Type", "text/json");
 		response.setHeaders(headers);
