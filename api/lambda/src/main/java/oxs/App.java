@@ -13,7 +13,7 @@ import com.google.gson.GsonBuilder;
 
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-import tri.oxidationstates.webapi.TableRow;
+import tri.oxidationstates.webapi.TableData;
 import tri.oxidationstates.webapi.WebOxidationAnalyzer;
 
 /**
@@ -56,10 +56,12 @@ public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HT
 		String polyIonDir = "input_files/polyatomic_ions_web";
 
 		WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
+        TableData tableData = analyzer.getTableDataFromComposition(request.composition);
+		String result = tableData.toJSON();
 
 		headers.put("Content-Type", "text/json");
 		response.setHeaders(headers);
-		response.setBody(analyzer.getTableData(request.composition));
+		response.setBody(result);
 
 		return response;
 	}
