@@ -1,10 +1,8 @@
 package oxs.api;
 
 import io.javalin.Javalin;
-import oxs.api.Request;
-import tri.oxidationstates.webapi.TableRow;
-import tri.oxidationstates.webapi.WebOxidationAnalyzer;
-import java.io.File;
+import oxs.helper.Request;
+import oxs.helper.OxsHelper;
 
 public class APIServer {
     public static void main(String[] args) {
@@ -16,12 +14,10 @@ public class APIServer {
 
         app.post("/api", ctx -> {
             Request req = ctx.bodyAsClass(Request.class);
-            String paramFileName = "input_files/oxidation_parameters.txt";
-            String polyIonDir = "input_files/polyatomic_ions_web";
-            
-            WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
+            OxsHelper oxsHelper = new OxsHelper();
+            String result = oxsHelper.GetOxidationJSON(req);
             ctx.contentType("json");
-            ctx.result(analyzer.getTableData(req.composition));
+            ctx.result(result);
         });
 
         app.start(7070);
