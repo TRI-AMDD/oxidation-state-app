@@ -9,8 +9,9 @@ const useTable = () => {
     const [tableData, setTableData] = useAtom(tableDataAtom);
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
 
-    const grabOxidationStates = (chemicalComposition: string) => {
-        fetchTableDataUsingComposition(chemicalComposition).then((response: AxiosResponse) => {
+    const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
+        fetchTableDataUsingComposition(chemicalComposition, structure).then((response: AxiosResponse) => {
+            console.log(response.data);
             setTableData(parseAPITableData(response.data.tableRows));
             setDataViewerState(LoadingState.Loaded);
         });
