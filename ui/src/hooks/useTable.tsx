@@ -11,7 +11,6 @@ const useTable = () => {
 
     const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then((response: AxiosResponse) => {
-            console.log(response.data);
             setTableData(parseAPITableData(response.data.tableRows));
             setDataViewerState(LoadingState.Loaded);
         });
