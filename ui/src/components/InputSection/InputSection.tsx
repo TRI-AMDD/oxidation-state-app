@@ -14,6 +14,16 @@ const InputSection = () => {
     const [inputText, setInputText] = useState('');
     const { grabOxidationStates } = useTable();
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
+    //const [structureFile, setStructureFile] = useState();
+
+    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.files) {
+            const form = new FormData();
+            form.append('file', event.target.files[0], event.target.files[0].name);
+            console.log(form.entries());
+            console.log(event.target.files[0]);
+        }
+    };
 
     const hanldeInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(event.target.value);
@@ -42,7 +52,7 @@ const InputSection = () => {
             </Typography>
             <Button variant="contained" component="label" size="large" startIcon={<UploadIcon />}>
                 UPLOAD STRUCTURE
-                <input hidden type="file" />
+                <input hidden type="file" onChange={handleFileUpload} />
             </Button>
         </div>
     );
