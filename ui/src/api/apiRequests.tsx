@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TableRowAPI } from 'models/DataViewerModel';
+import { OxidationStatesAPI } from 'models/DataViewerModel';
 
 const api = axios.create({
     baseURL: '/api',
@@ -9,8 +9,17 @@ const api = axios.create({
     }
 });
 
-export function fetchTableDataUsingComposition(chemicalComposition: string) {
-    return api.post<TableRowAPI[]>('', {
-        composition: chemicalComposition
-    });
+export async function fetchTableDataUsingComposition(chemicalComposition: string, structure: File | undefined) {
+    if (chemicalComposition === '' && typeof structure !== 'undefined') {
+        const fileAsString = await structure.text();
+        return api.post<OxidationStatesAPI[]>('', {
+            composition: chemicalComposition,
+            structure: fileAsString
+        });
+    } else {
+        return api.post<OxidationStatesAPI[]>('', {
+            composition: chemicalComposition,
+            structure: ''
+        });
+    }
 }

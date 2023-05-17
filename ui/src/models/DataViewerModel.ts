@@ -20,4 +20,12 @@ export interface TableRowAPI {
     oxidationStates: number[];
     optimalChemicalPotential: number;
     globalInstabilityIndex: number | 'NaN';
+    cifstring?: string;
+}
+
+export interface OxidationStatesAPI {
+    allIonTypeSymbols: string[];
+    composition: string;
+    message: string | null;
+    tableRows: TableRowAPI[];
 }

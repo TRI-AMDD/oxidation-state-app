@@ -1,28 +1,14 @@
 import { TextField, Button, Typography } from '@mui/material';
 import styles from './InputSection.module.css';
 import UploadIcon from '@mui/icons-material/Upload';
-import useTable from 'hooks/useTable';
-import React, { useState } from 'react';
-import { dataViewerStateAtom } from 'atoms/atoms';
-import { useAtom } from 'jotai';
-import { LoadingState } from 'models/DataViewerModel';
+
+import useInputs from 'hooks/useInputs';
 
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
 
 const InputSection = () => {
-    const [inputText, setInputText] = useState('');
-    const { grabOxidationStates } = useTable();
-    const [, setDataViewerState] = useAtom(dataViewerStateAtom);
-
-    const hanldeInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputText(event.target.value);
-    };
-
-    const handleClick = () => {
-        grabOxidationStates(inputText);
-        setDataViewerState(LoadingState.Loading);
-    };
+    const { handleInputChange, handleFileUpload, handleSubmitClick, handleEnterClick } = useInputs();
     return (
         <div className={styles.container}>
             <TextField
@@ -32,16 +18,18 @@ const InputSection = () => {
                     shrink: true
                 }}
                 className={styles.marginRight}
-                onChange={hanldeInputChange}
+                onKeyDown={handleEnterClick}
+                onChange={handleInputChange}
             />
-            <Button variant="contained" size="large" className={styles.marginRight} onClick={handleClick}>
+            <Button variant="contained" size="large" className={styles.marginRight} onClick={handleSubmitClick}>
                 SUBMIT
             </Button>
             <Typography variant="body2" component={'div'} className={styles.marginRight}>
                 Or
             </Typography>
-            <Button variant="outlined" size="large" startIcon={<UploadIcon />}>
+            <Button variant="outlined" component="label" size="large" startIcon={<UploadIcon />}>
                 UPLOAD STRUCTURE
+                <input hidden type="file" onChange={handleFileUpload} />
             </Button>
         </div>
     );
