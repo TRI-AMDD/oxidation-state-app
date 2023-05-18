@@ -68,8 +68,6 @@ const parseArrayOfChars = (chars: string[]) => {
     let number = 0;
 
     chars.forEach((char, index) => {
-        console.log(char, isNaN(parseInt(char)));
-
         if (isNaN(parseInt(char))) {
             if (char === '(') {
                 inParen = true;
@@ -102,11 +100,34 @@ const parseArrayOfChars = (chars: string[]) => {
 
     return { symbolsArray: arrayOfSymbolsInComposition, numbersArray: arrayOfNumbersInComposition };
 };
-export const formatDynamicTitle = (compositionTitle: string) => {
+const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
+    const finalArr = [];
+    if (symbolsArray && symbolsArray.length > 0) {
+        symbolsArray.forEach((symbol, index) => {
+            const numberForSymbol = numbersArray[index];
+            finalArr.push(
+                <div>
+                    {symbol}
+                    {numberForSymbol !== 0 ? (
+                        <>
+                            <sub>{numberForSymbol}</sub>&nbsp;
+                        </>
+                    ) : (
+                        <>&nbsp;</>
+                    )}
+                </div>
+            );
+        });
+    } else {
+        finalArr.push(<></>);
+    }
+    return finalArr;
+};
+
+export const parseAPICompositionString = (compositionTitle: string) => {
     const arrayOfCharsInComposition = compositionTitle.split('');
 
-    let inParenthesis = false;
+    const { symbolsArray, numbersArray } = parseArrayOfChars(arrayOfCharsInComposition);
 
-    console.log(arrayOfNumbersInComposition, arrayOfSymbolsInComposition);
-    return compositionTitle;
+    return formatDynamicTitle(symbolsArray, numbersArray);
 };

@@ -6,10 +6,11 @@ import { dynamicCompositionTitleAtom } from 'atoms/atoms';
 import { useAtom } from 'jotai';
 
 const LoadedState = () => {
-    const [chemicalComposition] = useAtom(dynamicCompositionTitleAtom);
+    const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
+
     return (
         <div>
-            <Alert severity="info">Oxidation state analysis for {chemicalComposition}</Alert>
+            <Alert severity="info">Oxidation state analysis for&nbsp;{dynamicCompositionTitle}</Alert>
             <div className={styles.graphAndTableContainer}>
                 <Table />
                 <Graph />
