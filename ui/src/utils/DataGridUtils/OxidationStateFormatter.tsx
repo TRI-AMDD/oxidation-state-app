@@ -58,3 +58,55 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
 
     return returnObject;
 };
+
+const parseArrayOfChars = (chars: string[]) => {
+    const arrayOfSymbolsInComposition: string[] = [];
+    const arrayOfNumbersInComposition: number[] = [];
+    let inParen = false;
+
+    let symbol = '';
+    let number = 0;
+
+    chars.forEach((char, index) => {
+        console.log(char, isNaN(parseInt(char)));
+
+        if (isNaN(parseInt(char))) {
+            if (char === '(') {
+                inParen = true;
+                if (index !== 0) {
+                    arrayOfSymbolsInComposition.push(symbol);
+                    arrayOfNumbersInComposition.push(number);
+                }
+
+                symbol = '(';
+                number = 0;
+            } else if (char === ')') {
+                inParen = false;
+                symbol += ')';
+            } else if (char === char.toUpperCase() && symbol !== '' && !inParen) {
+                arrayOfSymbolsInComposition.push(symbol);
+                arrayOfNumbersInComposition.push(number);
+                symbol = char;
+                number = 0;
+            } else {
+                symbol += char;
+            }
+        } else if (inParen) {
+            symbol += char;
+        } else {
+            number = parseInt(char);
+        }
+    });
+    arrayOfNumbersInComposition.push(number);
+    arrayOfSymbolsInComposition.push(symbol);
+
+    return { symbolsArray: arrayOfSymbolsInComposition, numbersArray: arrayOfNumbersInComposition };
+};
+export const formatDynamicTitle = (compositionTitle: string) => {
+    const arrayOfCharsInComposition = compositionTitle.split('');
+
+    let inParenthesis = false;
+
+    console.log(arrayOfNumbersInComposition, arrayOfSymbolsInComposition);
+    return compositionTitle;
+};
