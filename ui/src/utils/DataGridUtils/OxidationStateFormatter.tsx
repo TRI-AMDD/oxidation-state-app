@@ -71,7 +71,6 @@ export const formatOxidationState = ({ counts, oxidationStates, symbols }: Table
 
 export const parseAPITableData = (data: TableRowAPI[]) => {
     const returnObject: OxidationStatesTableItem[] = [];
-    console.log(data, 'incoming data');
 
     data.forEach((item, index) => {
         const { oxidationState, oxidationStateString } = formatOxidationState(item);
@@ -87,6 +86,5 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
         });
     });
 
-    console.log(returnObject, 'return object');
     return returnObject;
 };
