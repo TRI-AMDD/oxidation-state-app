@@ -22,6 +22,9 @@ export const columns: GridColDef[] = [
                 </Typography>
             );
         },
+        valueGetter(params) {
+            return params.row.oxidationStateString;
+        },
         width: 284
     },
     {
@@ -34,7 +37,11 @@ export const columns: GridColDef[] = [
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.likelihoodOptimalElecChemPotential.toFixed(2)}</Typography>;
+            return (
+                <Typography variant="body2">
+                    {params.row.likelihoodOptimalElecChemPotential.toExponential(2)}
+                </Typography>
+            );
         },
         flex: 1
     },
@@ -60,7 +67,7 @@ export const columns: GridColDef[] = [
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.optimalElecChemPotential.toFixed(2)}</Typography>;
+            return <Typography variant="body2">{params.row.optimalElecChemPotential.toExponential(2)}</Typography>;
         },
         flex: 1
     },
@@ -73,7 +80,13 @@ export const columns: GridColDef[] = [
             </HeaderTooltip>
         ),
         renderCell(params) {
-            return <Typography variant="body2">{params.row.globalInstabilityIndex}</Typography>;
+            return (
+                <Typography variant="body2">
+                    {typeof params.row.globalInstabilityIndex !== 'string'
+                        ? params.row.globalInstabilityIndex.toExponential(2)
+                        : params.row.globalInstabilityIndex}
+                </Typography>
+            );
         },
         flex: 1
     }

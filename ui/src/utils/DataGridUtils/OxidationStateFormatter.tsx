@@ -1,50 +1,80 @@
 import { OxidationStatesTableItem, TableRowAPI } from 'models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
 
+const formatOxidationWithChargeSign = (currentOxidation: number) => {
+    if (currentOxidation > 0) {
+        return `${currentOxidation}+`;
+    } else {
+        return `${Math.abs(currentOxidation)}-`;
+    }
+};
+
+const formatOxidationStateWithOneCount = (currentIndex: number, currentSymbol: string, oxidationState: string) => {
+    return (
+        <div key={`oxidationState- ${currentIndex}`}>
+            {currentSymbol}
+            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+        </div>
+    );
+};
+
+const formatOxidationStateWithWholeNumberCount = (
+    currentIndex: number,
+    currentSymbol: string,
+    currentCount: number,
+    oxidationState: string
+) => {
+    return (
+        <div key={`oxidationState- ${currentIndex}`}>
+            {~~currentCount + currentSymbol}
+            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+        </div>
+    );
+};
+
+const formatOxidationStateWithDecimalCount = (
+    currentIndex: number,
+    currentSymbol: string,
+    currentCount: number,
+    oxidationState: string
+) => {
+    return (
+        <div key={`oxidationState- ${currentIndex}`}>
+            {currentCount.toFixed(2) + currentSymbol}
+            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+        </div>
+    );
+};
+
 export const formatOxidationState = ({ counts, oxidationStates, symbols }: TableRowAPI) => {
     const finalArr = [];
+    let finalString = '';
     if (counts.length > 0 && oxidationStates.length > 0 && symbols.length > 0) {
         symbols.forEach((symbol, index) => {
-            let oxidationState;
-            if (oxidationStates[index] > 0) {
-                oxidationState = `${oxidationStates[index]}+`;
-            } else {
-                oxidationState = `${Math.abs(oxidationStates[index])}-`;
-            }
+            const oxidationState = formatOxidationWithChargeSign(oxidationStates[index]);
             if (counts[index] === 1.0) {
-                finalArr.push(
-                    <div key={`oxidationState- ${index}`}>
-                        {symbol}
-                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
-                    </div>
-                );
+                finalArr.push(formatOxidationStateWithOneCount(index, symbol, oxidationState));
+                finalString += symbol + oxidationState + ' ';
             } else if (counts[index] % 1 === 0) {
-                finalArr.push(
-                    <div key={`oxidationState- ${index}`}>
-                        {~~counts[index] + symbol}
-                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
-                    </div>
-                );
+                finalArr.push(formatOxidationStateWithWholeNumberCount(index, symbol, counts[index], oxidationState));
+                finalString += ~~counts[index] + symbol + oxidationState + ' ';
             } else {
-                finalArr.push(
-                    <div key={`oxidationState- ${index}`}>
-                        {counts[index].toFixed(2) + symbol}
-                        <sup className={styles.super}>{oxidationState}</sup>&nbsp;
-                    </div>
-                );
+                finalArr.push(formatOxidationStateWithDecimalCount(index, symbol, counts[index], oxidationState));
+                finalString += counts[index].toFixed(2) + symbol + oxidationState + ' ';
             }
         });
     } else {
         finalArr.push(<></>);
     }
-    return finalArr;
+    return { oxidationState: finalArr, oxidationStateString: finalString };
 };
 
 export const parseAPITableData = (data: TableRowAPI[]) => {
     const returnObject: OxidationStatesTableItem[] = [];
+    console.log(data, 'incoming data');
 
     data.forEach((item, index) => {
-        const oxidationState = formatOxidationState(item);
+        const { oxidationState, oxidationStateString } = formatOxidationState(item);
 
         returnObject.push({
             oxidationState,
@@ -52,9 +82,11 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
             likelihoodOptimalElecChemPotential: item.optimalLikelihood,
             optimalElecChemPotential: item.optimalChemicalPotential,
             globalInstabilityIndex: item.globalInstabilityIndex,
-            id: index
+            id: index,
+            oxidationStateString
         });
     });
 
+    console.log(returnObject, 'return object');
     return returnObject;
 };
