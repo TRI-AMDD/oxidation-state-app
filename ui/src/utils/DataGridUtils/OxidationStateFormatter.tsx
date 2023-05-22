@@ -136,7 +136,7 @@ const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
         symbolsArray.forEach((symbol, index) => {
             const numberForSymbol = numbersArray[index];
             finalArr.push(
-                <div>
+                <div key={`dynamic title - ${index}`}>
                     {symbol}
                     {numberForSymbol !== 0 ? (
                         <>
