@@ -2,14 +2,15 @@ import { Alert } from '@mui/material';
 import Graph from '../Graph/Graph';
 import Table from '../Table/Table';
 import styles from './LoadedState.module.css';
-import { chemicalCompositionInputAtom } from 'atoms/atoms';
+import { dynamicCompositionTitleAtom } from 'atoms/atoms';
 import { useAtom } from 'jotai';
 
 const LoadedState = () => {
-    const [chemicalComposition] = useAtom(chemicalCompositionInputAtom);
+    const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
+
     return (
         <div>
-            <Alert severity="info">Oxidation state analysis for {chemicalComposition}</Alert>
+            <Alert severity="info">Oxidation state analysis for&nbsp;{dynamicCompositionTitle}</Alert>
             <div className={styles.graphAndTableContainer}>
                 <Table />
                 <Graph />

@@ -12,12 +12,12 @@ const api = axios.create({
 export async function fetchTableDataUsingComposition(chemicalComposition: string, structure: File | undefined) {
     if (chemicalComposition === '' && typeof structure !== 'undefined') {
         const fileAsString = await structure.text();
-        return api.post<OxidationStatesAPI[]>('', {
+        return api.post<OxidationStatesAPI>('', {
             composition: chemicalComposition,
             structure: fileAsString
         });
     } else {
-        return api.post<OxidationStatesAPI[]>('', {
+        return api.post<OxidationStatesAPI>('', {
             composition: chemicalComposition,
             structure: ''
         });

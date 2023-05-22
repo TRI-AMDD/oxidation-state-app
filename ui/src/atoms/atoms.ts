@@ -3,6 +3,6 @@ import { atom } from 'jotai';
 
 export const dataViewerStateAtom = atom<LoadingState>(LoadingState.Initial);
 
-export const chemicalCompositionInputAtom = atom<string>('');
+export const dynamicCompositionTitleAtom = atom<JSX.Element[]>([]);
 
 export const tableDataAtom = atom<OxidationStatesTableItem[]>([]);
