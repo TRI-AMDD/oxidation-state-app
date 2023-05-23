@@ -5,7 +5,6 @@ const Graph = () => {
     return (
         <div className={styles.container}>
             <PlotlyGraph />
-            hi
         </div>
     );
 };

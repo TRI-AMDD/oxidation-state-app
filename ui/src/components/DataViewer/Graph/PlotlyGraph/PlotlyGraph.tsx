@@ -3,17 +3,13 @@ import { useMemo } from 'react';
 import testData from './test.json';
 
 import Plot from 'react-plotly.js';
+import { formatOxidationState } from 'utils/GraphUtil';
+import { Data } from 'plotly.js';
 
 interface PlotData {
     oxidationState: number;
     potential: number[];
     likelihood: number[];
-}
-
-interface GraphData {
-    name: string;
-    x: number[];
-    y: number[];
 }
 
 const PlotlyGraph = () => {
@@ -29,7 +25,7 @@ const PlotlyGraph = () => {
             });
         }
 
-        const graphData: GraphData[] = [];
+        const graphData: Data[] = [];
 
         for (let i = 0; i < parsedData.length; i++) {
             if (parsedData[i].oxidationState !== 0) {
@@ -37,39 +33,19 @@ const PlotlyGraph = () => {
                 const likelihoodPrevReverse = [...parsedData[i - 1].likelihood].reverse();
 
                 graphData.push({
-                    name: parsedData[i].oxidationState.toString(),
+                    name: formatOxidationState(parsedData[i].oxidationState),
                     x: [...parsedData[i].potential, ...potentialPrevReverse],
-                    y: [...parsedData[i].likelihood, ...likelihoodPrevReverse]
-                });
-            }
-        }
-
-        return graphData;
-    }, []);
-
-    console.log(items);
-
-    return (
-        <Plot
-            data={[
-                {
-                    // x: [1, 2, 3],
-                    // y: [2, 6, 3],
-                    x: items[0].x,
-                    y: items[0].y,
-                    name: items[0].name,
-                    // y: items[0].map((item) => item.likelihood),
+                    y: [...parsedData[i].likelihood, ...likelihoodPrevReverse],
                     type: 'scatter',
                     fill: 'toself',
                     mode: 'lines'
+                });
+            }
+        }
+        return graphData;
+    }, []);
 
-                    // mode: 'lines+markers',
-                    // marker: { color: 'red' }
-                }
-            ]}
-            layout={{ width: 320, height: 240, title: 'A Fancy Plot' }}
-        />
-    );
+    return <Plot data={items} layout={{ width: 543, height: 244 }} />;
 };
 
 export default PlotlyGraph;
