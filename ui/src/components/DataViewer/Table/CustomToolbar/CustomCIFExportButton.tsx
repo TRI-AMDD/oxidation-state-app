@@ -12,12 +12,6 @@ const CustomCIFExportButton = ({ cifString, fileName }: CIFProps) => {
         return URL.createObjectURL(generateCIFFile(cifString));
     }, [cifString]);
 
-    // useEffect(() => {
-    //     return () => {
-    //         URL.revokeObjectURL(downloadFile);
-    //     };
-    // }, [downloadFile]);
-
     const handleDownloadClick = () => {
         setTimeout(() => {
             URL.revokeObjectURL(downloadFile);
