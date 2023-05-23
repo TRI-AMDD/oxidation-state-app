@@ -1,41 +1,72 @@
-// import styles from './Graph.module.css';
 import { useMemo } from 'react';
-import testData from './test.json';
 
 import Plot from 'react-plotly.js';
 import { formatOxidationState } from 'utils/GraphUtil';
 import { Data } from 'plotly.js';
+import { OxidationStatesAPI } from 'models/DataViewerModel';
+
+const GRAPH_POINTS = 250;
 
 interface PlotData {
+    specie: string;
     oxidationState: number;
     potential: number[];
     likelihood: number[];
 }
 
-const PlotlyGraph = () => {
+interface Props {
+    data: OxidationStatesAPI;
+}
+
+const PlotlyGraph = ({ data }: Props) => {
     const items = useMemo(() => {
-        const parsedData: PlotData[] = [];
-        const uniqueStates = [...new Set(testData.map((item) => item.oxidationState))].sort();
-        console.log(uniqueStates);
-        for (const unique of uniqueStates) {
-            parsedData.push({
-                oxidationState: unique,
-                potential: testData.filter((item) => item.oxidationState === unique).map((item) => item.potential),
-                likelihood: testData.filter((item) => item.oxidationState === unique).map((item) => item.likelihood)
-            });
+        const generatedData: PlotData[] = [];
+        const diff = data.maxBoundaryValue - data.minBoundaryValue;
+        const xPoints = Array.from(
+            { length: GRAPH_POINTS },
+            (v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue
+        );
+        const xReversePoints = [...xPoints].reverse();
+
+        for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
+            for (let i = 0; i < rangeData.oxidationStates.length; i++) {
+                const oxidationState = rangeData.oxidationStates[i];
+                const min = rangeData.rangeBoundaries[i];
+                const max = rangeData.rangeBoundaries[i + 1];
+
+                // offset y of each graph
+                const indexY = index * 1.5;
+
+                const yLeftPoints: number[] = [];
+                const yRightPoints: number[] = [];
+                // points for left boundary
+                for (const point of xPoints) {
+                    yLeftPoints.push(1 / (1 + Math.exp(point - min)) + indexY);
+                }
+
+                // points for right boundary
+                for (const point of xPoints) {
+                    yRightPoints.push(1 / (1 + Math.exp(point - max)) + indexY);
+                }
+                yRightPoints.reverse();
+
+                generatedData.push({
+                    specie: rangeData.ionTypeSymbol,
+                    oxidationState,
+                    potential: [...xPoints, ...xReversePoints],
+                    likelihood: [...yLeftPoints, ...yRightPoints]
+                });
+            }
         }
 
         const graphData: Data[] = [];
 
-        for (let i = 0; i < parsedData.length; i++) {
-            if (parsedData[i].oxidationState !== 0) {
-                const potentialPrevReverse = [...parsedData[i - 1].potential].reverse();
-                const likelihoodPrevReverse = [...parsedData[i - 1].likelihood].reverse();
-
+        for (let i = 0; i < generatedData.length; i++) {
+            if (generatedData[i].oxidationState !== 0) {
                 graphData.push({
-                    name: formatOxidationState(parsedData[i].oxidationState),
-                    x: [...parsedData[i].potential, ...potentialPrevReverse],
-                    y: [...parsedData[i].likelihood, ...likelihoodPrevReverse],
+                    name: `${generatedData[i].specie} ${formatOxidationState(generatedData[i].oxidationState)}`,
+                    x: generatedData[i].potential,
+                    y: generatedData[i].likelihood,
                     type: 'scatter',
                     fill: 'toself',
                     mode: 'lines'
@@ -43,9 +74,11 @@ const PlotlyGraph = () => {
             }
         }
         return graphData;
-    }, []);
+    }, [data]);
 
-    return <Plot data={items} layout={{ width: 543, height: 244 }} />;
+    const figureHeight = 180 * data.oxidationStateRangeData.length;
+
+    return <Plot data={items} layout={{ width: 543, height: figureHeight }} />;
 };
 
 export default PlotlyGraph;
