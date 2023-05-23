@@ -5,6 +5,7 @@ import HeaderTooltip from './HeaderTooltip';
 export const columns: GridColDef[] = [
     {
         field: 'oxidationState',
+        headerName: 'Oxidation State',
         renderHeader: () => <strong>Oxidation States</strong>,
         renderCell(params) {
             return (
@@ -29,6 +30,7 @@ export const columns: GridColDef[] = [
     },
     {
         field: 'likelihoodOptimalElecChemPotential',
+        headerName: 'Likelihood at optimal electronic chemical potential',
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
                 <strong>
@@ -49,6 +51,8 @@ export const columns: GridColDef[] = [
     },
     {
         field: 'likelihoodCurrentElecChemPotential',
+        headerName: 'Likelihood at current electronic chemical potential',
+
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current electronic chemical potential">
                 <strong>L(&#956;)</strong>
@@ -61,6 +65,7 @@ export const columns: GridColDef[] = [
     },
     {
         field: 'optimalElecChemPotential',
+        headerName: 'Optimal electronic chemical potential',
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
                 <strong>
@@ -75,7 +80,7 @@ export const columns: GridColDef[] = [
     },
     {
         field: 'globalInstabilityIndex',
-        headerName: 'GII',
+        headerName: 'Global instability index',
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Global" bodyText="instability index">
                 <strong>GII</strong>

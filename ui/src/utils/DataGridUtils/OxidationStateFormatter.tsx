@@ -82,7 +82,8 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
             optimalElecChemPotential: item.optimalChemicalPotential,
             globalInstabilityIndex: item.globalInstabilityIndex,
             id: index,
-            oxidationStateString
+            oxidationStateString,
+            cifString: item.cifstring
         });
     });
 

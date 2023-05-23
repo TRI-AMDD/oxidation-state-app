@@ -1,4 +1,4 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
 import { columns } from 'utils/DataGridUtils/Columns';
 import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
@@ -6,10 +6,14 @@ import './MuiClasses.css';
 import useTable from 'hooks/useTable';
 
 const Table = () => {
-    const { tableData } = useTable();
+    const { tableData, handleTableRowClick } = useTable();
+
+    const apiRef = useGridApiRef();
+
     return (
         <div className={styles.container}>
             <DataGrid
+                apiRef={apiRef}
                 hideFooter={true}
                 getRowHeight={() => 'auto'}
                 columns={columns}
@@ -21,6 +25,7 @@ const Table = () => {
                 slots={{
                     toolbar: CustomToolbar
                 }}
+                onRowClick={handleTableRowClick}
             ></DataGrid>
         </div>
     );

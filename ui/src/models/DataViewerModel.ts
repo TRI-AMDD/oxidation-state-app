@@ -12,6 +12,7 @@ export interface OxidationStatesTableItem {
     optimalElecChemPotential: number;
     globalInstabilityIndex: number | 'NaN';
     oxidationStateString: string;
+    cifString?: string | null;
 }
 
 export interface TableRowAPI {
