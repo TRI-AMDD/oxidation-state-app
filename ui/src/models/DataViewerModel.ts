@@ -25,9 +25,19 @@ export interface TableRowAPI {
     cifstring?: string | null;
 }
 
+export interface OxidationRangeItem {
+    ionTypeSymbol: string;
+    oxidationStates: number[];
+    rangeBoundaries: number[];
+}
+
 export interface OxidationStatesAPI {
     allIonTypeSymbols: string[];
     composition: string;
     message: string | null;
+    errorMessage: boolean;
     tableRows: TableRowAPI[];
+    maxBoundaryValue: number;
+    minBoundaryValue: number;
+    oxidationStateRangeData: OxidationRangeItem[];
 }

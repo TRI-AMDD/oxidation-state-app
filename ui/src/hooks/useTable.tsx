@@ -1,6 +1,12 @@
 import { GridRowParams } from '@mui/x-data-grid';
 import { fetchTableDataUsingComposition } from 'api/apiRequests';
-import { dataViewerStateAtom, dynamicCompositionTitleAtom, selectedRowAtom, tableDataAtom } from 'atoms/atoms';
+import {
+    dataViewerStateAtom,
+    dynamicCompositionTitleAtom,
+    selectedRowAtom,
+    oxidationDataAtom,
+    tableDataAtom
+} from 'atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
 import { OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
@@ -12,12 +18,14 @@ const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [, setDynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
+    const [, setOxidationData] = useAtom(oxidationDataAtom);
 
     const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then(
             (response: AxiosResponse<OxidationStatesAPI>) => {
                 setDynamicCompositionTitle(parseAPICompositionString(response.data.composition));
                 setTableData(parseAPITableData(response.data.tableRows));
+                setOxidationData(response.data);
                 setDataViewerState(LoadingState.Loaded);
                 setSelectedRow(null);
             }
