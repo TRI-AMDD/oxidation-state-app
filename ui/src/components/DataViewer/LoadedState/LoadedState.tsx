@@ -10,7 +10,9 @@ const LoadedState = () => {
 
     return (
         <div>
-            <Alert severity="info">Oxidation state analysis for&nbsp;{dynamicCompositionTitle}</Alert>
+            <Alert severity="info">
+                <div className={styles.alertMessage}>Oxidation state analysis for&nbsp;{dynamicCompositionTitle}</div>
+            </Alert>
             <div className={styles.graphAndTableContainer}>
                 <Table />
                 <Graph />

@@ -82,7 +82,8 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
             optimalElecChemPotential: item.optimalChemicalPotential,
             globalInstabilityIndex: item.globalInstabilityIndex,
             id: index,
-            oxidationStateString
+            oxidationStateString,
+            cifString: item.cifstring
         });
     });
 
@@ -136,7 +137,7 @@ const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
         symbolsArray.forEach((symbol, index) => {
             const numberForSymbol = numbersArray[index];
             finalArr.push(
-                <div>
+                <div key={`dynamic title - ${index}`}>
                     {symbol}
                     {numberForSymbol !== 0 ? (
                         <>
