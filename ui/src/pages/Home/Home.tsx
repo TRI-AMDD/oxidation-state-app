@@ -7,7 +7,6 @@ import HowToUse from 'components/HowToUse/HowToUse';
 import GetStarted from 'components/GetStarted/GetStarted';
 import InputSection from 'components/InputSection/InputSection';
 import DataViewer from 'components/DataViewer/DataViewer';
-import React from 'react';
 
 function Home() {
     return (
@@ -28,6 +27,7 @@ function Home() {
                 <Grid item>
                     <HowToUse />
                 </Grid>
+
                 <Grid item>
                     <GetStarted />
                 </Grid>

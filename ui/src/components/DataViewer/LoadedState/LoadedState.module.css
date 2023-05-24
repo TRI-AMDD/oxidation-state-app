@@ -3,3 +3,8 @@
     flex-direction: row;
     margin-top: 8px;
 }
+
+.alertMessage {
+    display: flex;
+    flex-direction: row;
+}
