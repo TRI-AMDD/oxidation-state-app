@@ -1,4 +1,4 @@
-import { GridToolbarContainer, GridToolbarContainerProps } from '@mui/x-data-grid';
+import { GridToolbarContainer, GridToolbarContainerProps, GridToolbarFilterButton } from '@mui/x-data-grid';
 import CustomExportButton from './CustomExportButton';
 
 const CustomToolbar = (props: GridToolbarContainerProps) => {
@@ -9,6 +9,7 @@ const CustomToolbar = (props: GridToolbarContainerProps) => {
             }}
             {...props}
         >
+            <GridToolbarFilterButton />
             <CustomExportButton />
         </GridToolbarContainer>
     );

@@ -9,14 +9,20 @@ import {
 import CustomCIFExportButton from './CustomCIFExportButton';
 import useInputs from 'hooks/useInputs';
 import useTable from 'hooks/useTable';
+import { dynamicCompositionTitleAtom } from 'atoms/atoms';
+import { useAtom } from 'jotai';
 
 const CustomExportButton = (props: ButtonProps) => {
     const { structureWasUploaded, uploadedFileName } = useInputs();
     const { selectedRow } = useTable();
+    const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
 
     const apiRef = useGridApiContext();
 
-    const csvOptions: GridCsvExportOptions = { getRowsToExport: () => gridSortedRowIdsSelector(apiRef) };
+    const csvOptions: GridCsvExportOptions = {
+        getRowsToExport: () => gridSortedRowIdsSelector(apiRef),
+        fileName: `oxidation_analysis_${dynamicCompositionTitle.unformattedTitle}.csv`
+    };
 
     return (
         <GridToolbarExportContainer {...props}>

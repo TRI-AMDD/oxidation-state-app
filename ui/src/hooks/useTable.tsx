@@ -16,7 +16,10 @@ const useTable = () => {
     const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then(
             (response: AxiosResponse<OxidationStatesAPI>) => {
-                setDynamicCompositionTitle(parseAPICompositionString(response.data.composition));
+                setDynamicCompositionTitle({
+                    formattedTitle: parseAPICompositionString(response.data.composition),
+                    unformattedTitle: response.data.composition
+                });
                 setTableData(parseAPITableData(response.data.tableRows));
                 setDataViewerState(LoadingState.Loaded);
                 setSelectedRow(null);

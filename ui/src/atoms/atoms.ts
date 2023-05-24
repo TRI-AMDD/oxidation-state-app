@@ -4,7 +4,13 @@ import { GridRowParams } from '@mui/x-data-grid';
 
 export const dataViewerStateAtom = atom<LoadingState>(LoadingState.Initial);
 
-export const dynamicCompositionTitleAtom = atom<JSX.Element[]>([]);
+export const dynamicCompositionTitleAtom = atom<{
+    formattedTitle: JSX.Element[];
+    unformattedTitle: string;
+}>({
+    formattedTitle: [],
+    unformattedTitle: ''
+});
 
 export const tableDataAtom = atom<OxidationStatesTableItem[]>([]);
 
