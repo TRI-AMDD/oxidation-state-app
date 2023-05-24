@@ -26,6 +26,7 @@ const Table = () => {
                     toolbar: CustomToolbar
                 }}
                 onRowClick={handleTableRowClick}
+                disableColumnMenu
             ></DataGrid>
         </div>
     );

@@ -11,7 +11,9 @@ const LoadedState = () => {
     return (
         <div>
             <Alert severity="info">
-                <div className={styles.alertMessage}>Oxidation state analysis for&nbsp;{dynamicCompositionTitle}</div>
+                <div className={styles.alertMessage}>
+                    Oxidation state analysis for&nbsp;{dynamicCompositionTitle.formattedTitle}
+                </div>
             </Alert>
             <div className={styles.graphAndTableContainer}>
                 <Table />
