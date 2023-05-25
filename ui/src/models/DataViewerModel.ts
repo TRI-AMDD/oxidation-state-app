@@ -10,7 +10,7 @@ export interface OxidationStatesTableItem {
     likelihoodCurrentElecChemPotential: number;
     likelihoodOptimalElecChemPotential: number;
     optimalElecChemPotential: number;
-    globalInstabilityIndex: number | 'NaN';
+    globalInstabilityIndex: number | string;
     oxidationStateString: string;
     cifString?: string | null;
 }
@@ -21,7 +21,7 @@ export interface TableRowAPI {
     symbols: string[];
     oxidationStates: number[];
     optimalChemicalPotential: number;
-    globalInstabilityIndex: number | 'NaN';
+    globalInstabilityIndex: number | string;
     cifstring?: string | null;
 }
 
@@ -32,7 +32,6 @@ export interface OxidationRangeItem {
 }
 
 export interface OxidationStatesAPI {
-    allIonTypeSymbols: string[];
     composition: string;
     message: string | null;
     errorMessage: boolean;
