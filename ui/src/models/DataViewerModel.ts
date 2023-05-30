@@ -13,6 +13,7 @@ export interface OxidationStatesTableItem {
     globalInstabilityIndex: number | string;
     oxidationStateString: string;
     cifString?: string | null;
+    mixedValence: boolean;
 }
 
 export interface TableRowAPI {
@@ -23,6 +24,7 @@ export interface TableRowAPI {
     optimalChemicalPotential: number;
     globalInstabilityIndex: number | string;
     cifstring?: string | null;
+    mixedValence: boolean;
 }
 
 export interface OxidationRangeItem {

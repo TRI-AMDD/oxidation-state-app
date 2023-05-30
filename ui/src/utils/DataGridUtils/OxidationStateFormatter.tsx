@@ -83,7 +83,8 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
             globalInstabilityIndex: item.globalInstabilityIndex,
             id: index,
             oxidationStateString,
-            cifString: item.cifstring
+            cifString: item.cifstring,
+            mixedValence: item.mixedValence
         });
     });
 

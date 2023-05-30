@@ -5,7 +5,7 @@ const CustomToolbar = (props: GridToolbarContainerProps) => {
     return (
         <GridToolbarContainer
             sx={{
-                justifyContent: 'flex-end'
+                justifyContent: 'flex-start'
             }}
             {...props}
         >
