@@ -27,6 +27,9 @@ const Table = () => {
                 }}
                 onRowClick={handleTableRowClick}
                 disableColumnMenu
+                columnVisibilityModel={{
+                    mixedValence: false
+                }}
             ></DataGrid>
         </div>
     );

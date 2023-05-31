@@ -1,27 +1,46 @@
 import { GridColDef } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
 import HeaderTooltip from './HeaderTooltip';
+import { OxidationStatesTableItem } from 'models/DataViewerModel';
 
-export const columns: GridColDef[] = [
+export const columns: GridColDef<OxidationStatesTableItem>[] = [
     {
         field: 'oxidationState',
         headerName: 'Oxidation State',
         renderHeader: () => <strong>Oxidation States</strong>,
         renderCell(params) {
-            return (
-                <Typography
-                    sx={{
-                        flexDirection: 'row',
-                        display: 'flex',
-                        flexWrap: 'wrap',
-                        padding: '16px 0'
-                    }}
-                    variant="body2"
-                    component={'div'}
-                >
-                    {params.row.oxidationState}
-                </Typography>
-            );
+            if (params.row.mixedValence) {
+                return (
+                    <Typography
+                        sx={{
+                            flexDirection: 'row',
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            padding: '16px 0'
+                        }}
+                        variant="body2"
+                        component={'div'}
+                    >
+                        {params.row.oxidationState}
+                    </Typography>
+                );
+            } else {
+                return (
+                    <Typography
+                        sx={{
+                            flexDirection: 'row',
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            padding: '16px 0',
+                            fontWeight: 'bold'
+                        }}
+                        variant="body2"
+                        component={'div'}
+                    >
+                        {params.row.oxidationState}
+                    </Typography>
+                );
+            }
         },
         valueGetter(params) {
             return params.row.oxidationStateString;
@@ -39,14 +58,33 @@ export const columns: GridColDef[] = [
                 </strong>
             </HeaderTooltip>
         ),
-        valueGetter(params) {
+        renderCell(params) {
             let displayValue;
-            if (params.row.likelihoodOptimalElecChemPotential < 0.01) {
+            if (
+                params.row.likelihoodOptimalElecChemPotential < 0.01 &&
+                params.row.likelihoodOptimalElecChemPotential !== 0
+            ) {
                 displayValue = params.row.likelihoodOptimalElecChemPotential.toExponential(2);
             } else {
                 displayValue = params.row.likelihoodOptimalElecChemPotential.toFixed(2);
             }
-            return displayValue;
+
+            if (params.row.mixedValence) {
+                return (
+                    <Typography component={'div'} variant="body2">
+                        {displayValue}
+                    </Typography>
+                );
+            } else {
+                return (
+                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                        {displayValue}
+                    </Typography>
+                );
+            }
+        },
+        valueGetter(params) {
+            return params.row.likelihoodOptimalElecChemPotential;
         },
         flex: 1
     },
@@ -59,6 +97,31 @@ export const columns: GridColDef[] = [
                 <strong>L(&#956;)</strong>
             </HeaderTooltip>
         ),
+        renderCell(params) {
+            let displayValue;
+            if (
+                params.row.likelihoodCurrentElecChemPotential < 0.01 &&
+                params.row.likelihoodCurrentElecChemPotential !== 0
+            ) {
+                displayValue = params.row.likelihoodCurrentElecChemPotential.toExponential(2);
+            } else {
+                displayValue = params.row.likelihoodCurrentElecChemPotential.toFixed(2);
+            }
+
+            if (params.row.mixedValence) {
+                return (
+                    <Typography component={'div'} variant="body2">
+                        {displayValue}
+                    </Typography>
+                );
+            } else {
+                return (
+                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                        {displayValue}
+                    </Typography>
+                );
+            }
+        },
         valueGetter(params) {
             return params.row.likelihoodCurrentElecChemPotential;
         },
@@ -74,8 +137,23 @@ export const columns: GridColDef[] = [
                 </strong>
             </HeaderTooltip>
         ),
+        renderCell(params) {
+            if (params.row.mixedValence) {
+                return (
+                    <Typography component={'div'} variant="body2">
+                        {params.row.optimalElecChemPotential.toFixed(2)}
+                    </Typography>
+                );
+            } else {
+                return (
+                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                        {params.row.optimalElecChemPotential.toFixed(2)}
+                    </Typography>
+                );
+            }
+        },
         valueGetter(params) {
-            return params.row.optimalElecChemPotential.toFixed(2);
+            return params.row.optimalElecChemPotential;
         },
         flex: 1
     },
@@ -87,11 +165,34 @@ export const columns: GridColDef[] = [
                 <strong>GII</strong>
             </HeaderTooltip>
         ),
+        renderCell(params) {
+            const displayValue =
+                typeof params.row.globalInstabilityIndex !== 'string'
+                    ? params.row.globalInstabilityIndex.toFixed(2)
+                    : params.row.globalInstabilityIndex;
+            if (params.row.mixedValence) {
+                return (
+                    <Typography component={'div'} variant="body2">
+                        {displayValue}
+                    </Typography>
+                );
+            } else {
+                return (
+                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                        {displayValue}
+                    </Typography>
+                );
+            }
+        },
         valueGetter(params) {
             return typeof params.row.globalInstabilityIndex !== 'string'
                 ? params.row.globalInstabilityIndex.toFixed(2)
                 : params.row.globalInstabilityIndex;
         },
         flex: 1
+    },
+    {
+        field: 'mixedValence',
+        headerName: 'Mixed Valence'
     }
 ];

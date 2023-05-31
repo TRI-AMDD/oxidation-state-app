@@ -77,7 +77,6 @@ const CanvasGraph = ({ data }: Props) => {
                     ctx.beginPath();
                     const color = ColorPalette[item.oxidationState];
                     ctx.fillStyle = color;
-                    console.log(item);
 
                     ctx.moveTo(item.potential[0], item.likelihood[0]);
                     for (let i = 0; i < item.potential.length; i++) {
@@ -92,7 +91,6 @@ const CanvasGraph = ({ data }: Props) => {
                 ctx.fillStyle = '#000000';
                 for (const item of items) {
                     ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
-                    console.log(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
                 }
             }
         }
