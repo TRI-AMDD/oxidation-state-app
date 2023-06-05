@@ -32,11 +32,11 @@ public class OxsHelper
         String polyIonDir = "input_files/polyatomic_ions_web";
         String result = "";
         
-        if (request.composition != "") {
+        if (!request.composition.isEmpty()) {
             WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
             TableData tableData = analyzer.getTableDataFromComposition(request.composition);
             result = tableData.toJSON();            
-        } else if (request.structure != "") {
+        } else if (!request.structure.isEmpty()) {
             WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
             TableData tableData = analyzer.getTableDataFromStructure(request.structure);
             result = tableData.toJSON();
