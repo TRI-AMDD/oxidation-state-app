@@ -19,8 +19,7 @@ const Table = () => {
                 columns={columns}
                 rows={tableData}
                 sx={{
-                    border: 0,
-                    flexDirection: 'column-reverse'
+                    border: 0
                 }}
                 slots={{
                     toolbar: CustomToolbar

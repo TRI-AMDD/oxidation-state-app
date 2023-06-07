@@ -1,10 +1,18 @@
 .graphAndTableContainer {
     display: flex;
     flex-direction: row;
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 .alertMessage {
     display: flex;
     flex-direction: row;
+}
+
+.tableContainer {
+    flex-grow: 1;
+}
+
+.noteText {
+    margin-top: 24px !important;
 }
