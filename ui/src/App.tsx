@@ -29,6 +29,13 @@ const theme = createTheme({
                 }
             }
         }
+    },
+    palette: {
+        primary: {
+            main: '#3747AC',
+            dark: '#0B1FA2',
+            light: '#5261C6'
+        }
     }
 });
 

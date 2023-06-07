@@ -46,7 +46,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.oxidationStateString;
         },
         filterable: false,
-        width: 284
+        flex: 3
     },
     {
         field: 'likelihoodOptimalElecChemPotential',
@@ -86,7 +86,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.likelihoodOptimalElecChemPotential;
         },
-        flex: 1
+        flex: 1,
+        maxWidth: 100
     },
     {
         field: 'likelihoodCurrentElecChemPotential',
@@ -125,7 +126,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.likelihoodCurrentElecChemPotential;
         },
-        flex: 1
+        flex: 1,
+        maxWidth: 100
     },
     {
         field: 'optimalElecChemPotential',
@@ -155,7 +157,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.optimalElecChemPotential;
         },
-        flex: 1
+        flex: 1,
+        maxWidth: 100
     },
     {
         field: 'globalInstabilityIndex',
@@ -189,7 +192,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                 ? params.row.globalInstabilityIndex.toFixed(2)
                 : params.row.globalInstabilityIndex;
         },
-        flex: 1
+        flex: 1,
+        maxWidth: 100
     },
     {
         field: 'mixedValence',
