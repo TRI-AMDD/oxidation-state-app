@@ -4,7 +4,7 @@ import { PlotData } from 'models/PlotDataModel';
 const GRAPH_POINTS = 250;
 const BAR_WIDTH = 350;
 const BAR_HEIGHT = 50;
-const BAR_X_OFFSET = 130;
+const BAR_X_OFFSET = 50;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, data: OxidationStatesAPI) {
     // Get the middle of the boundary difference
@@ -61,7 +61,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
 
         generatedData.push({
             specie: rangeData.ionTypeSymbol,
-            textPos: [25, indexY - BAR_HEIGHT / 2 + 5],
+            textPos: [15, indexY - BAR_HEIGHT / 2 + 5],
             oxidationStates
         });
     }

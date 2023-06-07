@@ -53,7 +53,7 @@ const CanvasGraph = ({ data }: Props) => {
 
     const figureHeight = 100 * data.oxidationStateRangeData.length;
 
-    return <canvas id="canvasGraph" ref={canvasRef} width="543" height={figureHeight} />;
+    return <canvas id="canvasGraph" ref={canvasRef} width="400" height={figureHeight} />;
 };
 
 export default CanvasGraph;
