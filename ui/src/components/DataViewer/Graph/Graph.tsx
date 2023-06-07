@@ -7,7 +7,6 @@ import GraphKey from './GraphKey/GraphKey';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
-    console.log(window.screen.availWidth);
 
     return (
         <div className={styles.container}>
