@@ -3,13 +3,7 @@ import styles from './ElectronicChemicalPotentialInput.module.css';
 
 const ElectronicChemicalPotentialInput = () => {
     return (
-        <>
-            <TextField
-                variant="filled"
-                className={styles.textFieldContainer}
-                label="Electronic Chemical Potential (μ)"
-            />
-        </>
+        <TextField variant="filled" className={styles.textFieldContainer} label="Electronic Chemical Potential (μ)" />
     );
 };
 
