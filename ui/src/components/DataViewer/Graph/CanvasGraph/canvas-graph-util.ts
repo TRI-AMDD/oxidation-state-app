@@ -1,10 +1,12 @@
+import { ColorPalette } from 'constants/colors';
 import { OxidationStatesAPI } from 'models/DataViewerModel';
 import { PlotData } from 'models/PlotDataModel';
+import { formatOxidationState } from 'utils/GraphUtil';
 
 const GRAPH_POINTS = 250;
-const BAR_WIDTH = 350;
-const BAR_HEIGHT = 50;
-const BAR_X_OFFSET = 50;
+export const BAR_WIDTH = 350;
+export const BAR_HEIGHT = 50;
+const BAR_X_OFFSET = 0;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, data: OxidationStatesAPI) {
     // Get the middle of the boundary difference
@@ -67,4 +69,88 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     }
 
     return generatedData;
+}
+
+export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
+    const generatedData: PlotData[] = [];
+    const diff = data.maxBoundaryValue - data.minBoundaryValue;
+
+    for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
+        const oxidationStates = [];
+
+        // offset y of each graph
+        const indexY = BAR_HEIGHT + index * 75;
+        const xMultiplier = BAR_WIDTH / diff;
+
+        for (let i = 0; i < rangeData.oxidationStates.length; i++) {
+            const oxidationState = rangeData.oxidationStates[i];
+            const min = rangeData.rangeBoundaries[i];
+            const max = rangeData.rangeBoundaries[i + 1];
+
+            const leftX = min < data.minBoundaryValue ? 0 : BAR_X_OFFSET + (min - data.minBoundaryValue) * xMultiplier;
+            const rightX =
+                max < data.maxBoundaryValue ? BAR_WIDTH : BAR_X_OFFSET + (max - data.minBoundaryValue) * xMultiplier;
+
+            const topY = indexY;
+            const bottomY = indexY - BAR_HEIGHT;
+
+            oxidationStates.push({
+                specie: rangeData.ionTypeSymbol,
+                oxidationState,
+                potential: [leftX, rightX, rightX, leftX],
+                likelihood: [bottomY, bottomY, topY, topY],
+                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data), indexY - BAR_HEIGHT / 2 + 5]
+            });
+        }
+
+        generatedData.push({
+            specie: rangeData.ionTypeSymbol,
+            textPos: [15, indexY - BAR_HEIGHT / 2 + 5],
+            oxidationStates
+        });
+    }
+
+    return generatedData;
+}
+
+export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement) {
+    if (items.length > 0) {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+            const canvasHeight = 100 * items.length;
+            ctx.clearRect(0, 0, BAR_WIDTH, canvasHeight);
+
+            for (const specie of items) {
+                for (const item of specie.oxidationStates) {
+                    ctx.beginPath();
+                    const color = ColorPalette[item.oxidationState];
+                    ctx.fillStyle = color;
+
+                    ctx.moveTo(item.potential[0], item.likelihood[0]);
+                    for (let i = 0; i < item.potential.length; i++) {
+                        ctx.lineTo(item.potential[i], item.likelihood[i]);
+                    }
+
+                    ctx.closePath();
+                    ctx.fill();
+                }
+            }
+
+            ctx.font = '16px sans-serif';
+            ctx.fillStyle = '#000000';
+            for (const specie of items) {
+                for (const item of specie.oxidationStates) {
+                    ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+                }
+            }
+
+            /*
+            ctx.font = '16px sans-serif';
+            ctx.fillStyle = '#000000';
+            for (const specie of items) {
+                ctx.fillText(specie.specie, specie.textPos[0], specie.textPos[1]);
+            }
+            */
+        }
+    }
 }
