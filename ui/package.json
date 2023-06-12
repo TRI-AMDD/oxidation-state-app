@@ -23,6 +23,7 @@
         "jotai": "^2.0.4",
         "plotly.js": "^2.23.2",
         "react": "^18.1.0",
+        "react-compare-slider": "^2.2.0",
         "react-dom": "^18.1.0",
         "react-plotly.js": "^2.6.0",
         "react-query": "^3.38.1",
