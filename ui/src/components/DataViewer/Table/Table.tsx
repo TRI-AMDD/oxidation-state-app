@@ -1,12 +1,14 @@
-import { DataGrid, useGridApiRef } from '@mui/x-data-grid';
+import { DataGrid, GridRowId, useGridApiRef } from '@mui/x-data-grid';
 import { columns } from 'utils/DataGridUtils/Columns';
 import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
 import './MuiClasses.css';
 import useTable from 'hooks/useTable';
+import { useState } from 'react';
 
 const Table = () => {
     const { tableData, handleTableRowClick } = useTable();
+    const [selection, setSelection] = useState<GridRowId[]>([0]);
 
     const apiRef = useGridApiRef();
 
@@ -28,6 +30,10 @@ const Table = () => {
                 disableColumnMenu
                 columnVisibilityModel={{
                     mixedValence: false
+                }}
+                rowSelectionModel={selection}
+                onRowSelectionModelChange={(rowSelectionModel) => {
+                    setSelection(rowSelectionModel);
                 }}
             ></DataGrid>
         </div>

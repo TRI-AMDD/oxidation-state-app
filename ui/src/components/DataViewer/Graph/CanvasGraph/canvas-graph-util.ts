@@ -4,7 +4,7 @@ import { PlotData } from 'models/PlotDataModel';
 const GRAPH_POINTS = 250;
 const BAR_WIDTH = 350;
 const BAR_HEIGHT = 50;
-const BAR_X_OFFSET = 50;
+const BAR_X_OFFSET = 0;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, data: OxidationStatesAPI) {
     // Get the middle of the boundary difference

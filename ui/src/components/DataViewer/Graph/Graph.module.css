@@ -2,3 +2,8 @@
     width: 430px;
     padding-left: 12px;
 }
+
+.canvasContainer {
+    width: 350px;
+    margin-bottom: 16px;
+}

@@ -5,7 +5,8 @@ import {
     dynamicCompositionTitleAtom,
     selectedRowAtom,
     oxidationDataAtom,
-    tableDataAtom
+    tableDataAtom,
+    electronicChemicalPotentialRangeAtom
 } from 'atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
@@ -19,6 +20,11 @@ const useTable = () => {
     const [, setDynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
     const [, setOxidationData] = useAtom(oxidationDataAtom);
+    const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
+
+    const setInitialSelectedRow = (row: OxidationStatesTableItem) => {
+        setSelectedRow(row);
+    };
 
     const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then(
@@ -27,19 +33,21 @@ const useTable = () => {
                     formattedTitle: parseAPICompositionString(response.data.composition),
                     unformattedTitle: response.data.composition
                 });
-                setTableData(parseAPITableData(response.data.tableRows));
+                const parsedTableData = parseAPITableData(response.data.tableRows);
+                setTableData(parsedTableData);
                 setOxidationData(response.data);
                 setDataViewerState(LoadingState.Loaded);
-                setSelectedRow(null);
+                setSelectedRow(parsedTableData[0]);
+                setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
             }
         );
     };
 
     const handleTableRowClick = (event: GridRowParams<OxidationStatesTableItem>) => {
-        setSelectedRow(event);
+        setSelectedRow(event.row);
     };
 
-    return { tableData, grabOxidationStates, handleTableRowClick, selectedRow };
+    return { tableData, grabOxidationStates, handleTableRowClick, selectedRow, setInitialSelectedRow };
 };
 
 export default useTable;

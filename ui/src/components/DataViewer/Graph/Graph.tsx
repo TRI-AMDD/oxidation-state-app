@@ -5,25 +5,32 @@ import styles from './Graph.module.css';
 import GraphKey from './GraphKey/GraphKey';
 import ElectronicChemicalPotentialInput from './ElectronicChemicalPotentialInput/ElectronicChemicalPotentialInput';
 // import PlotlyGraph from './PlotlyGraph/PlotlyGraph';
-import { ReactCompareSlider } from 'react-compare-slider';
-
-const CustomHandle = () => {
-    return <div style={{ backgroundColor: '#3747AC', width: '2px', height: '100%', cursor: 'ew-resize' }}></div>;
-};
+import Slider from './Slider/Slider';
+import useGraph from 'hooks/useGraph';
+import useTable from 'hooks/useTable';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
+    const { handleECPInputChange, ECPRange, ECPValue, handleSliderChange } = useGraph();
+    const { selectedRow } = useTable();
 
     return (
         <div className={styles.container}>
-            {oxidationData && (
-                <ReactCompareSlider
-                    itemOne={<CanvasGraph data={oxidationData} />}
-                    itemTwo={<CanvasGraph data={oxidationData} />}
-                    handle={<CustomHandle />}
-                />
+            {oxidationData && selectedRow && (
+                <>
+                    <div className={styles.canvasContainer}>
+                        <Slider
+                            graphComponent={<CanvasGraph data={oxidationData} />}
+                            initValue={selectedRow.optimalElecChemPotential}
+                            ecpRange={ECPRange}
+                            ECPInputValue={ECPValue}
+                            handleSliderChange={handleSliderChange}
+                        />
+                    </div>
+                    <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
+                </>
             )}
-            <ElectronicChemicalPotentialInput />
+
             <GraphKey />
         </div>
     );

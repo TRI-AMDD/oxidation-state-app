@@ -41,19 +41,13 @@ const CanvasGraph = ({ data }: Props) => {
                         ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
                     }
                 }
-
-                ctx.font = '16px sans-serif';
-                ctx.fillStyle = '#000000';
-                for (const specie of items) {
-                    ctx.fillText(specie.specie, specie.textPos[0], specie.textPos[1]);
-                }
             }
         }
     }, [items]);
 
     const figureHeight = 100 * data.oxidationStateRangeData.length;
 
-    return <canvas id="canvasGraph" ref={canvasRef} width="400" height={figureHeight} />;
+    return <canvas id="canvasGraph" ref={canvasRef} width="350" height={figureHeight} />;
 };
 
 export default CanvasGraph;
