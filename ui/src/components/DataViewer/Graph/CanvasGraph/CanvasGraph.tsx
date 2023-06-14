@@ -1,53 +1,45 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { formatOxidationState } from 'utils/GraphUtil';
 import { OxidationStatesAPI } from 'models/DataViewerModel';
-import { ColorPalette } from 'constants/colors';
-import { createPlotData } from './canvas-graph-util';
+import { createPlotData, createBarPlotData, drawPlotDataCanvas, BAR_WIDTH } from './canvas-graph-util';
+import { GraphType } from 'models/PlotDataModel';
+import styles from './canvas-graph.module.css';
+import SpecieLabel from './SpecieLabel';
 
 interface Props {
     data: OxidationStatesAPI;
+    graphType: GraphType;
 }
 
-const CanvasGraph = ({ data }: Props) => {
+const CanvasGraph = ({ data, graphType }: Props) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    const items = useMemo(() => createPlotData(data), [data]);
+    const items = useMemo(() => {
+        if (graphType === GraphType.Bar) {
+            return createBarPlotData(data);
+        }
+
+        return createPlotData(data);
+    }, [data, graphType]);
 
     useEffect(() => {
         const canvas = canvasRef.current;
-        if (canvas && items.length > 0) {
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-                for (const specie of items) {
-                    for (const item of specie.oxidationStates) {
-                        ctx.beginPath();
-                        const color = ColorPalette[item.oxidationState];
-                        ctx.fillStyle = color;
-
-                        ctx.moveTo(item.potential[0], item.likelihood[0]);
-                        for (let i = 0; i < item.potential.length; i++) {
-                            ctx.lineTo(item.potential[i], item.likelihood[i]);
-                        }
-
-                        ctx.closePath();
-                        ctx.fill();
-                    }
-                }
-
-                ctx.font = '16px sans-serif';
-                ctx.fillStyle = '#000000';
-                for (const specie of items) {
-                    for (const item of specie.oxidationStates) {
-                        ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
-                    }
-                }
-            }
+        if (canvas) {
+            drawPlotDataCanvas(items, canvas);
         }
     }, [items]);
 
     const figureHeight = 100 * data.oxidationStateRangeData.length;
 
-    return <canvas id="canvasGraph" ref={canvasRef} width="350" height={figureHeight} />;
+    return (
+        <div className={styles.container}>
+            <div className={styles.species}>
+                {data.oxidationStateRangeData.map((item, index) => (
+                    <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
+                ))}
+            </div>
+            <canvas id="canvasGraph" ref={canvasRef} width={BAR_WIDTH} height={figureHeight} />
+        </div>
+    );
 };
 
 export default CanvasGraph;

@@ -1,0 +1,13 @@
+.container {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+}
+
+.species {
+    position: relative;
+}
+
+.species span{
+    position: absolute;
+    left: 5px
+}

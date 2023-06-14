@@ -10,3 +10,8 @@ export interface PlotData {
     textPos: number[];
     oxidationStates: OxidationState[];
 }
+
+export enum GraphType {
+    Wavy,
+    Bar
+}

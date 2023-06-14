@@ -4,6 +4,8 @@ import CanvasGraph from './CanvasGraph/CanvasGraph';
 import styles from './Graph.module.css';
 import GraphKey from './GraphKey/GraphKey';
 import ElectronicChemicalPotentialInput from './ElectronicChemicalPotentialInput/ElectronicChemicalPotentialInput';
+import { GraphType } from 'models/PlotDataModel';
+import { useState } from 'react';
 // import PlotlyGraph from './PlotlyGraph/PlotlyGraph';
 import Slider from './Slider/Slider';
 import useGraph from 'hooks/useGraph';
@@ -11,6 +13,7 @@ import useTable from 'hooks/useTable';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
+    const [graphType] = useState<GraphType>(GraphType.Wavy);
     const { handleECPInputChange, ECPRange, ECPValue, handleSliderChange } = useGraph();
     const { selectedRow } = useTable();
 
@@ -20,7 +23,7 @@ const Graph = () => {
                 <>
                     <div className={styles.canvasContainer}>
                         <Slider
-                            graphComponent={<CanvasGraph data={oxidationData} />}
+                            graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
                             initValue={selectedRow.optimalElecChemPotential}
                             ecpRange={ECPRange}
                             ECPInputValue={ECPValue}
