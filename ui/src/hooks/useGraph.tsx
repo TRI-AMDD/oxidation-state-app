@@ -9,7 +9,9 @@ const useGraph = () => {
     const { selectedRow } = useTable();
 
     useEffect(() => {
-        if (typeof selectedRow !== 'undefined' && selectedRow) setECPValue(selectedRow?.optimalElecChemPotential);
+        if (selectedRow) {
+            setECPValue(selectedRow?.optimalElecChemPotential);
+        }
     }, [selectedRow, setECPValue]);
 
     const handleECPInputChange = (event: ChangeEvent<HTMLInputElement>) => {

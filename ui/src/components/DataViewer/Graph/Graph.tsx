@@ -6,10 +6,10 @@ import GraphKey from './GraphKey/GraphKey';
 import ElectronicChemicalPotentialInput from './ElectronicChemicalPotentialInput/ElectronicChemicalPotentialInput';
 import { GraphType } from 'models/PlotDataModel';
 import { useState } from 'react';
-// import PlotlyGraph from './PlotlyGraph/PlotlyGraph';
 import Slider from './Slider/Slider';
 import useGraph from 'hooks/useGraph';
 import useTable from 'hooks/useTable';
+import SpecieLabel from './CanvasGraph/SpecieLabel';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
@@ -21,15 +21,23 @@ const Graph = () => {
         <div className={styles.container}>
             {oxidationData && selectedRow && (
                 <>
-                    <div className={styles.canvasContainer}>
-                        <Slider
-                            graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
-                            initValue={selectedRow.optimalElecChemPotential}
-                            ecpRange={ECPRange}
-                            ECPInputValue={ECPValue}
-                            handleSliderChange={handleSliderChange}
-                        />
+                    <div className={styles.graphContainer}>
+                        <div className={styles.species}>
+                            {oxidationData.oxidationStateRangeData.map((item, index) => (
+                                <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
+                            ))}
+                        </div>
+                        <div className={styles.canvasContainer}>
+                            <Slider
+                                graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
+                                initValue={selectedRow.optimalElecChemPotential}
+                                ecpRange={ECPRange}
+                                ECPInputValue={ECPValue}
+                                handleSliderChange={handleSliderChange}
+                            />
+                        </div>
                     </div>
+
                     <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
                 </>
             )}

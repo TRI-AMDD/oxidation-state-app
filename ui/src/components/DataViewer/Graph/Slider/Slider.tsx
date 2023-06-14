@@ -2,6 +2,7 @@ import { ReactCompareSlider } from 'react-compare-slider';
 import CustomHandle from './CustomHandle';
 import { getPositionFromValue, getValueFromPosition } from 'utils/GraphUtil';
 import { useMemo } from 'react';
+import { ecpInitValue } from 'atoms/atoms';
 
 interface SliderProps {
     graphComponent: React.ReactNode;
@@ -11,16 +12,20 @@ interface SliderProps {
     handleSliderChange: (newValue: number) => void;
 }
 
-const Slider = ({ graphComponent, initValue, ecpRange, ECPInputValue, handleSliderChange }: SliderProps) => {
-    const handlePositionChange = (position: number) => {
-        handleSliderChange(getValueFromPosition(position, ecpRange));
-    };
+const Slider = ({ graphComponent, ecpRange, ECPInputValue, handleSliderChange }: SliderProps) => {
     const position = useMemo(() => {
-        if (initValue === ECPInputValue) {
-            return getPositionFromValue(initValue, ecpRange);
+        if (ECPInputValue === ecpInitValue) {
+            return 50;
         }
+
         return getPositionFromValue(ECPInputValue, ecpRange);
-    }, [ECPInputValue, ecpRange, initValue]);
+    }, [ECPInputValue, ecpRange]);
+
+    const handlePositionChange = (newPosition: number) => {
+        if (position !== newPosition) {
+            handleSliderChange(getValueFromPosition(newPosition, ecpRange));
+        }
+    };
 
     return (
         <ReactCompareSlider

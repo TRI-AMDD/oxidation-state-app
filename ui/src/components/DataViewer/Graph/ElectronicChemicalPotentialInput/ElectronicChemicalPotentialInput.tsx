@@ -15,7 +15,7 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
             label="Electronic Chemical Potential (μ)"
             type="number"
             onChange={onChange}
-            value={value.toString()}
+            value={value}
         />
     );
 };

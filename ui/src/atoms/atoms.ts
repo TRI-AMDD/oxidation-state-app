@@ -11,6 +11,8 @@ export const dynamicCompositionTitleAtom = atom<{
     unformattedTitle: ''
 });
 
+export const ecpInitValue = -50;
+
 export const tableDataAtom = atom<OxidationStatesTableItem[]>([]);
 
 export const selectedRowAtom = atom<OxidationStatesTableItem | null>(null);
@@ -25,4 +27,4 @@ export const graphSliderPositionAtom = atom<number>(50);
 
 export const electronicChemicalPotentialRangeAtom = atom<[number, number]>([0, 0]);
 
-export const electronicChemicalPotentialValueAtom = atom<number>(0);
+export const electronicChemicalPotentialValueAtom = atom<number>(ecpInitValue);
