@@ -7,11 +7,9 @@ export function formatOxidationState(state: number) {
 }
 
 export function getPositionFromValue(ecp: number, ecpRange: [number, number]) {
-    console.log(ecp, ecpRange);
     const range = ecpRange[1] - ecpRange[0];
     const rangeBetweenECPAndLowest = ecp - ecpRange[0];
 
-    console.log((rangeBetweenECPAndLowest / range) * 100);
     return (rangeBetweenECPAndLowest / range) * 100;
 }
 
