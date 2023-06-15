@@ -1,3 +1,9 @@
+import { OxidationStatesAPI } from 'models/DataViewerModel';
+
+function compareNumbers(a: number, b: number) {
+    return a - b;
+}
+
 export function formatOxidationState(state: number) {
     if (state > 0) {
         return `+${state}`;
@@ -18,4 +24,16 @@ export function getValueFromPosition(position: number, ecpRange: [number, number
     const positionDecimal = position / 100;
     const positionDecimalTimesRange = positionDecimal * range;
     return positionDecimalTimesRange + ecpRange[0];
+}
+
+export function getBoundaries(data: OxidationStatesAPI) {
+    const numArray: number[] = [];
+    for (const rangeData of data.oxidationStateRangeData) {
+        for (const boundary of rangeData.rangeBoundaries) {
+            numArray.push(boundary);
+        }
+    }
+
+    numArray.sort(compareNumbers);
+    return numArray;
 }
