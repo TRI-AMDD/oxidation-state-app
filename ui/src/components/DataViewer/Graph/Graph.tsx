@@ -10,10 +10,11 @@ import Slider from './Slider/Slider';
 import useGraph from 'hooks/useGraph';
 import useTable from 'hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
+import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
-    const [graphType] = useState<GraphType>(GraphType.Wavy);
+    const [graphType, setGraphType] = useState<GraphType>(GraphType.Wavy);
     const { handleECPInputChange, ECPRange, ECPValue, handleSliderChange } = useGraph();
     const { selectedRow } = useTable();
 
@@ -37,7 +38,7 @@ const Graph = () => {
                             />
                         </div>
                     </div>
-
+                    <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
                     <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
                 </>
             )}

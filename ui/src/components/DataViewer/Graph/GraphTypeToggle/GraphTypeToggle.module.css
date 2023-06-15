@@ -1,0 +1,11 @@
+.toggleButton {
+    width: 48px;
+    height: 48px;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 16px;
+}
