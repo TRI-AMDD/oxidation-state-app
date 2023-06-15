@@ -27,8 +27,8 @@ const CustomExportButton = (props: ButtonProps) => {
     return (
         <GridToolbarExportContainer {...props}>
             <GridCsvExportMenuItem options={csvOptions} />
-            {structureWasUploaded && selectedRow && selectedRow.row.cifString && (
-                <CustomCIFExportButton cifString={selectedRow.row.cifString} fileName={uploadedFileName} />
+            {structureWasUploaded && selectedRow && selectedRow.cifString && (
+                <CustomCIFExportButton cifString={selectedRow.cifString} fileName={uploadedFileName} />
             )}
         </GridToolbarExportContainer>
     );
