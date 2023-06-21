@@ -69,7 +69,23 @@ export const formatOxidationState = ({ counts, oxidationStates, symbols }: Table
     return { oxidationState: finalArr, oxidationStateString: finalString };
 };
 
-export const parseAPITableData = (data: TableRowAPI[]) => {
+export const getCurrentLikelihood = (tableRow: TableRowAPI, ECPValue: number) => {
+    let currentLikelihood = -1;
+    for (const boundaryPair of tableRow.boundaryPairs) {
+        const leftBoundary = 1 / (1 + Math.exp(boundaryPair[0] - ECPValue));
+        const rightBoundary = 1 / (1 + Math.exp(ECPValue - boundaryPair[1]));
+        const minValue = Math.min(leftBoundary, rightBoundary);
+        if (currentLikelihood === -1) {
+            currentLikelihood = minValue;
+        } else {
+            currentLikelihood = currentLikelihood * minValue;
+        }
+    }
+
+    return currentLikelihood;
+};
+
+export const parseAPITableData = (data: TableRowAPI[], ECPValue: number) => {
     const returnObject: OxidationStatesTableItem[] = [];
 
     data.forEach((item, index) => {
@@ -77,7 +93,7 @@ export const parseAPITableData = (data: TableRowAPI[]) => {
 
         returnObject.push({
             oxidationState,
-            likelihoodCurrentElecChemPotential: 0,
+            likelihoodCurrentElecChemPotential: getCurrentLikelihood(item, ECPValue),
             likelihoodOptimalElecChemPotential: item.optimalLikelihood,
             optimalElecChemPotential: item.optimalChemicalPotential,
             globalInstabilityIndex: item.globalInstabilityIndex,

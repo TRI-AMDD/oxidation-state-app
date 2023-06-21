@@ -24,7 +24,6 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
         } else if (direction === 'previous') {
             for (let i = boundaries.length - 1; i >= 0; i--) {
                 if (value > boundaries[i]) {
-                    console.log('preivous');
                     onChange(boundaries[i]);
                     return;
                 }

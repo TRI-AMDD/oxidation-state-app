@@ -5,26 +5,23 @@ import {
     dynamicCompositionTitleAtom,
     selectedRowAtom,
     oxidationDataAtom,
-    tableDataAtom,
-    electronicChemicalPotentialRangeAtom
+    electronicChemicalPotentialRangeAtom,
+    electronicChemicalPotentialValueAtom
 } from 'atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
 import { OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
 import { LoadingState } from 'models/DataViewerModel';
+import { useMemo } from 'react';
 import { parseAPICompositionString, parseAPITableData } from 'utils/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
-    const [tableData, setTableData] = useAtom(tableDataAtom);
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [, setDynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
-    const [, setOxidationData] = useAtom(oxidationDataAtom);
+    const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);
     const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
-
-    const setInitialSelectedRow = (row: OxidationStatesTableItem) => {
-        setSelectedRow(row);
-    };
+    const [ECPValue, setECPValue] = useAtom(electronicChemicalPotentialValueAtom);
 
     const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then(
@@ -33,12 +30,11 @@ const useTable = () => {
                     formattedTitle: parseAPICompositionString(response.data.composition),
                     unformattedTitle: response.data.composition
                 });
-                const parsedTableData = parseAPITableData(response.data.tableRows);
-                setTableData(parsedTableData);
                 setOxidationData(response.data);
                 setDataViewerState(LoadingState.Loaded);
-                setSelectedRow(parsedTableData[0]);
+
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
+                setECPValue(response.data.tableRows[0].optimalChemicalPotential);
             }
         );
     };
@@ -47,7 +43,21 @@ const useTable = () => {
         setSelectedRow(event.row);
     };
 
-    return { tableData, grabOxidationStates, handleTableRowClick, selectedRow, setInitialSelectedRow };
+    const parsedTableData = useMemo(() => {
+        if (oxidationData) {
+            const parseData = parseAPITableData(oxidationData.tableRows, ECPValue);
+
+            if (!selectedRow) {
+                setSelectedRow(parseData[0]);
+            }
+
+            return parseData;
+        }
+
+        return [];
+    }, [oxidationData, ECPValue, selectedRow, setSelectedRow]);
+
+    return { tableData: parsedTableData, grabOxidationStates, handleTableRowClick, selectedRow };
 };
 
 export default useTable;
