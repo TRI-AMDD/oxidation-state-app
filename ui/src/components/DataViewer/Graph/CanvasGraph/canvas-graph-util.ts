@@ -6,7 +6,6 @@ import { formatOxidationState } from 'utils/GraphUtil';
 const GRAPH_POINTS = 250;
 export const BAR_WIDTH = 350;
 export const BAR_HEIGHT = 50;
-const BAR_X_OFFSET = 0;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, data: OxidationStatesAPI) {
     // Get the middle of the boundary difference
@@ -15,7 +14,7 @@ function getStateRangeLabelPosition(min: number, max: number, xMultiplier: numbe
     // Get the x position relative to the min value
     const xPos = min + rangeDiff - data.minBoundaryValue;
 
-    return BAR_X_OFFSET + xPos * xMultiplier - 5;
+    return xPos * xMultiplier - 5;
 }
 
 export function createPlotData(data: OxidationStatesAPI): PlotData[] {
@@ -42,7 +41,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
             // points for left boundary
             for (const point of xPoints) {
                 yLeftPoints.push(indexY - (1 / (1 + Math.exp(point - min))) * BAR_HEIGHT);
-                xLeftPoints.push(BAR_X_OFFSET + (point - data.minBoundaryValue) * xMultiplier);
+                xLeftPoints.push((point - data.minBoundaryValue) * xMultiplier);
             }
 
             // points for right boundary
@@ -87,9 +86,8 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const min = rangeData.rangeBoundaries[i];
             const max = rangeData.rangeBoundaries[i + 1];
 
-            const leftX = min < data.minBoundaryValue ? 0 : BAR_X_OFFSET + (min - data.minBoundaryValue) * xMultiplier;
-            const rightX =
-                max < data.maxBoundaryValue ? BAR_WIDTH : BAR_X_OFFSET + (max - data.minBoundaryValue) * xMultiplier;
+            const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
+            const rightX = max < data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
 
             const topY = indexY;
             const bottomY = indexY - BAR_HEIGHT;

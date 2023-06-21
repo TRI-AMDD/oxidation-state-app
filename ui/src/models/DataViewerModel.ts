@@ -25,6 +25,7 @@ export interface TableRowAPI {
     globalInstabilityIndex: number | string;
     cifstring?: string | null;
     mixedValence: boolean;
+    boundaryPairs: number[][];
 }
 
 export interface OxidationRangeItem {
