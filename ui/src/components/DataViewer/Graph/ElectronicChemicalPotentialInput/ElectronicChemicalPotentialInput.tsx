@@ -6,15 +6,19 @@ interface ECPInputProps {
     value: number;
 }
 
-const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) => (
-    <TextField
-        variant="filled"
-        className={styles.textFieldContainer}
-        label="Electronic Chemical Potential (μ)"
-        type="number"
-        onChange={onChange}
-        value={value}
-    />
-);
+const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) => {
+    const formattedValue = value.toFixed(4);
+
+    return (
+        <TextField
+            variant="filled"
+            className={styles.textFieldContainer}
+            label="Electronic Chemical Potential (μ)"
+            type="number"
+            onChange={onChange}
+            value={formattedValue}
+        />
+    );
+};
 
 export default ElectronicChemicalPotentialInput;
