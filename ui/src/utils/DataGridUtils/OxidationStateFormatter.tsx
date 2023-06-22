@@ -107,7 +107,7 @@ export const parseAPITableData = (data: TableRowAPI[], ECPValue: number) => {
     return returnObject;
 };
 
-const parseArrayOfChars = (chars: string[]) => {
+export const parseArrayOfChars = (chars: string[]) => {
     const arrayOfSymbolsInComposition: string[] = [];
     const arrayOfNumbersInComposition: number[] = [];
     let inParen = false;
@@ -148,7 +148,8 @@ const parseArrayOfChars = (chars: string[]) => {
 
     return { symbolsArray: arrayOfSymbolsInComposition, numbersArray: arrayOfNumbersInComposition };
 };
-const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
+
+export const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
     const finalArr = [];
     if (symbolsArray && symbolsArray.length > 0) {
         symbolsArray.forEach((symbol, index) => {
@@ -172,10 +173,38 @@ const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
     return finalArr;
 };
 
+export const formatTitle = (symbolsArray: string[]) => {
+    const finalArr = [];
+
+    if (symbolsArray && symbolsArray.length > 0) {
+        symbolsArray.forEach((symbol, index) => {
+            const arrayChars = symbol.split('');
+            const numberIndex = arrayChars.findIndex((c) => !isNaN(parseInt(c, 10)));
+
+            const symbolStr = numberIndex !== -1 ? symbol.substring(0, numberIndex) : symbol;
+            const symbolNum = numberIndex !== -1 ? symbol.substring(numberIndex) : null;
+
+            finalArr.push(
+                <div key={`dynamic title - ${index}`}>
+                    {symbolStr}
+                    {symbolNum !== null ? (
+                        <>
+                            <sub>{symbolNum}</sub>&nbsp;
+                        </>
+                    ) : (
+                        <>&nbsp;</>
+                    )}
+                </div>
+            );
+        });
+    } else {
+        finalArr.push(<></>);
+    }
+    return finalArr;
+};
+
 export const parseAPICompositionString = (compositionTitle: string) => {
-    const arrayOfCharsInComposition = compositionTitle.split('');
+    const elems = compositionTitle.split(' ');
 
-    const { symbolsArray, numbersArray } = parseArrayOfChars(arrayOfCharsInComposition);
-
-    return formatDynamicTitle(symbolsArray, numbersArray);
+    return formatTitle(elems);
 };

@@ -34,7 +34,11 @@ const useTable = () => {
                 setDataViewerState(LoadingState.Loaded);
 
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
-                setECPValue(response.data.tableData.tableRows[0].optimalChemicalPotential);
+                if (response.data.tableData.tableRows.length > 0) {
+                    setECPValue(response.data.tableData.tableRows[0].optimalChemicalPotential);
+                } else {
+                    setECPValue(1);
+                }
             }
         );
     };
