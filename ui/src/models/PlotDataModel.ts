@@ -3,6 +3,7 @@ export interface OxidationState {
     potential: number[];
     likelihood: number[];
     textPos: number[];
+    toShowLabel: boolean;
 }
 
 export interface PlotData {

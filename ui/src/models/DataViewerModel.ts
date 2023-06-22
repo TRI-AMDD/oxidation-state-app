@@ -36,9 +36,10 @@ export interface OxidationRangeItem {
 
 export interface OxidationStatesAPI {
     composition: string;
-    message: string | null;
-    errorMessage: boolean;
-    tableRows: TableRowAPI[];
+    message: string[];
+    tableData: {
+        tableRows: TableRowAPI[];
+    };
     maxBoundaryValue: number;
     minBoundaryValue: number;
     oxidationStateRangeData: OxidationRangeItem[];

@@ -56,6 +56,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [...xLeftPoints, ...xRightPoints],
                 likelihood: [...yLeftPoints, ...yRightPoints],
+                toShowLabel: max - min > 2,
                 textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
@@ -97,6 +98,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
+                toShowLabel: max - min > 2,
                 textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
@@ -138,17 +140,11 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement)
             ctx.fillStyle = '#000000';
             for (const specie of items) {
                 for (const item of specie.oxidationStates) {
-                    ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+                    if (item.toShowLabel) {
+                        ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+                    }
                 }
             }
-
-            /*
-            ctx.font = '16px sans-serif';
-            ctx.fillStyle = '#000000';
-            for (const specie of items) {
-                ctx.fillText(specie.specie, specie.textPos[0], specie.textPos[1]);
-            }
-            */
         }
     }
 }
