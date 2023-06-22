@@ -34,7 +34,7 @@ const useTable = () => {
                 setDataViewerState(LoadingState.Loaded);
 
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
-                setECPValue(response.data.tableRows[0].optimalChemicalPotential);
+                setECPValue(response.data.tableData.tableRows[0].optimalChemicalPotential);
             }
         );
     };
@@ -45,7 +45,7 @@ const useTable = () => {
 
     const parsedTableData = useMemo(() => {
         if (oxidationData) {
-            const parseData = parseAPITableData(oxidationData.tableRows, ECPValue);
+            const parseData = parseAPITableData(oxidationData.tableData.tableRows, ECPValue);
 
             if (!selectedRow) {
                 setSelectedRow(parseData[0]);
