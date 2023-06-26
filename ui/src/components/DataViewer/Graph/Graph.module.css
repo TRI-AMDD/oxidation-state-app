@@ -21,3 +21,7 @@
     position: absolute;
     left: 5px
 }
+
+.graphExport {
+    padding: 15px 5px 10px;
+}

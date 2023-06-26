@@ -24,28 +24,30 @@ const Graph = () => {
         <div className={styles.container}>
             <ExportGrahpButton />
             {oxidationData && selectedRow && (
-                <div id="graph-export">
+                <>
                     <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
-                    <div className={styles.graphContainer}>
-                        <div className={styles.species}>
-                            {oxidationData.oxidationStateRangeData.map((item, index) => (
-                                <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
-                            ))}
+                    <div id="graph-export" className={styles.graphExport}>
+                        <div className={styles.graphContainer}>
+                            <div className={styles.species}>
+                                {oxidationData.oxidationStateRangeData.map((item, index) => (
+                                    <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
+                                ))}
+                            </div>
+                            <div className={styles.canvasContainer}>
+                                <Slider
+                                    graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
+                                    initValue={selectedRow.optimalElecChemPotential}
+                                    ecpRange={ECPRange}
+                                    ECPInputValue={ECPValue}
+                                    handleSliderChange={handleSliderChange}
+                                />
+                            </div>
                         </div>
-                        <div className={styles.canvasContainer}>
-                            <Slider
-                                graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
-                                initValue={selectedRow.optimalElecChemPotential}
-                                ecpRange={ECPRange}
-                                ECPInputValue={ECPValue}
-                                handleSliderChange={handleSliderChange}
-                            />
-                        </div>
+                        <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
+                        <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
+                        <GraphKey />
                     </div>
-                    <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
-                    <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
-                    <GraphKey />
-                </div>
+                </>
             )}
         </div>
     );
