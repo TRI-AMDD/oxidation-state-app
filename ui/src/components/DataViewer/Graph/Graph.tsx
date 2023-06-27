@@ -12,6 +12,7 @@ import useTable from 'hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
+import ExportGraphButton from './ExportGraphButton/ExportGraphButton';
 import GraphHeaders from './GraphHeaders/GraphHeaders';
 
 const Graph = () => {
@@ -22,12 +23,14 @@ const Graph = () => {
 
     return (
         <div className={styles.container}>
+            <ExportGraphButton />
             {oxidationData && selectedRow && (
-                <>
+                <div id="graph-export" className={styles.graphExport}>
                     <div className={styles.graphHeader}>
                         <GraphHeaders />
                         <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
                     </div>
+
                     <div className={styles.graphContainer}>
                         <div className={styles.species}>
                             {oxidationData.oxidationStateRangeData.map((item, index) => (
@@ -46,10 +49,9 @@ const Graph = () => {
                     </div>
                     <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
                     <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
-                </>
+                    <GraphKey />
+                </div>
             )}
-
-            <GraphKey />
         </div>
     );
 };
