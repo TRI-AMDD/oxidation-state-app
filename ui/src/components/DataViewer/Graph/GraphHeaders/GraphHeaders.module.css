@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 16px;
+}
+
+.headerText {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.17px;
+}
+
+.divider {
+    width: 2px;
+    height: 14px;
+    background-color: #e0e0e0;
+    margin: 0 18px;
+}

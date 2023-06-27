@@ -12,7 +12,8 @@ import useTable from 'hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
-import ExportGrahpButton from './ExportGraphButton/ExportGraphButton';
+import ExportGraphButton from './ExportGraphButton/ExportGraphButton';
+import GraphHeaders from './GraphHeaders/GraphHeaders';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
@@ -22,32 +23,34 @@ const Graph = () => {
 
     return (
         <div className={styles.container}>
-            <ExportGrahpButton />
+            <ExportGraphButton />
             {oxidationData && selectedRow && (
-                <>
-                    <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
-                    <div id="graph-export" className={styles.graphExport}>
-                        <div className={styles.graphContainer}>
-                            <div className={styles.species}>
-                                {oxidationData.oxidationStateRangeData.map((item, index) => (
-                                    <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
-                                ))}
-                            </div>
-                            <div className={styles.canvasContainer}>
-                                <Slider
-                                    graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
-                                    initValue={selectedRow.optimalElecChemPotential}
-                                    ecpRange={ECPRange}
-                                    ECPInputValue={ECPValue}
-                                    handleSliderChange={handleSliderChange}
-                                />
-                            </div>
-                        </div>
-                        <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
-                        <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
-                        <GraphKey />
+                <div id="graph-export" className={styles.graphExport}>
+                    <div className={styles.graphHeader}>
+                        <GraphHeaders />
+                        <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
                     </div>
-                </>
+
+                    <div className={styles.graphContainer}>
+                        <div className={styles.species}>
+                            {oxidationData.oxidationStateRangeData.map((item, index) => (
+                                <SpecieLabel key={item.ionTypeSymbol} index={index} label={item.ionTypeSymbol} />
+                            ))}
+                        </div>
+                        <div className={styles.canvasContainer}>
+                            <Slider
+                                graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
+                                initValue={selectedRow.optimalElecChemPotential}
+                                ecpRange={ECPRange}
+                                ECPInputValue={ECPValue}
+                                handleSliderChange={handleSliderChange}
+                            />
+                        </div>
+                    </div>
+                    <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
+                    <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
+                    <GraphKey />
+                </div>
             )}
         </div>
     );

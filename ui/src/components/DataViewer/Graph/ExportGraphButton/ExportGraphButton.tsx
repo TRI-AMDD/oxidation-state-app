@@ -21,7 +21,7 @@ function fileSaveAs(uri: string, filename: string) {
     }
 }
 
-const ExportGrahpButton = () => {
+const ExportGraphButton = () => {
     const handleButtonClick = () => {
         const exportDiv = document.getElementById('graph-export');
         if (exportDiv) {
@@ -34,4 +34,4 @@ const ExportGrahpButton = () => {
     return <Button onClick={handleButtonClick}>Export</Button>;
 };
 
-export default ExportGrahpButton;
+export default ExportGraphButton;
