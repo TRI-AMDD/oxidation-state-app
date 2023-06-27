@@ -14,7 +14,7 @@ const CustomHandle = () => {
     });
     return (
         <>
-            <SlideIcon />
+            <SlideIcon className={styles.slideIcon} />
             <div id="custom-handle-slider" className={styles.customHandle} />
         </>
     );

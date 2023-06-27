@@ -1,5 +1,5 @@
 .container {
-    width: 430px;
+    width: 450px;
     padding-left: 12px;
 }
 
@@ -10,14 +10,19 @@
 
 .graphContainer {
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 70px 1fr;
 }
 
 .species {
     position: relative;
 }
 
-.species span{
+.species span {
     position: absolute;
-    left: 5px
+    left: 5px;
+}
+
+.graphHeader {
+    display: flex;
+    margin-bottom: 8px;
 }

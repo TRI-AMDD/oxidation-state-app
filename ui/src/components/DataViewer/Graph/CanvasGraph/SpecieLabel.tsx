@@ -10,7 +10,7 @@ const SpecieLabel = ({ label, index }: Props) => {
     const textPos = indexY - BAR_HEIGHT / 2 - 10;
 
     return (
-        <span key={label} style={{ top: textPos }}>
+        <span key={label} style={{ top: textPos, left: '10px' }}>
             {label}
         </span>
     );
