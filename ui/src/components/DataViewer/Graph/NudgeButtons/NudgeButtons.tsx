@@ -15,7 +15,7 @@ interface Props {
 const NudgeButtons = ({ value, data, onChange }: Props) => {
     const boundaries = useMemo(() => getBoundaries(data), [data]);
 
-    const handleLeftToggle = () => {
+    const handlePreviousNudge = () => {
         for (let i = boundaries.length - 1; i >= 0; i--) {
             if (value > boundaries[i]) {
                 onChange(boundaries[i]);
@@ -24,7 +24,7 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
         }
     };
 
-    const handleRightToggle = () => {
+    const handleNextNudge = () => {
         for (let i = 0; i < boundaries.length; i++) {
             if (value < boundaries[i]) {
                 onChange(boundaries[i]);
@@ -35,10 +35,10 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
 
     return (
         <ButtonGroup className={styles.container}>
-            <IconButton value="previous" className={styles.toggleButton} onClick={handleLeftToggle}>
+            <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
                 <LeftToggle />
             </IconButton>
-            <IconButton value="next" className={styles.toggleButton} onClick={handleRightToggle}>
+            <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
                 <RightToggle />
             </IconButton>
         </ButtonGroup>
