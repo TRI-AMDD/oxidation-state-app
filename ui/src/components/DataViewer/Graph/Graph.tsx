@@ -12,6 +12,7 @@ import useTable from 'hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
+import GraphHeaders from './GraphHeaders/GraphHeaders';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
@@ -23,7 +24,10 @@ const Graph = () => {
         <div className={styles.container}>
             {oxidationData && selectedRow && (
                 <>
-                    <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
+                    <div className={styles.graphHeader}>
+                        <GraphHeaders />
+                        <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
+                    </div>
                     <div className={styles.graphContainer}>
                         <div className={styles.species}>
                             {oxidationData.oxidationStateRangeData.map((item, index) => (

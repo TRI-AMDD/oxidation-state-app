@@ -21,7 +21,10 @@ const Table = () => {
                 columns={columns}
                 rows={tableData}
                 sx={{
-                    border: 0
+                    border: 0,
+                    '&.MuiDataGrid-root .MuiDataGrid-cell:focus-within': {
+                        outline: 'none !important'
+                    }
                 }}
                 slots={{
                     toolbar: CustomToolbar
