@@ -37,7 +37,7 @@ public class OxsHelper
             result = pageData.toJSON();            
         } else if (!request.structure.isEmpty()) {
             WebOxidationAnalyzer analyzer = new WebOxidationAnalyzer(paramFileName, polyIonDir);
-            PageData pageData = analyzer.getPageDataFromStructure(request.composition);
+            PageData pageData = analyzer.getPageDataFromStructure(request.structure);
             result = pageData.toJSON();
         }
         return result;
