@@ -32,7 +32,8 @@ const Table = () => {
                 onRowClick={handleTableRowClick}
                 disableColumnMenu
                 columnVisibilityModel={{
-                    mixedValence: false
+                    mixedValence: false,
+                    oxidationStateString: false
                 }}
                 rowSelectionModel={selection}
                 onRowSelectionModelChange={(rowSelectionModel) => {

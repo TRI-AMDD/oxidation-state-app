@@ -1,4 +1,4 @@
-import { GridColDef } from '@mui/x-data-grid';
+import { GridColDef, getGridBooleanOperators, getGridNumericOperators, getGridStringOperators } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
 import HeaderTooltip from './HeaderTooltip';
 import { OxidationStatesTableItem } from 'models/DataViewerModel';
@@ -49,6 +49,11 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         flex: 3
     },
     {
+        field: 'oxidationStateString',
+        headerName: 'Oxidation State',
+        filterOperators: getGridStringOperators().filter((operator) => operator.value === 'contains')
+    },
+    {
         field: 'likelihoodOptimalElecChemPotential',
         headerName: 'Likelihood at optimal electronic chemical potential',
         renderHeader: () => (
@@ -87,7 +92,10 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.likelihoodOptimalElecChemPotential;
         },
         flex: 1,
-        maxWidth: 100
+        maxWidth: 100,
+        filterOperators: getGridNumericOperators().filter(
+            (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
+        )
     },
     {
         field: 'likelihoodCurrentElecChemPotential',
@@ -127,7 +135,10 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.likelihoodCurrentElecChemPotential;
         },
         flex: 1,
-        maxWidth: 100
+        maxWidth: 100,
+        filterOperators: getGridNumericOperators().filter(
+            (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
+        )
     },
     {
         field: 'optimalElecChemPotential',
@@ -158,7 +169,10 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.optimalElecChemPotential;
         },
         flex: 1,
-        maxWidth: 100
+        maxWidth: 100,
+        filterOperators: getGridNumericOperators().filter(
+            (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
+        )
     },
     {
         field: 'globalInstabilityIndex',
@@ -193,10 +207,14 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                 : params.row.globalInstabilityIndex;
         },
         flex: 1,
-        maxWidth: 100
+        maxWidth: 100,
+        filterOperators: getGridNumericOperators().filter(
+            (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
+        )
     },
     {
         field: 'mixedValence',
-        headerName: 'Mixed Valence'
+        headerName: 'Mixed Valence',
+        filterOperators: getGridBooleanOperators()
     }
 ];
