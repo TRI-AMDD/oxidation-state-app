@@ -5,29 +5,34 @@ import { ReactComponent as TableImage1 } from 'Assets/Images/tableImage1.svg';
 const LeftSide = () => {
     return (
         <div className={styles.leftSide}>
-            <Typography component={'div'} variant="h6" color="primary">
+            <Typography component={'div'} variant="h6">
                 Oxidation States
             </Typography>
-            <TableImage1 className={styles.image} />
             <Typography component={'div'} variant="caption">
-                This table shows the most likely oxidation state assignments <br /> calculated by our tool.
+                This table shows the most likely oxidation state assignments calculated by our tool. <br />
             </Typography>
+            <div className={styles.imageContainer}>
+                <TableImage1 className={styles.image} />
+                <ul className={styles.ul}>
+                    <Typography component={'li'} variant="caption">
+                        The table can be sorted <br />
+                        by{' '}
+                        <Typography component={'span'} color="primary" variant="caption">
+                            different properties
+                        </Typography>{' '}
+                        of <br />
+                        the assignments.
+                    </Typography>
+                </ul>
+            </div>
             <ul className={styles.ul}>
                 <Typography component={'li'} variant="caption">
-                    Sortable by{' '}
+                    Selecting a{' '}
                     <Typography component={'span'} color="primary" variant="caption">
-                        four different properties
+                        row
                     </Typography>{' '}
-                    of the assignments.
-                </Typography>
-                <Typography component={'li'} variant="caption">
-                    Clicking on an{' '}
-                    <Typography component={'span'} color="secondary" variant="caption">
-                        assignment
-                    </Typography>{' '}
-                    will automatically set the <br />
-                    electronic chemical potential on the right to the optimal value <br />
-                    for that assignment.
+                    on the left will automatically update set electronic chemical <br /> potential on the right to the
+                    value that maximizes the likelihood of observing the <br /> selected set of oxidation states.
                 </Typography>
             </ul>
         </div>

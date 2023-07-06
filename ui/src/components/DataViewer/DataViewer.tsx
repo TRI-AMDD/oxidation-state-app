@@ -7,8 +7,9 @@ import LoadedState from './LoadedState/LoadedState';
 
 const DataViewer = () => {
     const [dataViewerState] = useAtom(dataViewerStateAtom);
+
     return (
-        <div className={styles.container}>
+        <div id="data-viewer-container" className={styles.container}>
             {(dataViewerState === LoadingState.Initial || dataViewerState === LoadingState.Loading) && (
                 <InitialState dataState={dataViewerState} />
             )}

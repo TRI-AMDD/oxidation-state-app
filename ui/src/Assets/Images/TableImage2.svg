@@ -1,18 +1,18 @@
-<svg width="346" height="69" viewBox="0 0 346 69" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="346" height="69" fill="white"/>
-<rect x="322" y="10" width="16" height="10" fill="#F3F4F6"/>
-<rect x="322" y="30" width="16" height="10" fill="#F3F4F6"/>
-<rect x="322" y="49" width="16" height="10" fill="#F3F4F6"/>
-<rect x="64" y="49" width="234" height="10" fill="#F3F4F6"/>
-<rect x="64" y="30" width="234" height="10" fill="#F3F4F6"/>
-<rect x="64" y="49" width="217" height="10" fill="#E3E4E7"/>
-<rect x="64" y="49" width="217" height="10" fill="#E3E4E7"/>
-<rect x="64" y="30" width="183" height="10" fill="#E3E4E7"/>
-<rect x="64" y="30" width="183" height="10" fill="#D9D9D9"/>
-<rect x="64" y="30" width="154" height="10" fill="#E3E4E7"/>
-<rect x="64" y="30" width="154" height="10" fill="#EEEEEE"/>
-<rect x="64" y="10" width="234" height="10" fill="#E3E4E7"/>
-<rect x="64" y="10" width="234" height="10" fill="#E3E4E7"/>
-<path d="M248.201 14.1018L253.518 3.01062L240.701 2.98938L245.981 14.0981L248.201 14.1018ZM245.912 55.8982L240.595 66.9894L253.412 67.0106L248.132 55.9019L245.912 55.8982ZM245.983 12.9881L245.91 57.0082L248.13 57.0119L248.203 12.9918L245.983 12.9881Z" fill="#9C27B0"/>
-<rect x="16" y="49" width="28" height="10" fill="#9C27B0"/>
+<svg width="212" height="90" viewBox="0 0 212 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="212" height="90" fill="white"/>
+<rect x="10" y="10" width="23" height="10" fill="#F3F4F6"/>
+<rect x="10" y="30" width="23" height="10" fill="#F3F4F6"/>
+<rect x="10" y="50" width="23" height="10" fill="#F3F4F6"/>
+<rect x="55" y="50" width="147" height="10" fill="#F3F4F6"/>
+<rect x="55" y="30" width="147" height="10" fill="#F3F4F6"/>
+<rect x="55" y="50" width="137" height="10" fill="#E3E4E7"/>
+<rect x="55" y="50" width="137" height="10" fill="#E3E4E7"/>
+<rect x="55" y="30" width="115" height="10" fill="#E3E4E7"/>
+<rect x="55" y="30" width="115" height="10" fill="#D9D9D9"/>
+<rect x="55" y="30" width="96" height="10" fill="#E3E4E7"/>
+<rect x="55" y="30" width="96" height="10" fill="#EEEEEE"/>
+<rect x="55" y="10" width="147" height="10" fill="#E3E4E7"/>
+<rect x="55" y="10" width="147" height="10" fill="#E3E4E7"/>
+<rect x="10" y="70" width="192" height="10" fill="#BBC7E2"/>
+<path d="M112 6L112 64" stroke="#BBC7E2" stroke-width="2.22"/>
 </svg>
