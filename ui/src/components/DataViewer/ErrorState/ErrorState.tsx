@@ -1,13 +1,13 @@
 import styles from './ErrorState.module.css';
 import { Alert } from '@mui/material';
-import { dynamicCompositionTitleAtom, oxidationDataAtom } from 'atoms/atoms';
+import { apiErrorAtom, dynamicCompositionTitleAtom, oxidationDataAtom } from 'atoms/atoms';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 
 const ErrorState = () => {
     const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [oxidationData] = useAtom(oxidationDataAtom);
-
+    const [apiError] = useAtom(apiErrorAtom);
     const message = useMemo(() => {
         if (typeof oxidationData !== 'undefined' && oxidationData && oxidationData.messages.length > 0) {
             return oxidationData?.messages[0].messageString;
@@ -15,17 +15,9 @@ const ErrorState = () => {
             return '';
         }
     }, [oxidationData]);
-
-    const typeofError = useMemo(() => {
-        if (typeof oxidationData !== 'undefined' && oxidationData && oxidationData.messages.length > 0) {
-            return 'Input';
-        } else {
-            return 'API';
-        }
-    }, [oxidationData]);
     return (
         <div>
-            {typeofError === 'Input' ? (
+            {!apiError ? (
                 <Alert severity="error">
                     <div className={styles.alertMessage}>
                         <div className={styles.dynamicTitle}>

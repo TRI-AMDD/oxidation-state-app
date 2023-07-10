@@ -6,7 +6,8 @@ import {
     selectedRowAtom,
     oxidationDataAtom,
     electronicChemicalPotentialRangeAtom,
-    electronicChemicalPotentialValueAtom
+    electronicChemicalPotentialValueAtom,
+    apiErrorAtom
 } from 'atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
@@ -22,6 +23,7 @@ const useTable = () => {
     const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);
     const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
     const [ECPValue, setECPValue] = useAtom(electronicChemicalPotentialValueAtom);
+    const [, setApiError] = useAtom(apiErrorAtom);
 
     const grabOxidationStates = (
         chemicalComposition: string,
@@ -55,11 +57,13 @@ const useTable = () => {
                 if (structure && setInputText) {
                     setInputText(response.data.composition);
                 }
+                setApiError(false);
             },
             () => {
                 setTimeout(() => {
                     setDataViewerState(LoadingState.Error);
                 }, 500);
+                setApiError(true);
             }
         );
     };
