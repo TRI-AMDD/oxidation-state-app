@@ -8,7 +8,7 @@ const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
 
 const InputSection = () => {
-    const { handleInputChange, handleFileUpload, handleSubmitClick, handleEnterClick } = useInputs();
+    const { handleInputChange, handleFileUpload, handleSubmitClick, handleEnterClick, inputText } = useInputs();
     return (
         <div className={styles.container}>
             <TextField
@@ -20,6 +20,7 @@ const InputSection = () => {
                 className={styles.marginRight}
                 onKeyDown={handleEnterClick}
                 onChange={handleInputChange}
+                value={inputText}
             />
             <Button
                 id="input-section-submit-button"

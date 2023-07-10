@@ -1,0 +1,13 @@
+.ul {
+    padding-left: 25px;
+}
+
+.alertMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+.dynamicTitle {
+    display: flex;
+    flex-direction: row;
+}

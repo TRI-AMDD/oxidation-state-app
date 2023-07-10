@@ -12,7 +12,7 @@ import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
 import { OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
 import { LoadingState } from 'models/DataViewerModel';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { parseAPICompositionString, parseAPITableData } from 'utils/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
@@ -23,7 +23,11 @@ const useTable = () => {
     const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
     const [ECPValue, setECPValue] = useAtom(electronicChemicalPotentialValueAtom);
 
-    const grabOxidationStates = (chemicalComposition: string, structure?: File) => {
+    const grabOxidationStates = (
+        chemicalComposition: string,
+        setInputText?: React.Dispatch<React.SetStateAction<string>>,
+        structure?: File
+    ) => {
         fetchTableDataUsingComposition(chemicalComposition, structure).then(
             (response: AxiosResponse<OxidationStatesAPI>) => {
                 setDynamicCompositionTitle({
@@ -32,7 +36,13 @@ const useTable = () => {
                 });
                 setOxidationData(response.data);
                 setTimeout(() => {
-                    setDataViewerState(LoadingState.Loaded);
+                    if (response.data.messages.length > 0 && response.data.messages[0].isErrorMessage) {
+                        setDataViewerState(LoadingState.Error);
+                    } else if (response.data.messages.length > 0) {
+                        setDataViewerState(LoadingState.LoadedWithMessage);
+                    } else {
+                        setDataViewerState(LoadingState.Loaded);
+                    }
                 }, 500);
 
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
@@ -41,6 +51,15 @@ const useTable = () => {
                 } else {
                     setECPValue(1);
                 }
+
+                if (structure && setInputText) {
+                    setInputText(response.data.composition);
+                }
+            },
+            () => {
+                setTimeout(() => {
+                    setDataViewerState(LoadingState.Error);
+                }, 500);
             }
         );
     };

@@ -139,6 +139,8 @@ export const parseArrayOfChars = (chars: string[]) => {
             }
         } else if (inParen) {
             symbol += char;
+        } else if (number !== 0) {
+            number = number * 10 + parseInt(char);
         } else {
             number = parseInt(char);
         }
@@ -173,17 +175,16 @@ export const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[
     return finalArr;
 };
 
-export const formatTitle = (symbolsArray: string[]) => {
+export const formatTitle = (elementsArray: string[]) => {
     const finalArr = [];
 
-    if (symbolsArray && symbolsArray.length > 0) {
-        symbolsArray.forEach((symbol, index) => {
+    if (elementsArray && elementsArray.length > 0) {
+        elementsArray.forEach((symbol, index) => {
             const arrayChars = symbol.split('');
             const numberIndex = arrayChars.findIndex((c) => !isNaN(parseInt(c, 10)));
-
             const symbolStr = numberIndex !== -1 ? symbol.substring(0, numberIndex) : symbol;
             const symbolNum = numberIndex !== -1 ? symbol.substring(numberIndex) : null;
-
+            debugger;
             finalArr.push(
                 <div key={`dynamic title - ${index}`}>
                     {symbolStr}
@@ -204,7 +205,7 @@ export const formatTitle = (symbolsArray: string[]) => {
 };
 
 export const parseAPICompositionString = (compositionTitle: string) => {
-    const elems = compositionTitle.split(' ');
-
-    return formatTitle(elems);
+    const elems = compositionTitle.split('');
+    const { symbolsArray, numbersArray } = parseArrayOfChars(elems);
+    return formatDynamicTitle(symbolsArray, numbersArray);
 };
