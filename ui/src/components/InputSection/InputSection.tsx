@@ -21,16 +21,31 @@ const InputSection = () => {
                 onKeyDown={handleEnterClick}
                 onChange={handleInputChange}
             />
-            <Button variant="contained" size="large" className={styles.marginRight} onClick={handleSubmitClick}>
+            <Button
+                id="input-section-submit-button"
+                variant="contained"
+                size="large"
+                className={styles.marginRight}
+                onClick={handleSubmitClick}
+            >
                 SUBMIT
             </Button>
             <Typography variant="body2" component={'div'} className={styles.marginRight}>
                 Or
             </Typography>
-            <Button variant="outlined" component="label" size="large" startIcon={<UploadIcon />}>
-                UPLOAD STRUCTURE
-                <input hidden type="file" onChange={handleFileUpload} />
-            </Button>
+            <div className={styles.uploadButtonContainer}>
+                <Button
+                    id="input-section-upload-button"
+                    variant="outlined"
+                    component="label"
+                    size="large"
+                    startIcon={<UploadIcon />}
+                >
+                    UPLOAD STRUCTURE
+                    <input hidden type="file" onChange={handleFileUpload} />
+                </Button>
+                <div className={styles.helperText}>Upload file in Cif or VASP POSCAR</div>
+            </div>
         </div>
     );
 };

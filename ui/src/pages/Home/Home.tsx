@@ -21,17 +21,17 @@ function Home() {
                 spacing={2}
                 textAlign="center"
             >
-                <Grid item>
+                <Grid item className={styles.itemPadding}>
                     <TitleAndDescription />
                 </Grid>
-                <Grid item>
+                <Grid item className={styles.itemPadding}>
                     <HowToUse />
                 </Grid>
 
-                <Grid item>
+                <Grid item className={styles.itemPadding}>
                     <GetStarted />
                 </Grid>
-                <Grid item>
+                <Grid item className={styles.itemPadding}>
                     <InputSection />
                 </Grid>
             </Grid>

@@ -19,6 +19,11 @@ const useInputs = () => {
             setDataViewerState(LoadingState.Loading);
             setStructureWasUploaded(true);
             setUploadedFileName(file.name);
+            const dataViewerElement = document.getElementById('data-viewer-container');
+
+            if (typeof dataViewerElement !== 'undefined' && dataViewerElement) {
+                dataViewerElement.scrollIntoView();
+            }
         }
     };
 
@@ -30,6 +35,11 @@ const useInputs = () => {
         grabOxidationStates(inputText);
         setDataViewerState(LoadingState.Loading);
         setStructureWasUploaded(false);
+        const dataViewerElement = document.getElementById('data-viewer-container');
+
+        if (typeof dataViewerElement !== 'undefined' && dataViewerElement) {
+            dataViewerElement.scrollIntoView();
+        }
     };
 
     const handleEnterClick = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -38,6 +48,11 @@ const useInputs = () => {
             setDataViewerState(LoadingState.Loading);
             setStructureWasUploaded(false);
             event.preventDefault();
+            const dataViewerElement = document.getElementById('data-viewer-container');
+
+            if (typeof dataViewerElement !== 'undefined' && dataViewerElement) {
+                dataViewerElement.scrollIntoView();
+            }
         }
     };
 

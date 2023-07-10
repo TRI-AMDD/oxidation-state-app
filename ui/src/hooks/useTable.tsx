@@ -31,7 +31,9 @@ const useTable = () => {
                     unformattedTitle: response.data.composition
                 });
                 setOxidationData(response.data);
-                setDataViewerState(LoadingState.Loaded);
+                setTimeout(() => {
+                    setDataViewerState(LoadingState.Loaded);
+                }, 500);
 
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
                 if (response.data.tableData.tableRows.length > 0) {

@@ -3,9 +3,13 @@
 }
 
 .AppMain {
-    margin-top: 48px !important;
+    margin-top: 40px !important;
 }
 
 .AppLink {
     color: #61dafb;
+}
+
+.itemPadding {
+    padding-top: 0 !important;
 }

@@ -4,7 +4,7 @@ import styles from './TitleAndDescription.module.css';
 const TitleAndDescription = () => {
     return (
         <div className={styles.container}>
-            <Typography component={'div'} variant="h3" className={styles.title}>
+            <Typography component={'div'} variant="h4" className={styles.title}>
                 Oxidation State Analyzer
             </Typography>
             <Typography component={'div'} variant="body2">
