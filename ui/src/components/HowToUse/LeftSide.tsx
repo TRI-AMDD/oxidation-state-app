@@ -9,7 +9,7 @@ const LeftSide = () => {
                 Oxidation States
             </Typography>
             <Typography component={'div'} variant="caption">
-                This table shows the most likely oxidation state assignments calculated by our tool. <br />
+                This table shows the most likely oxidation state assignments calculated by our tool.
             </Typography>
             <div className={styles.imageContainer}>
                 <TableImage1 className={styles.image} />
