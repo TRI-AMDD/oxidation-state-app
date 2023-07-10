@@ -51,3 +51,28 @@ docker compose up --build
 Browser will automatically load the app at <http://localhost:3000/>
 Learn more about [UI](ui/README.md)
 
+
+## Using the oxidation state analyzer api 
+
+
+### Get the oxidation state given the Chemical Composition
+
+Make a POST request with the payload { "composition": "LiFePO4" } to https://www.oxi.matr.io/api
+
+```bash
+curl 'https://www.oxi.matr.io/api' \
+  --data-raw '{"composition":"LiFePO4"}' \
+  --compressed
+```
+
+### Get the oxidation state given the Chemical Structure
+
+Make a POST request with the payload { "structure": "string contents of structure file" } to https://www.oxi.matr.io/api
+
+```bash
+curl 'https://www.oxi.matr.io/api' \
+  --data-raw '{"structure":"string contents of structure file"}' \
+  --compressed
+```
+
+
