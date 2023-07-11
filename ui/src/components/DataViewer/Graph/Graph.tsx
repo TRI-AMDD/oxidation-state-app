@@ -23,7 +23,7 @@ const Graph = () => {
 
     return (
         <div className={styles.container}>
-            <ExportGraphButton />
+            <ExportGraphButton setGraphType={setGraphType} />
             {oxidationData && selectedRow && (
                 <div id="graph-export" className={styles.graphExport}>
                     <div className={styles.graphHeader}>
