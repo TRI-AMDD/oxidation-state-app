@@ -1,0 +1,27 @@
+.graphAndTableContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+.alertMessage {
+    display: flex;
+    flex-direction: column;
+}
+
+.dynamicTitle {
+    display: flex;
+    flex-direction: row;
+}
+
+.tableContainer {
+    flex-grow: 1;
+}
+
+.noteText {
+    margin-top: 24px !important;
+}
+
+.ul {
+    padding-left: 25px;
+}

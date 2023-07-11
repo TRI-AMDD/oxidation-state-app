@@ -1,7 +1,9 @@
 export enum LoadingState {
     Initial = 'Initial',
     Loading = 'Loading',
-    Loaded = 'Loaded'
+    Loaded = 'Loaded',
+    LoadedWithMessage = 'LoadedWithMessage',
+    Error = 'Error'
 }
 
 export interface OxidationStatesTableItem {
@@ -36,11 +38,16 @@ export interface OxidationRangeItem {
 
 export interface OxidationStatesAPI {
     composition: string;
-    message: string[];
+    messages: ErrorMessage[];
     tableData: {
         tableRows: TableRowAPI[];
     };
     maxBoundaryValue: number;
     minBoundaryValue: number;
     oxidationStateRangeData: OxidationRangeItem[];
+}
+
+interface ErrorMessage {
+    isErrorMessage: boolean;
+    messageString: string;
 }

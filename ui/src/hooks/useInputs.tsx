@@ -15,7 +15,7 @@ const useInputs = () => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
             event.preventDefault();
-            grabOxidationStates('', file);
+            grabOxidationStates('', setInputText, file);
             setDataViewerState(LoadingState.Loading);
             setStructureWasUploaded(true);
             setUploadedFileName(file.name);
@@ -32,18 +32,20 @@ const useInputs = () => {
     };
 
     const handleSubmitClick = () => {
-        grabOxidationStates(inputText);
-        setDataViewerState(LoadingState.Loading);
-        setStructureWasUploaded(false);
-        const dataViewerElement = document.getElementById('data-viewer-container');
+        if (inputText !== '') {
+            grabOxidationStates(inputText);
+            setDataViewerState(LoadingState.Loading);
+            setStructureWasUploaded(false);
+            const dataViewerElement = document.getElementById('data-viewer-container');
 
-        if (typeof dataViewerElement !== 'undefined' && dataViewerElement) {
-            dataViewerElement.scrollIntoView();
+            if (typeof dataViewerElement !== 'undefined' && dataViewerElement) {
+                dataViewerElement.scrollIntoView();
+            }
         }
     };
 
     const handleEnterClick = (event: React.KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === 'Enter') {
+        if (event.code === 'Enter' && inputText !== '') {
             grabOxidationStates(inputText);
             setDataViewerState(LoadingState.Loading);
             setStructureWasUploaded(false);
@@ -62,7 +64,8 @@ const useInputs = () => {
         handleSubmitClick,
         handleEnterClick,
         structureWasUploaded,
-        uploadedFileName
+        uploadedFileName,
+        inputText
     };
 };
 
