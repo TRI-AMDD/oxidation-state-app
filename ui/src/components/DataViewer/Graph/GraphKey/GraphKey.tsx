@@ -7,13 +7,11 @@ const GraphKey = () => {
     const [exportGraphSettings] = useAtom(exportGraphSettingsAtom);
     return (
         <>
-            {exportGraphSettings.showColorKey ? (
+            {exportGraphSettings.showColorKey && (
                 <div className={styles.container}>
                     <div className={styles.keyText}>Key:</div>
                     <ColorPalette />
                 </div>
-            ) : (
-                <></>
             )}
         </>
     );

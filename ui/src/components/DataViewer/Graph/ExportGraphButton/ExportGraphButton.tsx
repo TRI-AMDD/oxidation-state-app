@@ -39,7 +39,7 @@ const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
         const exportDiv = document.getElementById('graph-export');
         if (exportDiv) {
             html2canvas(exportDiv).then((canvas) => {
-                fileSaveAs(canvas.toDataURL(), `oxidation-state-graph.${exportGraphSettings.fileType}`);
+                fileSaveAs(canvas.toDataURL(), 'oxidation-state-graph.png');
             });
         }
     };
