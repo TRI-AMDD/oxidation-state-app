@@ -1,5 +1,16 @@
 import { Button } from '@mui/material';
+import { exportGraphSettingsAtom } from 'atoms/atoms';
+import { useAtom } from 'jotai';
+import { useState } from 'react';
+//import styles from './ExportGraphButton.module.css';
+import ExportGraphDialog from './ExportGraphDialog';
+import { InitalExportGraphSettingsState } from 'models/ExportGraphModel';
+import { GraphType } from 'models/PlotDataModel';
 import html2canvas from 'html2canvas';
+
+interface ExportGraphButtonProps {
+    setGraphType: (newState: GraphType) => void;
+}
 
 function fileSaveAs(uri: string, filename: string) {
     var link = document.createElement('a');
@@ -21,8 +32,10 @@ function fileSaveAs(uri: string, filename: string) {
     }
 }
 
-const ExportGraphButton = () => {
-    const handleButtonClick = () => {
+const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
+    const [exportGraphSettings, setExportGraphSettings] = useAtom(exportGraphSettingsAtom);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const handleExportButtonClick = () => {
         const exportDiv = document.getElementById('graph-export');
         if (exportDiv) {
             html2canvas(exportDiv).then((canvas) => {
@@ -31,7 +44,26 @@ const ExportGraphButton = () => {
         }
     };
 
-    return <Button onClick={handleButtonClick}>Export</Button>;
+    const handleOpenDialogClick = () => {
+        setIsOpen(true);
+    };
+
+    const handleClose = () => {
+        setExportGraphSettings({ ...InitalExportGraphSettingsState, showCurves: exportGraphSettings.showCurves });
+        setIsOpen(false);
+    };
+
+    return (
+        <>
+            <Button onClick={handleOpenDialogClick}>Export</Button>
+            <ExportGraphDialog
+                isOpen={isOpen}
+                handleClose={handleClose}
+                handleExportButtonClick={handleExportButtonClick}
+                setGraphType={setGraphType}
+            />
+        </>
+    );
 };
 
 export default ExportGraphButton;

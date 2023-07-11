@@ -1,5 +1,6 @@
 import { LoadingState, OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
 import { atom } from 'jotai';
+import { ExportGraphSettings, InitalExportGraphSettingsState } from 'models/ExportGraphModel';
 
 export const dataViewerStateAtom = atom<LoadingState>(LoadingState.Initial);
 
@@ -30,3 +31,5 @@ export const electronicChemicalPotentialRangeAtom = atom<[number, number]>([0, 0
 export const electronicChemicalPotentialValueAtom = atom<number>(ecpInitValue);
 
 export const apiErrorAtom = atom<boolean>(false);
+
+export const exportGraphSettingsAtom = atom<ExportGraphSettings>(InitalExportGraphSettingsState);

@@ -113,7 +113,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
     return generatedData;
 }
 
-export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement) {
+export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement, showLabels: boolean) {
     if (items.length > 0) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -136,12 +136,14 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement)
                 }
             }
 
-            ctx.font = '16px sans-serif';
-            ctx.fillStyle = '#000000';
-            for (const specie of items) {
-                for (const item of specie.oxidationStates) {
-                    if (item.toShowLabel) {
-                        ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+            if (showLabels) {
+                ctx.font = '16px sans-serif';
+                ctx.fillStyle = '#000000';
+                for (const specie of items) {
+                    for (const item of specie.oxidationStates) {
+                        if (item.toShowLabel) {
+                            ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+                        }
                     }
                 }
             }

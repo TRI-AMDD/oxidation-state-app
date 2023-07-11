@@ -1,8 +1,9 @@
 import { ReactCompareSlider } from 'react-compare-slider';
 import CustomHandle from './CustomHandle';
 import { getPositionFromValue, getValueFromPosition } from 'utils/GraphUtil';
-import { useMemo } from 'react';
-import { ecpInitValue } from 'atoms/atoms';
+import { useEffect, useMemo } from 'react';
+import { ecpInitValue, exportGraphSettingsAtom } from 'atoms/atoms';
+import { useAtom } from 'jotai';
 
 interface SliderProps {
     graphComponent: React.ReactNode;
@@ -13,6 +14,19 @@ interface SliderProps {
 }
 
 const Slider = ({ graphComponent, ecpRange, ECPInputValue, handleSliderChange }: SliderProps) => {
+    const [exportGraphSettings] = useAtom(exportGraphSettingsAtom);
+
+    useEffect(() => {
+        const sliderElement = document.querySelector('[data-rcs="handle-container"]');
+        if (sliderElement) {
+            if (!exportGraphSettings.showSliderBar) {
+                sliderElement.setAttribute('hidden', '');
+            } else {
+                sliderElement.removeAttribute('hidden');
+            }
+        }
+    }, [exportGraphSettings]);
+
     const position = useMemo(() => {
         if (ECPInputValue === ecpInitValue) {
             return 50;

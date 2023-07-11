@@ -2,6 +2,8 @@ import { useEffect, useMemo, useRef } from 'react';
 import { OxidationStatesAPI } from 'models/DataViewerModel';
 import { createPlotData, createBarPlotData, drawPlotDataCanvas, BAR_WIDTH } from './canvas-graph-util';
 import { GraphType } from 'models/PlotDataModel';
+import { useAtom } from 'jotai';
+import { exportGraphSettingsAtom } from 'atoms/atoms';
 
 interface Props {
     data: OxidationStatesAPI;
@@ -9,6 +11,7 @@ interface Props {
 }
 
 const CanvasGraph = ({ data, graphType }: Props) => {
+    const [exportGraphSettings] = useAtom(exportGraphSettingsAtom);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
     const items = useMemo(() => {
@@ -22,9 +25,9 @@ const CanvasGraph = ({ data, graphType }: Props) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         if (canvas) {
-            drawPlotDataCanvas(items, canvas);
+            drawPlotDataCanvas(items, canvas, exportGraphSettings.showLabels);
         }
-    }, [items]);
+    }, [exportGraphSettings.showLabels, items]);
 
     const figureHeight = 75 * data.oxidationStateRangeData.length;
 
