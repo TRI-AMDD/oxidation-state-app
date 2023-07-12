@@ -1,4 +1,4 @@
-import { OxidationStatesTableItem, TableRowAPI } from 'models/DataViewerModel';
+import { OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
 
 const formatOxidationWithChargeSign = (currentOxidation: number) => {
