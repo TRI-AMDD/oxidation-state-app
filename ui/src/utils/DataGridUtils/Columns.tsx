@@ -46,6 +46,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.oxidationStateString;
         },
         filterable: false,
+        maxWidth: 500,
         flex: 3
     },
     {
