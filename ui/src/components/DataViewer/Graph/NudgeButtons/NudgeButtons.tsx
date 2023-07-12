@@ -1,10 +1,10 @@
 import { IconButton, ButtonGroup } from '@mui/material';
 import styles from '../GraphTypeToggle/GraphTypeToggle.module.css';
-import { OxidationStatesAPI } from 'models/DataViewerModel';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { useMemo } from 'react';
-import { getBoundaries } from 'utils/GraphUtil';
-import { ReactComponent as RightToggle } from 'Assets/Images/rightToggle.svg';
-import { ReactComponent as LeftToggle } from 'Assets/Images/leftToggle.svg';
+import { getBoundaries } from '@/utils/GraphUtil';
+import { ReactComponent as RightToggle } from '@/Assets/Images/rightToggle.svg';
+import { ReactComponent as LeftToggle } from '@/Assets/Images/leftToggle.svg';
 
 interface Props {
     onChange: (value: number) => void;

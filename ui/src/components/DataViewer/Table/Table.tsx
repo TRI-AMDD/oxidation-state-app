@@ -1,9 +1,9 @@
 import { DataGrid, GridRowId, useGridApiRef } from '@mui/x-data-grid';
-import { columns } from 'utils/DataGridUtils/Columns';
+import { columns } from '@/utils/DataGridUtils/Columns';
 import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
 import './MuiClasses.css';
-import useTable from 'hooks/useTable';
+import useTable from '@/hooks/useTable';
 import { useState } from 'react';
 
 const Table = () => {

@@ -1,6 +1,6 @@
 import styles from './ErrorState.module.css';
 import { Alert } from '@mui/material';
-import { apiErrorAtom, dynamicCompositionTitleAtom, oxidationDataAtom } from 'atoms/atoms';
+import { apiErrorAtom, dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
 

@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { OxidationStatesAPI } from 'models/DataViewerModel';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { createPlotData, createBarPlotData, drawPlotDataCanvas, BAR_WIDTH } from './canvas-graph-util';
-import { GraphType } from 'models/PlotDataModel';
+import { GraphType } from '@/models/PlotDataModel';
 import { useAtom } from 'jotai';
-import { exportGraphSettingsAtom } from 'atoms/atoms';
+import { exportGraphSettingsAtom } from '@/atoms/atoms';
 
 interface Props {
     data: OxidationStatesAPI;

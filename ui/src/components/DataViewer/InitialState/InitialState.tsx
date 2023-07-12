@@ -3,7 +3,7 @@ import styles from './InitialState.module.css';
 import TitleSkeleton from '../Skeletons/TitleSkeleton';
 import GraphSkeleton from '../Skeletons/GraphSkeleton';
 import ColumnSkeleton from '../Skeletons/ColumnSkeleton';
-import { LoadingState } from 'models/DataViewerModel';
+import { LoadingState } from '@/models/DataViewerModel';
 
 interface InitialStateProps {
     dataState: LoadingState;

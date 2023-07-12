@@ -11,11 +11,11 @@ import {
     Radio,
     RadioGroup
 } from '@mui/material';
-import { exportGraphSettingsAtom } from 'atoms/atoms';
+import { exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
-import { ExportGraphFileType } from 'models/ExportGraphModel';
+import { ExportGraphFileType } from '@/models/ExportGraphModel';
 import styles from './ExportGraphButton.module.css';
-import { GraphType } from 'models/PlotDataModel';
+import { GraphType } from '@/models/PlotDataModel';
 
 interface ExportGraphDialogProps {
     isOpen: boolean;

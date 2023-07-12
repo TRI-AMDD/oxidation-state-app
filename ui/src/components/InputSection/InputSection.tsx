@@ -2,7 +2,7 @@ import { TextField, Button, Typography } from '@mui/material';
 import styles from './InputSection.module.css';
 import UploadIcon from '@mui/icons-material/Upload';
 
-import useInputs from 'hooks/useInputs';
+import useInputs from '@/hooks/useInputs';
 
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';

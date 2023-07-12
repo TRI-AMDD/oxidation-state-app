@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 
 import Plot from 'react-plotly.js';
-import { formatOxidationState } from 'utils/GraphUtil';
+import { formatOxidationState } from '@/utils/GraphUtil';
 import { Data } from 'plotly.js';
-import { OxidationStatesAPI } from 'models/DataViewerModel';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
 
 const GRAPH_POINTS = 250;
 
@@ -24,7 +24,7 @@ const PlotlyGraph = ({ data }: Props) => {
         const diff = data.maxBoundaryValue - data.minBoundaryValue;
         const xPoints = Array.from(
             { length: GRAPH_POINTS },
-            (v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue
+            (_v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue
         );
         const xReversePoints = [...xPoints].reverse();
 

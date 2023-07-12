@@ -1,4 +1,4 @@
-import { OxidationStatesAPI } from 'models/DataViewerModel';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
 
 function compareNumbers(a: number, b: number) {
     return a - b;

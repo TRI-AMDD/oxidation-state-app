@@ -1,4 +1,4 @@
-import { electronicChemicalPotentialRangeAtom, electronicChemicalPotentialValueAtom } from 'atoms/atoms';
+import { electronicChemicalPotentialRangeAtom, electronicChemicalPotentialValueAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { ChangeEvent, useEffect } from 'react';
 import useTable from './useTable';

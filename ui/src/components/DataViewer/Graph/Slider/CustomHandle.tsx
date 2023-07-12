@@ -1,5 +1,5 @@
 import styles from './Slider.module.css';
-import { ReactComponent as SlideIcon } from 'Assets/Images/slideIcon.svg';
+import { ReactComponent as SlideIcon } from '@/Assets/Images/slideIcon.svg';
 
 const CustomHandle = () => {
     return (

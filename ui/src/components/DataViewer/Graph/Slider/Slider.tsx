@@ -1,8 +1,8 @@
 import { ReactCompareSlider } from 'react-compare-slider';
 import CustomHandle from './CustomHandle';
-import { getPositionFromValue, getValueFromPosition } from 'utils/GraphUtil';
+import { getPositionFromValue, getValueFromPosition } from '@/utils/GraphUtil';
 import { useEffect, useMemo } from 'react';
-import { ecpInitValue, exportGraphSettingsAtom } from 'atoms/atoms';
+import { ecpInitValue, exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 
 interface SliderProps {

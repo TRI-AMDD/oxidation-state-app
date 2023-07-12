@@ -1,11 +1,11 @@
 import { Button } from '@mui/material';
-import { exportGraphSettingsAtom } from 'atoms/atoms';
+import { exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
 //import styles from './ExportGraphButton.module.css';
 import ExportGraphDialog from './ExportGraphDialog';
-import { InitalExportGraphSettingsState } from 'models/ExportGraphModel';
-import { GraphType } from 'models/PlotDataModel';
+import { InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
+import { GraphType } from '@/models/PlotDataModel';
 import html2canvas from 'html2canvas';
 
 interface ExportGraphButtonProps {

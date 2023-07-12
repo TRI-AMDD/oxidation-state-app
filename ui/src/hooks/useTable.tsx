@@ -1,5 +1,5 @@
 import { GridRowParams } from '@mui/x-data-grid';
-import { fetchTableDataUsingComposition } from 'api/apiRequests';
+import { fetchTableDataUsingComposition } from '@/api/apiRequests';
 import {
     dataViewerStateAtom,
     dynamicCompositionTitleAtom,
@@ -8,13 +8,13 @@ import {
     electronicChemicalPotentialRangeAtom,
     electronicChemicalPotentialValueAtom,
     apiErrorAtom
-} from 'atoms/atoms';
+} from '@/atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
-import { OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
-import { LoadingState } from 'models/DataViewerModel';
+import { OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
+import { LoadingState } from '@/models/DataViewerModel';
 import React, { useMemo } from 'react';
-import { parseAPICompositionString, parseAPITableData } from 'utils/DataGridUtils/OxidationStateFormatter';
+import { parseAPICompositionString, parseAPITableData } from '@/utils/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);

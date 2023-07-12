@@ -1,8 +1,8 @@
-import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom } from 'atoms/atoms';
+import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom } from '@/atoms/atoms';
 import useTable from './useTable';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { LoadingState } from 'models/DataViewerModel';
+import { LoadingState } from '@/models/DataViewerModel';
 
 const useInputs = () => {
     const [inputText, setInputText] = useState('');

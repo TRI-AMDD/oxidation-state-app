@@ -1,14 +1,14 @@
 import { useAtom } from 'jotai';
-import { oxidationDataAtom } from 'atoms/atoms';
+import { oxidationDataAtom } from '@/atoms/atoms';
 import CanvasGraph from './CanvasGraph/CanvasGraph';
 import styles from './Graph.module.css';
 import GraphKey from './GraphKey/GraphKey';
 import ElectronicChemicalPotentialInput from './ElectronicChemicalPotentialInput/ElectronicChemicalPotentialInput';
-import { GraphType } from 'models/PlotDataModel';
+import { GraphType } from '@/models/PlotDataModel';
 import { useState } from 'react';
 import Slider from './Slider/Slider';
-import useGraph from 'hooks/useGraph';
-import useTable from 'hooks/useTable';
+import useGraph from '@/hooks/useGraph';
+import useTable from '@/hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
