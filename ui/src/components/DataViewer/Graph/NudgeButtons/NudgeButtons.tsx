@@ -35,12 +35,12 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
 
     return (
         <ButtonGroup className={styles.container}>
-            <Tooltip title='Previous Boundary'>
+            <Tooltip title="Previous Boundary">
                 <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
                     <LeftToggle />
                 </IconButton>
             </Tooltip>
-            <Tooltip title='Next Boundary'>
+            <Tooltip title="Next Boundary">
                 <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
                     <RightToggle />
                 </IconButton>
