@@ -6,7 +6,7 @@ interface Props {
 }
 
 const SpecieLabel = ({ label, index }: Props) => {
-    const indexY = BAR_HEIGHT + index * 75;
+    const indexY = BAR_HEIGHT + index * 60;
     const textPos = indexY - BAR_HEIGHT / 2 - 10;
 
     return (

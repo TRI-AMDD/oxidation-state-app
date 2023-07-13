@@ -29,7 +29,7 @@ const CanvasGraph = ({ data, graphType }: Props) => {
         }
     }, [exportGraphSettings.showLabels, items]);
 
-    const figureHeight = 75 * data.oxidationStateRangeData.length;
+    const figureHeight = 62 * data.oxidationStateRangeData.length;
 
     return <canvas id="canvasGraph" ref={canvasRef} width={BAR_WIDTH} height={figureHeight} />;
 };

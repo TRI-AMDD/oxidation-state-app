@@ -26,7 +26,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
         const oxidationStates = [];
 
         // offset y of each graph
-        const indexY = BAR_HEIGHT + index * 75;
+        const indexY = BAR_HEIGHT + index * 60;
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
@@ -79,7 +79,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
         const oxidationStates = [];
 
         // offset y of each graph
-        const indexY = BAR_HEIGHT + index * 75;
+        const indexY = BAR_HEIGHT + index * 60;
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
