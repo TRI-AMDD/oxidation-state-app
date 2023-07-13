@@ -14,7 +14,6 @@ interface AmplifyProps {
     children?: ReactNode;
     user: string | undefined;
     signOut?: ((data?: AuthEventData | undefined) => void) | undefined;
-    // user?: CognitoUserAmplify | undefined;
 }
 
 function CognitoApp({ user, signOut, children }: AmplifyProps) {

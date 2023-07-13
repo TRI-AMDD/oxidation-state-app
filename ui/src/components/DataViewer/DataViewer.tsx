@@ -1,8 +1,8 @@
-import { dataViewerStateAtom } from 'atoms/atoms';
+import { dataViewerStateAtom } from '@/atoms/atoms';
 import styles from './DataViewer.module.css';
 import InitialState from './InitialState/InitialState';
 import { useAtom } from 'jotai';
-import { LoadingState } from 'models/DataViewerModel';
+import { LoadingState } from '@/models/DataViewerModel';
 import LoadedState from './LoadedState/LoadedState';
 import LoadedWithMessageState from './LoadedWithMessageState/LoadedWithMessageState';
 import ErrorState from './ErrorState/ErrorState';

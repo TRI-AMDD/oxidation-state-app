@@ -7,9 +7,9 @@ import {
     gridSortedRowIdsSelector
 } from '@mui/x-data-grid';
 import CustomCIFExportButton from './CustomCIFExportButton';
-import useInputs from 'hooks/useInputs';
-import useTable from 'hooks/useTable';
-import { dynamicCompositionTitleAtom } from 'atoms/atoms';
+import useInputs from '@/hooks/useInputs';
+import useTable from '@/hooks/useTable';
+import { dynamicCompositionTitleAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 
 const CustomExportButton = (props: ButtonProps) => {

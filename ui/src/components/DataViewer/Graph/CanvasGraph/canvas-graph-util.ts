@@ -1,7 +1,7 @@
-import { ColorPalette } from 'constants/colors';
-import { OxidationStatesAPI } from 'models/DataViewerModel';
-import { PlotData } from 'models/PlotDataModel';
-import { formatOxidationState } from 'utils/GraphUtil';
+import { ColorPalette } from '@/constants/colors';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { PlotData } from '@/models/PlotDataModel';
+import { formatOxidationState } from '@/utils/GraphUtil';
 
 const GRAPH_POINTS = 250;
 export const BAR_WIDTH = 350;
@@ -20,7 +20,7 @@ function getStateRangeLabelPosition(min: number, max: number, xMultiplier: numbe
 export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
     const diff = data.maxBoundaryValue - data.minBoundaryValue;
-    const xPoints = Array.from({ length: GRAPH_POINTS }, (v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue);
+    const xPoints = Array.from({ length: GRAPH_POINTS }, (_v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue);
 
     for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
         const oxidationStates = [];

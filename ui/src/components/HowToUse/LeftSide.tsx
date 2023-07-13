@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import styles from './HowToUse.module.css';
-import { ReactComponent as TableImage1 } from 'Assets/Images/tableImage1.svg';
+import { ReactComponent as TableImage1 } from '@/Assets/Images/tableImage1.svg';
 
 const LeftSide = () => {
     return (

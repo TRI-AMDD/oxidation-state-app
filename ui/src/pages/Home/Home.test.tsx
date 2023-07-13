@@ -1,7 +1,6 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Home from './Home';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient();

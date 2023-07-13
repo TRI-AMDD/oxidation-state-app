@@ -1,7 +1,7 @@
 import { Alert, Typography } from '@mui/material';
 import styles from './LoadedWithMessageState.module.css';
 import { useAtom } from 'jotai';
-import { dynamicCompositionTitleAtom, oxidationDataAtom } from 'atoms/atoms';
+import { dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
 import Table from '../Table/Table';
 import Graph from '../Graph/Graph';
 import { useMemo } from 'react';

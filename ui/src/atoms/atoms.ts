@@ -1,6 +1,6 @@
-import { LoadingState, OxidationStatesAPI, OxidationStatesTableItem } from 'models/DataViewerModel';
+import { LoadingState, OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
 import { atom } from 'jotai';
-import { ExportGraphSettings, InitalExportGraphSettingsState } from 'models/ExportGraphModel';
+import { ExportGraphSettings, InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
 
 export const dataViewerStateAtom = atom<LoadingState>(LoadingState.Initial);
 

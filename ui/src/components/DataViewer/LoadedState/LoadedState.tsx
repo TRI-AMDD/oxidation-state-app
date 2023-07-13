@@ -2,7 +2,7 @@ import { Alert, Typography } from '@mui/material';
 import Graph from '../Graph/Graph';
 import Table from '../Table/Table';
 import styles from './LoadedState.module.css';
-import { dynamicCompositionTitleAtom } from 'atoms/atoms';
+import { dynamicCompositionTitleAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 
 const LoadedState = () => {
