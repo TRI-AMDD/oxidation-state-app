@@ -1,4 +1,4 @@
-import { IconButton, ButtonGroup } from '@mui/material';
+import { IconButton, ButtonGroup, Tooltip } from '@mui/material';
 import styles from '../GraphTypeToggle/GraphTypeToggle.module.css';
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { useMemo } from 'react';
@@ -35,12 +35,16 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
 
     return (
         <ButtonGroup className={styles.container}>
-            <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
-                <LeftToggle />
-            </IconButton>
-            <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
-                <RightToggle />
-            </IconButton>
+            <Tooltip title="Previous Boundary">
+                <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
+                    <LeftToggle />
+                </IconButton>
+            </Tooltip>
+            <Tooltip title="Next Boundary">
+                <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
+                    <RightToggle />
+                </IconButton>
+            </Tooltip>
         </ButtonGroup>
     );
 };
