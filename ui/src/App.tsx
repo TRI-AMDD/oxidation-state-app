@@ -4,42 +4,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider, createTheme } from '@mui/material';
 import AboutUs from './pages/AboutUs/AboutUs';
+import { customTheme } from './theme';
+import FAQ from './pages/FAQ/FAQ';
 
 const queryClient = new QueryClient();
 const Home = lazy(() => import('./pages/Home/Home'));
 
-const theme = createTheme({
-    typography: {
-        fontFamily: 'Roboto'
-    },
-    components: {
-        MuiLink: {
-            variants: [
-                {
-                    props: { variant: 'whiteText' },
-                    style: {
-                        color: 'white',
-                        textDecorationColor: 'white'
-                    }
-                }
-            ]
-        },
-        MuiTooltip: {
-            styleOverrides: {
-                tooltip: {
-                    backgroundColor: 'rgba(97, 97, 97, 1)'
-                }
-            }
-        }
-    },
-    palette: {
-        primary: {
-            main: '#3747AC',
-            dark: '#0B1FA2',
-            light: '#5261C6'
-        }
-    }
-});
+const theme = createTheme(customTheme);
 
 const App = () => (
     <QueryClientProvider client={queryClient}>
@@ -50,6 +21,7 @@ const App = () => (
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/about-us" element={<AboutUs />} />
+                            <Route path="faq" element={<FAQ />} />
                         </Routes>
                     </Suspense>
                 </Router>

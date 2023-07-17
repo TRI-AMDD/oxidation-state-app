@@ -14,7 +14,20 @@ export default function Header() {
                     <Link
                         component={RouterLink}
                         to="/"
-                        className={styles.headerLink}
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        underline="hover"
+                        variant="whiteText"
+                    >
+                        Tutorial
+                    </Link>
+                </div>
+                <div className={styles.headerLinkContainer}>
+                    <Link
+                        component={RouterLink}
+                        to="/faq"
+                        rel="noopener noreferrer"
+                        target="_blank"
                         underline="hover"
                         variant="whiteText"
                     >
@@ -24,10 +37,21 @@ export default function Header() {
                 <div className={styles.headerLinkContainer}>
                     <Link
                         component={RouterLink}
+                        to="/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                        underline="hover"
+                        variant="whiteText"
+                    >
+                        How to Cite
+                    </Link>
+                </div>
+                <div className={styles.headerLinkContainer}>
+                    <Link
+                        component={RouterLink}
                         to="/about-us"
                         rel="noopener noreferrer"
                         target="_blank"
-                        className={styles.headerLink}
                         underline="hover"
                         variant="whiteText"
                     >
