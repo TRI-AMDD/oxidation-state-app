@@ -1,11 +1,9 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import {
-    QueryClient,
-    QueryClientProvider,
-  } from '@tanstack/react-query'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider, createTheme } from '@mui/material';
+import AboutUs from './pages/AboutUs/AboutUs';
 
 const queryClient = new QueryClient();
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -16,12 +14,15 @@ const theme = createTheme({
     },
     components: {
         MuiLink: {
-            styleOverrides: {
-                root: {
-                    color: 'white',
-                    textDecorationColor: 'white'
+            variants: [
+                {
+                    props: { variant: 'whiteText' },
+                    style: {
+                        color: 'white',
+                        textDecorationColor: 'white'
+                    }
                 }
-            }
+            ]
         },
         MuiTooltip: {
             styleOverrides: {
@@ -48,6 +49,7 @@ const App = () => (
                     <Suspense fallback={<div>Loading...</div>}>
                         <Routes>
                             <Route path="/" element={<Home />} />
+                            <Route path="/about-us" element={<AboutUs />} />
                         </Routes>
                     </Suspense>
                 </Router>

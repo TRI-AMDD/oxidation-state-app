@@ -1,0 +1,11 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+}
+
+.breadcrumbs {
+    margin-left: 68px !important;
+    margin-top: 24px !important;
+}
