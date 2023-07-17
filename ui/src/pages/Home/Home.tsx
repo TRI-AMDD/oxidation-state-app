@@ -1,17 +1,15 @@
-import Header from '@/components/Header/Header';
 import styles from './Home.module.css';
-import Footer from '@/components/Footer/Footer';
 import { Grid } from '@mui/material';
 import TitleAndDescription from '@/components/TitleAndDescription/TitleAndDescription';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import GetStarted from '@/components/GetStarted/GetStarted';
 import InputSection from '@/components/InputSection/InputSection';
 import DataViewer from '@/components/DataViewer/DataViewer';
+import PageWrapper from '@/components/PageWrapper/PageWrapper';
 
 function Home() {
     return (
-        <div className={styles.App}>
-            <Header />
+        <PageWrapper>
             <Grid
                 container
                 direction="column"
@@ -36,8 +34,7 @@ function Home() {
                 </Grid>
             </Grid>
             <DataViewer />
-            <Footer />
-        </div>
+        </PageWrapper>
     );
 }
 
