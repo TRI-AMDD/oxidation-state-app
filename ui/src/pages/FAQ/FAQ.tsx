@@ -10,9 +10,9 @@ const FAQ = () => {
     const [expanded, setExpanded] = useState<string[]>([]);
     const [expandAll, setExpandAll] = useState<boolean>(false);
 
-    const allAccordians = FAQs.map((value, index) => `panel${index}`);
+    const allAccordians = FAQs.map((_value, index) => `panel${index}`);
 
-    const handleAccordianChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    const handleAccordianChange = (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
         if (isExpanded && !expanded.includes(panel)) {
             setExpanded([...expanded, panel]);
         } else {
