@@ -1,0 +1,22 @@
+.pageContainer {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+.breadcrumbs {
+    margin-left: 68px !important;
+    margin-top: 24px !important;
+}
+.innerContainer {
+    width: 911px;
+    margin-top: 40px;
+}
+
+.expandAllButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}

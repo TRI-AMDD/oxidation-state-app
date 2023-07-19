@@ -1,7 +1,7 @@
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import styles from './AboutUs.module.css';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
-import { Router, Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const AboutUs = () => {
     return (
