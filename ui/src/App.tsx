@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import AboutUs from './pages/AboutUs/AboutUs';
 import { customTheme } from './theme';
 import FAQ from './pages/FAQ/FAQ';
+import Tutorial from './pages/Tutorial/Tutorial';
 
 const queryClient = new QueryClient();
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -21,7 +22,8 @@ const App = () => (
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/about-us" element={<AboutUs />} />
-                            <Route path="faq" element={<FAQ />} />
+                            <Route path="/faq" element={<FAQ />} />
+                            <Route path="/tutorial" element={<Tutorial />} />
                         </Routes>
                     </Suspense>
                 </Router>

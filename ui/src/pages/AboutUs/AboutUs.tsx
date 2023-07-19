@@ -19,11 +19,11 @@ const AboutUs = () => {
                 <Typography variant="body1" component={'div'} sx={{ marginTop: '40px' }}>
                     The oxidation state analyzer is an open web application for predicting and analyzing oxidation
                     states in materials based on <br /> the theory and algorithms described in this{' '}
-                    <Link component={RouterLink} to="/tutorial" color="primary" underline="always">
+                    <Link component={RouterLink} to="/" color="primary" underline="always">
                         manuscript
                     </Link>{' '}
                     (an overview of this approach is provided in the{' '}
-                    <Link component={RouterLink} to="/">
+                    <Link component={RouterLink} to="/tutorial">
                         tutorial
                     </Link>
                     )
