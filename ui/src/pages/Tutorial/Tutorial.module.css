@@ -1,0 +1,27 @@
+.breadcrumbs {
+    margin-left: 68px !important;
+    margin-top: 24px !important;
+}
+
+.pageContainer {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.body {
+    width: 909px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 40px;
+}
+
+.imageContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
