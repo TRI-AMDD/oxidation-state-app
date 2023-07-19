@@ -10,7 +10,7 @@ const Tutorial = () => {
                 <Link underline="hover" color="inherit" href="/">
                     Home
                 </Link>
-                <Link color="text.primary">FAQ</Link>
+                <Link color="text.primary">Tutorial</Link>
             </Breadcrumbs>
             <div className={styles.pageContainer}>
                 <Typography component={'div'} variant="h4">
