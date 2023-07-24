@@ -2,11 +2,19 @@ import { Link, Typography } from '@mui/material';
 import styles from './Footer.module.css';
 import { Link as RouterLink } from 'react-router-dom';
 
+const TRI_GLOBAL_PRIVACY_POLICY_URL = 'https://www.tri.global/privacy-policy';
+
 const Footer = () => {
     return (
         <footer className={styles.appFooter}>
             <Typography component={'div'} variant="body1" className={styles.footerLinksContainer}>
-                <Link component={RouterLink} to="/" variant="whiteText">
+                <Link
+                    component={'a'}
+                    href={TRI_GLOBAL_PRIVACY_POLICY_URL}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="whiteText"
+                >
                     Legal
                 </Link>
                 <Link component={RouterLink} to="/" variant="whiteText">
