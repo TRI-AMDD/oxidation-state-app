@@ -46,7 +46,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             return params.row.oxidationStateString;
         },
         filterable: false,
-        flex: 3,
+        flex: 3
     },
     {
         field: 'oxidationStateString',
@@ -59,7 +59,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
                 <strong>
-                    L(&#956;<sub>opt</sub>)
+                    L(E<sub>opt</sub>)
                 </strong>
             </HeaderTooltip>
         ),
@@ -103,7 +103,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current electronic chemical potential">
-                <strong>L(&#956;)</strong>
+                <strong>L(E)</strong>
             </HeaderTooltip>
         ),
         renderCell(params) {
@@ -146,7 +146,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderHeader: () => (
             <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
                 <strong>
-                    &#956;<sub>opt</sub>
+                    E<sub>opt</sub>
                 </strong>
             </HeaderTooltip>
         ),
