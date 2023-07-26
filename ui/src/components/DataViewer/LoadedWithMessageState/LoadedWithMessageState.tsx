@@ -18,7 +18,7 @@ const LoadedWithMessageState = () => {
     }, [oxidationData]);
     return (
         <div>
-            <Alert severity="warning">
+            <Alert severity="info">
                 <div className={styles.alertMessage}>
                     <div className={styles.dynamicTitle}>
                         {' '}
