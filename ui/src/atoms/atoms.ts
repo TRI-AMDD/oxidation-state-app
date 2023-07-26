@@ -33,3 +33,5 @@ export const electronicChemicalPotentialValueAtom = atom<number>(ecpInitValue);
 export const apiErrorAtom = atom<boolean>(false);
 
 export const exportGraphSettingsAtom = atom<ExportGraphSettings>(InitalExportGraphSettingsState);
+
+export const exportGraphModalOpenAtom = atom<boolean>(false);
