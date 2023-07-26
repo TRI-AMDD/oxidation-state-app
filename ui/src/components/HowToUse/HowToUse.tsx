@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const HowToUse = () => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    const handleAccordianChange = (event: React.SyntheticEvent, isExpanded: boolean) => {
+    const handleAccordianChange = (_event: React.SyntheticEvent, isExpanded: boolean) => {
         setIsOpen(isExpanded);
     };
     return (

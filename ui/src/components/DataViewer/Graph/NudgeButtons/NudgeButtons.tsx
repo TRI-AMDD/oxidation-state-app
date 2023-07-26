@@ -5,6 +5,8 @@ import { useMemo } from 'react';
 import { getBoundaries } from '@/utils/GraphUtil';
 import { ReactComponent as RightToggle } from '@/Assets/Images/rightToggle.svg';
 import { ReactComponent as LeftToggle } from '@/Assets/Images/leftToggle.svg';
+import { useAtom } from 'jotai';
+import { exportGraphModalOpenAtom } from '@/atoms/atoms';
 
 interface Props {
     onChange: (value: number) => void;
@@ -14,6 +16,7 @@ interface Props {
 
 const NudgeButtons = ({ value, data, onChange }: Props) => {
     const boundaries = useMemo(() => getBoundaries(data), [data]);
+    const [isModalOpen] = useAtom(exportGraphModalOpenAtom);
 
     const handlePreviousNudge = () => {
         for (let i = boundaries.length - 1; i >= 0; i--) {
@@ -34,18 +37,22 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
     };
 
     return (
-        <ButtonGroup className={styles.container}>
-            <Tooltip title="Previous Boundary">
-                <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
-                    <LeftToggle />
-                </IconButton>
-            </Tooltip>
-            <Tooltip title="Next Boundary">
-                <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
-                    <RightToggle />
-                </IconButton>
-            </Tooltip>
-        </ButtonGroup>
+        <>
+            {!isModalOpen && (
+                <ButtonGroup className={styles.container}>
+                    <Tooltip title="Previous Boundary">
+                        <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
+                            <LeftToggle />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Next Boundary">
+                        <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
+                            <RightToggle />
+                        </IconButton>
+                    </Tooltip>
+                </ButtonGroup>
+            )}
+        </>
     );
 };
 

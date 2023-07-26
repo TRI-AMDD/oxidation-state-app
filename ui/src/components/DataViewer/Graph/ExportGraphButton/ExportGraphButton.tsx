@@ -1,7 +1,6 @@
 import { Button } from '@mui/material';
-import { exportGraphSettingsAtom } from '@/atoms/atoms';
+import { exportGraphModalOpenAtom, exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
-import { useState } from 'react';
 //import styles from './ExportGraphButton.module.css';
 import ExportGraphDialog from './ExportGraphDialog';
 import { InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
@@ -34,7 +33,8 @@ function fileSaveAs(uri: string, filename: string) {
 
 const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
     const [exportGraphSettings, setExportGraphSettings] = useAtom(exportGraphSettingsAtom);
-    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useAtom(exportGraphModalOpenAtom);
+
     const handleExportButtonClick = () => {
         const exportDiv = document.getElementById('graph-export');
         if (exportDiv) {
