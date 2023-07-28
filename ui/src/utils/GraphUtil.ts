@@ -1,4 +1,5 @@
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { toFixedNumber } from './GraphUtils/BoundariesUtil';
 
 function compareNumbers(a: number, b: number) {
     return a - b;
@@ -30,7 +31,7 @@ export function getBoundaries(data: OxidationStatesAPI) {
     const numArray: number[] = [];
     for (const rangeData of data.oxidationStateRangeData) {
         for (const boundary of rangeData.rangeBoundaries) {
-            numArray.push(boundary);
+            numArray.push(toFixedNumber(boundary, 13, 10));
         }
     }
 
