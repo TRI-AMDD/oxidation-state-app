@@ -17,7 +17,6 @@ interface Props {
 const NudgeButtons = ({ value, data, onChange }: Props) => {
     const boundaries = useMemo(() => getBoundaries(data), [data]);
     const [isModalOpen] = useAtom(exportGraphModalOpenAtom);
-    console.log(boundaries);
 
     const handlePreviousNudge = () => {
         for (let i = boundaries.length - 1; i >= 0; i--) {
