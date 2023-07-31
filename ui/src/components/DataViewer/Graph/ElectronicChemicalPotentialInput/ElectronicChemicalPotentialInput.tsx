@@ -11,7 +11,6 @@ interface ECPInputProps {
 const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) => {
     const formattedValue = value.toFixed(4);
     const [isModalOpen] = useAtom(exportGraphModalOpenAtom);
-
     return (
         <>
             {!isModalOpen && (
