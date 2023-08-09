@@ -17,7 +17,7 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
                 <TextField
                     variant="filled"
                     className={styles.textFieldContainer}
-                    label="Mapped Potential Value"
+                    label="Mapped Potential Value (E)"
                     type="number"
                     onChange={onChange}
                     value={formattedValue}

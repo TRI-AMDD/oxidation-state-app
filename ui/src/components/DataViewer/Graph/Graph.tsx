@@ -40,7 +40,7 @@ const Graph = () => {
                         <div className={styles.canvasContainer}>
                             <Slider
                                 graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
-                                initValue={selectedRow.optimalElecChemPotential}
+                                initValue={selectedRow.optimalMappedPotential}
                                 ecpRange={ECPRange}
                                 ECPInputValue={ECPValue}
                                 handleSliderChange={handleSliderChange}

@@ -14,7 +14,7 @@ function getStateRangeLabelPosition(min: number, max: number, xMultiplier: numbe
     // Get the x position relative to the min value
     const xPos = min + rangeDiff - minBoundaryValue;
 
-    return xPos * xMultiplier - 5;
+    return xPos * xMultiplier - 7;
 }
 
 export function computeECP(mappedPotential: number, intercept: number, slope: number) {
@@ -65,7 +65,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [...xLeftPoints, ...xRightPoints],
                 likelihood: [...yLeftPoints, ...yRightPoints],
-                toShowLabel: max - min > 2,
+                toShowLabel: max - min > 3,
                 textPos: [getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
@@ -95,9 +95,10 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const oxidationState = rangeData.oxidationStates[i];
             const min = rangeData.rangeBoundaries[i];
             const max = rangeData.rangeBoundaries[i + 1];
+            console.log(min, max);
 
             const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
-            const rightX = max < data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
+            const rightX = max > data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
 
             const topY = indexY;
             const bottomY = indexY - BAR_HEIGHT;
@@ -107,8 +108,9 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
-                toShowLabel: max - min > 2,
-                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data.minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
+                toShowLabel: rightX - leftX > 25,
+                textPos: [leftX + ((rightX - leftX) / 2) - 7, indexY - BAR_HEIGHT / 2 + 5]
+                // textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data.minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 

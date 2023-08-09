@@ -182,35 +182,6 @@ export const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[
     return finalArr;
 };
 
-export const formatTitle = (elementsArray: string[]) => {
-    const finalArr = [];
-
-    if (elementsArray && elementsArray.length > 0) {
-        elementsArray.forEach((symbol, index) => {
-            const arrayChars = symbol.split('');
-            const numberIndex = arrayChars.findIndex((c) => !isNaN(parseInt(c, 10)));
-            const symbolStr = numberIndex !== -1 ? symbol.substring(0, numberIndex) : symbol;
-            const symbolNum = numberIndex !== -1 ? symbol.substring(numberIndex) : null;
-            debugger;
-            finalArr.push(
-                <div key={`dynamic title - ${index}`}>
-                    {symbolStr}
-                    {symbolNum !== null ? (
-                        <>
-                            <sub>{symbolNum}</sub>&nbsp;
-                        </>
-                    ) : (
-                        <>&nbsp;</>
-                    )}
-                </div>
-            );
-        });
-    } else {
-        finalArr.push(<></>);
-    }
-    return finalArr;
-};
-
 export const parseAPICompositionString = (compositionTitle: string) => {
     const elems = compositionTitle.split('');
     const { symbolsArray, numbersArray } = parseArrayOfChars(elems);
