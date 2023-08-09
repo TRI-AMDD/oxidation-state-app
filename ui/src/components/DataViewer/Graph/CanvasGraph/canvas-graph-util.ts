@@ -95,7 +95,6 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const oxidationState = rangeData.oxidationStates[i];
             const min = rangeData.rangeBoundaries[i];
             const max = rangeData.rangeBoundaries[i + 1];
-            console.log(min, max);
 
             const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
             const rightX = max > data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
@@ -110,7 +109,6 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 likelihood: [bottomY, bottomY, topY, topY],
                 toShowLabel: rightX - leftX > 25,
                 textPos: [leftX + ((rightX - leftX) / 2) - 7, indexY - BAR_HEIGHT / 2 + 5]
-                // textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data.minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 
