@@ -1,16 +1,16 @@
-import { electronicChemicalPotentialRangeAtom, electronicChemicalPotentialValueAtom } from '@/atoms/atoms';
+import { electronicChemicalPotentialRangeAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { ChangeEvent, useEffect } from 'react';
 import useTable from './useTable';
 
 const useGraph = () => {
-    const [ECPValue, setECPValue] = useAtom(electronicChemicalPotentialValueAtom);
+    const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
     const [ECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
     const { selectedRow } = useTable();
 
     useEffect(() => {
         if (selectedRow) {
-            setECPValue(selectedRow?.optimalElecChemPotential);
+            setECPValue(selectedRow?.optimalMappedPotential);
         }
     }, [selectedRow, setECPValue]);
 

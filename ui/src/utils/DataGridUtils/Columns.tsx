@@ -55,9 +55,9 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'likelihoodOptimalElecChemPotential',
-        headerName: 'Likelihood at optimal electronic chemical potential',
+        headerName: 'Likelihood at optimal mapped potential value',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal electronic chemical potential">
+            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal mapped potential value">
                 <strong>
                     L(E<sub>opt</sub>)
                 </strong>
@@ -66,12 +66,12 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderCell(params) {
             let displayValue;
             if (
-                params.row.likelihoodOptimalElecChemPotential < 0.01 &&
-                params.row.likelihoodOptimalElecChemPotential !== 0
+                params.row.likelihoodOptimalMappedPotential < 0.01 &&
+                params.row.likelihoodOptimalMappedPotential !== 0
             ) {
-                displayValue = params.row.likelihoodOptimalElecChemPotential.toExponential(2);
+                displayValue = params.row.likelihoodOptimalMappedPotential.toExponential(2);
             } else {
-                displayValue = params.row.likelihoodOptimalElecChemPotential.toFixed(2);
+                displayValue = params.row.likelihoodOptimalMappedPotential.toFixed(2);
             }
 
             if (params.row.mixedValence) {
@@ -89,7 +89,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             }
         },
         valueGetter(params) {
-            return params.row.likelihoodOptimalElecChemPotential;
+            return params.row.likelihoodOptimalMappedPotential;
         },
         flex: 1,
         maxWidth: 100,
@@ -99,22 +99,22 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'likelihoodCurrentElecChemPotential',
-        headerName: 'Likelihood at current electronic chemical potential',
+        headerName: 'Likelihood at current mapped potential value',
 
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current electronic chemical potential">
+            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current mapped potential value">
                 <strong>L(E)</strong>
             </HeaderTooltip>
         ),
         renderCell(params) {
             let displayValue;
             if (
-                params.row.likelihoodCurrentElecChemPotential < 0.01 &&
-                params.row.likelihoodCurrentElecChemPotential !== 0
+                params.row.likelihoodCurrentMappedPotential < 0.01 &&
+                params.row.likelihoodCurrentMappedPotential !== 0
             ) {
-                displayValue = params.row.likelihoodCurrentElecChemPotential.toExponential(2);
+                displayValue = params.row.likelihoodCurrentMappedPotential.toExponential(2);
             } else {
-                displayValue = params.row.likelihoodCurrentElecChemPotential.toFixed(2);
+                displayValue = params.row.likelihoodCurrentMappedPotential.toFixed(2);
             }
 
             if (params.row.mixedValence) {
@@ -132,7 +132,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             }
         },
         valueGetter(params) {
-            return params.row.likelihoodCurrentElecChemPotential;
+            return params.row.likelihoodCurrentMappedPotential;
         },
         flex: 1,
         maxWidth: 100,
@@ -142,9 +142,9 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'optimalElecChemPotential',
-        headerName: 'Optimal electronic chemical potential',
+        headerName: 'Optimal mapped potential value',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="electronic chemical potential">
+            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="mapped potential value">
                 <strong>
                     E<sub>opt</sub>
                 </strong>
@@ -154,19 +154,19 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             if (params.row.mixedValence) {
                 return (
                     <Typography component={'div'} variant="body2">
-                        {params.row.optimalElecChemPotential.toFixed(2)}
+                        {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
                 );
             } else {
                 return (
                     <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
-                        {params.row.optimalElecChemPotential.toFixed(2)}
+                        {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
                 );
             }
         },
         valueGetter(params) {
-            return params.row.optimalElecChemPotential;
+            return params.row.optimalMappedPotential;
         },
         flex: 1,
         maxWidth: 100,

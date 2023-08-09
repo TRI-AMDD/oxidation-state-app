@@ -6,7 +6,7 @@ import {
     selectedRowAtom,
     oxidationDataAtom,
     electronicChemicalPotentialRangeAtom,
-    electronicChemicalPotentialValueAtom,
+    electronicMappedPotentialValueAtom,
     apiErrorAtom
 } from '@/atoms/atoms';
 import { AxiosResponse } from 'axios';
@@ -22,7 +22,7 @@ const useTable = () => {
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
     const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);
     const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
-    const [ECPValue, setECPValue] = useAtom(electronicChemicalPotentialValueAtom);
+    const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
     const [, setApiError] = useAtom(apiErrorAtom);
 
     const grabOxidationStates = (
@@ -49,7 +49,7 @@ const useTable = () => {
 
                 setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
                 if (response.data.tableData.tableRows.length > 0) {
-                    setECPValue(response.data.tableData.tableRows[0].optimalChemicalPotential);
+                    setECPValue(response.data.tableData.tableRows[0].optimalMappedPotential);
                 } else {
                     setECPValue(1);
                 }
@@ -74,7 +74,7 @@ const useTable = () => {
 
     const parsedTableData = useMemo(() => {
         if (oxidationData) {
-            const parseData = parseAPITableData(oxidationData.tableData.tableRows, ECPValue);
+            const parseData = parseAPITableData(oxidationData, ECPValue);
 
             if (!selectedRow) {
                 setSelectedRow(parseData[0]);
