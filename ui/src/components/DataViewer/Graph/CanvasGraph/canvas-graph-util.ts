@@ -7,20 +7,29 @@ const GRAPH_POINTS = 250;
 export const BAR_WIDTH = 350;
 export const BAR_HEIGHT = 50;
 
-function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, data: OxidationStatesAPI) {
+function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, minBoundaryValue: number) {
     // Get the middle of the boundary difference
     const rangeDiff = (max - min) / 2;
 
     // Get the x position relative to the min value
-    const xPos = min + rangeDiff - data.minBoundaryValue;
+    const xPos = min + rangeDiff - minBoundaryValue;
 
-    return xPos * xMultiplier - 5;
+    return xPos * xMultiplier - 7;
+}
+
+export function computeECP(mappedPotential: number, intercept: number, slope: number) {
+    return (mappedPotential - intercept) / slope;
 }
 
 export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
-    const diff = data.maxBoundaryValue - data.minBoundaryValue;
-    const xPoints = Array.from({ length: GRAPH_POINTS }, (_v, k) => (k / GRAPH_POINTS) * diff + data.minBoundaryValue);
+    const intercept = data.potentialMapper.intercept;
+    const slope = data.potentialMapper.slope;
+    const maxBoundaryValue = computeECP(data.maxBoundaryValue, intercept, slope);
+    const minBoundaryValue = computeECP(data.minBoundaryValue, intercept, slope);
+
+    const diff = maxBoundaryValue - minBoundaryValue;
+    const xPoints = Array.from({ length: GRAPH_POINTS }, (_v, k) => (k / GRAPH_POINTS) * diff + minBoundaryValue);
 
     for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
         const oxidationStates = [];
@@ -31,8 +40,8 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
             const oxidationState = rangeData.oxidationStates[i];
-            const min = rangeData.rangeBoundaries[i];
-            const max = rangeData.rangeBoundaries[i + 1];
+            const min = computeECP(rangeData.rangeBoundaries[i], intercept, slope);
+            const max = computeECP(rangeData.rangeBoundaries[i + 1], intercept, slope);
 
             const yLeftPoints: number[] = [];
             const xLeftPoints: number[] = [];
@@ -41,7 +50,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
             // points for left boundary
             for (const point of xPoints) {
                 yLeftPoints.push(indexY - (1 / (1 + Math.exp(point - min))) * BAR_HEIGHT);
-                xLeftPoints.push((point - data.minBoundaryValue) * xMultiplier);
+                xLeftPoints.push((point - minBoundaryValue) * xMultiplier);
             }
 
             // points for right boundary
@@ -56,8 +65,8 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [...xLeftPoints, ...xRightPoints],
                 likelihood: [...yLeftPoints, ...yRightPoints],
-                toShowLabel: max - min > 2,
-                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data), indexY - BAR_HEIGHT / 2 + 5]
+                toShowLabel: max - min > 3,
+                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 
@@ -88,7 +97,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const max = rangeData.rangeBoundaries[i + 1];
 
             const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
-            const rightX = max < data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
+            const rightX = max > data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
 
             const topY = indexY;
             const bottomY = indexY - BAR_HEIGHT;
@@ -98,8 +107,8 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 oxidationState,
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
-                toShowLabel: max - min > 2,
-                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, data), indexY - BAR_HEIGHT / 2 + 5]
+                toShowLabel: rightX - leftX > 25,
+                textPos: [leftX + ((rightX - leftX) / 2) - 7, indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 

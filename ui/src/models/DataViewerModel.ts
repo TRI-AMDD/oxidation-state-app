@@ -9,9 +9,9 @@ export enum LoadingState {
 export interface OxidationStatesTableItem {
     id: number;
     oxidationState: JSX.Element[];
-    likelihoodCurrentElecChemPotential: number;
-    likelihoodOptimalElecChemPotential: number;
-    optimalElecChemPotential: number;
+    likelihoodCurrentMappedPotential: number;
+    likelihoodOptimalMappedPotential: number;
+    optimalMappedPotential: number;
     globalInstabilityIndex: number | string;
     oxidationStateString: string;
     cifString?: string | null;
@@ -19,11 +19,11 @@ export interface OxidationStatesTableItem {
 }
 
 export interface TableRowAPI {
-    counts: number[];
-    optimalLikelihood: number;
+    counts: number[];    
     symbols: string[];
     oxidationStates: number[];
-    optimalChemicalPotential: number;
+    optimalLikelihood: number;
+    optimalMappedPotential: number;
     globalInstabilityIndex: number | string;
     cifstring?: string | null;
     mixedValence: boolean;
@@ -45,6 +45,10 @@ export interface OxidationStatesAPI {
     maxBoundaryValue: number;
     minBoundaryValue: number;
     oxidationStateRangeData: OxidationRangeItem[];
+    potentialMapper: {
+        intercept: number;
+        slope: number;
+    }
 }
 
 interface ErrorMessage {

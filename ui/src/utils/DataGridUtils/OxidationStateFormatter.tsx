@@ -1,5 +1,6 @@
-import { OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
+import { OxidationStatesAPI, OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
+import { computeECP } from '@/components/DataViewer/Graph/CanvasGraph/canvas-graph-util';
 
 const formatOxidationWithChargeSign = (currentOxidation: number) => {
     if (currentOxidation > 0) {
@@ -69,11 +70,15 @@ export const formatOxidationState = ({ counts, oxidationStates, symbols }: Table
     return { oxidationState: finalArr, oxidationStateString: finalString };
 };
 
-export const getCurrentLikelihood = (tableRow: TableRowAPI, ECPValue: number) => {
+export const getCurrentLikelihood = (tableRow: TableRowAPI, MPValue: number, intercept: number, slope: number) => {
     let currentLikelihood = -1;
     for (const boundaryPair of tableRow.boundaryPairs) {
-        const leftBoundary = 1 / (1 + Math.exp(boundaryPair[0] - ECPValue));
-        const rightBoundary = 1 / (1 + Math.exp(ECPValue - boundaryPair[1]));
+        const ecpBoundaryLeft = boundaryPair[0];
+        const ecpBoundaryRight = boundaryPair[1];
+        const ECPValue = computeECP(MPValue, intercept, slope);
+
+        const leftBoundary = 1 / (1 + Math.exp(ecpBoundaryLeft - ECPValue));
+        const rightBoundary = 1 / (1 + Math.exp(ECPValue - ecpBoundaryRight));
         const minValue = Math.min(leftBoundary, rightBoundary);
         if (currentLikelihood === -1) {
             currentLikelihood = minValue;
@@ -85,17 +90,19 @@ export const getCurrentLikelihood = (tableRow: TableRowAPI, ECPValue: number) =>
     return currentLikelihood;
 };
 
-export const parseAPITableData = (data: TableRowAPI[], ECPValue: number) => {
+export const parseAPITableData = (data: OxidationStatesAPI, ECPValue: number) => {
     const returnObject: OxidationStatesTableItem[] = [];
 
-    data.forEach((item, index) => {
+    const tableItems = data.tableData.tableRows;
+    const { intercept, slope } = data.potentialMapper;
+    tableItems.forEach((item, index) => {
         const { oxidationState, oxidationStateString } = formatOxidationState(item);
 
         returnObject.push({
             oxidationState,
-            likelihoodCurrentElecChemPotential: getCurrentLikelihood(item, ECPValue),
-            likelihoodOptimalElecChemPotential: item.optimalLikelihood,
-            optimalElecChemPotential: item.optimalChemicalPotential,
+            likelihoodCurrentMappedPotential: getCurrentLikelihood(item, ECPValue, intercept, slope),
+            likelihoodOptimalMappedPotential: item.optimalLikelihood,
+            optimalMappedPotential: item.optimalMappedPotential,
             globalInstabilityIndex: item.globalInstabilityIndex,
             id: index,
             oxidationStateString,
@@ -162,35 +169,6 @@ export const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[
                     {numberForSymbol !== 0 ? (
                         <>
                             <sub>{numberForSymbol}</sub>&nbsp;
-                        </>
-                    ) : (
-                        <>&nbsp;</>
-                    )}
-                </div>
-            );
-        });
-    } else {
-        finalArr.push(<></>);
-    }
-    return finalArr;
-};
-
-export const formatTitle = (elementsArray: string[]) => {
-    const finalArr = [];
-
-    if (elementsArray && elementsArray.length > 0) {
-        elementsArray.forEach((symbol, index) => {
-            const arrayChars = symbol.split('');
-            const numberIndex = arrayChars.findIndex((c) => !isNaN(parseInt(c, 10)));
-            const symbolStr = numberIndex !== -1 ? symbol.substring(0, numberIndex) : symbol;
-            const symbolNum = numberIndex !== -1 ? symbol.substring(numberIndex) : null;
-            debugger;
-            finalArr.push(
-                <div key={`dynamic title - ${index}`}>
-                    {symbolStr}
-                    {symbolNum !== null ? (
-                        <>
-                            <sub>{symbolNum}</sub>&nbsp;
                         </>
                     ) : (
                         <>&nbsp;</>
