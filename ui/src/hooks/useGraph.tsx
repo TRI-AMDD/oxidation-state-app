@@ -1,6 +1,6 @@
 import { electronicChemicalPotentialRangeAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
-import { ChangeEvent, useEffect } from 'react';
+import { useEffect } from 'react';
 import useTable from './useTable';
 
 const useGraph = () => {
@@ -16,7 +16,6 @@ const useGraph = () => {
 
     const handleECPInputChange = (value: number) => {
         setECPValue(value);
-        
     };
 
     const handleSliderChange = (newECPValue: number) => {
