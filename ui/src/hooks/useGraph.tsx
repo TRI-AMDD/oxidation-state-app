@@ -14,10 +14,9 @@ const useGraph = () => {
         }
     }, [selectedRow, setECPValue]);
 
-    const handleECPInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (!Number.isNaN(Number.parseFloat(event.target.value))) {
-            setECPValue(Number.parseFloat(event.target.value));
-        }
+    const handleECPInputChange = (value: number) => {
+        setECPValue(value);
+        
     };
 
     const handleSliderChange = (newECPValue: number) => {
