@@ -1,16 +1,32 @@
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import styles from './FAQ.module.css';
 import { Accordion, AccordionDetails, AccordionSummary, Breadcrumbs, Button, Link, Typography } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FAQs } from '@/utils/FAQUtil/FAQText';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+
+const URL_FAQ_STRING_MATCH = 'faq-';
 
 const FAQ = () => {
     const [expanded, setExpanded] = useState<string[]>([]);
     const [expandAll, setExpandAll] = useState<boolean>(false);
 
     const allAccordians = FAQs.map((_value, index) => `panel${index}`);
+
+    useEffect(() => {
+        const currentUrl = window.location.href;
+        const lastIndexOf = currentUrl.lastIndexOf(URL_FAQ_STRING_MATCH);
+        const indexOfNumber = lastIndexOf + URL_FAQ_STRING_MATCH.length;
+        if (indexOfNumber !== -1) {
+            const panelNumberString = currentUrl.slice(indexOfNumber);
+            const panelNumber = Number.parseInt(panelNumberString);
+            if (!Number.isNaN(panelNumber) && panelNumber >= 0 && panelNumber < FAQs.length) {
+                document.getElementById(`faq-${panelNumber}`)?.scrollIntoView();
+                setExpanded([`panel${panelNumber}`]);
+            }
+        }
+    }, []);
 
     const handleAccordianChange = (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
         if (isExpanded && !expanded.includes(panel)) {
@@ -66,6 +82,8 @@ const FAQ = () => {
                                 <Accordion
                                     expanded={expanded.includes(panelName)}
                                     onChange={handleAccordianChange(panelName)}
+                                    id={`faq-${index}`}
+                                    key={`faq-${index}`}
                                 >
                                     <AccordionSummary
                                         expandIcon={<ExpandMoreIcon />}

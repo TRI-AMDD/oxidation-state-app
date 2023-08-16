@@ -26,7 +26,7 @@ const Footer = () => {
                 <Link component={RouterLink} to="/" variant="whiteText">
                     Data
                 </Link>
-                <Link component={RouterLink} to="/" variant="whiteText">
+                <Link component={RouterLink} to="/faq/#faq-10" variant="whiteText">
                     Download
                 </Link>
                 <Link component={RouterLink} to="/" variant="whiteText">
