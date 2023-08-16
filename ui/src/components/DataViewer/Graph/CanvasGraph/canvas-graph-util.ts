@@ -1,4 +1,4 @@
-import { ColorPalette } from '@/constants/colors';
+import { ColorPalette, TextColor } from '@/constants/colors';
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { PlotData } from '@/models/PlotDataModel';
 import { formatOxidationState } from '@/utils/GraphUtil';
@@ -66,7 +66,10 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [...xLeftPoints, ...xRightPoints],
                 likelihood: [...yLeftPoints, ...yRightPoints],
                 toShowLabel: max - min > 3,
-                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue), indexY - BAR_HEIGHT / 2 + 5]
+                textPos: [
+                    getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue),
+                    indexY - BAR_HEIGHT / 2 + 5
+                ]
             });
         }
 
@@ -108,7 +111,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
                 toShowLabel: rightX - leftX > 25,
-                textPos: [leftX + ((rightX - leftX) / 2) - 7, indexY - BAR_HEIGHT / 2 + 5]
+                textPos: [leftX + (rightX - leftX) / 2 - 7, indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 
@@ -147,10 +150,10 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement,
 
             if (showLabels) {
                 ctx.font = '16px sans-serif';
-                ctx.fillStyle = '#000000';
                 for (const specie of items) {
                     for (const item of specie.oxidationStates) {
                         if (item.toShowLabel) {
+                            ctx.fillStyle = TextColor[item.oxidationState];
                             ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
                         }
                     }
