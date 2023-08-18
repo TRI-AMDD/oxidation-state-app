@@ -17,19 +17,37 @@ const Footer = () => {
                 >
                     Legal
                 </Link>
-                <Link component={RouterLink} to="/" variant="whiteText">
+                <Link component={RouterLink} to="/faq" rel="noopener noreferrer" target="_blank" variant="whiteText">
                     FAQ
                 </Link>
                 <Link component={RouterLink} to="/about-us" variant="whiteText">
                     About Us
                 </Link>
-                <Link component={RouterLink} to="/" variant="whiteText">
+                <Link
+                    component={RouterLink}
+                    to="/faq/#faq-11"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="whiteText"
+                >
                     Data
                 </Link>
-                <Link component={RouterLink} to="/faq/#faq-10" variant="whiteText">
+                <Link
+                    component={RouterLink}
+                    to="/faq/#faq-10"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="whiteText"
+                >
                     Download
                 </Link>
-                <Link component={RouterLink} to="/" variant="whiteText">
+                <Link
+                    component={RouterLink}
+                    to="/faq/#faq-0"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    variant="whiteText"
+                >
                     Manuscript
                 </Link>
             </Typography>

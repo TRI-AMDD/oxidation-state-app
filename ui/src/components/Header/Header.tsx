@@ -37,7 +37,7 @@ export default function Header() {
                 <div className={styles.headerLinkContainer}>
                     <Link
                         component={RouterLink}
-                        to="/"
+                        to="/faq/#faq-0"
                         rel="noopener noreferrer"
                         target="_blank"
                         underline="hover"
