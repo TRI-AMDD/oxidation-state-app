@@ -4,13 +4,29 @@ import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
 import './MuiClasses.css';
 import useTable from '@/hooks/useTable';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Table = () => {
     const { tableData, handleTableRowClick } = useTable();
     const [selection, setSelection] = useState<GridRowId[]>([0]);
 
     const apiRef = useGridApiRef();
+    useEffect(() => {
+        apiRef.current.setColumnWidth('oxidationState', window.outerWidth - 985);
+
+        const handleResizedWindow = () => {
+            setTimeout(() => {
+                apiRef.current.setColumnWidth('oxidationState', window.outerWidth - 985);
+            }, 500);
+        };
+        if (apiRef) {
+            window.addEventListener('resize', handleResizedWindow);
+        }
+
+        return () => {
+            window.removeEventListener('resize', handleResizedWindow);
+        };
+    }, []);
 
     return (
         <div className={styles.container}>
