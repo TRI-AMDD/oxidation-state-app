@@ -45,7 +45,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.oxidationStateString;
         },
-        filterable: false
+        filterable: false,
+        flex: 3
     },
     {
         field: 'oxidationStateString',

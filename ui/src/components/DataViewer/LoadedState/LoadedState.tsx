@@ -19,12 +19,8 @@ const LoadedState = () => {
                 *Note: Rows without mixed valence are in <strong>bold</strong>.
             </Typography>
             <div className={styles.graphAndTableContainer}>
-                <div className={styles.tableContainer}>
-                    <Table />
-                </div>
-                <div className={styles.graphContainer}>
-                    <Graph />
-                </div>
+                <Table />
+                <Graph />
             </div>
         </div>
     );

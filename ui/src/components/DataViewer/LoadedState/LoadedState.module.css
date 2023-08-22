@@ -1,16 +1,14 @@
 .graphAndTableContainer {
-    display: flex;
-    flex-direction: row;
     margin-top: 10px;
+    display: grid;
+    grid-template-columns: minmax(450px, 720px) 450px;
+    min-width: 960px;
+    justify-content: center;
 }
 
 .alertMessage {
     display: flex;
     flex-direction: row;
-}
-
-.tableContainer {
-    flex-grow: 1;
 }
 
 .noteText {
