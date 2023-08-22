@@ -22,7 +22,7 @@ const FAQ = () => {
             const panelNumberString = currentUrl.slice(indexOfNumber);
             const panelNumber = Number.parseInt(panelNumberString);
             if (!Number.isNaN(panelNumber) && panelNumber >= 0 && panelNumber < FAQs.length) {
-                document.getElementById(`faq-${panelNumber}`)?.scrollIntoView();
+                if (panelNumber > 5) document.getElementById(`faq-${panelNumber}`)?.scrollIntoView();
                 setExpanded([`panel${panelNumber}`]);
             }
         }

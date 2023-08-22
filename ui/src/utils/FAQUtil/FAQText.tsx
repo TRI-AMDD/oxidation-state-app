@@ -10,7 +10,7 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'For what species can oxidation states be calculated?',
-        answer: 'Oxidation states can be calculated for all elements other than PLACEHOLDER, as well as the following polyatomic species: AsO<sub>4</sub>, BO<sub>3</sub>, C<sub>2</sub>O<sub>4</sub>, CIO<sub>4</sub>, CN, CO, CrO<sub>4</sub>, GeO<sub>4</sub>, MoO<sub>4</sub>, NO<sub>2</sub>, NO<sub>3</sub>, P<sub>2</sub>O<sub>7</sub>, PO<sub>3</sub>, PO<sub>4</sub>, PS<sub>4</sub>, SeO<sub>3</sub>, SeO<sub>4</sub>, SiO<sub>4</sub>, SO<sub>2</sub>, SO<sub>3</sub>, SO<sub>4</sub>, and WO<sub>4</sub>. Representative structures of these polyatomic ions can be downloaded here.'
+        answer: `Oxidation states can be calculated for all elements up to atomic number 96 other than He, Ar, Kr, Pm, Po, At, Rn, Fr, Ra, Ac, and Pa. Oxidation states can also be calculated for the following polyatomic species: AsO<sub>4</sub>, BO<sub>3</sub>, C<sub>2</sub>O<sub>4</sub>, CIO<sub>4</sub>, CN, CO, CrO<sub>4</sub>, GeO<sub>4</sub>, MoO<sub>4</sub>, NO<sub>2</sub>, NO<sub>3</sub>, P<sub>2</sub>O<sub>7</sub>, PO<sub>3</sub>, PO<sub>4</sub>, PS<sub>4</sub>, SeO<sub>3</sub>, SeO<sub>4</sub>, SiO<sub>4</sub>, SO<sub>2</sub>, SO<sub>3</sub>, SO<sub>4</sub>, and WO<sub>4</sub>. Representative structures of these polyatomic ions in xyz format can be downloaded <a rel='noopener noreferrer' target='_blank' href='https://drive.google.com/file/d/1r4btWx2-4LwJXVd64kuaWb5yr1oIJ8AI/view?usp=drive_link'>here</a>.`
     },
     {
         question: `Some possible combinations of oxidation states don't appear in the table. Why?`,
@@ -18,11 +18,11 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'Some oxidation states appear in the table, but not in the colored bars on the right. Why?',
-        answer: 'The fitted potential range for some oxidation states is too narrow to see in the plots on the right.'
+        answer: 'The mapped potential range for some oxidation states is too narrow to see in the plots on the right.'
     },
     {
-        question: 'What are the units of the fitted potential (E)?',
-        answer: 'The oxidation state analyzer is trained from a data set of labeled oxidation states of known materials, which contains no information about energies or electronic chemical potentials. To approximately map the boundaries for the oxidation state ranges to a physical scale, we have used linear least-squares regression to fit the boundary values to data from the electrochemical series.  (More details of this process are available in our manuscript). We use this fit to re-scale the boundary values to a “fitted potential” with units that approximate volts. All values are given relative to that of the boundary between H<sup>1-</sup> and H<sup>1+</sup>.'
+        question: 'What are the units of the mapped potential (E)?',
+        answer: 'The oxidation state analyzer is trained from a data set of labeled oxidation states of known materials, which contains no information about energies or electronic chemical potentials. To approximately map the boundaries for the oxidation state ranges to a physical scale, we have compared the calculated boundary values to solution-phase data from the electrochemical series.  (More details of this process are available in our manuscript). We use this fit to express the boundary values in terms of a mapped potential” with units that approximate volts.'
     },
     {
         question: 'What is the likelihood score?',
@@ -50,6 +50,6 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'Can I download all of the oxidation state ranges?',
-        answer: 'The oxidation state ranges for all available species can be downloaded in JSON format here. The units are the same as those used on this web site.'
+        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://drive.google.com/file/d/1H7QbZsTD101VHunfPucHzaYAeRdjl4hs/view?usp=drive_link'>here</a>. The units are the same as those used on this web site.`
     }
 ];
