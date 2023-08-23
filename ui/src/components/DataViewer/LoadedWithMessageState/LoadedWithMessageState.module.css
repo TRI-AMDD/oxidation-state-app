@@ -1,27 +1,21 @@
-.graphAndTableContainer {
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-}
-
 .alertMessage {
     display: flex;
     flex-direction: column;
 }
-
 .dynamicTitle {
     display: flex;
     flex-direction: row;
 }
-
-.tableContainer {
-    flex-grow: 1;
-}
-
 .noteText {
     margin-top: 24px !important;
 }
-
 .ul {
     padding-left: 25px;
+}
+.graphAndTableContainer {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: minmax(450px, 720px) 450px;
+    min-width: 960px;
+    justify-content: center;
 }

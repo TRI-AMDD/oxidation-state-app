@@ -39,10 +39,13 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
-            const oxidationState = rangeData.oxidationStates[i];
-            const min = computeECP(rangeData.rangeBoundaries[i], intercept, slope);
-            const max = computeECP(rangeData.rangeBoundaries[i + 1], intercept, slope);
+            // cap min and max using threshold boundary values
+            let min = computeECP(rangeData.rangeBoundaries[i], intercept, slope);
+            min = min - minBoundaryValue < 4.5 ? minBoundaryValue + 4.5 : min;
+            let max = computeECP(rangeData.rangeBoundaries[i + 1], intercept, slope);
+            max = maxBoundaryValue - max < 4.5 ? maxBoundaryValue - 4.5 : max;
 
+            const oxidationState = rangeData.oxidationStates[i];
             const yLeftPoints: number[] = [];
             const xLeftPoints: number[] = [];
             const yRightPoints: number[] = [];

@@ -12,10 +12,11 @@ const LoadedWithMessageState = () => {
     const message = useMemo(() => {
         if (typeof oxidationData !== 'undefined' && oxidationData && oxidationData.messages.length > 0) {
             return oxidationData?.messages[0].messageString;
-        } else {
-            return '';
         }
+
+        return '';
     }, [oxidationData]);
+
     return (
         <div>
             <Alert severity="info">
@@ -25,21 +26,19 @@ const LoadedWithMessageState = () => {
                         Oxidation state analysis for&nbsp;
                         {dynamicCompositionTitle.formattedTitle}
                     </div>
-                    <ul className={styles.ul}>
-                        <li>{message}</li>
-                    </ul>
+                    {message && (
+                        <ul className={styles.ul}>
+                            <li>{message}</li>
+                        </ul>
+                    )}
                 </div>
             </Alert>
             <Typography component={'div'} variant="caption" className={styles.noteText}>
                 *Note: Rows without mixed valence are in <strong>bold</strong>.
             </Typography>
             <div className={styles.graphAndTableContainer}>
-                <div className={styles.tableContainer}>
-                    <Table />
-                </div>
-                <div className={styles.graphContainer}>
-                    <Graph />
-                </div>
+                <Table />
+                <Graph />
             </div>
         </div>
     );
