@@ -1,21 +1,18 @@
-import { DataGrid, GridRowId, useGridApiRef } from '@mui/x-data-grid';
+import { DataGrid, GridRowId } from '@mui/x-data-grid';
+import { useState } from 'react';
 import { columns } from '@/utils/DataGridUtils/Columns';
 import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
 import './MuiClasses.css';
 import useTable from '@/hooks/useTable';
-import { useState } from 'react';
 
 const Table = () => {
     const { tableData, handleTableRowClick } = useTable();
     const [selection, setSelection] = useState<GridRowId[]>([0]);
 
-    const apiRef = useGridApiRef();
-
     return (
         <div className={styles.container}>
             <DataGrid
-                apiRef={apiRef}
                 hideFooter={true}
                 getRowHeight={() => 'auto'}
                 columns={columns}
