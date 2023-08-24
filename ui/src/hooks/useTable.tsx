@@ -40,8 +40,6 @@ const useTable = () => {
                 setTimeout(() => {
                     if (response.data.messages.length > 0 && response.data.messages[0].isErrorMessage) {
                         setDataViewerState(LoadingState.Error);
-                    } else if (response.data.messages.length > 0) {
-                        setDataViewerState(LoadingState.LoadedWithMessage);
                     } else {
                         setDataViewerState(LoadingState.Loaded);
                     }

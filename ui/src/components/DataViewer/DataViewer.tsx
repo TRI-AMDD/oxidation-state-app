@@ -3,7 +3,6 @@ import styles from './DataViewer.module.css';
 import InitialState from './InitialState/InitialState';
 import { useAtom } from 'jotai';
 import { LoadingState } from '@/models/DataViewerModel';
-import LoadedState from './LoadedState/LoadedState';
 import LoadedWithMessageState from './LoadedWithMessageState/LoadedWithMessageState';
 import ErrorState from './ErrorState/ErrorState';
 
@@ -15,8 +14,7 @@ const DataViewer = () => {
             {(dataViewerState === LoadingState.Initial || dataViewerState === LoadingState.Loading) && (
                 <InitialState dataState={dataViewerState} />
             )}
-            {dataViewerState === LoadingState.Loaded && <LoadedState />}
-            {dataViewerState === LoadingState.LoadedWithMessage && <LoadedWithMessageState />}
+            {dataViewerState === LoadingState.Loaded && <LoadedWithMessageState />}
             {dataViewerState === LoadingState.Error && <ErrorState />}
         </div>
     );

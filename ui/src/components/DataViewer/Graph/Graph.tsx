@@ -30,7 +30,6 @@ const Graph = () => {
                         <GraphHeaders />
                         <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
                     </div>
-
                     <div className={styles.graphContainer}>
                         <div className={styles.species}>
                             {oxidationData.oxidationStateRangeData.map((item, index) => (
