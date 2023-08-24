@@ -12,7 +12,7 @@ interface ExportGraphButtonProps {
 }
 
 function fileSaveAs(uri: string, filename: string) {
-    var link = document.createElement('a');
+    const link = document.createElement('a');
 
     if (typeof link.download === 'string') {
         link.href = uri;
@@ -38,9 +38,12 @@ const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
     const handleExportButtonClick = () => {
         const exportDiv = document.getElementById('graph-export');
         if (exportDiv) {
-            html2canvas(exportDiv).then((canvas) => {
-                fileSaveAs(canvas.toDataURL(), 'oxidation-state-graph.png');
-            });
+            html2canvas(exportDiv).then(
+                (canvas) => {
+                    fileSaveAs(canvas.toDataURL(), 'oxidation-state-graph.png');
+                },
+                (e) => console.error(e)
+            );
         }
     };
 

@@ -3,7 +3,7 @@ import { GraphType } from '@/models/PlotDataModel';
 import { ReactComponent as BarIcon } from '@/Assets/Images/barIcon.svg';
 import { ReactComponent as CurveIcon } from '@/Assets/Images/curveIcon.svg';
 import styles from './GraphTypeToggle.module.css';
-import { exportGraphSettingsAtom } from '@/atoms/atoms';
+import { exportGraphModalOpenAtom, exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 interface GraphTypeToggleProps {
     graphType: GraphType;
@@ -12,6 +12,7 @@ interface GraphTypeToggleProps {
 
 const GraphTypeToggle = ({ graphType, setGraphType }: GraphTypeToggleProps) => {
     const [exportGraphSettings, setExportGraphSettings] = useAtom(exportGraphSettingsAtom);
+    const [isExportModalOpen] = useAtom(exportGraphModalOpenAtom);
     const handleToggleChange = (_event: React.MouseEvent<HTMLElement>, newValue: GraphType) => {
         if (newValue !== null) {
             setGraphType(newValue);
@@ -23,14 +24,23 @@ const GraphTypeToggle = ({ graphType, setGraphType }: GraphTypeToggleProps) => {
         }
     };
     return (
-        <ToggleButtonGroup value={graphType} exclusive onChange={handleToggleChange} className={styles.container}>
-            <ToggleButton value={GraphType.Wavy} className={styles.toggleButton}>
-                <CurveIcon />
-            </ToggleButton>
-            <ToggleButton value={GraphType.Bar} className={styles.toggleButton}>
-                <BarIcon />
-            </ToggleButton>
-        </ToggleButtonGroup>
+        <>
+            {!isExportModalOpen && (
+                <ToggleButtonGroup
+                    value={graphType}
+                    exclusive
+                    onChange={handleToggleChange}
+                    className={styles.container}
+                >
+                    <ToggleButton value={GraphType.Wavy} className={styles.toggleButton}>
+                        <CurveIcon />
+                    </ToggleButton>
+                    <ToggleButton value={GraphType.Bar} className={styles.toggleButton}>
+                        <BarIcon />
+                    </ToggleButton>
+                </ToggleButtonGroup>
+            )}
+        </>
     );
 };
 
