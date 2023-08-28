@@ -36,7 +36,8 @@ const Slider = ({ graphComponent, ecpRange, ECPInputValue, handleSliderChange }:
     }, [ECPInputValue, ecpRange]);
 
     const handlePositionChange = (newPosition: number) => {
-        if (position !== newPosition) {
+        // do not trigger mpv changes on very slight slider position changes
+        if (Math.abs(position - newPosition) > 0.0005) {
             handleSliderChange(getValueFromPosition(newPosition, ecpRange));
         }
     };

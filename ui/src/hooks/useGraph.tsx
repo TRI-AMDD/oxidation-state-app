@@ -1,11 +1,13 @@
-import { electronicChemicalPotentialRangeAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
+import { boundaryAtom, electronicChemicalPotentialRangeAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 import useTable from './useTable';
+import { Boundary } from '@/models/DataViewerModel';
 
 const useGraph = () => {
     const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
     const [ECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
+    const [, setBoundary] = useAtom(boundaryAtom);
     const { selectedRow } = useTable();
 
     useEffect(() => {
@@ -14,14 +16,17 @@ const useGraph = () => {
         }
     }, [selectedRow, setECPValue]);
 
-    const handleECPInputChange = (value: number) => {
-        setECPValue(value);
+    const handleMPVChange = (newECPValue: number) => {
+        setECPValue(newECPValue);        
+        setBoundary(null);
     };
 
-    const handleSliderChange = (newECPValue: number) => {
-        setECPValue(newECPValue);
+    const handleNudgeChange = (boundary: Boundary) => {
+        setECPValue(boundary.value);
+        setBoundary(boundary);
     };
-    return { ECPValue, handleECPInputChange, ECPRange, handleSliderChange };
+
+    return { ECPValue, handleNudgeChange, ECPRange, handleMPVChange };
 };
 
 export default useGraph;
