@@ -45,7 +45,7 @@ const Graph = () => {
                                 ECPInputValue={ECPValue}
                                 handleSliderChange={handleMPVChange}
                             />
-                            <BoundaryDot />
+                            <BoundaryDot value={ECPValue} ecpRange={ECPRange} />
                         </div>
                     </div>
                     <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
