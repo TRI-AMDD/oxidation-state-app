@@ -6,8 +6,13 @@ import GetStarted from '@/components/GetStarted/GetStarted';
 import InputSection from '@/components/InputSection/InputSection';
 import DataViewer from '@/components/DataViewer/DataViewer';
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
+import { useEffect } from 'react';
 
 function Home() {
+    useEffect(() => {
+        document.title = 'Oxidation State Analyzer';
+    }, []);
+
     return (
         <PageWrapper>
             <Grid

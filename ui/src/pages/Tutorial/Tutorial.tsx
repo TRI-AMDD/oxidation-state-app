@@ -1,5 +1,6 @@
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { useEffect } from 'react';
 import styles from './Tutorial.module.css';
 import { ReactComponent as Tutorial1Image } from '@/Assets/Images/tutorial1Image.svg';
 import Tutorial2Image from '@/Assets/Images/tutorial2Image.png';
@@ -34,6 +35,10 @@ import {
 } from './constants';
 
 const Tutorial = () => {
+    useEffect(() => {
+        document.title = 'Oxidation State Analyzer - Tutorial';
+    }, []);
+
     return (
         <PageWrapper>
             <Breadcrumbs className={styles.breadcrumbs}>

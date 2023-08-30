@@ -2,8 +2,13 @@ import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import styles from './AboutUs.module.css';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const AboutUs = () => {
+    useEffect(() => {
+        document.title = 'Oxidation State Analyzer - About Us';
+    }, []);
+
     return (
         <PageWrapper>
             <Breadcrumbs className={styles.breadcrumbs}>
