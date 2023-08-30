@@ -1,6 +1,6 @@
 import { IconButton, ButtonGroup, Tooltip } from '@mui/material';
 import styles from '../GraphTypeToggle/GraphTypeToggle.module.css';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { Boundary, OxidationStatesAPI } from '@/models/DataViewerModel';
 import { useMemo } from 'react';
 import { getBoundaries } from '@/utils/GraphUtil';
 import { ReactComponent as RightToggle } from '@/Assets/Images/rightToggle.svg';
@@ -9,7 +9,7 @@ import { useAtom } from 'jotai';
 import { exportGraphModalOpenAtom } from '@/atoms/atoms';
 
 interface Props {
-    onChange: (value: number) => void;
+    onChange: (value: Boundary) => void;
     value: number;
     data: OxidationStatesAPI;
 }
@@ -20,7 +20,7 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
 
     const handlePreviousNudge = () => {
         for (let i = boundaries.length - 1; i >= 0; i--) {
-            if (value > boundaries[i]) {
+            if (value > boundaries[i].value) {
                 onChange(boundaries[i]);
                 return;
             }
@@ -29,7 +29,7 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
 
     const handleNextNudge = () => {
         for (let i = 0; i < boundaries.length; i++) {
-            if (value < boundaries[i]) {
+            if (value < boundaries[i].value) {
                 onChange(boundaries[i]);
                 return;
             }

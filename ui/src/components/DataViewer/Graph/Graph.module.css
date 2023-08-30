@@ -1,11 +1,12 @@
 .container {
     width: 450px;
-    padding-left: 12px;
+    padding-left: 12px;    
 }
 
 .canvasContainer {
     width: 350px;
     margin-bottom: 16px;
+    position: relative;
 }
 
 .graphContainer {

@@ -55,3 +55,9 @@ interface ErrorMessage {
     isErrorMessage: boolean;
     messageString: string;
 }
+
+export interface Boundary {
+    ionIndex: number;
+    oxidationState: string;
+    value: number;
+}

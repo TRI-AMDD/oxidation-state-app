@@ -1,4 +1,4 @@
-import { LoadingState, OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
+import { Boundary, LoadingState, OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
 import { atom } from 'jotai';
 import { ExportGraphSettings, InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
 
@@ -33,3 +33,5 @@ export const apiErrorAtom = atom<boolean>(false);
 export const exportGraphSettingsAtom = atom<ExportGraphSettings>(InitalExportGraphSettingsState);
 
 export const exportGraphModalOpenAtom = atom<boolean>(false);
+
+export const boundaryAtom = atom<Boundary | null>(null);

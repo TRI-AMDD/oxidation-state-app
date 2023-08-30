@@ -1,8 +1,8 @@
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { Boundary, OxidationStatesAPI } from '@/models/DataViewerModel';
 import { toFixedNumber } from './GraphUtils/BoundariesUtil';
 
-function compareNumbers(a: number, b: number) {
-    return a - b;
+function compareBoundaries(a: Boundary, b: Boundary) {
+    return a.value - b.value;
 }
 
 export function formatOxidationState(state: number) {
@@ -28,13 +28,18 @@ export function getValueFromPosition(position: number, ecpRange: [number, number
 }
 
 export function getBoundaries(data: OxidationStatesAPI) {
-    const numArray: number[] = [];
-    for (const rangeData of data.oxidationStateRangeData) {
-        for (const boundary of rangeData.rangeBoundaries) {
-            numArray.push(toFixedNumber(boundary, 13, 10));
+    const boundaryArray: Boundary[] = [];
+    for (const [ionIndex, rangeData] of data.oxidationStateRangeData.entries()) {
+        for (const [index, boundary] of rangeData.rangeBoundaries.entries()) {
+            const oxiIndex = index == 0 ? 0 : index - 1;
+            boundaryArray.push({
+                ionIndex,
+                oxidationState: formatOxidationState(rangeData.oxidationStates[oxiIndex]),
+                value: toFixedNumber(boundary, 13, 10)
+            });
         }
     }
 
-    numArray.sort(compareNumbers);
-    return numArray;
+    boundaryArray.sort(compareBoundaries);
+    return boundaryArray;
 }

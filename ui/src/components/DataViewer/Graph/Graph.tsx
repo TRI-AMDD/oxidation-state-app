@@ -14,11 +14,12 @@ import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
 import ExportGraphButton from './ExportGraphButton/ExportGraphButton';
 import GraphHeaders from './GraphHeaders/GraphHeaders';
+import BoundaryDot from './BoundaryDot/BoundaryDot';
 
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
     const [graphType, setGraphType] = useState<GraphType>(GraphType.Wavy);
-    const { handleECPInputChange, ECPRange, ECPValue, handleSliderChange } = useGraph();
+    const { ECPRange, ECPValue, handleMPVChange, handleNudgeChange } = useGraph();
     const { selectedRow } = useTable();
 
     return (
@@ -28,7 +29,7 @@ const Graph = () => {
                 <div id="graph-export" className={styles.graphExport}>
                     <div className={styles.graphHeader}>
                         <GraphHeaders />
-                        <NudgeButtons onChange={handleSliderChange} value={ECPValue} data={oxidationData} />
+                        <NudgeButtons onChange={handleNudgeChange} value={ECPValue} data={oxidationData} />
                     </div>
                     <div className={styles.graphContainer}>
                         <div className={styles.species}>
@@ -42,12 +43,13 @@ const Graph = () => {
                                 initValue={selectedRow.optimalMappedPotential}
                                 ecpRange={ECPRange}
                                 ECPInputValue={ECPValue}
-                                handleSliderChange={handleSliderChange}
+                                handleSliderChange={handleMPVChange}
                             />
+                            <BoundaryDot value={ECPValue} ecpRange={ECPRange} />
                         </div>
                     </div>
                     <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
-                    <ElectronicChemicalPotentialInput onChange={handleECPInputChange} value={ECPValue} />
+                    <ElectronicChemicalPotentialInput onChange={handleMPVChange} value={ECPValue} />
                     <GraphKey />
                 </div>
             )}
