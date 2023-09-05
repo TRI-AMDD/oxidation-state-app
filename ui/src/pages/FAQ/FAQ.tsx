@@ -15,6 +15,8 @@ const FAQ = () => {
     const allAccordians = FAQs.map((_value, index) => `panel${index}`);
 
     useEffect(() => {
+        document.title = 'Oxidation State Analyzer - FAQ';
+        
         const currentUrl = window.location.href;
         const lastIndexOf = currentUrl.lastIndexOf(URL_FAQ_STRING_MATCH);
         const indexOfNumber = lastIndexOf + URL_FAQ_STRING_MATCH.length;
