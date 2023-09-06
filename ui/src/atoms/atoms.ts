@@ -5,7 +5,7 @@ import { ExportGraphSettings, InitalExportGraphSettingsState } from '@/models/Ex
 export const dataViewerStateAtom = atom<LoadingState>(LoadingState.Initial);
 
 export const dynamicCompositionTitleAtom = atom<{
-    formattedTitle: JSX.Element[];
+    formattedTitle: string[];
     unformattedTitle: string;
 }>({
     formattedTitle: [],

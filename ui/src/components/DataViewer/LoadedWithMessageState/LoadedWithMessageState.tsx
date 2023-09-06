@@ -5,6 +5,7 @@ import { dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
 import Table from '../Table/Table';
 import Graph from '../Graph/Graph';
 import { useMemo } from 'react';
+import CompositionTitle from '../CompositionTitle/CompositionTitle';
 
 const LoadedWithMessageState = () => {
     const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
@@ -24,7 +25,9 @@ const LoadedWithMessageState = () => {
                     <div className={styles.dynamicTitle}>
                         {' '}
                         Oxidation state analysis for&nbsp;
-                        {dynamicCompositionTitle.formattedTitle}
+                        {dynamicCompositionTitle.formattedTitle.map((item) => (
+                            <CompositionTitle composition={item} key={item} />
+                        ))}
                     </div>
                     {message && (
                         <ul className={styles.ul}>
