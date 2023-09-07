@@ -3,6 +3,7 @@ import { Alert } from '@mui/material';
 import { apiErrorAtom, dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { useMemo } from 'react';
+import CompositionTitle from '../CompositionTitle/CompositionTitle';
 
 const ErrorState = () => {
     const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
@@ -23,7 +24,9 @@ const ErrorState = () => {
                         <div className={styles.dynamicTitle}>
                             {' '}
                             No Oxidation state analysis for&nbsp;
-                            {dynamicCompositionTitle.formattedTitle}
+                            {dynamicCompositionTitle.formattedTitle.map((item) => (
+                                <CompositionTitle composition={item} key={item} />
+                            ))}
                         </div>
                         <ul className={styles.ul}>
                             <li>{message}</li>

@@ -19,6 +19,10 @@ const formatOxidationStateWithOneCount = (currentIndex: number, currentSymbol: s
     );
 };
 
+export function isCharNumber(c: string) {
+    return c >= '0' && c <= '9';
+}
+
 const formatOxidationStateWithWholeNumberCount = (
     currentIndex: number,
     currentSymbol: string,
@@ -115,75 +119,34 @@ export const parseAPITableData = (data: OxidationStatesAPI, ECPValue: number) =>
 };
 
 export const parseArrayOfChars = (chars: string[]) => {
-    const arrayOfSymbolsInComposition: string[] = [];
-    const arrayOfNumbersInComposition: number[] = [];
+    const arrayOfSymbols: string[] = [];
     let inParen = false;
-
     let symbol = '';
-    let number = 0;
 
     chars.forEach((char, index) => {
-        if (isNaN(parseInt(char))) {
-            if (char === '(') {
-                inParen = true;
-                if (index !== 0) {
-                    arrayOfSymbolsInComposition.push(symbol);
-                    arrayOfNumbersInComposition.push(number);
-                }
-
-                symbol = '(';
-                number = 0;
-            } else if (char === ')') {
-                inParen = false;
-                symbol += ')';
-            } else if (char === char.toUpperCase() && symbol !== '' && !inParen) {
-                arrayOfSymbolsInComposition.push(symbol);
-                arrayOfNumbersInComposition.push(number);
-                symbol = char;
-                number = 0;
-            } else {
-                symbol += char;
+        if (char === '(') {
+            inParen = true;
+            if (index !== 0) {
+                arrayOfSymbols.push(symbol);
             }
-        } else if (inParen) {
-            symbol += char;
-        } else if (number !== 0) {
-            number = number * 10 + parseInt(char);
+
+            symbol = '(';
+        } else if (char === ')') {
+            inParen = false;
+            symbol += ')';
+        } else if (char === char.toUpperCase() && !isCharNumber(char) && symbol !== '' && !inParen) {
+            arrayOfSymbols.push(symbol);            
+            symbol = char;
         } else {
-            number = parseInt(char);
+            symbol += char;
         }
     });
-    arrayOfNumbersInComposition.push(number);
-    arrayOfSymbolsInComposition.push(symbol);
+    arrayOfSymbols.push(symbol);
 
-    return { symbolsArray: arrayOfSymbolsInComposition, numbersArray: arrayOfNumbersInComposition };
-};
-
-export const formatDynamicTitle = (symbolsArray: string[], numbersArray: number[]) => {
-    const finalArr = [];
-    if (symbolsArray && symbolsArray.length > 0) {
-        symbolsArray.forEach((symbol, index) => {
-            const numberForSymbol = numbersArray[index];
-            finalArr.push(
-                <div key={`dynamic title - ${index}`}>
-                    {symbol}
-                    {numberForSymbol !== 0 ? (
-                        <>
-                            <sub>{numberForSymbol}</sub>&nbsp;
-                        </>
-                    ) : (
-                        <>&nbsp;</>
-                    )}
-                </div>
-            );
-        });
-    } else {
-        finalArr.push(<></>);
-    }
-    return finalArr;
+    return arrayOfSymbols;
 };
 
 export const parseAPICompositionString = (compositionTitle: string) => {
     const elems = compositionTitle.split('');
-    const { symbolsArray, numbersArray } = parseArrayOfChars(elems);
-    return formatDynamicTitle(symbolsArray, numbersArray);
+    return parseArrayOfChars(elems);
 };
