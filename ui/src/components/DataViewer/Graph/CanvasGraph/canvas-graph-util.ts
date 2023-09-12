@@ -14,7 +14,7 @@ function getStateRangeLabelPosition(min: number, max: number, xMultiplier: numbe
     // Get the x position relative to the min value
     const xPos = min + rangeDiff - minBoundaryValue;
 
-    return xPos * xMultiplier - 7;
+    return xPos * xMultiplier;
 }
 
 export function computeECP(mappedPotential: number, intercept: number, slope: number) {
@@ -113,7 +113,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
                 toShowLabel: rightX - leftX > 25,
-                textPos: [leftX + (rightX - leftX) / 2 - 7, indexY - BAR_HEIGHT / 2 + 5]
+                textPos: [leftX + (rightX - leftX) / 2, indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 
@@ -151,11 +151,12 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement,
             }
 
             if (showLabels) {
-                ctx.font = '16px sans-serif';
+                ctx.font = '15px sans-serif';
                 for (const specie of items) {
                     for (const item of specie.oxidationStates) {
                         if (item.toShowLabel) {
                             ctx.fillStyle = TextColor[item.oxidationState];
+                            ctx.textAlign = 'center';
                             ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
                         }
                     }
