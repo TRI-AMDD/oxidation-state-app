@@ -4,7 +4,7 @@ import { PlotData } from '@/models/PlotDataModel';
 import { formatOxidationState } from '@/utils/GraphUtil';
 
 const GRAPH_POINTS = 250;
-export const BAR_WIDTH = 350;
+export const BAR_WIDTH = 400;
 export const BAR_HEIGHT = 50;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, minBoundaryValue: number) {
@@ -25,8 +25,8 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
     const intercept = data.potentialMapper.intercept;
     const slope = data.potentialMapper.slope;
-    const maxBoundaryValue = computeECP(data.maxBoundaryValue, intercept, slope);
-    const minBoundaryValue = computeECP(data.minBoundaryValue, intercept, slope);
+    const maxBoundaryValue = computeECP(data.maxGraph, intercept, slope);
+    const minBoundaryValue = computeECP(data.minGraph, intercept, slope);
 
     const diff = maxBoundaryValue - minBoundaryValue;
     const xPoints = Array.from({ length: GRAPH_POINTS }, (_v, k) => (k / GRAPH_POINTS) * diff + minBoundaryValue);
@@ -85,7 +85,9 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
 
 export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
-    const diff = data.maxBoundaryValue - data.minBoundaryValue;
+    const maxBoundaryValue = data.maxGraph;
+    const minBoundaryValue = data.minGraph;
+    const diff = maxBoundaryValue - minBoundaryValue;
 
     for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
         const oxidationStates = [];
@@ -99,8 +101,8 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const min = rangeData.rangeBoundaries[i];
             const max = rangeData.rangeBoundaries[i + 1];
 
-            const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
-            const rightX = max > data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
+            const leftX = min < minBoundaryValue ? 0 : (min - minBoundaryValue) * xMultiplier;
+            const rightX = max > maxBoundaryValue ? BAR_WIDTH : (max - minBoundaryValue) * xMultiplier;
 
             const topY = indexY;
             const bottomY = indexY - BAR_HEIGHT;

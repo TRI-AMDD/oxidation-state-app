@@ -1,10 +1,10 @@
-import { boundaryAtom, electronicChemicalPotentialRangeAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
+import { boundaryAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import { Boundary } from '@/models/DataViewerModel';
 
 const useGraph = () => {
     const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
-    const [ECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
+    
     const [, setBoundary] = useAtom(boundaryAtom);
     
     const handleMPVChange = (newECPValue: number) => {
@@ -17,7 +17,7 @@ const useGraph = () => {
         setBoundary(boundary);
     };
 
-    return { ECPValue, handleNudgeChange, ECPRange, handleMPVChange };
+    return { ECPValue, handleNudgeChange, handleMPVChange };
 };
 
 export default useGraph;
