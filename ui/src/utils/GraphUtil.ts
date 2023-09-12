@@ -31,10 +31,13 @@ export function getBoundaries(data: OxidationStatesAPI) {
     const boundaryArray: Boundary[] = [];
     for (const [ionIndex, rangeData] of data.oxidationStateRangeData.entries()) {
         for (const [index, boundary] of rangeData.rangeBoundaries.entries()) {
-            const oxiIndex = index == 0 ? 0 : index - 1;
+            const oxidationState =
+                index == rangeData.rangeBoundaries.length - 1
+                    ? ''
+                    : formatOxidationState(rangeData.oxidationStates[index]);
             boundaryArray.push({
                 ionIndex,
-                oxidationState: formatOxidationState(rangeData.oxidationStates[oxiIndex]),
+                oxidationState,
                 value: toFixedNumber(boundary, 13, 10)
             });
         }

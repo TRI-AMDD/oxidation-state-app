@@ -67,7 +67,12 @@ const useTable = () => {
     };
 
     const handleTableRowClick = (event: GridRowParams<OxidationStatesTableItem>) => {
-        setSelectedRow(event.row);
+        const { row } = event;
+        setSelectedRow(row);
+
+        if (row?.optimalMappedPotential) {
+            setECPValue(row?.optimalMappedPotential);
+        }
     };
 
     const parsedTableData = useMemo(() => {
