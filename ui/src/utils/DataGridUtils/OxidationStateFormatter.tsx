@@ -94,6 +94,16 @@ export const getCurrentLikelihood = (tableRow: TableRowAPI, MPValue: number, int
     return currentLikelihood;
 };
 
+export const parseOxidationData = (data: OxidationStatesAPI) => {
+    const returnObject: OxidationStatesAPI = { ...data };
+
+    // pad min and max graph drawing regions
+    returnObject.maxGraph = data.maxBoundaryValue + 1;
+    returnObject.minGraph = data.minBoundaryValue - 1;
+
+    return returnObject;
+};
+
 export const parseAPITableData = (data: OxidationStatesAPI, ECPValue: number) => {
     const returnObject: OxidationStatesTableItem[] = [];
 
