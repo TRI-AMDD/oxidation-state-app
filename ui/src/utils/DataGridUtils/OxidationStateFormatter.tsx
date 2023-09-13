@@ -98,8 +98,9 @@ export const parseOxidationData = (data: OxidationStatesAPI) => {
     const returnObject: OxidationStatesAPI = { ...data };
 
     // pad min and max graph drawing regions
-    returnObject.maxGraph = data.maxBoundaryValue + 1;
-    returnObject.minGraph = data.minBoundaryValue - 1;
+    const pad = data.potentialMapper.slope * 5;
+    returnObject.maxGraph = data.maxBoundaryValue + pad;
+    returnObject.minGraph = data.minBoundaryValue - pad;
 
     return returnObject;
 };
