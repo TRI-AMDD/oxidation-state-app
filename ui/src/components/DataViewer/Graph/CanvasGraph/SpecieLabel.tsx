@@ -1,3 +1,4 @@
+import CompositionTitle from '../../CompositionTitle/CompositionTitle';
 import { BAR_HEIGHT } from './canvas-graph-util';
 
 interface Props {
@@ -10,9 +11,9 @@ const SpecieLabel = ({ label, index }: Props) => {
     const textPos = indexY - BAR_HEIGHT / 2 - 10;
 
     return (
-        <span key={label} style={{ top: textPos, left: '10px' }}>
-            {label}
-        </span>
+        <div key={label} style={{ top: textPos, left: '10px' }}>
+            <CompositionTitle composition={label} />
+        </div>
     );
 };
 
