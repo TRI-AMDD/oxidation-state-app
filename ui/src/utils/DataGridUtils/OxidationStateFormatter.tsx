@@ -1,6 +1,15 @@
 import { OxidationStatesAPI, OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
 import { computeECP } from '@/components/DataViewer/Graph/CanvasGraph/canvas-graph-util';
+import { Fragment } from 'react';
+
+const formatSymbol = (symbol: string) => {
+    const symbolsArray = symbol.split('');
+
+    return symbolsArray.map(function (item) {
+        return <Fragment key={item}>{isCharNumber(item) ? <sub>{item}</sub> : item}</Fragment>;
+    });
+};
 
 const formatOxidationWithChargeSign = (currentOxidation: number) => {
     if (currentOxidation > 0) {
@@ -13,7 +22,7 @@ const formatOxidationWithChargeSign = (currentOxidation: number) => {
 const formatOxidationStateWithOneCount = (currentIndex: number, currentSymbol: string, oxidationState: string) => {
     return (
         <div key={`oxidationState- ${currentIndex}`}>
-            {currentSymbol}
+            {formatSymbol(currentSymbol)}
             <sup className={styles.super}>{oxidationState}</sup>&nbsp;
         </div>
     );
@@ -31,7 +40,7 @@ const formatOxidationStateWithWholeNumberCount = (
 ) => {
     return (
         <div key={`oxidationState- ${currentIndex}`}>
-            {~~currentCount + currentSymbol}
+            {~~currentCount}{formatSymbol(currentSymbol)}
             <sup className={styles.super}>{oxidationState}</sup>&nbsp;
         </div>
     );
@@ -45,7 +54,7 @@ const formatOxidationStateWithDecimalCount = (
 ) => {
     return (
         <div key={`oxidationState- ${currentIndex}`}>
-            {currentCount.toFixed(2) + currentSymbol}
+            {currentCount.toFixed(2)}{formatSymbol(currentSymbol)}
             <sup className={styles.super}>{oxidationState}</sup>&nbsp;
         </div>
     );
@@ -146,7 +155,7 @@ export const parseArrayOfChars = (chars: string[]) => {
             inParen = false;
             symbol += ')';
         } else if (char === char.toUpperCase() && !isCharNumber(char) && symbol !== '' && !inParen) {
-            arrayOfSymbols.push(symbol);            
+            arrayOfSymbols.push(symbol);
             symbol = char;
         } else {
             symbol += char;
