@@ -8,12 +8,10 @@ import {
     FormControlLabel,
     FormGroup,
     FormLabel,
-    Radio,
-    RadioGroup
+    Typography
 } from '@mui/material';
 import { exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
-import { ExportGraphFileType } from '@/models/ExportGraphModel';
 import styles from './ExportGraphButton.module.css';
 import { GraphType } from '@/models/PlotDataModel';
 
@@ -38,9 +36,6 @@ const ExportGraphDialog = ({ isOpen, handleClose, handleExportButtonClick, setGr
         }
     };
 
-    const handleRadioButtonChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setExportGraphSettings({ ...exportGraphSettings, fileType: event.target.value as ExportGraphFileType });
-    };
     return (
         <Dialog
             open={isOpen}
@@ -103,13 +98,9 @@ const ExportGraphDialog = ({ isOpen, handleClose, handleExportButtonClick, setGr
                 </FormControl>
             </DialogContent>
             <DialogContent>
-                <FormControl>
-                    <FormLabel>File Type</FormLabel>
-                    <RadioGroup value={exportGraphSettings.fileType} onChange={handleRadioButtonChange}>
-                        <FormControlLabel control={<Radio />} value={ExportGraphFileType.png} label="PNG" />
-                        <FormControlLabel control={<Radio />} value={ExportGraphFileType.pdf} label="PDF" />
-                    </RadioGroup>
-                </FormControl>
+                <Typography variant="body1" component={'div'}>
+                    The image will export as a PNG.
+                </Typography>
             </DialogContent>
             <DialogContent>
                 <div className={styles.buttonContainer}>
