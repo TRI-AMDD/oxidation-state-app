@@ -21,7 +21,7 @@ const CustomExportButton = (props: ButtonProps) => {
 
     const csvOptions: GridCsvExportOptions = {
         getRowsToExport: () => gridSortedRowIdsSelector(apiRef),
-        fileName: `oxidation_analysis_${dynamicCompositionTitle.unformattedTitle}.csv`
+        fileName: `oxidation_analysis_${dynamicCompositionTitle.unformattedTitle}`
     };
 
     return (
