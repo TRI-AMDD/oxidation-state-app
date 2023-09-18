@@ -16,7 +16,6 @@ public class APIServer {
             Request req = ctx.bodyAsClass(Request.class);
             OxsHelper oxsHelper = new OxsHelper();
             String result = oxsHelper.GetOxidationJSON(req);
-            ctx.contentType("json");
             ctx.result(result);
         });
 
