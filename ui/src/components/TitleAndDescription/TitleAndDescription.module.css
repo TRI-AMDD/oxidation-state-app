@@ -1,6 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
+    width: 1102px;
 }
 
 .title {
@@ -9,4 +10,9 @@
 
 .subtext {
     margin-top: 16px !important;
+    text-align: justify;
+}
+
+.description {
+    text-align: justify;
 }

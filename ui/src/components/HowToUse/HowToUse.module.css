@@ -1,6 +1,7 @@
 .container {
     width: 1102px;
-    margin-top: 40px;
+    margin-top: 16px;
+    background-color: #f3f3f3;
     text-align: start;
 }
 
@@ -9,9 +10,6 @@
     padding: 16px 24px;
     display: flex;
     justify-content: space-between;
-}
-.howToTitle {
-    margin-bottom: 16px !important;
 }
 .image {
     margin-top: 16px;
