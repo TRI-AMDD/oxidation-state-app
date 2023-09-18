@@ -4,17 +4,27 @@ import { getPositionFromValue, getValueFromPosition } from '@/utils/GraphUtil';
 import { useEffect, useMemo } from 'react';
 import { ecpInitValue, exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
+import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { BAR_WIDTH } from '../CanvasGraph/canvas-graph-util';
 
 interface SliderProps {
     graphComponent: React.ReactNode;
     initValue: number;
-    ecpRange: [number, number];
+    oxidationData: OxidationStatesAPI;
     ECPInputValue: number;
     handleSliderChange: (newValue: number) => void;
 }
 
-const Slider = ({ graphComponent, ecpRange, ECPInputValue, handleSliderChange }: SliderProps) => {
+const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChange }: SliderProps) => {
     const [exportGraphSettings] = useAtom(exportGraphSettingsAtom);
+    const ecpRange = useMemo(() => [oxidationData.minGraph, oxidationData.maxGraph], [oxidationData]);
+
+    // pad slider to only the useable range
+    const boundsPadding = useMemo(() => {
+        const totalDiff = oxidationData.maxGraph - oxidationData.minGraph;
+        const leftDiff = oxidationData.maxGraph - oxidationData.maxBoundaryValue;
+        return Math.round(BAR_WIDTH * (leftDiff / totalDiff));
+    }, [oxidationData]);
 
     useEffect(() => {
         const sliderElement = document.querySelector('[data-rcs="handle-container"]');
@@ -38,12 +48,17 @@ const Slider = ({ graphComponent, ecpRange, ECPInputValue, handleSliderChange }:
     const handlePositionChange = (newPosition: number) => {
         // do not trigger mpv changes on very slight slider position changes
         if (Math.abs(position - newPosition) > 0.0005) {
-            handleSliderChange(getValueFromPosition(newPosition, ecpRange));
+            const newValue = getValueFromPosition(newPosition, ecpRange)
+            // limit changes to the accepted boundary values
+            if (newValue <= oxidationData.maxBoundaryValue && newValue >= oxidationData.minBoundaryValue) {
+                handleSliderChange(newValue);
+            }
         }
     };
 
     return (
         <ReactCompareSlider
+            boundsPadding={boundsPadding}
             position={position}
             itemOne={graphComponent}
             itemTwo={graphComponent}

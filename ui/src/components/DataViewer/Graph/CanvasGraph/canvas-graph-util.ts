@@ -4,7 +4,7 @@ import { PlotData } from '@/models/PlotDataModel';
 import { formatOxidationState } from '@/utils/GraphUtil';
 
 const GRAPH_POINTS = 250;
-export const BAR_WIDTH = 350;
+export const BAR_WIDTH = 400;
 export const BAR_HEIGHT = 50;
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, minBoundaryValue: number) {
@@ -14,7 +14,7 @@ function getStateRangeLabelPosition(min: number, max: number, xMultiplier: numbe
     // Get the x position relative to the min value
     const xPos = min + rangeDiff - minBoundaryValue;
 
-    return xPos * xMultiplier - 7;
+    return xPos * xMultiplier;
 }
 
 export function computeECP(mappedPotential: number, intercept: number, slope: number) {
@@ -25,8 +25,8 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
     const intercept = data.potentialMapper.intercept;
     const slope = data.potentialMapper.slope;
-    const maxBoundaryValue = computeECP(data.maxBoundaryValue, intercept, slope);
-    const minBoundaryValue = computeECP(data.minBoundaryValue, intercept, slope);
+    const maxBoundaryValue = computeECP(data.maxGraph, intercept, slope);
+    const minBoundaryValue = computeECP(data.minGraph, intercept, slope);
 
     const diff = maxBoundaryValue - minBoundaryValue;
     const xPoints = Array.from({ length: GRAPH_POINTS }, (_v, k) => (k / GRAPH_POINTS) * diff + minBoundaryValue);
@@ -39,11 +39,8 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
-            // cap min and max using threshold boundary values
-            let min = computeECP(rangeData.rangeBoundaries[i], intercept, slope);
-            min = min - minBoundaryValue < 4.5 ? minBoundaryValue + 4.5 : min;
-            let max = computeECP(rangeData.rangeBoundaries[i + 1], intercept, slope);
-            max = maxBoundaryValue - max < 4.5 ? maxBoundaryValue - 4.5 : max;
+            const min = computeECP(rangeData.rangeBoundaries[i], intercept, slope);
+            const max = computeECP(rangeData.rangeBoundaries[i + 1], intercept, slope);
 
             const oxidationState = rangeData.oxidationStates[i];
             const yLeftPoints: number[] = [];
@@ -88,7 +85,9 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
 
 export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
     const generatedData: PlotData[] = [];
-    const diff = data.maxBoundaryValue - data.minBoundaryValue;
+    const maxBoundaryValue = data.maxGraph;
+    const minBoundaryValue = data.minGraph;
+    const diff = maxBoundaryValue - minBoundaryValue;
 
     for (const [index, rangeData] of data.oxidationStateRangeData.entries()) {
         const oxidationStates = [];
@@ -102,8 +101,8 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
             const min = rangeData.rangeBoundaries[i];
             const max = rangeData.rangeBoundaries[i + 1];
 
-            const leftX = min < data.minBoundaryValue ? 0 : (min - data.minBoundaryValue) * xMultiplier;
-            const rightX = max > data.maxBoundaryValue ? BAR_WIDTH : (max - data.minBoundaryValue) * xMultiplier;
+            const leftX = min < minBoundaryValue ? 0 : (min - minBoundaryValue) * xMultiplier;
+            const rightX = max > maxBoundaryValue ? BAR_WIDTH : (max - minBoundaryValue) * xMultiplier;
 
             const topY = indexY;
             const bottomY = indexY - BAR_HEIGHT;
@@ -114,7 +113,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
                 toShowLabel: rightX - leftX > 25,
-                textPos: [leftX + (rightX - leftX) / 2 - 7, indexY - BAR_HEIGHT / 2 + 5]
+                textPos: [leftX + (rightX - leftX) / 2, indexY - BAR_HEIGHT / 2 + 5]
             });
         }
 
@@ -152,11 +151,12 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement,
             }
 
             if (showLabels) {
-                ctx.font = '16px sans-serif';
+                ctx.font = '15px sans-serif';
                 for (const specie of items) {
                     for (const item of specie.oxidationStates) {
                         if (item.toShowLabel) {
                             ctx.fillStyle = TextColor[item.oxidationState];
+                            ctx.textAlign = 'center';
                             ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
                         }
                     }

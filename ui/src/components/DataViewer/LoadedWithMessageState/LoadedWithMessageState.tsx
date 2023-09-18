@@ -10,12 +10,12 @@ import CompositionTitle from '../CompositionTitle/CompositionTitle';
 const LoadedWithMessageState = () => {
     const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [oxidationData] = useAtom(oxidationDataAtom);
-    const message = useMemo(() => {
+    const messages = useMemo(() => {
         if (typeof oxidationData !== 'undefined' && oxidationData && oxidationData.messages.length > 0) {
-            return oxidationData?.messages[0].messageString;
+            return oxidationData.messages.map((m) => m.messageString);
         }
 
-        return '';
+        return [];
     }, [oxidationData]);
 
     return (
@@ -29,9 +29,11 @@ const LoadedWithMessageState = () => {
                             <CompositionTitle composition={item} key={item} />
                         ))}
                     </div>
-                    {message && (
+                    {messages.length > 0 && (
                         <ul className={styles.ul}>
-                            <li>{message}</li>
+                            {messages.map(function (message) {
+                                return <li>{message}</li>;
+                            })}
                         </ul>
                     )}
                 </div>

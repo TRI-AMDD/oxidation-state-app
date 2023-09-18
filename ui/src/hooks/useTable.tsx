@@ -5,7 +5,6 @@ import {
     dynamicCompositionTitleAtom,
     selectedRowAtom,
     oxidationDataAtom,
-    electronicChemicalPotentialRangeAtom,
     electronicMappedPotentialValueAtom,
     apiErrorAtom
 } from '@/atoms/atoms';
@@ -14,14 +13,13 @@ import { useAtom } from 'jotai';
 import { OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
 import { LoadingState } from '@/models/DataViewerModel';
 import React, { useMemo } from 'react';
-import { parseAPICompositionString, parseAPITableData } from '@/utils/DataGridUtils/OxidationStateFormatter';
+import { parseAPICompositionString, parseAPITableData, parseOxidationData } from '@/utils/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [, setDynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
-    const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);
-    const [, setECPRange] = useAtom(electronicChemicalPotentialRangeAtom);
+    const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);    
     const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
     const [, setApiError] = useAtom(apiErrorAtom);
 
@@ -36,7 +34,7 @@ const useTable = () => {
                     formattedTitle: parseAPICompositionString(response.data.composition),
                     unformattedTitle: response.data.composition
                 });
-                setOxidationData(response.data);
+                setOxidationData(parseOxidationData(response.data));
                 setTimeout(() => {
                     if (response.data.messages.length > 0 && response.data.messages[0].isErrorMessage) {
                         setDataViewerState(LoadingState.Error);
@@ -45,7 +43,6 @@ const useTable = () => {
                     }
                 }, 500);
 
-                setECPRange([response.data.minBoundaryValue, response.data.maxBoundaryValue]);
                 if (response.data.tableData.tableRows.length > 0) {
                     setECPValue(response.data.tableData.tableRows[0].optimalMappedPotential);
                 } else {
@@ -67,7 +64,12 @@ const useTable = () => {
     };
 
     const handleTableRowClick = (event: GridRowParams<OxidationStatesTableItem>) => {
-        setSelectedRow(event.row);
+        const { row } = event;
+        setSelectedRow(row);
+
+        if (row?.optimalMappedPotential) {
+            setECPValue(row?.optimalMappedPotential);
+        }
     };
 
     const parsedTableData = useMemo(() => {

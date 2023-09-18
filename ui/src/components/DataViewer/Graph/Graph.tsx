@@ -19,7 +19,7 @@ import BoundaryDot from './BoundaryDot/BoundaryDot';
 const Graph = () => {
     const [oxidationData] = useAtom(oxidationDataAtom);
     const [graphType, setGraphType] = useState<GraphType>(GraphType.Wavy);
-    const { ECPRange, ECPValue, handleMPVChange, handleNudgeChange } = useGraph();
+    const { ECPValue, handleMPVChange, handleNudgeChange } = useGraph();
     const { selectedRow } = useTable();
 
     return (
@@ -41,11 +41,11 @@ const Graph = () => {
                             <Slider
                                 graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
                                 initValue={selectedRow.optimalMappedPotential}
-                                ecpRange={ECPRange}
+                                oxidationData={oxidationData}
                                 ECPInputValue={ECPValue}
                                 handleSliderChange={handleMPVChange}
                             />
-                            <BoundaryDot value={ECPValue} ecpRange={ECPRange} />
+                            <BoundaryDot value={ECPValue} oxidationData={oxidationData} />
                         </div>
                     </div>
                     <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />

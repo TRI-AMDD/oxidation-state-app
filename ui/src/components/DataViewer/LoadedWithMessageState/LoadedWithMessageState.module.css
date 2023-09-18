@@ -15,7 +15,7 @@
 .graphAndTableContainer {
     margin-top: 10px;
     display: grid;
-    grid-template-columns: minmax(450px, 720px) 450px;
+    grid-template-columns: minmax(450px, 720px) 500px;
     min-width: 960px;
     justify-content: center;
 }

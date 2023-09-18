@@ -13,14 +13,14 @@ export function formatOxidationState(state: number) {
     return state.toString();
 }
 
-export function getPositionFromValue(ecp: number, ecpRange: [number, number]) {
+export function getPositionFromValue(ecp: number, ecpRange: number[]) {
     const range = ecpRange[1] - ecpRange[0];
     const rangeBetweenECPAndLowest = ecp - ecpRange[0];
 
     return (rangeBetweenECPAndLowest / range) * 100;
 }
 
-export function getValueFromPosition(position: number, ecpRange: [number, number]) {
+export function getValueFromPosition(position: number, ecpRange: number[]) {
     const range = ecpRange[1] - ecpRange[0];
     const positionDecimal = position / 100;
     const positionDecimalTimesRange = positionDecimal * range;
@@ -31,10 +31,13 @@ export function getBoundaries(data: OxidationStatesAPI) {
     const boundaryArray: Boundary[] = [];
     for (const [ionIndex, rangeData] of data.oxidationStateRangeData.entries()) {
         for (const [index, boundary] of rangeData.rangeBoundaries.entries()) {
-            const oxiIndex = index == 0 ? 0 : index - 1;
+            const oxidationState =
+                index == rangeData.rangeBoundaries.length - 1
+                    ? ''
+                    : formatOxidationState(rangeData.oxidationStates[index]);
             boundaryArray.push({
                 ionIndex,
-                oxidationState: formatOxidationState(rangeData.oxidationStates[oxiIndex]),
+                oxidationState,
                 value: toFixedNumber(boundary, 13, 10)
             });
         }
