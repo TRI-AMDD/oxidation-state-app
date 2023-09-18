@@ -11,9 +11,13 @@ const CompositionTitle = ({ composition }: Prop) => {
 
     return (
         <div className={styles.compositionTitle}>
-            {symbolsArray.map(function (item) {
+            {symbolsArray.map(function (item, index) {
                 {
-                    return <Fragment key={item}>{isCharNumber(item) ? <sub>{item}</sub> : item}</Fragment>;
+                    return (
+                        <Fragment key={`composition-title-${index}`}>
+                            {isCharNumber(item) ? <sub>{item}</sub> : item}
+                        </Fragment>
+                    );
                 }
             })}
         </div>
