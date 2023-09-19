@@ -12,6 +12,7 @@ const InputSection = () => {
     return (
         <div className={styles.container}>
             <TextField
+                id="input-section-text"
                 placeholder={PLACEHOLDER_TEXT}
                 label={LABEL_TEXT}
                 InputLabelProps={{
