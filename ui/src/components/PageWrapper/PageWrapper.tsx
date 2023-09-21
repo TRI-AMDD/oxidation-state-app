@@ -11,7 +11,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
     return (
         <div className={styles.App}>
             <Header />
-            <Container maxWidth="lg">
+            <Container maxWidth="xl">
                 {children}
             </Container>
             <Footer />
