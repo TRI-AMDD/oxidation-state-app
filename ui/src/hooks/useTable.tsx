@@ -13,13 +13,17 @@ import { useAtom } from 'jotai';
 import { OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
 import { LoadingState } from '@/models/DataViewerModel';
 import React, { useMemo } from 'react';
-import { parseAPICompositionString, parseAPITableData, parseOxidationData } from '@/utils/DataGridUtils/OxidationStateFormatter';
+import {
+    parseAPICompositionString,
+    parseAPITableData,
+    parseOxidationData
+} from '@/utils/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [, setDynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
     const [selectedRow, setSelectedRow] = useAtom(selectedRowAtom);
-    const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);    
+    const [oxidationData, setOxidationData] = useAtom(oxidationDataAtom);
     const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
     const [, setApiError] = useAtom(apiErrorAtom);
 
@@ -38,9 +42,12 @@ const useTable = () => {
                 setTimeout(() => {
                     if (response.data.messages.length > 0 && response.data.messages[0].isErrorMessage) {
                         setDataViewerState(LoadingState.Error);
+                        dataLayer.push({ composition_status: 'fail' });
                     } else {
                         setDataViewerState(LoadingState.Loaded);
+                        dataLayer.push({ composition_status: 'success' });
                     }
+                    dataLayer.push({ event: 'composition_submit' });
                 }, 500);
 
                 if (response.data.tableData.tableRows.length > 0) {
@@ -52,12 +59,15 @@ const useTable = () => {
                 if (structure && setInputText) {
                     setInputText(response.data.composition);
                 }
+
                 setApiError(false);
             },
             () => {
                 setTimeout(() => {
                     setDataViewerState(LoadingState.Error);
                 }, 500);
+                dataLayer.push({ composition_status: 'fail' });
+                dataLayer.push({ event: 'composition_submit' });
                 setApiError(true);
             }
         );
