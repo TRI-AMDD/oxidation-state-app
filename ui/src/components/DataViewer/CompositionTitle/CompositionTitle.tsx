@@ -10,7 +10,7 @@ const CompositionTitle = ({ composition }: Prop) => {
     const symbolsArray = composition.split('');
 
     return (
-        <div className={styles.compositionTitle}>
+        <div>
             {symbolsArray.map(function (item, index) {
                 {
                     return (
