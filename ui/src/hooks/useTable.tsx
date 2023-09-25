@@ -66,8 +66,10 @@ const useTable = () => {
                 setTimeout(() => {
                     setDataViewerState(LoadingState.Error);
                 }, 500);
-                dataLayer.push({ composition_status: 'fail' });
-                dataLayer.push({ event: 'composition_submit' });
+                dataLayer.push({ 
+                    composition_status: 'fail',
+                    event: 'composition_submit'
+                });
                 setApiError(true);
             }
         );

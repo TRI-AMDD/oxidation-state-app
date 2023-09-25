@@ -1,5 +1,4 @@
 import { isCharNumber } from '@/utils/DataGridUtils/OxidationStateFormatter';
-import styles from './composition-title.module.css';
 import { Fragment } from 'react';
 
 interface Prop {
