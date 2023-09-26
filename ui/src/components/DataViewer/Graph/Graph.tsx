@@ -48,8 +48,10 @@ const Graph = () => {
                             <BoundaryDot value={ECPValue} oxidationData={oxidationData} />
                         </div>
                     </div>
-                    <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
-                    <ElectronicChemicalPotentialInput onChange={handleMPVChange} value={ECPValue} />
+                    <div className={styles.inputAndToggleContainer}>
+                        <ElectronicChemicalPotentialInput onChange={handleMPVChange} value={ECPValue} />
+                        <GraphTypeToggle graphType={graphType} setGraphType={setGraphType} />
+                    </div>
                     <GraphKey />
                 </div>
             )}
