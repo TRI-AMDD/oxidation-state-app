@@ -5,6 +5,9 @@ import { Link as RouterLink } from 'react-router-dom';
 const TRI_GLOBAL_PRIVACY_POLICY_URL = 'https://www.tri.global/privacy-policy';
 
 const Footer = () => {
+    const path = window.location.pathname;
+    const linkTarget = path === '/' ? '_blank' : undefined;
+
     return (
         <footer className={styles.appFooter}>
             <Typography component={'div'} variant="body1" className={styles.footerLinksContainer}>
@@ -12,12 +15,18 @@ const Footer = () => {
                     component={'a'}
                     href={TRI_GLOBAL_PRIVACY_POLICY_URL}
                     rel="noopener noreferrer"
-                    target="_blank"
+                    target={linkTarget}
                     variant="whiteText"
                 >
                     Legal
                 </Link>
-                <Link component={RouterLink} to="/faq" rel="noopener noreferrer" target="_blank" variant="whiteText">
+                <Link
+                    component={RouterLink}
+                    to="/faq"
+                    rel="noopener noreferrer"
+                    target={linkTarget}
+                    variant="whiteText"
+                >
                     FAQ
                 </Link>
                 <Link component={RouterLink} to="/about-us" variant="whiteText">
@@ -27,7 +36,7 @@ const Footer = () => {
                     component={RouterLink}
                     to="/faq/#faq-11"
                     rel="noopener noreferrer"
-                    target="_blank"
+                    target={linkTarget}
                     variant="whiteText"
                 >
                     Data
@@ -36,7 +45,7 @@ const Footer = () => {
                     component={RouterLink}
                     to="/faq/#faq-10"
                     rel="noopener noreferrer"
-                    target="_blank"
+                    target={linkTarget}
                     variant="whiteText"
                 >
                     Download
@@ -45,7 +54,7 @@ const Footer = () => {
                     component={RouterLink}
                     to="/faq/#faq-0"
                     rel="noopener noreferrer"
-                    target="_blank"
+                    target={linkTarget}
                     variant="whiteText"
                 >
                     Manuscript
