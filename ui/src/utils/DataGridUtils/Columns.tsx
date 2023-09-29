@@ -183,7 +183,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
             const displayValue =
                 typeof params.row.globalInstabilityIndex !== 'string'
                     ? params.row.globalInstabilityIndex.toFixed(2)
-                    : params.row.globalInstabilityIndex;
+                    : 'N/A';
             if (params.row.mixedValence) {
                 return (
                     <Typography component={'div'} variant="body2">
