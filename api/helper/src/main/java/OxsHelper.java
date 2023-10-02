@@ -27,7 +27,7 @@ public class OxsHelper
     
     public String GetOxidationJSON(Request request)
     {   
-        String paramFileName = "input_files/oxidation_parameters.txt";
+        String paramFileName = "input_files/oxidation_boundaries.json";
         String polyIonDir = "input_files/polyatomic_ions_web";
         String result = "";
         

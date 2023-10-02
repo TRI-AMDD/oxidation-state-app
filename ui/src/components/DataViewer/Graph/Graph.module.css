@@ -1,6 +1,6 @@
 .container {
     width: 500px;
-    padding-left: 12px;    
+    padding-left: 12px;
 }
 
 .canvasContainer {
@@ -30,4 +30,10 @@
 
 .graphExport {
     padding: 15px 5px 10px;
+}
+
+.inputAndToggleContainer {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 8px;
 }
