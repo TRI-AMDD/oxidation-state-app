@@ -4,6 +4,9 @@ import { ReactComponent as Logo } from '@/Assets/Images/logo.svg';
 import { Typography, Link } from '@mui/material';
 
 export default function Header() {
+    const path = window.location.pathname;
+    const linkTarget = path === '/' ? '_blank' : undefined;
+
     return (
         <header className={styles.AppHeader}>
             <Link component={RouterLink} to="/">
@@ -15,7 +18,7 @@ export default function Header() {
                         component={RouterLink}
                         to="/tutorial"
                         rel="noopener noreferrer"
-                        target="_blank"
+                        target={linkTarget}
                         underline="hover"
                         variant="whiteText"
                     >
@@ -27,7 +30,7 @@ export default function Header() {
                         component={RouterLink}
                         to="/faq"
                         rel="noopener noreferrer"
-                        target="_blank"
+                        target={linkTarget}
                         underline="hover"
                         variant="whiteText"
                     >
@@ -39,7 +42,7 @@ export default function Header() {
                         component={RouterLink}
                         to="/faq/#faq-0"
                         rel="noopener noreferrer"
-                        target="_blank"
+                        target={linkTarget}
                         underline="hover"
                         variant="whiteText"
                     >
@@ -51,7 +54,7 @@ export default function Header() {
                         component={RouterLink}
                         to="/about-us"
                         rel="noopener noreferrer"
-                        target="_blank"
+                        target={linkTarget}
                         underline="hover"
                         variant="whiteText"
                     >
