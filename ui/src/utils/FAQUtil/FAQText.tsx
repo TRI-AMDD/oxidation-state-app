@@ -26,15 +26,19 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'What is the likelihood score?',
-        answer: 'The likelihood score represents the estimated likelihood that a particular combination of oxidation states coexists in a stable material at a given electronic chemical potential (or equivalently, at a given fitted potential).  More information is available in our manuscript.'
+        answer: 'The likelihood score is a number between 0 and 1 representing the estimated relative likelihood that a particular combination of oxidation states coexists in a stable material at a particular electronic chemical potential (or equivalently, at a particular mapped potential).  More information is available in our manuscript.'
     },
     {
         question: 'What is the optimal potential?',
         answer: 'The optimal potential, E<sub>opt</sub>, is the fitted potential that maximizes the likelihood score.'
     },
     {
-        question: 'What is the global instability index?',
-        answer: `The <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1016/0022-4596(92)90094-C'>global instability index</a> is the root-mean-squared difference between the oxidation states of each atom and the bond valence sum for that atom. The bond valence sum was calculated using the parameters published by <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1107/S0108768190011041'>Brese and O'Keeffe</a>.`
+        question: 'What is the global instability index? (GII)',
+        answer: `The <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1016/0022-4596(92)90094-C'>global instability index</a> (GII) is the root-mean-squared difference between the oxidation states of each atom and the bond valence sum for that atom. The bond valence sum was calculated using the parameters published by <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1021/ja00009a002'>O'Keeffe and Brese</a>.`
+    },
+    {
+        question: 'Why is the global instability index (GII) sometimes "N/A"?',
+        answer: `The global instability index can only be calculated if the structure is known, so it wil not be calculated if only the composition is provided. It will also only be calculated if bond valence parameters are availabe in <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1021/ja00009a002'>this paper</a> for all elements in the material.`
     },
     {
         question: 'What file formats can I use to upload structures?',

@@ -2,16 +2,16 @@ import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
 import { useEffect } from 'react';
 import styles from './Tutorial.module.css';
-import { ReactComponent as Tutorial1Image } from '@/Assets/Images/tutorial1Image.svg';
-import Tutorial2Image from '@/Assets/Images/tutorial2Image.png';
-import Tutorial3Image from '@/Assets/Images/tutorial3Image.png';
-import Tutorial4Image from '@/Assets/Images/tutorial4Image.png';
-import Tutorial5Image from '@/Assets/Images/tutorial5Image.png';
-import Tutorial6Image from '@/Assets/Images/tutorial6Image.png';
-import Tutorial7Image from '@/Assets/Images/tutorial7Image.png';
-import Tutorial8Image from '@/Assets/Images/tutorial8Image.png';
-import Tutorial9Image from '@/Assets/Images/tutorial9Image.png';
-import Tutorial10Image from '@/Assets/Images/tutorial10Image.png';
+import Tutorial1Image from '@/Assets/Images/tutorial_image_1.png';
+import Tutorial2Image from '@/Assets/Images/tutorial_image_2.png';
+import Tutorial3Image from '@/Assets/Images/tutorial_image_3.png';
+import Tutorial4Image from '@/Assets/Images/tutorial_image_4.png';
+import Tutorial5Image from '@/Assets/Images/tutorial_image_5.png';
+import Tutorial6Image from '@/Assets/Images/tutorial_image_6.png';
+import Tutorial7Image from '@/Assets/Images/tutorial_image_7.png';
+import Tutorial8Image from '@/Assets/Images/tutorial_image_8.png';
+import Tutorial9Image from '@/Assets/Images/tutorial_image_9.png';
+import Tutorial10Image from '@/Assets/Images/tutorial_image_10.png';
 import {
     listText,
     text1,
@@ -68,10 +68,10 @@ const Tutorial = () => {
                         {text3}
                     </Typography>
                     <div className={styles.imageContainer}>
-                        <Tutorial1Image />
+                        <img src={Tutorial1Image} alt="first-tutorial-image" />
                     </div>
                     <Typography component={'div'} variant="body2">
-                        {text4}
+                        <div dangerouslySetInnerHTML={{ __html: text4 }} />
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial2Image} alt="second-tutorial-image" />
@@ -117,18 +117,26 @@ const Tutorial = () => {
                         <img src={Tutorial8Image} alt="eighth-tutorial-image" />
                     </div>
                     <Typography component={'div'} variant="body2">
-                        {text11}
+                        <div dangerouslySetInnerHTML={{ __html: text11 }} />
                     </Typography>
-                    <Typography component={'div'} variant="h6" sx={{ marginBottom: '16px', marginTop: '40px' }}>
-                        A<sup>2+</sup> 2X<sup>1-</sup>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ marginBottom: '16px', marginTop: '40px', fontWeight: 'bold' }}
+                    >
+                        1. A<sup>2+</sup> 2X<sup>1-</sup>
                     </Typography>
                     <Typography component={'div'} variant="body2" dangerouslySetInnerHTML={{ __html: text12 }} />
                     <div className={styles.imageContainer}>
                         <img src={Tutorial9Image} alt="ninth-tutorial-image" />
                     </div>
                     <Typography component={'div'} variant="body2" dangerouslySetInnerHTML={{ __html: text13 }} />
-                    <Typography component={'div'} variant="h6" sx={{ marginBottom: '16px', marginTop: '40px' }}>
-                        A<sup>4+</sup> 2X<sup>2-</sup>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ marginBottom: '16px', marginTop: '40px', fontWeight: 'bold' }}
+                    >
+                        2. A<sup>4+</sup> 2X<sup>2-</sup>
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial10Image} alt="tenth-tutorial-image" />
@@ -142,7 +150,12 @@ const Tutorial = () => {
                         <br />
                         <div dangerouslySetInnerHTML={{ __html: text17 }} />
                     </Typography>
-                    <Typography component={'div'} variant="h6" sx={{ marginBottom: '16px', marginTop: '40px' }}>
+                    <Typography
+                        component={'div'}
+                        variant="h6"
+                        sx={{ marginBottom: '16px', marginTop: '40px' }}
+                        id="tutorial-polyatomic-ions"
+                    >
                         Polyatomic Ions
                     </Typography>
                     <Typography component={'div'} variant="body2" sx={{ marginBottom: '24px;' }}>
