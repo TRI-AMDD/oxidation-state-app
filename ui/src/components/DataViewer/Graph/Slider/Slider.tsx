@@ -52,6 +52,7 @@ const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChan
             // limit changes to the accepted boundary values
             if (newValue <= oxidationData.maxBoundaryValue && newValue >= oxidationData.minBoundaryValue) {
                 handleSliderChange(newValue);
+                dataLayer.push({ event: 'graph_slider' });
             }
         }
     };

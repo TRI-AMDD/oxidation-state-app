@@ -44,6 +44,7 @@ const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
                 },
                 (e) => console.error(e)
             );
+            dataLayer.push({ event: 'graph_export' });
         }
     };
 

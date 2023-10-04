@@ -28,6 +28,7 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
                 const newValue = Number.parseFloat(val);
                 if (value !== newValue) {
                     onChange(newValue);
+                    dataLayer.push({ event: 'mpv_input' });
                 }
             }
         },

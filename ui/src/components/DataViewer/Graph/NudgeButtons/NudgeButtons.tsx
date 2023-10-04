@@ -22,6 +22,7 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
         for (let i = boundaries.length - 1; i >= 0; i--) {
             if (value > boundaries[i].value) {
                 onChange(boundaries[i]);
+                dataLayer.push({ event: 'nudge-button' });
                 return;
             }
         }
@@ -31,6 +32,7 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
         for (let i = 0; i < boundaries.length; i++) {
             if (value < boundaries[i].value) {
                 onChange(boundaries[i]);
+                dataLayer.push({ event: 'nudge-button' });
                 return;
             }
         }
@@ -41,12 +43,22 @@ const NudgeButtons = ({ value, data, onChange }: Props) => {
             {!isModalOpen && (
                 <ButtonGroup className={styles.container}>
                     <Tooltip title="Previous Boundary">
-                        <IconButton value="previous" className={styles.toggleButton} onClick={handlePreviousNudge}>
+                        <IconButton
+                            id="prev-nudge"
+                            value="previous"
+                            className={styles.toggleButton}
+                            onClick={handlePreviousNudge}
+                        >
                             <LeftToggle />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Next Boundary">
-                        <IconButton value="next" className={styles.toggleButton} onClick={handleNextNudge}>
+                        <IconButton
+                            id="next-nudge"
+                            value="next"
+                            className={styles.toggleButton}
+                            onClick={handleNextNudge}
+                        >
                             <RightToggle />
                         </IconButton>
                     </Tooltip>
