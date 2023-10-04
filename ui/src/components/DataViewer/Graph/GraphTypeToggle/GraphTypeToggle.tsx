@@ -21,6 +21,7 @@ const GraphTypeToggle = ({ graphType, setGraphType }: GraphTypeToggleProps) => {
             } else {
                 setExportGraphSettings({ ...exportGraphSettings, showCurves: false });
             }
+            dataLayer.push({ event: 'graph_toggle' });
         }
     };
     return (

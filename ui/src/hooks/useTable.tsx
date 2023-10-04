@@ -47,7 +47,7 @@ const useTable = () => {
                         setDataViewerState(LoadingState.Loaded);
                         dataLayer.push({ composition_status: 'success' });
                     }
-                    dataLayer.push({ event: 'composition_submit' });
+                    dataLayer.push({ event: 'api_status' });
                 }, 500);
 
                 if (response.data.tableData.tableRows.length > 0) {
@@ -68,7 +68,7 @@ const useTable = () => {
                 }, 500);
                 dataLayer.push({ 
                     composition_status: 'fail',
-                    event: 'composition_submit'
+                    event: 'api_status'
                 });
                 setApiError(true);
             }
@@ -78,8 +78,9 @@ const useTable = () => {
     const handleTableRowClick = (event: GridRowParams<OxidationStatesTableItem>) => {
         const { row } = event;
         setSelectedRow(row);
+        dataLayer.push({ event: 'table_row_select' });
 
-        if (row?.optimalMappedPotential) {
+        if (row?.optimalMappedPotential) {            
             setECPValue(row?.optimalMappedPotential);
         }
     };
