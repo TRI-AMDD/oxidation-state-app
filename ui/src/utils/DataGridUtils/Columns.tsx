@@ -91,7 +91,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.likelihoodOptimalMappedPotential;
         },
-        maxWidth: 100,
+        maxWidth: 65,
         filterOperators: getGridNumericOperators().filter(
             (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
         )
@@ -133,7 +133,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.likelihoodCurrentMappedPotential;
         },
-        maxWidth: 100,
+        maxWidth: 65,
         filterOperators: getGridNumericOperators().filter(
             (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
         )
@@ -166,7 +166,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         valueGetter(params) {
             return params.row.optimalMappedPotential;
         },
-        maxWidth: 100,
+        maxWidth: 65,
         filterOperators: getGridNumericOperators().filter(
             (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
         )
@@ -203,7 +203,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                 ? params.row.globalInstabilityIndex.toFixed(2)
                 : params.row.globalInstabilityIndex;
         },
-        maxWidth: 100,
+        maxWidth: 65,
         filterOperators: getGridNumericOperators().filter(
             (operator) => operator.value === '=' || operator.value === '>' || operator.value === '<'
         )
