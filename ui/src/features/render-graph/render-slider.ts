@@ -1,5 +1,6 @@
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { Settings, computeECP } from './render-graph';
+import { getPositionFromValue } from '@/utils/GraphUtil';
 
 export function renderSliderLine(
     data: OxidationStatesAPI,
@@ -12,17 +13,12 @@ export function renderSliderLine(
     if (data.oxidationStateRangeData.length > 0) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
-            const intercept = data.potentialMapper.intercept;
-            const slope = data.potentialMapper.slope;
-            const maxBoundaryValue = computeECP(data.maxGraph, intercept, slope);
-            const minBoundaryValue = computeECP(data.minGraph, intercept, slope);
-
-            const diff = maxBoundaryValue - minBoundaryValue;
-            const xMultiplier = BAR_WIDTH / diff;
-            const xPos = ((mpValue - minBoundaryValue) * xMultiplier) + OFFSET_X;
-            const yPos = data.oxidationStateRangeData.length * (BAR_HEIGHT * 1.25) - (BAR_HEIGHT * 0.25);
-
             const lineWidth = BAR_HEIGHT * 0.05;
+            
+            const ecpRange = [data.minGraph, data.maxGraph];
+            const xPercent = getPositionFromValue(mpValue, ecpRange);
+            const xPos = (BAR_WIDTH * (xPercent / 100) - (lineWidth / 2)) + OFFSET_X;
+            const yPos = data.oxidationStateRangeData.length * (BAR_HEIGHT * 1.25) - (BAR_HEIGHT * 0.25);
 
             ctx.strokeStyle = '#3747ac';
             ctx.beginPath();
