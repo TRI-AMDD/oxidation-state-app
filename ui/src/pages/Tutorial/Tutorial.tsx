@@ -34,9 +34,21 @@ import {
     text18
 } from './constants';
 
+const URL_TUTORIAL_STRING_MATCH = 'tutorial-';
+
 const Tutorial = () => {
     useEffect(() => {
         document.title = 'Oxidation State Analyzer - Tutorial';
+
+        const currentUrl = window.location.href;
+        const lastIndexOf = currentUrl.lastIndexOf(URL_TUTORIAL_STRING_MATCH);
+        const indexOfId = lastIndexOf + URL_TUTORIAL_STRING_MATCH.length;
+        if (lastIndexOf !== -1) {
+            const idString = currentUrl.slice(indexOfId);
+            if (idString.length > 0) {
+                document.getElementById(URL_TUTORIAL_STRING_MATCH + idString)?.scrollIntoView();
+            }
+        }
     }, []);
 
     return (
