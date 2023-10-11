@@ -1,15 +1,16 @@
 import { Button } from '@mui/material';
-import { exportGraphModalOpenAtom, exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
-//import styles from './ExportGraphButton.module.css';
+import {
+    electronicMappedPotentialValueAtom,
+    exportGraphModalOpenAtom,
+    exportGraphSettingsAtom,
+    oxidationDataAtom
+} from '@/atoms/atoms';
 import ExportGraphDialog from './ExportGraphDialog';
 import { InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
-import { GraphType } from '@/models/PlotDataModel';
-import html2canvas from 'html2canvas';
+import { BAR_HEIGHT, renderExportGraph } from './render-export-graph';
+import keyImage from '@/Assets/Images/graphKey.svg';
 
-interface ExportGraphButtonProps {
-    setGraphType: (newState: GraphType) => void;
-}
 
 function fileSaveAs(uri: string, filename: string) {
     const link = document.createElement('a');
@@ -31,20 +32,37 @@ function fileSaveAs(uri: string, filename: string) {
     }
 }
 
-const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
+const ExportGraphButton = () => {
     const [exportGraphSettings, setExportGraphSettings] = useAtom(exportGraphSettingsAtom);
     const [isOpen, setIsOpen] = useAtom(exportGraphModalOpenAtom);
+    const [oxidationData] = useAtom(oxidationDataAtom);
+    const [mpValue] = useAtom(electronicMappedPotentialValueAtom);
 
     const handleExportButtonClick = () => {
-        const exportDiv = document.getElementById('graph-export');
-        if (exportDiv) {
-            html2canvas(exportDiv).then(
-                (canvas) => {
-                    fileSaveAs(canvas.toDataURL(), 'oxidation-state-graph.png');
-                },
-                (e) => console.error(e)
-            );
-            dataLayer.push({ event: 'graph_export' });
+        const canvas = document.createElement('canvas');
+
+        if (canvas && oxidationData) {
+            const oxidationLength = oxidationData?.oxidationStateRangeData.length ?? 0;
+            const height = BAR_HEIGHT * oxidationLength + 500;
+
+            canvas.width = 2100;
+            canvas.height = height;
+
+            const img = new Image();
+            img.onload = () => {
+                const canvasUrl = renderExportGraph({
+                    canvas,
+                    data: oxidationData,
+                    mpValue,
+                    img,
+                    exportSettings: exportGraphSettings
+                });
+
+                fileSaveAs(canvasUrl, 'oxidation-state-graph.png');
+                setIsOpen(false);
+                dataLayer.push({ event: 'graph_export' });
+            };
+            img.src = keyImage;
         }
     };
 
@@ -64,7 +82,6 @@ const ExportGraphButton = ({ setGraphType }: ExportGraphButtonProps) => {
                 isOpen={isOpen}
                 handleClose={handleClose}
                 handleExportButtonClick={handleExportButtonClick}
-                setGraphType={setGraphType}
             />
         </>
     );

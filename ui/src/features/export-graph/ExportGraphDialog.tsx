@@ -13,27 +13,18 @@ import {
 import { exportGraphSettingsAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 import styles from './ExportGraphButton.module.css';
-import { GraphType } from '@/models/PlotDataModel';
 
 interface ExportGraphDialogProps {
     isOpen: boolean;
     handleClose: () => void;
     handleExportButtonClick: () => void;
-    setGraphType: (newState: GraphType) => void;
 }
 
-const ExportGraphDialog = ({ isOpen, handleClose, handleExportButtonClick, setGraphType }: ExportGraphDialogProps) => {
+const ExportGraphDialog = ({ isOpen, handleClose, handleExportButtonClick }: ExportGraphDialogProps) => {
     const [exportGraphSettings, setExportGraphSettings] = useAtom(exportGraphSettingsAtom);
 
     const handleCheckboxClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         setExportGraphSettings({ ...exportGraphSettings, [event.target.name]: event.target.checked });
-        if (event.target.name === 'showCurves') {
-            if (event.target.checked) {
-                setGraphType(GraphType.Wavy);
-            } else {
-                setGraphType(GraphType.Bar);
-            }
-        }
     };
 
     return (

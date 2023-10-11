@@ -1,6 +1,6 @@
 import { OxidationStatesAPI, OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
 import styles from './FormatterStyles.module.css';
-import { computeECP } from '@/components/DataViewer/Graph/CanvasGraph/canvas-graph-util';
+import { computeECP } from '@/features/render-graph/render-graph';
 import { Fragment } from 'react';
 
 const formatSymbol = (symbol: string) => {

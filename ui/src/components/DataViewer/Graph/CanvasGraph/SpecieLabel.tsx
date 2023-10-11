@@ -1,5 +1,5 @@
 import CompositionTitle from '../../CompositionTitle/CompositionTitle';
-import { BAR_HEIGHT } from './canvas-graph-util';
+import { BAR_HEIGHT } from '../CanvasGraph/CanvasGraph';
 
 interface Props {
     label: string;
