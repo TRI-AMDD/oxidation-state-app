@@ -1,11 +1,10 @@
 import { ReactCompareSlider } from 'react-compare-slider';
 import CustomHandle from './CustomHandle';
 import { getPositionFromValue, getValueFromPosition } from '@/utils/GraphUtil';
-import { useEffect, useMemo } from 'react';
-import { ecpInitValue, exportGraphSettingsAtom } from '@/atoms/atoms';
-import { useAtom } from 'jotai';
+import { useMemo } from 'react';
+import { ecpInitValue } from '@/atoms/atoms';
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
-import { BAR_WIDTH } from '../CanvasGraph/canvas-graph-util';
+import { BAR_WIDTH } from '../CanvasGraph/CanvasGraph';
 
 interface SliderProps {
     graphComponent: React.ReactNode;
@@ -15,8 +14,7 @@ interface SliderProps {
     handleSliderChange: (newValue: number) => void;
 }
 
-const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChange }: SliderProps) => {
-    const [exportGraphSettings] = useAtom(exportGraphSettingsAtom);
+const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChange }: SliderProps) => {    
     const ecpRange = useMemo(() => [oxidationData.minGraph, oxidationData.maxGraph], [oxidationData]);
 
     // pad slider to only the useable range
@@ -25,17 +23,6 @@ const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChan
         const leftDiff = oxidationData.maxGraph - oxidationData.maxBoundaryValue;
         return Math.round(BAR_WIDTH * (leftDiff / totalDiff));
     }, [oxidationData]);
-
-    useEffect(() => {
-        const sliderElement = document.querySelector('[data-rcs="handle-container"]');
-        if (sliderElement) {
-            if (!exportGraphSettings.showSliderBar) {
-                sliderElement.setAttribute('hidden', '');
-            } else {
-                sliderElement.removeAttribute('hidden');
-            }
-        }
-    }, [exportGraphSettings]);
 
     const position = useMemo(() => {
         if (ECPInputValue === ecpInitValue) {

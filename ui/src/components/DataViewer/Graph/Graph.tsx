@@ -12,7 +12,7 @@ import useTable from '@/hooks/useTable';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
-import ExportGraphButton from './ExportGraphButton/ExportGraphButton';
+import ExportGraphButton from '@/features/export-graph/ExportGraphButton';
 import GraphHeaders from './GraphHeaders/GraphHeaders';
 import BoundaryDot from './BoundaryDot/BoundaryDot';
 
@@ -24,7 +24,7 @@ const Graph = () => {
 
     return (
         <div className={styles.container}>
-            <ExportGraphButton setGraphType={setGraphType} />
+            <ExportGraphButton />
             {oxidationData && selectedRow && (
                 <div id="graph-export" className={styles.graphExport}>
                     <div className={styles.graphHeader}>

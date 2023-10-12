@@ -4,8 +4,13 @@ import { PlotData } from '@/models/PlotDataModel';
 import { formatOxidationState } from '@/utils/GraphUtil';
 
 const GRAPH_POINTS = 250;
-export const BAR_WIDTH = 400;
-export const BAR_HEIGHT = 50;
+
+export interface Settings {
+    BAR_WIDTH: number;
+    BAR_HEIGHT: number;
+    OFFSET_X: number;
+    OFFSET_Y: number;
+}
 
 function getStateRangeLabelPosition(min: number, max: number, xMultiplier: number, minBoundaryValue: number) {
     // Get the middle of the boundary difference
@@ -21,8 +26,9 @@ export function computeECP(mappedPotential: number, intercept: number, slope: nu
     return (mappedPotential - intercept) / slope;
 }
 
-export function createPlotData(data: OxidationStatesAPI): PlotData[] {
+export function createPlotData(data: OxidationStatesAPI, settings: Settings): PlotData[] {
     const generatedData: PlotData[] = [];
+    const { BAR_HEIGHT, BAR_WIDTH } = settings;
     const intercept = data.potentialMapper.intercept;
     const slope = data.potentialMapper.slope;
     const maxBoundaryValue = computeECP(data.maxGraph, intercept, slope);
@@ -35,7 +41,7 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
         const oxidationStates = [];
 
         // offset y of each graph
-        const indexY = BAR_HEIGHT + index * 60;
+        const indexY = BAR_HEIGHT + index * (BAR_HEIGHT * 1.25);
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
@@ -66,16 +72,13 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [...xLeftPoints, ...xRightPoints],
                 likelihood: [...yLeftPoints, ...yRightPoints],
                 toShowLabel: max - min > 3,
-                textPos: [
-                    getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue),
-                    indexY - BAR_HEIGHT / 2 + 5
-                ]
+                textPos: [getStateRangeLabelPosition(min, max, xMultiplier, minBoundaryValue), indexY - BAR_HEIGHT / 2]
             });
         }
 
         generatedData.push({
             specie: rangeData.ionTypeSymbol,
-            textPos: [15, indexY - BAR_HEIGHT / 2 + 5],
+            textPos: [15, indexY - BAR_HEIGHT / 2],
             oxidationStates
         });
     }
@@ -83,8 +86,9 @@ export function createPlotData(data: OxidationStatesAPI): PlotData[] {
     return generatedData;
 }
 
-export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
+export function createBarPlotData(data: OxidationStatesAPI, settings: Settings): PlotData[] {
     const generatedData: PlotData[] = [];
+    const { BAR_HEIGHT, BAR_WIDTH } = settings;
     const maxBoundaryValue = data.maxGraph;
     const minBoundaryValue = data.minGraph;
     const diff = maxBoundaryValue - minBoundaryValue;
@@ -93,7 +97,7 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
         const oxidationStates = [];
 
         // offset y of each graph
-        const indexY = BAR_HEIGHT + index * 60;
+        const indexY = BAR_HEIGHT + index * (BAR_HEIGHT * 1.25);
         const xMultiplier = BAR_WIDTH / diff;
 
         for (let i = 0; i < rangeData.oxidationStates.length; i++) {
@@ -113,13 +117,13 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
                 potential: [leftX, rightX, rightX, leftX],
                 likelihood: [bottomY, bottomY, topY, topY],
                 toShowLabel: rightX - leftX > 25,
-                textPos: [leftX + (rightX - leftX) / 2, indexY - BAR_HEIGHT / 2 + 5]
+                textPos: [leftX + (rightX - leftX) / 2, indexY - BAR_HEIGHT / 2]
             });
         }
 
         generatedData.push({
             specie: rangeData.ionTypeSymbol,
-            textPos: [15, indexY - BAR_HEIGHT / 2 + 5],
+            textPos: [15, indexY - BAR_HEIGHT / 2],
             oxidationStates
         });
     }
@@ -127,12 +131,20 @@ export function createBarPlotData(data: OxidationStatesAPI): PlotData[] {
     return generatedData;
 }
 
-export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement, showLabels: boolean) {
+export function drawPlotDataCanvas(
+    items: PlotData[],
+    canvas: HTMLCanvasElement,
+    showLabels: boolean,
+    settings: Settings
+) {
+    const { BAR_HEIGHT, OFFSET_X, OFFSET_Y } = settings;
+
     if (items.length > 0) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
-            const canvasHeight = 100 * items.length;
-            ctx.clearRect(0, 0, BAR_WIDTH, canvasHeight);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (const specie of items) {
                 for (const item of specie.oxidationStates) {
@@ -140,9 +152,9 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement,
                     const color = ColorPalette[item.oxidationState];
                     ctx.fillStyle = color;
 
-                    ctx.moveTo(item.potential[0], item.likelihood[0]);
+                    ctx.moveTo(OFFSET_X + item.potential[0], OFFSET_Y + item.likelihood[0]);
                     for (let i = 0; i < item.potential.length; i++) {
-                        ctx.lineTo(item.potential[i], item.likelihood[i]);
+                        ctx.lineTo(OFFSET_X + item.potential[i], OFFSET_Y + item.likelihood[i]);
                     }
 
                     ctx.closePath();
@@ -151,13 +163,18 @@ export function drawPlotDataCanvas(items: PlotData[], canvas: HTMLCanvasElement,
             }
 
             if (showLabels) {
-                ctx.font = '15px sans-serif';
+                const fontSize = BAR_HEIGHT * 0.3;
+                ctx.font = `${fontSize}px sans-serif`;
                 for (const specie of items) {
                     for (const item of specie.oxidationStates) {
                         if (item.toShowLabel) {
                             ctx.fillStyle = TextColor[item.oxidationState];
                             ctx.textAlign = 'center';
-                            ctx.fillText(formatOxidationState(item.oxidationState), item.textPos[0], item.textPos[1]);
+                            ctx.fillText(
+                                formatOxidationState(item.oxidationState),
+                                OFFSET_X + item.textPos[0],
+                                OFFSET_Y + fontSize * 0.3 + item.textPos[1]
+                            );
                         }
                     }
                 }
