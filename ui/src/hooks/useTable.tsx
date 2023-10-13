@@ -17,7 +17,7 @@ import {
     parseAPICompositionString,
     parseAPITableData,
     parseOxidationData
-} from '@/utils/DataGridUtils/OxidationStateFormatter';
+} from '@/components/DataViewer/Table/table-data/DataGridUtils/OxidationStateFormatter';
 
 const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
@@ -66,7 +66,7 @@ const useTable = () => {
                 setTimeout(() => {
                     setDataViewerState(LoadingState.Error);
                 }, 500);
-                dataLayer.push({ 
+                dataLayer.push({
                     composition_status: 'fail',
                     event: 'api_status'
                 });
@@ -80,7 +80,7 @@ const useTable = () => {
         setSelectedRow(row);
         dataLayer.push({ event: 'table_row_select' });
 
-        if (row?.optimalMappedPotential) {            
+        if (row?.optimalMappedPotential) {
             setECPValue(row?.optimalMappedPotential);
         }
     };

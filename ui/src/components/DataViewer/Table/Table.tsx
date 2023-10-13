@@ -1,6 +1,6 @@
 import { DataGrid, GridRowId } from '@mui/x-data-grid';
 import { useState } from 'react';
-import { columns } from '@/utils/DataGridUtils/Columns';
+import { columns } from '@/components/DataViewer/Table/table-data/DataGridUtils/Columns';
 import styles from './Table.module.css';
 import CustomToolbar from './CustomToolbar/CustomToolbar';
 import './MuiClasses.css';
