@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useAtom } from 'jotai';
 import { boundaryAtom } from '@/atoms/atoms';
-import { BAR_HEIGHT, BAR_WIDTH } from '../CanvasGraph/canvas-graph-util';
+import { BAR_HEIGHT, BAR_WIDTH } from '../CanvasGraph/CanvasGraph';
 import { getPositionFromValue } from '@/utils/GraphUtil';
 import styles from './boundary-dot.module.css';
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
