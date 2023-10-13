@@ -13,6 +13,11 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor("io.javalin.community.openapi:openapi-annotation-processor:5.6.2-2")
+    implementation("io.javalin.community.openapi:javalin-openapi-plugin:5.6.2-2") // for /openapi route with JSON scheme
+    implementation("io.javalin.community.openapi:javalin-swagger-plugin:5.6.2-2") // for Swagger UI
+    implementation("io.javalin.community.openapi:javalin-redoc-plugin:5.6.2-2") // for ReDoc UI
+
     implementation 'org.slf4j:slf4j-simple:2.0.6'
     implementation 'io.javalin:javalin:5.6.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.2'
