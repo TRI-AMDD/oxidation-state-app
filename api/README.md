@@ -38,6 +38,14 @@ Build and run the docker API image.
 
 You can now make a POST { "composition": "LiFePO4" } to http://localhost:7070/api
 
+# See OpenAPI spec
+
+Three ways to see the spec:
+
+- http://localhost:7070/api_openapi
+- http://localhost:7070/api_swagger
+- http://localhost:7070/api_redoc
+
 
 # Build Lambda
 
