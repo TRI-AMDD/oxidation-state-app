@@ -21,8 +21,9 @@ repositories {
 dependencies {
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
     implementation 'com.amazonaws:aws-lambda-java-events:3.11.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
-    implementation project(':helper')
+    implementation project(':api')
+    implementation("com.amazonaws.serverless:aws-serverless-java-container-core:2.0.0-M1")
+    implementation 'io.javalin:javalin:5.6.3'
 }
 
 task copyDependencies(type: Copy) {
