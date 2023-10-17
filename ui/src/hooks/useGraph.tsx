@@ -1,14 +1,14 @@
 import { boundaryAtom, electronicMappedPotentialValueAtom } from '@/atoms/atoms';
+import { Boundary } from '@/features/data-table/table-models/data-viewer-model';
 import { useAtom } from 'jotai';
-import { Boundary } from '@/models/DataViewerModel';
 
 const useGraph = () => {
     const [ECPValue, setECPValue] = useAtom(electronicMappedPotentialValueAtom);
-    
+
     const [, setBoundary] = useAtom(boundaryAtom);
-    
+
     const handleMPVChange = (newECPValue: number) => {
-        setECPValue(newECPValue);        
+        setECPValue(newECPValue);
         setBoundary(null);
     };
 

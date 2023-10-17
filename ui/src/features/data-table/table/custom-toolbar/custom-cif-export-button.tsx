@@ -1,7 +1,7 @@
 import { MenuItem } from '@mui/material';
 import { useMemo } from 'react';
 import { generateCIFFile } from '@/features/data-table/table/table-exports-util/cif-export-util';
-import styles from './CustomToolbar.module.css';
+import styles from './custom-toolbar.module.css';
 interface CIFProps {
     cifString: string;
     fileName: string;

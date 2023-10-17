@@ -1,7 +1,7 @@
 import { GridColDef, getGridBooleanOperators, getGridNumericOperators, getGridStringOperators } from '@mui/x-data-grid';
 import { Typography } from '@mui/material';
 import HeaderTooltip from './header-tooltip';
-import { OxidationStatesTableItem } from '@/models/DataViewerModel';
+import { OxidationStatesTableItem } from '../../table-models/data-viewer-model';
 
 export const columns: GridColDef<OxidationStatesTableItem>[] = [
     {

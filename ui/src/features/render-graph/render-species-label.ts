@@ -1,4 +1,4 @@
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { OxidationStatesAPI } from '../data-table/table-models/data-viewer-model';
 import { Settings } from './render-graph';
 
 export function renderSpeciesLabel(data: OxidationStatesAPI, canvas: HTMLCanvasElement, settings: Settings) {
@@ -10,7 +10,7 @@ export function renderSpeciesLabel(data: OxidationStatesAPI, canvas: HTMLCanvasE
             for (const [i, specie] of data.oxidationStateRangeData.entries()) {
                 const fontSize = BAR_HEIGHT * 0.3;
                 ctx.font = `${fontSize}px sans-serif`;
-                const textYPos = (BAR_HEIGHT / 2 + i * (BAR_HEIGHT * 1.25)) + (fontSize * 0.3) + OFFSET_Y;
+                const textYPos = BAR_HEIGHT / 2 + i * (BAR_HEIGHT * 1.25) + fontSize * 0.3 + OFFSET_Y;
                 const textXPos = fontSize;
 
                 ctx.fillStyle = 'black';

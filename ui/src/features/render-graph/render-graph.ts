@@ -1,7 +1,7 @@
 import { ColorPalette, TextColor } from '@/constants/colors';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { PlotData } from '@/models/PlotDataModel';
 import { formatOxidationState } from '@/utils/GraphUtil';
+import { OxidationStatesAPI } from '../data-table/table-models/data-viewer-model';
 
 const GRAPH_POINTS = 250;
 

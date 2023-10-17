@@ -2,7 +2,7 @@ import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom } f
 import useTable from '../../data-table/table-hooks/use-table';
 import { useAtom } from 'jotai';
 import { useState } from 'react';
-import { LoadingState } from '@/models/DataViewerModel';
+import { LoadingState } from '@/features/data-table/table-models/data-viewer-model';
 
 const useInputs = () => {
     const [inputText, setInputText] = useState('');

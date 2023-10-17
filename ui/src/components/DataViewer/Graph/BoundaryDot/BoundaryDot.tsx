@@ -4,7 +4,7 @@ import { boundaryAtom } from '@/atoms/atoms';
 import { BAR_HEIGHT, BAR_WIDTH } from '../CanvasGraph/CanvasGraph';
 import { getPositionFromValue } from '@/utils/GraphUtil';
 import styles from './boundary-dot.module.css';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 
 const DOT_HALF_WIDTH = 9;
 

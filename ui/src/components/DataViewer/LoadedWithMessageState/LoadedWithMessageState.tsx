@@ -2,7 +2,7 @@ import { Alert, Typography } from '@mui/material';
 import styles from './LoadedWithMessageState.module.css';
 import { useAtom } from 'jotai';
 import { dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
-import Table from '../../../features/data-table/table/table';
+import Table from '@/features/data-table/table/table';
 import Graph from '../Graph/Graph';
 import { useMemo } from 'react';
 import CompositionTitle from '../CompositionTitle/CompositionTitle';
