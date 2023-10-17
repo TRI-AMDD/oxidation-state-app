@@ -35,10 +35,7 @@ const AboutUs = () => {
                     <Link component={RouterLink} to="/tutorial">
                         tutorial
                     </Link>
-                    )
-                    <br />
-                    <br />
-                    An open-source implementation of the web site and core algorithms is available{' '}
+                    ). An open-source implementation of the web site and core algorithms is available{' '}
                     <Link component={RouterLink} to="/">
                         here.
                     </Link>
