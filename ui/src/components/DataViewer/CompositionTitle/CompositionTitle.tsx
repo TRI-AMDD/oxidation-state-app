@@ -1,4 +1,4 @@
-import { isCharNumber } from '@/components/DataViewer/Table/table-data/DataGridUtils/OxidationStateFormatter';
+import { isCharNumber } from '@/features/data-table/table/data-grid-utils/oxidation-state-formatter';
 import { Fragment } from 'react';
 
 interface Prop {

@@ -6,9 +6,9 @@ import {
     useGridApiContext,
     gridSortedRowIdsSelector
 } from '@mui/x-data-grid';
-import CustomCIFExportButton from './CustomCIFExportButton';
-import useInputs from '@/hooks/useInputs';
-import useTable from '@/hooks/useTable';
+import CustomCIFExportButton from './custom-cif-export-button';
+import useInputs from '@/features/input-submission/input-hooks/use-inputs';
+import useTable from '@/features/data-table/table-hooks/use-table';
 import { dynamicCompositionTitleAtom } from '@/atoms/atoms';
 import { useAtom } from 'jotai';
 

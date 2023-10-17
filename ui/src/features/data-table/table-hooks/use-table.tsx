@@ -10,14 +10,17 @@ import {
 } from '@/atoms/atoms';
 import { AxiosResponse } from 'axios';
 import { useAtom } from 'jotai';
-import { OxidationStatesAPI, OxidationStatesTableItem } from '@/models/DataViewerModel';
-import { LoadingState } from '@/models/DataViewerModel';
+import {
+    OxidationStatesAPI,
+    OxidationStatesTableItem,
+    LoadingState
+} from '@/features/data-table/table-models/data-viewer-model';
 import React, { useMemo } from 'react';
 import {
     parseAPICompositionString,
     parseAPITableData,
     parseOxidationData
-} from '@/components/DataViewer/Table/table-data/DataGridUtils/OxidationStateFormatter';
+} from '@/features/data-table/table/data-grid-utils/oxidation-state-formatter';
 
 const useTable = () => {
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);

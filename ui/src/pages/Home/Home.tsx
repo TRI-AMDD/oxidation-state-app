@@ -3,7 +3,7 @@ import { Grid } from '@mui/material';
 import TitleAndDescription from '@/components/TitleAndDescription/TitleAndDescription';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import GetStarted from '@/components/GetStarted/GetStarted';
-import InputSection from '@/components/InputSection/InputSection';
+import InputSection from '@/features/input-submission/input-section/input-section';
 import DataViewer from '@/components/DataViewer/DataViewer';
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { useEffect } from 'react';
