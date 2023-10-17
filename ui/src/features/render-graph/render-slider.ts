@@ -1,5 +1,5 @@
 import { OxidationStatesAPI } from '@/models/DataViewerModel';
-import { Settings, computeECP } from './render-graph';
+import { Settings } from './render-graph';
 import { getPositionFromValue } from '@/utils/GraphUtil';
 
 export function renderSliderLine(
