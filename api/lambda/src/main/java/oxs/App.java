@@ -1,61 +1,82 @@
 package oxs.lambda;
 
-import java.util.Base64;
-import java.util.HashMap;
-
 import com.amazonaws.services.lambda.runtime.Context;
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
-import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.amazonaws.services.lambda.runtime.RequestStreamHandler;
+import io.javalin.Javalin;
+import io.javalin.http.servlet.JavalinServlet;
+import java.util.concurrent.CountDownLatch;
+import jakarta.servlet.http.HttpServletRequest;
+import com.amazonaws.serverless.proxy.*;
+import com.amazonaws.serverless.proxy.internal.servlet.*;
+import com.amazonaws.serverless.proxy.model.AwsProxyRequest;
+import com.amazonaws.serverless.proxy.model.AwsProxyResponse;
+import java.io.*;
+import oxs.api.APIServer;
 
-import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayV2HTTPResponse;
-import oxs.helper.Request;
-import oxs.helper.OxsHelper;
+class JavalinAwsHandler<RequestType, ResponseType> extends
+		AwsLambdaServletContainerHandler<RequestType, ResponseType, HttpServletRequest, AwsHttpServletResponse> {
+	protected final JavalinServlet javalinServlet;
 
-/**
- * A Sample request handler for HTTP APIs using the standard RequestHandler
- * input method
- * Payload v2.0
- * 
- * @author georgmao
- *
- */
-public class App implements RequestHandler<APIGatewayV2HTTPEvent, APIGatewayV2HTTPResponse> {
-	Gson gson = new GsonBuilder().setPrettyPrinting().create();
+	public JavalinAwsHandler(Class<RequestType> requestTypeClass,
+			Class<ResponseType> responseTypeClass,
+			RequestReader<RequestType, HttpServletRequest> requestReader,
+			ResponseWriter<AwsHttpServletResponse, ResponseType> responseWriter,
+			SecurityContextWriter<RequestType> securityContextWriter,
+			ExceptionHandler<ResponseType> exceptionHandler,
+			JavalinServlet javalinServlet) {
+		super(requestTypeClass, responseTypeClass, requestReader, responseWriter, securityContextWriter,
+				exceptionHandler);
+		this.javalinServlet = javalinServlet;
+	}
+
+	public static JavalinAwsHandler<AwsProxyRequest, AwsProxyResponse> getJavalinAwsHandler(
+			JavalinServlet javalinServlet) {
+		JavalinAwsHandler handler = new JavalinAwsHandler(
+				AwsProxyRequest.class,
+				AwsProxyResponse.class,
+				new AwsProxyHttpServletRequestReader(),
+				new AwsProxyHttpServletResponseWriter(),
+				new AwsProxySecurityContextWriter(),
+				new AwsProxyExceptionHandler(),
+				javalinServlet);
+		handler.initialize();
+		return handler;
+	}
 
 	@Override
+	public void initialize() {
+		getServletContext().addServlet("javalin", this.javalinServlet);
+	}
 
-	public APIGatewayV2HTTPResponse handleRequest(APIGatewayV2HTTPEvent event, Context context) {
+	@Override
+	protected AwsHttpServletResponse getContainerResponse(HttpServletRequest request, CountDownLatch latch) {
+		return new AwsHttpServletResponse(request, latch);
+	}
 
-		LambdaLogger logger = context.getLogger();
-		logger.log("EVENT TYPE: " + event.getClass().toString());
+	@Override
+	protected void handleRequest(HttpServletRequest containerRequest, AwsHttpServletResponse containerResponse,
+			Context lambdaContext) throws Exception {
 
-		APIGatewayV2HTTPResponse response = new APIGatewayV2HTTPResponse();
-		response.setIsBase64Encoded(false);
-		response.setStatusCode(200);
-
-		HashMap<String, String> headers = new HashMap<String, String>();
-
-		String body = event.getBody() != null ? event.getBody() : "Empty body";
-		String compositionReq = body;
-		
-		logger.log("EVENT IS ENCODED: " + event.getIsBase64Encoded());
-		if (event.getIsBase64Encoded()) {
-			byte[] decodedBytes = Base64.getDecoder().decode(body);
-			compositionReq = new String(decodedBytes);
+		if (AwsHttpServletRequest.class.isAssignableFrom(containerRequest.getClass())) {
+			((AwsHttpServletRequest) containerRequest).setServletContext(getServletContext());
 		}
-		
-		logger.log("REQUEST: " + compositionReq);
-		Request req = gson.fromJson(compositionReq, Request.class);
-		OxsHelper oxsHelper = new OxsHelper();
-		String result = oxsHelper.GetOxidationJSON(req);
 
-		headers.put("Content-Type", "text/json");
-		response.setHeaders(headers);
-		response.setBody(result);
+		// process filters
+		doFilter(containerRequest, containerResponse, this.javalinServlet);
+	}
+}
 
-		return response;
+public class App implements RequestStreamHandler {
+	private final Javalin app;
+	private final JavalinAwsHandler<AwsProxyRequest, AwsProxyResponse> handler;
+
+	public App() {
+		this.app = APIServer.makeAppStandalone();
+		this.handler = JavalinAwsHandler.getJavalinAwsHandler(this.app.javalinServlet());
+	}
+
+	@Override
+	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
+		handler.proxyStream(inputStream, outputStream, context);
 	}
 }

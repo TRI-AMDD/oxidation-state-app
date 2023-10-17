@@ -100,4 +100,33 @@ public class APIServer {
 
         app.start(7070);
     }
+
+    public static Javalin makeAppStandalone() {
+        var app = Javalin.createStandalone(config -> {
+            String newDocsPath = "/api_openapi";
+
+            OpenApiConfiguration openApiConfiguration = new OpenApiConfiguration();
+            openApiConfiguration.setDocumentationPath(newDocsPath);
+            openApiConfiguration.getInfo().setTitle("Oxidation State App OpenAPI");
+            openApiConfiguration.getInfo().setDescription("This tool can be used to quickly identify likely oxidation states for a given composition, or assign likely oxidation states to sites in a given structure, using the methods described here.");
+            config.plugins.register(new OpenApiPlugin(openApiConfiguration));
+            
+            SwaggerConfiguration swaggerConfiguration = new SwaggerConfiguration();
+            swaggerConfiguration.setUiPath("/api_swagger");
+            swaggerConfiguration.setDocumentationPath(newDocsPath);
+            config.plugins.register(new SwaggerPlugin(swaggerConfiguration));
+
+            ReDocConfiguration reDocConfiguration = new ReDocConfiguration();
+            reDocConfiguration.setUiPath("/api_redoc");
+            reDocConfiguration.setDocumentationPath(newDocsPath);
+            config.plugins.register(new ReDocPlugin(reDocConfiguration));
+        }).routes(() -> {
+            path("api", () -> {
+                get(API::get);
+                post(API::post);
+            });
+        });
+
+        return app;
+    }
 }

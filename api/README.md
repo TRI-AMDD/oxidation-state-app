@@ -61,7 +61,7 @@ Run locally
 
 Try a request (actual payload TBD)
 
-    $ curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{}'
+    $ curl -X POST "http://localhost:9000/2015-03-31/functions/function/invocations" -d @lambda/example_lambda_api_request.json
 
 # Deploy to AWS ECR
 Tag the docker build, and push it to the AWS ECR.
