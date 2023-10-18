@@ -25,7 +25,7 @@ dependencies {
 }
 
 tasks.register('copyInputFiles', Copy) {
-    from "$rootDir/oxidationStates/input_files"
+    from "$rootDir/oxidation-state-api-public/input_files"
     into "$rootDir/api/input_files"
 }
 

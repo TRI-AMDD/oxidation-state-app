@@ -3,7 +3,7 @@ A web based app for identifying the likelihoods of oxidation states coexisting i
 
 ## This repo uses submodules
 
-This repo uses a submodule for the [original java code](https://github.com/TRI-AMDD/oxidationStates). 
+This repo uses a submodule for the [original java code](https://github.com/TRI-AMDD/oxidation-state-api-public). 
 
 See this [submodule guide](https://git-scm.com/book/en/v2/Git-Tools-Submodules) for working with submodules.
 
