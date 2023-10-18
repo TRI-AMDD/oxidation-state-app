@@ -1,5 +1,5 @@
+import { OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 import axios from 'axios';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
 
 const api = axios.create({
     baseURL: '/api',

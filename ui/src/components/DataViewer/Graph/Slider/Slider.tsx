@@ -3,8 +3,8 @@ import CustomHandle from './CustomHandle';
 import { getPositionFromValue, getValueFromPosition } from '@/utils/GraphUtil';
 import { useMemo } from 'react';
 import { ecpInitValue } from '@/atoms/atoms';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { BAR_WIDTH } from '../CanvasGraph/CanvasGraph';
+import { OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 
 interface SliderProps {
     graphComponent: React.ReactNode;
@@ -14,7 +14,7 @@ interface SliderProps {
     handleSliderChange: (newValue: number) => void;
 }
 
-const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChange }: SliderProps) => {    
+const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChange }: SliderProps) => {
     const ecpRange = useMemo(() => [oxidationData.minGraph, oxidationData.maxGraph], [oxidationData]);
 
     // pad slider to only the useable range
@@ -35,7 +35,7 @@ const Slider = ({ graphComponent, oxidationData, ECPInputValue, handleSliderChan
     const handlePositionChange = (newPosition: number) => {
         // do not trigger mpv changes on very slight slider position changes
         if (Math.abs(position - newPosition) > 0.0005) {
-            const newValue = getValueFromPosition(newPosition, ecpRange)
+            const newValue = getValueFromPosition(newPosition, ecpRange);
             // limit changes to the accepted boundary values
             if (newValue <= oxidationData.maxBoundaryValue && newValue >= oxidationData.minBoundaryValue) {
                 handleSliderChange(newValue);

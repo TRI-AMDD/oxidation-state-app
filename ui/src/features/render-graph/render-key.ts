@@ -1,4 +1,4 @@
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
+import { OxidationStatesAPI } from '../data-table/table-models/data-viewer-model';
 import { Settings } from './render-graph';
 
 export function renderKeys(

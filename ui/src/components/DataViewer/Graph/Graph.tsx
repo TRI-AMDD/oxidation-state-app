@@ -8,7 +8,7 @@ import { GraphType } from '@/models/PlotDataModel';
 import { useState } from 'react';
 import Slider from './Slider/Slider';
 import useGraph from '@/hooks/useGraph';
-import useTable from '@/hooks/useTable';
+import useTable from '@/features/data-table/table-hooks/use-table';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';

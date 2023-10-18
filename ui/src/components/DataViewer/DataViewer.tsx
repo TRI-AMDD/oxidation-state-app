@@ -2,9 +2,9 @@ import { dataViewerStateAtom } from '@/atoms/atoms';
 import styles from './DataViewer.module.css';
 import InitialState from './InitialState/InitialState';
 import { useAtom } from 'jotai';
-import { LoadingState } from '@/models/DataViewerModel';
 import LoadedWithMessageState from './LoadedWithMessageState/LoadedWithMessageState';
 import ErrorState from './ErrorState/ErrorState';
+import { LoadingState } from '@/features/data-table/table-models/data-viewer-model';
 
 const DataViewer = () => {
     const [dataViewerState] = useAtom(dataViewerStateAtom);

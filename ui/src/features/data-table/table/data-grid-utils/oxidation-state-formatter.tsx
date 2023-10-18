@@ -1,5 +1,5 @@
-import { OxidationStatesAPI, OxidationStatesTableItem, TableRowAPI } from '@/models/DataViewerModel';
-import styles from './FormatterStyles.module.css';
+import { OxidationStatesAPI, OxidationStatesTableItem, TableRowAPI } from '../../table-models/data-viewer-model';
+import styles from './formatter-styles.module.css';
 import { computeECP } from '@/features/render-graph/render-graph';
 import { Fragment } from 'react';
 
@@ -40,7 +40,8 @@ const formatOxidationStateWithWholeNumberCount = (
 ) => {
     return (
         <div key={`oxidationState- ${currentIndex}`}>
-            {~~currentCount}{formatSymbol(currentSymbol)}
+            {~~currentCount}
+            {formatSymbol(currentSymbol)}
             <sup className={styles.super}>{oxidationState}</sup>&nbsp;
         </div>
     );
@@ -54,7 +55,8 @@ const formatOxidationStateWithDecimalCount = (
 ) => {
     return (
         <div key={`oxidationState- ${currentIndex}`}>
-            {currentCount.toFixed(2)}{formatSymbol(currentSymbol)}
+            {currentCount.toFixed(2)}
+            {formatSymbol(currentSymbol)}
             <sup className={styles.super}>{oxidationState}</sup>&nbsp;
         </div>
     );

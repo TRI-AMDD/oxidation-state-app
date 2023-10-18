@@ -1,9 +1,9 @@
 import { createBarPlotData, createPlotData, drawPlotDataCanvas } from '@/features/render-graph/render-graph';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { renderSpeciesLabel } from '../render-graph/render-species-label';
 import { renderSliderLine } from '../render-graph/render-slider';
 import { renderKeys } from '../render-graph/render-key';
 import { ExportGraphSettings } from '@/models/ExportGraphModel';
+import { OxidationStatesAPI } from '../data-table/table-models/data-viewer-model';
 
 export const BAR_WIDTH = 1680;
 export const BAR_HEIGHT = 210;
@@ -27,7 +27,6 @@ interface Props {
 
 export const renderExportGraph = (props: Props) => {
     const { canvas, data, mpValue, img, exportSettings } = props;
-    
 
     const context = canvas.getContext('2d');
     if (context) {

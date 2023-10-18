@@ -1,4 +1,4 @@
-import { Boundary, OxidationStatesAPI } from '@/models/DataViewerModel';
+import { Boundary, OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 import { toFixedNumber } from './GraphUtils/BoundariesUtil';
 
 function compareBoundaries(a: Boundary, b: Boundary) {

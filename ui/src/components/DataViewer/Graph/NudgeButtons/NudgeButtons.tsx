@@ -1,12 +1,12 @@
 import { IconButton, ButtonGroup, Tooltip } from '@mui/material';
 import styles from '../GraphTypeToggle/GraphTypeToggle.module.css';
-import { Boundary, OxidationStatesAPI } from '@/models/DataViewerModel';
 import { useMemo } from 'react';
 import { getBoundaries } from '@/utils/GraphUtil';
 import { ReactComponent as RightToggle } from '@/Assets/Images/rightToggle.svg';
 import { ReactComponent as LeftToggle } from '@/Assets/Images/leftToggle.svg';
 import { useAtom } from 'jotai';
 import { exportGraphModalOpenAtom } from '@/atoms/atoms';
+import { Boundary, OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 
 interface Props {
     onChange: (value: Boundary) => void;

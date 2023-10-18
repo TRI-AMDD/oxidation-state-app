@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { OxidationStatesAPI } from '@/models/DataViewerModel';
 import { createPlotData, createBarPlotData, drawPlotDataCanvas } from '@/features/render-graph/render-graph';
 import { GraphType } from '@/models/PlotDataModel';
+import { OxidationStatesAPI } from '@/features/data-table/table-models/data-viewer-model';
 
 interface Props {
     data: OxidationStatesAPI;
