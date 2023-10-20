@@ -9,7 +9,7 @@ const LeftSide = () => {
                 Oxidation States
             </Typography>
             <Typography component={'div'} variant="caption">
-                This table shows the most likely oxidation state assignments calculated by our tool.
+                This table shows the most likely oxidation state assignments for the given structure or composition.
             </Typography>
             <div className={styles.imageContainer}>
                 <TableImage1 className={styles.image} />
@@ -31,8 +31,8 @@ const LeftSide = () => {
                     <Typography component={'span'} color="primary" variant="caption">
                         row
                     </Typography>{' '}
-                    on the left will automatically update set electronic chemical <br /> potential on the right to the
-                    value that maximizes the likelihood of observing the <br /> selected set of oxidation states.
+                    on the left will automatically set the ICSD-derived reduction <br /> potential on the right to the
+                    value that maximizes the likelihood score of the <br /> selected set of oxidation states.
                 </Typography>
             </ul>
         </div>

@@ -33,7 +33,7 @@ const InputSection = () => {
                 SUBMIT
             </Button>
             <Typography variant="body2" component={'div'} className={styles.marginRight}>
-                Or
+                or
             </Typography>
             <div className={styles.uploadButtonContainer}>
                 <Button
@@ -46,7 +46,7 @@ const InputSection = () => {
                     UPLOAD STRUCTURE
                     <input hidden type="file" onChange={handleFileUpload} />
                 </Button>
-                <div className={styles.helperText}>Upload file in Cif or VASP POSCAR</div>
+                <div className={styles.helperText}>Upload file in CIF or VASP POSCAR format</div>
             </div>
         </div>
     );
