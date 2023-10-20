@@ -55,9 +55,13 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'likelihoodOptimalElecChemPotential',
-        headerName: 'Likelihood at optimal mapped potential value',
+        headerName: 'Likelihood at optimal ICSD-derived reduction potential value',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at optimal mapped potential value">
+            <HeaderTooltip
+                linkPath="/"
+                linkText="Likelihood"
+                bodyText="at optimal ICSD-derived reduction potential value"
+            >
                 <strong>
                     L(E<sub>opt</sub>)
                 </strong>
@@ -98,10 +102,14 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'likelihoodCurrentElecChemPotential',
-        headerName: 'Likelihood at current mapped potential value',
+        headerName: 'Likelihood at current ICSD-derived reduction potential value',
 
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Likelihood" bodyText="at current mapped potential value">
+            <HeaderTooltip
+                linkPath="/"
+                linkText="Likelihood"
+                bodyText="at current ICSD-derived reduction potential value"
+            >
                 <strong>L(E)</strong>
             </HeaderTooltip>
         ),
@@ -140,9 +148,9 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
     },
     {
         field: 'optimalElecChemPotential',
-        headerName: 'Optimal mapped potential value',
+        headerName: 'Optimal ICSD-derived reduction potential value',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="mapped potential value">
+            <HeaderTooltip linkPath="/" linkText="Optimal" bodyText="ICSD-derived reduction potential value">
                 <strong>
                     E<sub>opt</sub>
                 </strong>
