@@ -53,11 +53,11 @@ export const FAQs: FAQText[] = [
         answer: `The library used to evaluate oxidation states is open source and available for offline use. A description of this library, installation instructions, and API documentation can be found <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>here</a>.`
     },
     {
-        question: 'Can I download all of the oxidation state ranges?',
-        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://drive.google.com/file/d/1H7QbZsTD101VHunfPucHzaYAeRdjl4hs/view?usp=drive_link'>here</a>. The units are the same as those used on this web site.`
-    },
-    {
         question: 'Is there an API for the online application?',
         answer: `Yes. Documentation can be found <a rel='noopener noreferrer' target='_blank' href='https://stage.oxi.matr.io/api_swagger'>here</a>. This API can be used to automate the analysis of oxidation states without installing the Java library. The returned JSON files have the same structure as the PageData class in the <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>Java library</a> (see Javadoc for details).`
+    },
+    {
+        question: 'Can I download all of the oxidation state ranges?',
+        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://drive.google.com/file/d/1H7QbZsTD101VHunfPucHzaYAeRdjl4hs/view?usp=drive_link'>here</a>. The units are the same as those used on this web site.`
     }
 ];
