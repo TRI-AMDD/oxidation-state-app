@@ -53,6 +53,7 @@ class API {
         Request req = ctx.bodyAsClass(Request.class);
         OxsHelper oxsHelper = new OxsHelper();
         String result = oxsHelper.GetOxidationJSON(req);
+        ctx.res().setContentType("text/plain; charset=utf-8");
         ctx.result(result);
     }
 
