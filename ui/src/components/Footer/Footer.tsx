@@ -34,7 +34,16 @@ const Footer = () => {
                 </Link>
                 <Link
                     component={RouterLink}
-                    to="/faq/#faq-11"
+                    to="/faq/#faq-12"
+                    rel="noopener noreferrer"
+                    target={linkTarget}
+                    variant="whiteText"
+                >
+                    API
+                </Link>
+                <Link
+                    component={RouterLink}
+                    to="/faq/#faq-13"
                     rel="noopener noreferrer"
                     target={linkTarget}
                     variant="whiteText"
@@ -43,7 +52,7 @@ const Footer = () => {
                 </Link>
                 <Link
                     component={RouterLink}
-                    to="/faq/#faq-10"
+                    to="/faq/#faq-11"
                     rel="noopener noreferrer"
                     target={linkTarget}
                     variant="whiteText"
