@@ -36,7 +36,12 @@ const AboutUs = () => {
                         tutorial
                     </Link>
                     ). An open-source implementation of the web site and core algorithms is available{' '}
-                    <Link component={RouterLink} to="/">
+                    <Link
+                        component={'a'}
+                        href="https://github.com/TRI-AMDD/oxidation-state-api-public"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                    >
                         here.
                     </Link>
                     <br />

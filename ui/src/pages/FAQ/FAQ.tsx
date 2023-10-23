@@ -2,7 +2,7 @@ import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import styles from './FAQ.module.css';
 import { Accordion, AccordionDetails, AccordionSummary, Breadcrumbs, Button, Link, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { FAQs } from '@/utils/FAQUtil/FAQText';
+import { FAQs } from '@/pages/FAQ/FAQUtil/FAQText';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
@@ -16,7 +16,7 @@ const FAQ = () => {
 
     useEffect(() => {
         document.title = 'Oxidation State Analyzer - FAQ';
-        
+
         const currentUrl = window.location.href;
         const lastIndexOf = currentUrl.lastIndexOf(URL_FAQ_STRING_MATCH);
         const indexOfNumber = lastIndexOf + URL_FAQ_STRING_MATCH.length;

@@ -42,7 +42,7 @@ export const text9 = `To identify the most likely oxidation states of a material
 export const listText = [
     {
         key: 0,
-        text: 'In a single material, each element should experience nearly the same electronic chemical potential.'
+        text: 'In a single material, each element should experience the same electronic chemical potential.'
     },
     {
         key: 1,
@@ -52,7 +52,7 @@ export const listText = [
 
 export const text10 = `For example, let the two plots above represent hypothetical elements “A” and “X”, respectively.`;
 
-export const text11 = `Consider a material with composition AX2.  We will consider two possible ways to assign oxidation states to the A and X atoms while maintaining charge neutrality. Here we use standard notation where A<sup>2+</sup> indicates that A is in a +2 oxidation state.`;
+export const text11 = `Consider a material with composition AX<sub>2</sub>.  We will consider two possible ways to assign oxidation states to the A and X atoms while maintaining charge neutrality. Here we use standard notation where A<sup>2+</sup> indicates that A is in a +2 oxidation state.`;
 
 export const text12 = `The relative likelihood functions for these oxidation states are below. `;
 
@@ -64,7 +64,7 @@ export const text15 = `We can generalize the above analysis to determine the mos
 
 export const text16 = `To apply this approach, it is necessary to have good estimates for the width of the logistic function (i.e. the amount of uncertainty) for each boundary between oxidation states and for the locations of the boundaries. Here we have used the approximation that the logistic functions all have the same width and determined the boundary locations through machine learning.  Specifically, we collected a set of over 50,000 materials with labeled oxidation states from the <a rel='noopener noreferrer' target='_blank' href='https://icsd.products.fiz-karlsruhe.de/'>Inorganic Crystal Structure Database</a> (ICSD), and then we found the boundary values that maximized the geometric mean likelihood score of the labeled oxidation states.  To prevent the minimum and maximum boundary values from diverging to positive or negative infinity, we regularized the fit by applying a slight penalty proportional to the difference between the maximum and minimum boundary values for each oxidation state.`;
 
-export const text17 = `The boundary values discovered by our machine learning algorithm do not have any physical units; we only know that they should change monotonically with the electronic chemical potential.  Although this relationship does not necessarily have to be linear, a comparison between the boundary values we calculate and the standard reduction potentials for ions in solution reveals a roughly linear relationship. To facilitate the interpretation of the oxidation state range data, we have used this relationship to linearly scale the boundary values so that they are expressed in units roughly corresponding to volts.  Accordingly, on the web site we use the “fitted potential”, E, and the “optimal fitted potential”, E<sub>opt</sub>, in place of μ and μ<sub>opt</sub> respectively.
+export const text17 = `The boundary values discovered by our machine learning algorithm do not have any physical units; we only know that they should change monotonically with the electronic chemical potential.  Although this relationship does not necessarily have to be linear, a comparison between the boundary values we calculate and the standard reduction potentials for ions in solution reveals a roughly linear relationship. To facilitate the interpretation of the oxidation state range data, we have used this relationship to linearly scale the boundary values so that they are expressed in units roughly corresponding to volts. We call the resulting scale for these values the "ICSD-derived reduction potential" (IRP), and represent it with the symbol "E". Accordingly, on the web site we use E and E<sub>opt</sub>, in place of μ<sub>e</sub> and μ<sub>opt</sub> respectively.
 `;
 
 export const text18 = `Polyatomic ions are ions that contain more than one atom. Such ions can have their own oxidation state ranges that are significantly different from the ranges of the individual atoms.  For example, we find that S<sup>6+</sup> is stable in much more reducing conditions when in a (SO<sub>4</sub>)<sup>2-</sup> ion than when in a single sulfur ion.  We have calculated oxidation state ranges for 23 of the most common polyatomic ions:  AsO<sub>4</sub>, BO<sub>3</sub>, C<sub>2</sub>O<sub>4</sub>, CIO<sub>4</sub>, CN, CO, CrO<sub>4</sub>, GeO<sub>4</sub>, MoO<sub>4</sub>, NO<sub>2</sub>, NO<sub>3</sub>, P<sub>2</sub>O<sub>7</sub>, PO<sub>3</sub>, PO<sub>4</sub>, PS<sub>4</sub>, SeO<sub>3</sub>, SeO<sub>4</sub>, SiO<sub>4</sub>, SO<sub>2</sub>, SO<sub>3</sub>, SO<sub>4</sub>, and WO<sub>4</sub>. Represenative structures of these polyatomic ions in xyz format can be downloaded here. These will be auto-detected if contained in an uploaded structure. If you want to specify a polyatomic ion in a composition, surround the ion type from the above list with parenthesis.  E.g. (SO<sub>4</sub>) would represent a sulfate ion.`;

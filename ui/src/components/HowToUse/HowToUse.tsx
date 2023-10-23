@@ -22,7 +22,7 @@ const HowToUse = () => {
             >
                 <AccordionSummary id="howToUse-header" expandIcon={<ExpandMoreIcon />}>
                     <Typography component={'div'} variant="h6" className={styles.howToTitle}>
-                        How to use our tool:
+                        How to use the Oxidation State Analyzer:
                     </Typography>
                 </AccordionSummary>
                 <AccordionDetails>

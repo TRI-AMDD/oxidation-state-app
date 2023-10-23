@@ -45,7 +45,7 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
             inputRef={inputRef}
             variant="filled"
             className={styles.textFieldContainer}
-            label="Mapped Potential Value (E)"
+            label="ICSD-derived Reduction Potential Value (E)"
             type="number"
             onChange={(e) => debounced(e.target.value)}
         />
