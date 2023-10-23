@@ -39,6 +39,15 @@ const Footer = () => {
                     target={linkTarget}
                     variant="whiteText"
                 >
+                    API
+                </Link>
+                <Link
+                    component={RouterLink}
+                    to="/faq/#faq-13"
+                    rel="noopener noreferrer"
+                    target={linkTarget}
+                    variant="whiteText"
+                >
                     Data
                 </Link>
                 <Link
