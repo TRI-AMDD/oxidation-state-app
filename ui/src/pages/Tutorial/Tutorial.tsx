@@ -156,7 +156,7 @@ const Tutorial = () => {
                     <Typography component={'div'} variant="body2">
                         <div dangerouslySetInnerHTML={{ __html: text14 }} />
                         <br />
-                        <div dangerouslySetInnerHTML={{ __html: text15 }} />
+                        <div dangerouslySetInnerHTML={{ __html: text15 }} id={`tutorial-text-15`} />
                         <br />
                         <div dangerouslySetInnerHTML={{ __html: text16 }} />
                         <br />
