@@ -5,8 +5,8 @@ package oxs.helper;
 
 import java.util.Random;
 import oxs.helper.Request;
-import global.tri.oxidationstates.webapi.PageData;
-import global.tri.oxidationstates.webapi.WebOxidationAnalyzer;
+import _global.tri.oxidationstates.webapi.PageData;
+import _global.tri.oxidationstates.webapi.WebOxidationAnalyzer;
 
 /**
  * Helper class to consume to consume oxidationstates library

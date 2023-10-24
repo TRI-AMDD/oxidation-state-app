@@ -14,7 +14,7 @@ const InitialState = ({ dataState }: InitialStateProps) => {
         dataState === LoadingState.Initial ? (
             <>
                 Please enter a composition or upload a structure <br />
-                to see results
+                to see results.
             </>
         ) : (
             <>Loading...</>
