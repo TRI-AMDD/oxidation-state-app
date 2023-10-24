@@ -17,6 +17,8 @@ const HeaderTooltip = ({ linkText, bodyText, linkPath, children }: Props) => {
                     <Link
                         component={RouterLink}
                         to={linkPath}
+                        rel="noopener noreferrer"
+                        target="_blank"
                         sx={{ color: '#2196F3', textDecorationColor: '#2196F3' }}
                     >
                         {linkText}
