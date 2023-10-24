@@ -25,3 +25,7 @@
     justify-content: center;
     margin: 24px 0;
 }
+
+.imageContainer img {
+    width: 800px;
+}

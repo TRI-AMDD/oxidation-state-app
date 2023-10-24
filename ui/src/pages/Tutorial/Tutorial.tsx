@@ -67,13 +67,13 @@ const Tutorial = () => {
                     <Typography component={'div'} variant="h6" sx={{ marginBottom: '16px' }}>
                         Background
                     </Typography>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text1}
                     </Typography>
                     <Typography component={'div'} variant="h6" sx={{ marginBottom: '16px', marginTop: '40px' }}>
                         Oxidation state analysis
                     </Typography>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text2}
                         <br />
                         <br />
@@ -82,19 +82,19 @@ const Tutorial = () => {
                     <div className={styles.imageContainer}>
                         <img src={Tutorial1Image} alt="first-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         <div dangerouslySetInnerHTML={{ __html: text4 }} />
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial2Image} alt="second-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text5}
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial3Image} alt="third-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text6}
                     </Typography>
                     <div className={styles.imageContainer}>
@@ -103,19 +103,19 @@ const Tutorial = () => {
                     <div className={styles.imageContainer}>
                         <img src={Tutorial5Image} alt="fifth-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text7}
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial6Image} alt="sixth-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text8}
                     </Typography>
                     <div className={styles.imageContainer}>
                         <img src={Tutorial7Image} alt="seventh-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         {text9}
                         <ol>
                             {listText.map((item) => {
@@ -128,24 +128,24 @@ const Tutorial = () => {
                     <div className={styles.imageContainer}>
                         <img src={Tutorial8Image} alt="eighth-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         <div dangerouslySetInnerHTML={{ __html: text11 }} />
                     </Typography>
                     <Typography
                         component={'div'}
-                        variant="body2"
+                        variant="body1"
                         sx={{ marginBottom: '16px', marginTop: '40px', fontWeight: 'bold' }}
                     >
                         1. A<sup>2+</sup> 2X<sup>1-</sup>
                     </Typography>
-                    <Typography component={'div'} variant="body2" dangerouslySetInnerHTML={{ __html: text12 }} />
+                    <Typography component={'div'} variant="body1" dangerouslySetInnerHTML={{ __html: text12 }} />
                     <div className={styles.imageContainer}>
                         <img src={Tutorial9Image} alt="ninth-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2" dangerouslySetInnerHTML={{ __html: text13 }} />
+                    <Typography component={'div'} variant="body1" dangerouslySetInnerHTML={{ __html: text13 }} />
                     <Typography
                         component={'div'}
-                        variant="body2"
+                        variant="body1"
                         sx={{ marginBottom: '16px', marginTop: '40px', fontWeight: 'bold' }}
                     >
                         2. A<sup>4+</sup> 2X<sup>2-</sup>
@@ -153,7 +153,7 @@ const Tutorial = () => {
                     <div className={styles.imageContainer}>
                         <img src={Tutorial10Image} alt="tenth-tutorial-image" />
                     </div>
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body1">
                         <div dangerouslySetInnerHTML={{ __html: text14 }} />
                         <br />
                         <div dangerouslySetInnerHTML={{ __html: text15 }} id={`tutorial-text-15`} />
@@ -170,7 +170,7 @@ const Tutorial = () => {
                     >
                         Polyatomic Ions
                     </Typography>
-                    <Typography component={'div'} variant="body2" sx={{ marginBottom: '24px;' }}>
+                    <Typography component={'div'} variant="body1" sx={{ marginBottom: '24px;' }}>
                         <div dangerouslySetInnerHTML={{ __html: text18 }} />
                     </Typography>
                 </div>
