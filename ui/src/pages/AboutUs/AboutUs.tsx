@@ -29,7 +29,7 @@ const AboutUs = () => {
                     The oxidation state analyzer is an open web application for predicting and analyzing oxidation
                     states in materials based on <br /> the approach described in{' '}
                     <Link component={RouterLink} to="/" color="primary" underline="always">
-                        manuscript
+                        this manuscript
                     </Link>{' '}
                     (an overview of this approach is provided in the{' '}
                     <Link component={RouterLink} to="/tutorial">
@@ -57,8 +57,7 @@ const AboutUs = () => {
                     </Link>{' '}
                     of the Toyota Research Institute, with contributions from Tim Mueller, Joseph Montoya, Weike Ye, Ray
                     Lei, Linda Hung, Jens Hummelshoj, Michael Puzon, Daniel Martinez, Chris Fajardo, Rachel Abela, Brian
-                    Storey, Reko Ong, Kumundra Aung, Kevin Tran, Ha-Kyung Kwon, and Kenji Yokoe.
-                    <br />
+                    Storey, Reko Ong, Kumundra Aung, Kevin Tran, Ha-Kyung Kwon, and Kenji Yokoe. 
                     If you have any questions about the web site or underlying approach, please reach out to us at{' '}
                     <Link component={'a'} href="mailto:em-oxi@tri.global">
                         em-oxi@tri.global

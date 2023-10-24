@@ -50,7 +50,7 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'Is the Oxidation State Analyzer available for offline use?',
-        answer: `The library used to evaluate oxidation states is open source and available for offline use. A description of this library, installation instructions, and API documentation can be found <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>here</a>.`
+        answer: `The library used to evaluate oxidation states is open source and available for offline use. A description of this library and installation instructions can be found <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>here</a>. API documentation is generated when the library is installed, and it can also be found <a rel='noopener noreferrer' target='_blank' href='https://javadoc.oxi.matr.io/'>online</a>.`
     },
     {
         question: 'Is there an API for the online application?',
