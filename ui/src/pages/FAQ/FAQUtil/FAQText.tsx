@@ -54,7 +54,7 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'Is there an API for the online application?',
-        answer: `Yes. Documentation can be found <a rel='noopener noreferrer' target='_blank' href='https://oxi.matr.io/api_swagger'>here</a>. This API can be used to automate the analysis of oxidation states without installing the Java library. The returned JSON files have the same structure as the PageData class in the <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>Java library</a> (see Javadoc for details).`
+        answer: `Yes. Documentation can be found <a rel='noopener noreferrer' target='_blank' href='https://oxi.matr.io/api_swagger'>here</a>. This API can be used to automate the analysis of oxidation states without installing the Java library. The returned JSON files have the same structure as the PageData class in the <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>Java library</a> (see <a rel='noopener noreferrer' target='_blank' href='https://javadoc.oxi.matr.io/'>Javadoc</a> for details).`
     },
     {
         question: 'Can I download all of the oxidation state ranges?',

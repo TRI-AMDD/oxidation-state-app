@@ -12,7 +12,7 @@ const TitleAndDescription = () => {
                 likely oxidation states to sites in a given structure, using the methods described here.
             </Typography>
             <Typography component={'div'} variant="body1" className={styles.subtext}>
-                A library implementing the underlying methods is available to download for offline use
+                A library implementing the underlying methods is available to download for offline use.
             </Typography>
         </div>
     );

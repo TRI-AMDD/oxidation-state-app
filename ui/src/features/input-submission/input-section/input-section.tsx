@@ -46,7 +46,7 @@ const InputSection = () => {
                     UPLOAD STRUCTURE
                     <input hidden type="file" onChange={handleFileUpload} />
                 </Button>
-                <div className={styles.helperText}>Upload file in CIF or VASP POSCAR format</div>
+                <div className={styles.helperText}>Upload file in CIF or VASP POSCAR format.</div>
             </div>
         </div>
     );
