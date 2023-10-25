@@ -58,7 +58,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         headerName: 'Likelihood at optimal ICSD-derived reduction potential value',
         renderHeader: () => (
             <HeaderTooltip
-                linkPath="/tutorial/#tutorial-text-15"
+                linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
                 linkText="Likelihood"
                 bodyText="at optimal ICSD-derived reduction potential value"
             >
@@ -106,7 +106,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
         renderHeader: () => (
             <HeaderTooltip
-                linkPath="/tutorial/#tutorial-text-15"
+                linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
                 linkText="Likelihood"
                 bodyText="at current ICSD-derived reduction potential value"
             >
@@ -151,7 +151,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         headerName: 'Optimal ICSD-derived reduction potential value',
         renderHeader: () => (
             <HeaderTooltip
-                linkPath="/tutorial/#tutorial-text-15"
+                linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
                 linkText="Optimal"
                 bodyText="ICSD-derived reduction potential value"
             >

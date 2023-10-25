@@ -19,7 +19,9 @@ export const customTheme: ThemeOptions = {
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    backgroundColor: 'rgba(97, 97, 97, 1)'
+                    backgroundColor: '#f5f5f9',
+                    color: 'rgba(0, 0, 0, 0.87)',
+                    border: '1px solid #dadde9'
                 }
             }
         }
