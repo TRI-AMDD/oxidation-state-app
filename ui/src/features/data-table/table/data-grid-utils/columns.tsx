@@ -59,7 +59,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderHeader: () => (
             <HeaderTooltip
                 linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
-                linkText="Likelihood"
+                linkText="Likelihood score"
                 bodyText="at optimal ICSD-derived reduction potential value"
             >
                 <strong>
@@ -107,7 +107,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderHeader: () => (
             <HeaderTooltip
                 linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
-                linkText="Likelihood"
+                linkText="Likelihood score"
                 bodyText="at current ICSD-derived reduction potential value"
             >
                 <strong>L(E)</strong>
@@ -152,8 +152,8 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderHeader: () => (
             <HeaderTooltip
                 linkPath="/tutorial/#tutorial-icsd-derived-reduction-potential"
-                linkText="Optimal"
-                bodyText="ICSD-derived reduction potential value"
+                linkText="Optimal ICSD-derived reduction potential value"
+                bodyText=""
             >
                 <strong>
                     E<sub>opt</sub>
@@ -187,7 +187,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         field: 'globalInstabilityIndex',
         headerName: 'Global instability index',
         renderHeader: () => (
-            <HeaderTooltip linkPath="/faq/#faq-7" linkText="Global" bodyText="instability index">
+            <HeaderTooltip linkPath="/faq/#faq-7" linkText="Global instability index" bodyText="">
                 <strong>GII</strong>
             </HeaderTooltip>
         ),
