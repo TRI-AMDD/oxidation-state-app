@@ -155,7 +155,16 @@ const Tutorial = () => {
                     </div>
                     <Typography component={'div'} variant="body1">
                         <div dangerouslySetInnerHTML={{ __html: text14 }} />
-                        <br />
+                    </Typography>
+                    <Typography
+                        component={'div'}
+                        variant="body1"
+                        sx={{ marginBottom: '16px', marginTop: '20px', fontWeight: 'bold' }}
+                        id="tutorial-icsd-derived-reduction-potential"
+                    >
+                        Likelihood scores and the ICSD-derived reduction potential
+                    </Typography>
+                    <Typography component={'div'} variant="body1">
                         <div dangerouslySetInnerHTML={{ __html: text15 }} id={`tutorial-text-15`} />
                         <br />
                         <div dangerouslySetInnerHTML={{ __html: text16 }} />

@@ -29,6 +29,8 @@ const HeaderTooltip = ({ linkText, bodyText, linkPath, children }: Props) => {
             arrow
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
+            leaveDelay={500}
+            placement="top"
         >
             {children}
         </Tooltip>
