@@ -9,8 +9,8 @@ const RightSide = () => {
                 Oxidation State Ranges
             </Typography>
             <Typography component={'div'} variant="caption">
-                The colored plots show the ranges of the ICSD-derived reduction potential (IRP) at which <br />{' '}
-                different oxidation states are likely to be observed.
+                The colored plots show the ranges of the ICSD-derived reduction potential (IRP)
+                <br /> at which different oxidation states are likely to be observed.
             </Typography>
             <div className={styles.imageContainer}>
                 <TableImage2 className={styles.image} />
