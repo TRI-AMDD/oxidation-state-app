@@ -59,6 +59,6 @@ export const FAQs: FAQText[] = [
     },
     {
         question: 'Can I download all of the oxidation state ranges?',
-        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/polyatomic_ion_xyz_files.tar.gz'>here</a>. The units are the same as those used on this web site.`
+        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.`
     }
 ];
