@@ -1,7 +1,7 @@
 import { TextField, TextFieldProps } from '@mui/material';
 import styles from './ElectronicChemicalPotentialInput.module.css';
 import { useAtom } from 'jotai';
-import { exportGraphModalOpenAtom } from '@/atoms/atoms';
+import { ecpInitValue, exportGraphModalOpenAtom } from '@/atoms/atoms';
 import { useDebouncedCallback } from 'use-debounce';
 import { useEffect, useRef } from 'react';
 
@@ -15,11 +15,11 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
     const inputRef = useRef<TextFieldProps>();
 
     useEffect(() => {
-        if (inputRef.current) {
+        if (inputRef.current && value !== ecpInitValue) {
             const formattedValue = value.toFixed(5);
             inputRef.current.value = formattedValue;
         }
-    }, [value]);
+    }, [value, isModalOpen]);
 
     // trigger value change after 1 sec
     const debounced = useDebouncedCallback(
