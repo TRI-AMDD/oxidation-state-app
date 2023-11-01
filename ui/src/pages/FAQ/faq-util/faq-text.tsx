@@ -3,7 +3,9 @@ export interface FAQText {
     answer: string;
 }
 
-export const FAQs: FAQText[] = [
+export const URL_FAQ_STRING_MATCH = 'faq-';
+
+export const FAQ_ITEMS: FAQText[] = [
     {
         question: 'How can I cite the Oxidation State Analyzer?',
         //answer: 'If you would like to cite the oxidation state analyzer, please reference the following manuscript: PLACEHOLDER. You can directly export this reference to a citation manager by clicking on one of the following links: PLACEHOLDER'

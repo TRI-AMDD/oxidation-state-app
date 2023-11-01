@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import Header from './Header';
 import { MemoryRouter } from 'react-router-dom';
 
-test('renders Header correctly', async () => {
+test('renders Header correctly', () => {
     render(<Header />, { wrapper: MemoryRouter });
 
     const faq = screen.getByText('FAQ');

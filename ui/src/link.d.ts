@@ -1,6 +1,3 @@
-import { LinkPropsVariantOverrides } from '@mui/material/Link';
-import { TypographyPropsVariantOverrides } from '@mui/material';
-
 declare module '@mui/material/Link' {
     interface LinkPropsVariantOverrides {
         whiteText: true;
