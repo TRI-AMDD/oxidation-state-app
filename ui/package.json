@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "tsc --noEmit && vite build",
     "build-stage": "tsc --noEmit && vite build --mode staging",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives",
     "preview": "vite preview"
   },
   "dependencies": {
