@@ -5,7 +5,7 @@ import { Provider as JotaiProvider } from 'jotai';
 import { ThemeProvider, createTheme } from '@mui/material';
 import AboutUs from './pages/AboutUs/AboutUs';
 import { customTheme } from './theme';
-import FAQ from './pages/FAQ/FAQ';
+import { FAQ } from './pages/FAQ/FAQ';
 import Tutorial from './pages/Tutorial/Tutorial';
 
 const queryClient = new QueryClient();

@@ -2,17 +2,15 @@ import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import styles from './FAQ.module.css';
 import { Accordion, AccordionDetails, AccordionSummary, Breadcrumbs, Button, Link, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { FAQs } from '@/pages/FAQ/FAQUtil/FAQText';
+import { FAQ_ITEMS, URL_FAQ_STRING_MATCH } from './faq-util/faq-text';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
-const URL_FAQ_STRING_MATCH = 'faq-';
-
-const FAQ = () => {
+export function FAQ() {
     const [expanded, setExpanded] = useState<string[]>([]);
     const [expandAll, setExpandAll] = useState<boolean>(false);
 
-    const allAccordians = FAQs.map((_value, index) => `panel${index}`);
+    const allAccordians = FAQ_ITEMS.map((_value, index) => `panel${index}`);
 
     useEffect(() => {
         document.title = 'Oxidation State Analyzer - FAQ';
@@ -23,7 +21,7 @@ const FAQ = () => {
         if (indexOfNumber !== -1) {
             const panelNumberString = currentUrl.slice(indexOfNumber);
             const panelNumber = Number.parseInt(panelNumberString);
-            if (!Number.isNaN(panelNumber) && panelNumber >= 0 && panelNumber < FAQs.length) {
+            if (!Number.isNaN(panelNumber) && panelNumber >= 0 && panelNumber < FAQ_ITEMS.length) {
                 if (panelNumber > 5) document.getElementById(`faq-${panelNumber}`)?.scrollIntoView();
                 setExpanded([`panel${panelNumber}`]);
             }
@@ -78,7 +76,7 @@ const FAQ = () => {
                         </Button>
                     </div>
                     <div className={styles.accordiansContainer}>
-                        {FAQs.map((value, index) => {
+                        {FAQ_ITEMS.map((value, index) => {
                             const panelName = `panel${index}`;
                             return (
                                 <Accordion
@@ -111,6 +109,4 @@ const FAQ = () => {
             </div>
         </PageWrapper>
     );
-};
-
-export default FAQ;
+}

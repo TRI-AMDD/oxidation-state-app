@@ -73,7 +73,7 @@ export const formatOxidationState = ({ counts, oxidationStates, symbols }: Table
                 finalString += symbol + oxidationState + ' ';
             } else if (counts[index] % 1 === 0) {
                 finalArr.push(formatOxidationStateWithWholeNumberCount(index, symbol, counts[index], oxidationState));
-                finalString += ~~counts[index] + symbol + oxidationState + ' ';
+                finalString += `${~~counts[index]}${symbol}${oxidationState} `;
             } else {
                 finalArr.push(formatOxidationStateWithDecimalCount(index, symbol, counts[index], oxidationState));
                 finalString += counts[index].toFixed(2) + symbol + oxidationState + ' ';
