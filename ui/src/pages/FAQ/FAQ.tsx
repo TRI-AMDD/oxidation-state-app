@@ -5,12 +5,15 @@ import { useEffect, useState } from 'react';
 import { FAQ_ITEMS, URL_FAQ_STRING_MATCH } from './faq-util/faq-text';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { useLocation } from 'react-router-dom';
 
 export function FAQ() {
     const [expanded, setExpanded] = useState<string[]>([]);
     const [expandAll, setExpandAll] = useState<boolean>(false);
 
     const allAccordians = FAQ_ITEMS.map((_value, index) => `panel${index}`);
+
+    const location = useLocation();
 
     useEffect(() => {
         document.title = 'Oxidation State Analyzer - FAQ';
@@ -22,11 +25,11 @@ export function FAQ() {
             const panelNumberString = currentUrl.slice(indexOfNumber);
             const panelNumber = Number.parseInt(panelNumberString);
             if (!Number.isNaN(panelNumber) && panelNumber >= 0 && panelNumber < FAQ_ITEMS.length) {
-                if (panelNumber > 5) document.getElementById(`faq-${panelNumber}`)?.scrollIntoView();
+                document.getElementById(`faq-${panelNumber}`)?.scrollIntoView({ block: 'center' });
                 setExpanded([`panel${panelNumber}`]);
             }
         }
-    }, []);
+    }, [location]);
 
     const handleAccordianChange = (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
         if (isExpanded && !expanded.includes(panel)) {
