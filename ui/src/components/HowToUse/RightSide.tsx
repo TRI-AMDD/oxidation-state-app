@@ -18,25 +18,15 @@ const RightSide = () => {
                 <ul className={styles.ul}>
                     <Typography component={'li'} variant="caption">
                         Moving the vertical line horizontally <br /> changes the IRP <br />
-                        and{' '}
-                        <Typography component={'span'} color="primary" variant="caption">
-                            updates the L(E) column in <br /> the table{' '}
-                        </Typography>
-                        on the left
+                        and updates the L(E) column in <br /> the table on the left
                     </Typography>
                 </ul>
             </div>
 
             <ul className={styles.ul}>
                 <Typography component={'li'} variant="caption">
-                    The IRP can also be entered in the text box below the <br /> graph,{' '}
-                    <Typography component={'span'} color="primary" variant="caption">
-                        updating the location of the vertical line
-                    </Typography>
-                    in the graph and{' '}
-                    <Typography component={'span'} color="primary" variant="caption">
-                        the L(E) <br /> column in the table.
-                    </Typography>
+                    The IRP can also be entered in the text box below the <br /> graph, updating the location of the
+                    vertical line in the graph and the L(E) <br /> column in the table.
                 </Typography>
             </ul>
         </div>
