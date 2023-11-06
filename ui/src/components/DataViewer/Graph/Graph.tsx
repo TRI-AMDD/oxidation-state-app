@@ -12,7 +12,7 @@ import useTable from '@/features/data-table/table-hooks/use-table';
 import SpecieLabel from './CanvasGraph/SpecieLabel';
 import GraphTypeToggle from './GraphTypeToggle/GraphTypeToggle';
 import NudgeButtons from './NudgeButtons/NudgeButtons';
-import ExportGraphButton from '@/features/export-graph/ExportGraphButton';
+import ExportGraphButton from '@/features/export-graph/export-graph-button';
 import GraphHeaders from './GraphHeaders/GraphHeaders';
 import BoundaryDot from './BoundaryDot/BoundaryDot';
 

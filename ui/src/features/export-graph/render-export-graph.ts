@@ -7,7 +7,7 @@ import { OxidationStatesAPI } from '../data-table/table-models/data-viewer-model
 
 export const BAR_WIDTH = 1680;
 export const BAR_HEIGHT = 210;
-export const OFFSET_X = 320;
+export const OFFSET_X = 220;
 export const OFFSET_Y = 100;
 
 const settings = {
