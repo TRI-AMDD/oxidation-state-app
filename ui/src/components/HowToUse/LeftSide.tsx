@@ -16,23 +16,16 @@ const LeftSide = () => {
                 <ul className={styles.ul}>
                     <Typography component={'li'} variant="caption">
                         The table can be sorted <br />
-                        by{' '}
-                        <Typography component={'span'} color="primary" variant="caption">
-                            different properties
-                        </Typography>{' '}
-                        of <br />
+                        by different properties of <br />
                         the assignments.
                     </Typography>
                 </ul>
             </div>
             <ul className={styles.ul}>
                 <Typography component={'li'} variant="caption">
-                    Selecting a{' '}
-                    <Typography component={'span'} color="primary" variant="caption">
-                        row
-                    </Typography>{' '}
-                    on the left will automatically set the ICSD-derived reduction <br /> potential on the right to the
-                    value that maximizes the likelihood score of the <br /> selected set of oxidation states.
+                    Selecting a row on the left will automatically set the ICSD-derived reduction <br /> potential on
+                    the right to the value that maximizes the likelihood score of the <br /> selected set of oxidation
+                    states.
                 </Typography>
             </ul>
         </div>
