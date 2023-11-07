@@ -29,7 +29,13 @@ const Footer = () => {
                 >
                     FAQ
                 </Link>
-                <Link component={RouterLink} to="/about-us" variant="whiteText">
+                <Link
+                    component={RouterLink}
+                    to="/about-us"
+                    variant="whiteText"
+                    rel="noopener noreferrer"
+                    target={linkTarget}
+                >
                     About Us
                 </Link>
                 <Link
