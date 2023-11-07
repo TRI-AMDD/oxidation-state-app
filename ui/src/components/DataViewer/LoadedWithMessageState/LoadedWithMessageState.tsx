@@ -32,7 +32,7 @@ const LoadedWithMessageState = () => {
                     {messages.length > 0 && (
                         <ul className={styles.ul}>
                             {messages.map((message, i) => (
-                                <li key={i}>{message}</li>
+                                <li key={`loaded-with-message-array-${i}`}>{message}</li>
                             ))}
                         </ul>
                     )}
