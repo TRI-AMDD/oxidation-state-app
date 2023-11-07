@@ -1,5 +1,6 @@
 import { createPlotData, drawPlotDataCanvas } from './render-graph';
 import mockData from '@/mocks/sample-response.json';
+import 'jest-canvas-mock';
 
 const settings = {
     BAR_WIDTH: 450,
@@ -16,6 +17,7 @@ describe('drawPlotDataCanvas', () => {
         const items = createPlotData(mockData, settings);
         if (ctx) {
             drawPlotDataCanvas(items, canvas, true, settings);
+
             const path = ctx.__getPath();
             expect(path).toMatchSnapshot();
         }
