@@ -31,9 +31,9 @@ const LoadedWithMessageState = () => {
                     </div>
                     {messages.length > 0 && (
                         <ul className={styles.ul}>
-                            {messages.map(function (message) {
-                                return <li>{message}</li>;
-                            })}
+                            {messages.map((message, i) => (
+                                <li key={`loaded-with-message-array-${i}`}>{message}</li>
+                            ))}
                         </ul>
                     )}
                 </div>

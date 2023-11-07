@@ -43,7 +43,7 @@ const ExportGraphButton = () => {
 
         if (canvas && oxidationData) {
             const oxidationLength = oxidationData?.oxidationStateRangeData.length ?? 0;
-            const height = BAR_HEIGHT * oxidationLength + 500;
+            const height = BAR_HEIGHT * oxidationLength + 600;
 
             canvas.width = 2100;
             canvas.height = height;
