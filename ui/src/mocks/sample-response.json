@@ -1,0 +1,93 @@
+{
+    "tableData": {
+        "tableRows": [
+            {
+                "counts": [1.0, 1.0, 1.0, 4.0],
+                "optimalLikelihood": 0.2498612826821139,
+                "globalInstabilityIndex": "NaN",
+                "cifstring": null,
+                "mixedValence": true,
+                "optimalMappedPotential": 1.986907586711089,
+                "boundaryPairs": [
+                    [-17.292652476815775, 18.53824988751993],
+                    [3.9358123446658837, 6.595158564112687],
+                    [6.595158564112687, 10.185167847839628],
+                    [-18.384113728817407, 14.102611128789906]
+                ],
+                "oxidationStates": [1, 3, 4, -2],
+                "symbols": ["Li", "Mn", "Mn", "O"]
+            },
+            {
+                "counts": [1.0, 0.5, 1.5, 4.0],
+                "optimalLikelihood": 0.04376383411445869,
+                "globalInstabilityIndex": "NaN",
+                "cifstring": null,
+                "mixedValence": true,
+                "optimalMappedPotential": 1.7238688626192458,
+                "boundaryPairs": [
+                    [-17.292652476815775, 18.53824988751993],
+                    [-16.019054013342714, 3.9358123446658837],
+                    [6.595158564112687, 10.185167847839628],
+                    [-18.384113728817407, 14.102611128789906]
+                ],
+                "oxidationStates": [1, 2, 4, -2],
+                "symbols": ["Li", "Mn", "Mn", "O"]
+            },
+            {
+                "counts": [1.0, 1.5, 0.5, 4.0],
+                "optimalLikelihood": 0.020227735179405442,
+                "globalInstabilityIndex": "NaN",
+                "cifstring": null,
+                "mixedValence": true,
+                "optimalMappedPotential": 2.339733061294613,
+                "boundaryPairs": [
+                    [-17.292652476815775, 18.53824988751993],
+                    [3.9358123446658837, 6.595158564112687],
+                    [10.185167847839628, 10.185168112371839],
+                    [-18.384113728817407, 14.102611128789906]
+                ],
+                "oxidationStates": [1, 3, 5, -2],
+                "symbols": ["Li", "Mn", "Mn", "O"]
+            },
+            {
+                "counts": [1.0, 1.75, 0.25, 4.0],
+                "optimalLikelihood": 0.020227730582051427,
+                "globalInstabilityIndex": "NaN",
+                "cifstring": null,
+                "mixedValence": true,
+                "optimalMappedPotential": 2.339733087472877,
+                "boundaryPairs": [
+                    [-17.292652476815775, 18.53824988751993],
+                    [3.9358123446658837, 6.595158564112687],
+                    [10.185168112371839, 13.812489421221098],
+                    [-18.384113728817407, 14.102611128789906]
+                ],
+                "oxidationStates": [1, 3, 7, -2],
+                "symbols": ["Li", "Mn", "Mn", "O"]
+            }
+        ]
+    },
+    "composition": "LiMn2O4",
+    "oxidationStateRangeData": [
+        { "ionTypeSymbol": "Li", "oxidationStates": [1], "rangeBoundaries": [-2.740776496429115, 4.350918043036601] },
+        {
+            "ionTypeSymbol": "Mn",
+            "oxidationStates": [2, 3, 4, 5, 7],
+            "rangeBoundaries": [
+                -2.48870438345119, 1.4607863479827325, 1.9871272944438316, 2.6976661744073582, 2.6976662267638862,
+                3.4155899468334696
+            ]
+        },
+        {
+            "ionTypeSymbol": "O",
+            "oxidationStates": [-2, -1],
+            "rangeBoundaries": [-2.956799797270199, 3.47301117804963, 4.5418967681701865]
+        }
+    ],
+    "messages": [],
+    "minBoundaryValue": -3.269098595257842,
+    "maxBoundaryValue": 4.7224458155075455,
+    "potentialMapper": { "slope": 0.197921181759699, "intercept": 0.681805717542049 },
+    "maxGraph": 5.712051724306041,
+    "minGraph": -4.258704504056337
+}
