@@ -7,12 +7,17 @@ import useInputs from '@/features/input-submission/input-hooks/use-inputs';
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
 
-const InputSection = () => {
+interface InputSectionProps {
+    submitClick?: () => void;
+}
+
+const InputSection = ({ submitClick }: InputSectionProps) => {
     const { handleInputChange, handleFileUpload, handleSubmitClick, handleEnterClick, inputText } = useInputs();
     return (
         <div className={styles.container}>
             <TextField
-                id="input-section-text"
+                id="input-section-chemical-composition"
+                data-testid="input-section-chemical-composition"
                 placeholder={PLACEHOLDER_TEXT}
                 label={LABEL_TEXT}
                 InputLabelProps={{
@@ -25,10 +30,12 @@ const InputSection = () => {
             />
             <Button
                 id="input-section-submit-button"
+                data-testid="input-section-submit-button"
                 variant="contained"
                 size="large"
                 className={styles.marginRight}
-                onClick={handleSubmitClick}
+                onClick={submitClick ? submitClick : handleSubmitClick}
+                disabled={inputText === ''}
             >
                 SUBMIT
             </Button>
