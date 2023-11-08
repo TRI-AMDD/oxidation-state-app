@@ -8,7 +8,7 @@ const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
 
 interface InputSectionProps {
-    submitClick?: () => void;
+    submitClick?: (input: string) => void;
 }
 
 const InputSection = ({ submitClick }: InputSectionProps) => {
@@ -34,7 +34,7 @@ const InputSection = ({ submitClick }: InputSectionProps) => {
                 variant="contained"
                 size="large"
                 className={styles.marginRight}
-                onClick={submitClick ? submitClick : handleSubmitClick}
+                onClick={submitClick ? () => submitClick(inputText) : handleSubmitClick}
                 disabled={inputText === ''}
             >
                 SUBMIT

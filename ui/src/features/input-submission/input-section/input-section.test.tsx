@@ -43,4 +43,5 @@ test('onSubmit function should be called with string in checmical composition in
 
     expect(chemCompositionInputElem).toHaveValue('LiMn2O4');
     expect(onClick).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalledWith('LiMn2O4');
 });
