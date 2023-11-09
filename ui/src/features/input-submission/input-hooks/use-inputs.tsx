@@ -1,17 +1,19 @@
 import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom } from '@/atoms/atoms';
 import useTable from '../../data-table/table-hooks/use-table';
 import { useAtom } from 'jotai';
-import { useState } from 'react';
 import { LoadingState } from '@/features/data-table/table-models/data-viewer-model';
+import { Dispatch, SetStateAction } from 'react';
 
 const useInputs = () => {
-    const [inputText, setInputText] = useState('');
     const [uploadedFileName, setUploadedFileName] = useAtom(uploadedFileNameAtom);
     const { grabOxidationStates } = useTable();
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [structureWasUploaded, setStructureWasUploaded] = useAtom(structureWasUploadedAtom);
 
-    const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileUpload = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        setInputText: Dispatch<SetStateAction<string>>
+    ) => {
         if (event.target.files && event.target.files.length > 0) {
             const file = event.target.files[0];
             event.preventDefault();
@@ -27,11 +29,7 @@ const useInputs = () => {
         }
     };
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputText(event.target.value);
-    };
-
-    const handleSubmitClick = () => {
+    const handleSubmitClick = (inputText: string) => {
         if (inputText !== '') {
             grabOxidationStates(inputText);
             setDataViewerState(LoadingState.Loading);
@@ -44,7 +42,7 @@ const useInputs = () => {
         }
     };
 
-    const handleEnterClick = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const handleEnterClick = (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => {
         if (event.code === 'Enter' && inputText !== '') {
             grabOxidationStates(inputText);
             setDataViewerState(LoadingState.Loading);
@@ -60,12 +58,10 @@ const useInputs = () => {
 
     return {
         handleFileUpload,
-        handleInputChange,
         handleSubmitClick,
         handleEnterClick,
         structureWasUploaded,
-        uploadedFileName,
-        inputText
+        uploadedFileName
     };
 };
 

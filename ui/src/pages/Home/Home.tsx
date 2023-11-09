@@ -7,8 +7,11 @@ import InputSection from '@/features/input-submission/input-section/input-sectio
 import DataViewer from '@/components/DataViewer/DataViewer';
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { useEffect } from 'react';
+import useInputs from '@/features/input-submission/input-hooks/use-inputs';
 
 function Home() {
+    const { handleFileUpload, handleSubmitClick, handleEnterClick } = useInputs();
+
     useEffect(() => {
         document.title = 'Oxidation State Analyzer';
     }, []);
@@ -35,7 +38,11 @@ function Home() {
                     <GetStarted />
                 </Grid>
                 <Grid item className={styles.itemPadding}>
-                    <InputSection />
+                    <InputSection
+                        handleFileUpload={handleFileUpload}
+                        handleSubmitClick={handleSubmitClick}
+                        handleEnterClick={handleEnterClick}
+                    />
                 </Grid>
             </Grid>
             <DataViewer />
