@@ -1,18 +1,26 @@
 import { TextField, Button, Typography } from '@mui/material';
 import styles from './input-section.module.css';
 import UploadIcon from '@mui/icons-material/Upload';
-
-import useInputs from '@/features/input-submission/input-hooks/use-inputs';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
 
 interface InputSectionProps {
-    submitClick?: (input: string) => void;
+    handleFileUpload: (
+        event: React.ChangeEvent<HTMLInputElement>,
+        setInputText: Dispatch<SetStateAction<string>>
+    ) => void;
+    handleSubmitClick: (inputText: string) => void;
+    handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
 }
 
-const InputSection = ({ submitClick }: InputSectionProps) => {
-    const { handleInputChange, handleFileUpload, handleSubmitClick, handleEnterClick, inputText } = useInputs();
+const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }: InputSectionProps) => {
+    const [inputText, setInputText] = useState('');
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInputText(event.target.value);
+    };
     return (
         <div className={styles.container}>
             <TextField
@@ -24,7 +32,7 @@ const InputSection = ({ submitClick }: InputSectionProps) => {
                     shrink: true
                 }}
                 className={styles.marginRight}
-                onKeyDown={handleEnterClick}
+                onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => handleEnterClick(event, inputText)}
                 onChange={handleInputChange}
                 value={inputText}
             />
@@ -34,7 +42,7 @@ const InputSection = ({ submitClick }: InputSectionProps) => {
                 variant="contained"
                 size="large"
                 className={styles.marginRight}
-                onClick={submitClick ? () => submitClick(inputText) : handleSubmitClick}
+                onClick={() => handleSubmitClick(inputText)}
                 disabled={inputText === ''}
             >
                 SUBMIT
@@ -51,7 +59,11 @@ const InputSection = ({ submitClick }: InputSectionProps) => {
                     startIcon={<UploadIcon />}
                 >
                     UPLOAD STRUCTURE
-                    <input hidden type="file" onChange={handleFileUpload} />
+                    <input
+                        hidden
+                        type="file"
+                        onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleFileUpload(event, setInputText)}
+                    />
                 </Button>
                 <div className={styles.helperText}>Upload file in CIF or VASP POSCAR format.</div>
             </div>
