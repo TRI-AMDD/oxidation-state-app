@@ -1,5 +1,6 @@
 import { Link, Typography } from '@mui/material';
 import styles from './TitleAndDescription.module.css';
+import { Link as RouterLink } from 'react-router-dom';
 
 const TitleAndDescription = () => {
     return (
@@ -21,7 +22,11 @@ const TitleAndDescription = () => {
                 .
             </Typography>
             <Typography component={'div'} variant="body1" className={styles.subtext}>
-                A library implementing the underlying methods is available to download for offline use.
+                A&nbsp;
+                <Link component={RouterLink} to="/faq/#faq-11" rel="noopener noreferrer" target="_blank">
+                    library
+                </Link>
+                &nbsp;implementing the underlying methods is available to download for offline use.
             </Typography>
         </div>
     );
