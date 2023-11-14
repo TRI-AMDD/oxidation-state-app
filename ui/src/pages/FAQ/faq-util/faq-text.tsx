@@ -9,7 +9,7 @@ export const FAQ_ITEMS: FAQText[] = [
     {
         question: 'How can I cite the Oxidation State Analyzer?',
         //answer: 'If you would like to cite the oxidation state analyzer, please reference the following manuscript: PLACEHOLDER. You can directly export this reference to a citation manager by clicking on one of the following links: PLACEHOLDER'
-        answer: 'A preprint of our manuscript is available <a href="https://chemrxiv.org/engage/chemrxiv/article-details/6542a27a48dad23120de97ee" rel="noopener noreferrer" target="_blank">here </a>'
+        answer: 'A preprint of our manuscript is available <a href="https://chemrxiv.org/engage/chemrxiv/article-details/6542a27a48dad23120de97ee" rel="noopener noreferrer" target="_blank">here </a>.'
     },
     {
         question: 'For what species can oxidation states be calculated?',
@@ -29,7 +29,7 @@ export const FAQ_ITEMS: FAQText[] = [
     },
     {
         question: 'What is the likelihood score?',
-        answer: 'The likelihood score is a number between 0 and 1 representing the estimated relative likelihood that a particular combination of oxidation states coexists in a stable material at a particular electronic chemical potential (or equivalently, at a particular ICSD-derived reduction potential).  More information is available in our <a href="https://chemrxiv.org/engage/chemrxiv/article-details/6542a27a48dad23120de97ee" rel="noopener noreferrer" target="_blank">manuscript</a>. (We will update this section when the manuscript becomes available)'
+        answer: 'The likelihood score is a number between 0 and 1 representing the estimated relative likelihood that a particular combination of oxidation states coexists in a stable material at a particular electronic chemical potential (or equivalently, at a particular ICSD-derived reduction potential).  More information is available in our <a href="https://chemrxiv.org/engage/chemrxiv/article-details/6542a27a48dad23120de97ee" rel="noopener noreferrer" target="_blank">manuscript</a>.'
     },
     {
         question: 'What is the optimal potential?',
@@ -53,7 +53,7 @@ export const FAQ_ITEMS: FAQText[] = [
     },
     {
         question: 'Is the Oxidation State Analyzer available for offline use?',
-        answer: `The library used to evaluate oxidation states is open source and available for offline use. A description of this library and installation instructions can be found <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>here</a>. API documentation is generated when the library is installed, and it can also be found <a rel='noopener noreferrer' target='_blank' href='https://javadoc.oxi.matr.io/'>online</a>.`
+        answer: `We plan on releasing the software library used to evaluate oxidation states soon. A description of this library and installation instructions can be found <a rel='noopener noreferrer' target='_blank' href='https://github.com/TRI-AMDD/oxidation-state-api-public'>here</a>. API documentation is generated when the library is installed, and it can also be found <a rel='noopener noreferrer' target='_blank' href='https://javadoc.oxi.matr.io/'>online</a>.`
     },
     {
         question: 'Is there an API for the online application?',
