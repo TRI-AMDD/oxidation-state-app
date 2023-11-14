@@ -1,14 +1,17 @@
 import { Alert, Typography } from '@mui/material';
 import styles from './LoadedWithMessageState.module.css';
 import { useAtom } from 'jotai';
-import { dynamicCompositionTitleAtom, oxidationDataAtom } from '@/atoms/atoms';
+import { oxidationDataAtom } from '@/atoms/atoms';
 import Table from '@/features/data-table/table/table';
 import Graph from '../Graph/Graph';
 import { useMemo } from 'react';
 import CompositionTitle from '../CompositionTitle/CompositionTitle';
 
-const LoadedWithMessageState = () => {
-    const [dynamicCompositionTitle] = useAtom(dynamicCompositionTitleAtom);
+interface LoadedWithMessageStateProps {
+    dynamicCompositionTitle: { formattedTitle: string[]; unformattedTitle: string };
+}
+
+const LoadedWithMessageState = ({ dynamicCompositionTitle }: LoadedWithMessageStateProps) => {
     const [oxidationData] = useAtom(oxidationDataAtom);
     const messages = useMemo(() => {
         if (typeof oxidationData !== 'undefined' && oxidationData && oxidationData.messages.length > 0) {
@@ -22,7 +25,7 @@ const LoadedWithMessageState = () => {
         <div>
             <Alert severity="info">
                 <div className={styles.alertMessage}>
-                    <div className={styles.dynamicTitle}>
+                    <div className={styles.dynamicTitle} data-testid="dynamic-composition-title">
                         {' '}
                         Oxidation state analysis for&nbsp;
                         {dynamicCompositionTitle.formattedTitle.map((item) => (
