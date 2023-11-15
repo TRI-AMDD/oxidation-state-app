@@ -42,7 +42,7 @@ const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }:
                 variant="contained"
                 size="large"
                 className={styles.marginRight}
-                onClick={() => handleSubmitClick(inputText)}
+                onClick={() => handleSubmitClick('')}
                 disabled={inputText === ''}
             >
                 SUBMIT
