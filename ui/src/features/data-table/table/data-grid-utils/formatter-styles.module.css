@@ -1,3 +1,7 @@
 .super {
+    display: inline-block;
+    margin-right: 2px;
+}
+.super sup{
     font-size: 12px;
 }

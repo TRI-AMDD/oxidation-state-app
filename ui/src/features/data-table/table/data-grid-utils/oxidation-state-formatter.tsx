@@ -21,9 +21,9 @@ const formatOxidationWithChargeSign = (currentOxidation: number) => {
 
 const formatOxidationStateWithOneCount = (currentIndex: number, currentSymbol: string, oxidationState: string) => {
     return (
-        <div key={`oxidationState- ${currentIndex}`}>
+        <div key={`oxidationState- ${currentIndex}`} className={styles.super}>
             {formatSymbol(currentSymbol)}
-            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+            <sup>{oxidationState}</sup>
         </div>
     );
 };
@@ -39,10 +39,10 @@ const formatOxidationStateWithWholeNumberCount = (
     oxidationState: string
 ) => {
     return (
-        <div key={`oxidationState- ${currentIndex}`}>
+        <div key={`oxidationState- ${currentIndex}`} className={styles.super}>
             {~~currentCount}
             {formatSymbol(currentSymbol)}
-            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+            <sup>{oxidationState}</sup>
         </div>
     );
 };
@@ -54,10 +54,10 @@ const formatOxidationStateWithDecimalCount = (
     oxidationState: string
 ) => {
     return (
-        <div key={`oxidationState- ${currentIndex}`}>
+        <div key={`oxidationState- ${currentIndex}`} className={styles.super}>
             {currentCount.toFixed(2)}
             {formatSymbol(currentSymbol)}
-            <sup className={styles.super}>{oxidationState}</sup>&nbsp;
+            <sup>{oxidationState}</sup>
         </div>
     );
 };
