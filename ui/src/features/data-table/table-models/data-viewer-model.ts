@@ -19,7 +19,7 @@ export interface OxidationStatesTableItem {
 }
 
 export interface TableRowAPI {
-    counts: number[];    
+    counts: number[];
     symbols: string[];
     oxidationStates: number[];
     optimalLikelihood: number;
@@ -44,13 +44,13 @@ export interface OxidationStatesAPI {
     };
     maxBoundaryValue: number;
     minBoundaryValue: number;
-    maxGraph: number;
-    minGraph: number;
+    maxGraph?: number;
+    minGraph?: number;
     oxidationStateRangeData: OxidationRangeItem[];
     potentialMapper: {
         intercept: number;
         slope: number;
-    }
+    };
 }
 
 interface ErrorMessage {
