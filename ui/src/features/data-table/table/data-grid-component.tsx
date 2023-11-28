@@ -16,6 +16,7 @@ const DataGridComponent = ({ tableData, handleTableRowClick }: DataGridComponent
         <DataGrid
             hideFooter={true}
             getRowHeight={() => 'auto'}
+            getRowId={(item) => `row-id-${item.id}`}
             columns={columns}
             rows={tableData}
             sx={{
