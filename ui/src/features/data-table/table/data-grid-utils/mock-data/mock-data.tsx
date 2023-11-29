@@ -137,10 +137,10 @@ const fileUploadPayload = {
 
 export const InputSectionMockData: OxidationStatesTableItem[] = parseAPITableData(
     parseOxidationData(LiMn2O4Payload),
-    -50
+    LiMn2O4Payload.tableData.tableRows[0].optimalLikelihood
 );
 
 export const FileUploadMockData: OxidationStatesTableItem[] = parseAPITableData(
     parseOxidationData(fileUploadPayload),
-    -50
+    fileUploadPayload.tableData.tableRows[0].optimalLikelihood
 );

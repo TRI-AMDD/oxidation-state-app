@@ -20,7 +20,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         }}
                         variant="body2"
                         component={'div'}
-                        data-testid={`data-grid-column-oxidationState`}
+                        data-testid={`data-grid-column-oxidationState-${params.row.id}`}
                     >
                         {params.row.oxidationState}
                     </Typography>
@@ -37,7 +37,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         }}
                         variant="body2"
                         component={'div'}
-                        data-testid="data-grid-column-oxidationState"
+                        data-testid={`data-grid-column-oxidationState-${params.row.id}`}
                     >
                         {params.row.oxidationState}
                     </Typography>

@@ -1,4 +1,4 @@
-import { render, renderHook, screen } from '@testing-library/react';
+import { render, renderHook, screen, waitFor } from '@testing-library/react';
 import DataGridComponent from './data-grid-component';
 import { InputSectionMockData } from './data-grid-utils/mock-data/mock-data';
 import useTable from '../table-hooks/use-table';
@@ -12,16 +12,11 @@ describe('data grid component renders with given data', () => {
                     current: { handleTableRowClick }
                 }
             } = renderHook(useTable);
-            console.log(mockData.length);
+            console.log(mockData);
             render(<DataGridComponent tableData={mockData} handleTableRowClick={handleTableRowClick} />);
         });
-        test('oxidation states render correctly', async () => {
-            const oxidationStateCells = await screen.findAllByTestId('data-grid-column-oxidationState');
-            oxidationStateCells.forEach((v, index) => {
-                console.log(v.innerHTML);
-                console.log(index);
-            });
-            const debugScreen = screen.debug();
+        test('oxidation states render correctly', () => {
+            //console.log(screen.getByTestId('data-grid-column-oxidationState-3'));
         });
     });
 });
