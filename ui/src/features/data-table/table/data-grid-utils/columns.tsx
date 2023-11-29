@@ -20,6 +20,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         }}
                         variant="body2"
                         component={'div'}
+                        data-testid={`data-grid-column-oxidationState-${params.row.id}`}
                     >
                         {params.row.oxidationState}
                     </Typography>
@@ -36,6 +37,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         }}
                         variant="body2"
                         component={'div'}
+                        data-testid={`data-grid-column-oxidationState-${params.row.id}`}
                     >
                         {params.row.oxidationState}
                     </Typography>
@@ -80,13 +82,22 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-likelihoodOptimal-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
             } else {
                 return (
-                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ fontWeight: 'bold' }}
+                        data-testid={`data-grid-column-likelihoodOptimal-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
@@ -126,13 +137,22 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-likelihoodCurrent-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
             } else {
                 return (
-                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ fontWeight: 'bold' }}
+                        data-testid={`data-grid-column-likelihoodCurrent-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
@@ -163,13 +183,22 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderCell(params) {
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-optimalPotential-${params.row.id}`}
+                    >
                         {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
                 );
             } else {
                 return (
-                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ fontWeight: 'bold' }}
+                        data-testid={`data-grid-column-optimalPotential-${params.row.id}`}
+                    >
                         {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
                 );
@@ -198,13 +227,18 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                     : 'N/A';
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2">
+                    <Typography component={'div'} variant="body2" data-testid={`data-grid-column-GII-${params.row.id}`}>
                         {displayValue}
                     </Typography>
                 );
             } else {
                 return (
-                    <Typography component={'div'} variant="body2" sx={{ fontWeight: 'bold' }}>
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        sx={{ fontWeight: 'bold' }}
+                        data-testid={`data-grid-column-GII-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );

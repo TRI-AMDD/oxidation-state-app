@@ -19,7 +19,7 @@ export interface OxidationStatesTableItem {
 }
 
 export interface TableRowAPI {
-    counts: number[];    
+    counts: number[];
     symbols: string[];
     oxidationStates: number[];
     optimalLikelihood: number;
@@ -50,7 +50,7 @@ export interface OxidationStatesAPI {
     potentialMapper: {
         intercept: number;
         slope: number;
-    }
+    };
 }
 
 interface ErrorMessage {
