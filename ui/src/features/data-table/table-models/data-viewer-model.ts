@@ -44,8 +44,8 @@ export interface OxidationStatesAPI {
     };
     maxBoundaryValue: number;
     minBoundaryValue: number;
-    maxGraph?: number;
-    minGraph?: number;
+    maxGraph: number;
+    minGraph: number;
     oxidationStateRangeData: OxidationRangeItem[];
     potentialMapper: {
         intercept: number;
