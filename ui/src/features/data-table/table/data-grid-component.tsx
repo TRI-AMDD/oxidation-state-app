@@ -1,5 +1,4 @@
 import { DataGrid, GridRowParams } from '@mui/x-data-grid';
-import { useEffect } from 'react';
 import { columns } from '@/features/data-table/table/data-grid-utils/columns';
 import { OxidationStatesTableItem } from '../table-models/data-viewer-model';
 import CustomToolbar from './custom-toolbar/custom-toolbar';
@@ -10,10 +9,6 @@ interface DataGridComponentProps {
     handleTableRowClick: (event: GridRowParams<OxidationStatesTableItem>) => void;
 }
 const DataGridComponent = ({ tableData, handleTableRowClick }: DataGridComponentProps) => {
-    useEffect(() => {
-        console.log(document.querySelector('[data-testid="data-grid-column-oxidationState-2"]'));
-    });
-
     return (
         <DataGrid
             hideFooter={true}

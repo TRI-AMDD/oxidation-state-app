@@ -82,7 +82,11 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2" data-testid="data-grid-column-likelihoodOptimal">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-likelihoodOptimal-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
@@ -92,7 +96,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         component={'div'}
                         variant="body2"
                         sx={{ fontWeight: 'bold' }}
-                        data-testid="data-grid-column-likelihoodOptimal"
+                        data-testid={`data-grid-column-likelihoodOptimal-${params.row.id}`}
                     >
                         {displayValue}
                     </Typography>
@@ -133,7 +137,11 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
 
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2" data-testid="data-grid-column-likelihoodCurrent">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-likelihoodCurrent-${params.row.id}`}
+                    >
                         {displayValue}
                     </Typography>
                 );
@@ -143,7 +151,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         component={'div'}
                         variant="body2"
                         sx={{ fontWeight: 'bold' }}
-                        data-testid="data-grid-column-likelihoodCurrent"
+                        data-testid={`data-grid-column-likelihoodCurrent-${params.row.id}`}
                     >
                         {displayValue}
                     </Typography>
@@ -175,7 +183,11 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
         renderCell(params) {
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2" data-testid="data-grid-column-optimalPotential">
+                    <Typography
+                        component={'div'}
+                        variant="body2"
+                        data-testid={`data-grid-column-optimalPotential-${params.row.id}`}
+                    >
                         {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
                 );
@@ -185,7 +197,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         component={'div'}
                         variant="body2"
                         sx={{ fontWeight: 'bold' }}
-                        data-testid="data-grid-column-optimalPotentials"
+                        data-testid={`data-grid-column-optimalPotential-${params.row.id}`}
                     >
                         {params.row.optimalMappedPotential.toFixed(2)}
                     </Typography>
@@ -215,7 +227,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                     : 'N/A';
             if (params.row.mixedValence) {
                 return (
-                    <Typography component={'div'} variant="body2" data-testid="data-grid-column-GII">
+                    <Typography component={'div'} variant="body2" data-testid={`data-grid-column-GII-${params.row.id}`}>
                         {displayValue}
                     </Typography>
                 );
@@ -225,7 +237,7 @@ export const columns: GridColDef<OxidationStatesTableItem>[] = [
                         component={'div'}
                         variant="body2"
                         sx={{ fontWeight: 'bold' }}
-                        data-testid="data-grid-column-GII"
+                        data-testid={`data-grid-column-GII-${params.row.id}`}
                     >
                         {displayValue}
                     </Typography>

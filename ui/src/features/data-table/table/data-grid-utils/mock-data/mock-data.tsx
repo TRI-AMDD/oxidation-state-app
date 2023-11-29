@@ -1,96 +1,5 @@
-import { OxidationStatesAPI, OxidationStatesTableItem } from '@/features/data-table/table-models/data-viewer-model';
+import { OxidationStatesTableItem } from '@/features/data-table/table-models/data-viewer-model';
 import { parseAPITableData, parseOxidationData } from '../oxidation-state-formatter';
-const LiMn2O4Payload: OxidationStatesAPI = {
-    tableData: {
-        tableRows: [
-            {
-                optimalLikelihood: 0.24986682338501875,
-                globalInstabilityIndex: 'NaN',
-                mixedValence: true,
-                counts: [1.0, 1.0, 1.0, 4.0],
-                cifstring: null,
-                oxidationStates: [1, 3, 4, -2],
-                optimalMappedPotential: 0.6624184346336293,
-                symbols: ['Li', 'Mn', 'Mn', 'O'],
-                boundaryPairs: [
-                    [-16.973591418866732, 18.52990701983895],
-                    [3.868369425692821, 6.527383523638193],
-                    [6.527383523638193, 10.105078221731805],
-                    [-17.393909848682924, 14.075423435770237]
-                ]
-            },
-            {
-                optimalLikelihood: 0.04377558549403938,
-                globalInstabilityIndex: 'NaN',
-                mixedValence: true,
-                counts: [1.0, 0.5, 1.5, 4.0],
-                cifstring: null,
-                oxidationStates: [1, 2, 4, -2],
-                optimalMappedPotential: 0.3970189446973529,
-                symbols: ['Li', 'Mn', 'Mn', 'O'],
-                boundaryPairs: [
-                    [-16.973591418866732, 18.52990701983895],
-                    [-15.805536851282808, 3.868369425692821],
-                    [6.527383523638193, 10.105078221731805],
-                    [-17.393909848682924, 14.075423435770237]
-                ]
-            },
-            {
-                optimalLikelihood: 0.02044546576867927,
-                globalInstabilityIndex: 'NaN',
-                mixedValence: true,
-                counts: [1.0, 1.5, 0.5, 4.0],
-                cifstring: null,
-                oxidationStates: [1, 3, 5, -2],
-                optimalMappedPotential: 1.0173415387640796,
-                symbols: ['Li', 'Mn', 'Mn', 'O'],
-                boundaryPairs: [
-                    [-16.973591418866732, 18.52990701983895],
-                    [3.868369425692821, 6.527383523638193],
-                    [10.105078221731805, 10.105078222113512],
-                    [-17.393909848682924, 14.075423435770237]
-                ]
-            },
-            {
-                optimalLikelihood: 0.02044546576198057,
-                globalInstabilityIndex: 'NaN',
-                mixedValence: true,
-                counts: [1.0, 1.75, 0.25, 4.0],
-                cifstring: null,
-                oxidationStates: [1, 3, 7, -2],
-                optimalMappedPotential: 1.0173415388021967,
-                symbols: ['Li', 'Mn', 'Mn', 'O'],
-                boundaryPairs: [
-                    [-16.973591418866732, 18.52990701983895],
-                    [3.868369425692821, 6.527383523638193],
-                    [10.105078222113512, 13.790884338442877],
-                    [-17.393909848682924, 14.075423435770237]
-                ]
-            }
-        ]
-    },
-    composition: 'LiMn2O4',
-    oxidationStateRangeData: [
-        { oxidationStates: [1], ionTypeSymbol: 'Li', rangeBoundaries: [-4.030947564664589, 3.059756522132119] },
-        {
-            oxidationStates: [2, 3, 4, 5, 7],
-            ionTypeSymbol: 'Mn',
-            rangeBoundaries: [
-                -3.797665503453981, 0.1315767902948093, 0.6626309950994969, 1.377162675995114, 1.3771626760713478,
-                2.1132862030898787
-            ]
-        },
-        {
-            oxidationStates: [-2, -1],
-            ionTypeSymbol: 'O',
-            rangeBoundaries: [-4.114892914816463, 2.170113913850715, 4.015252157854681]
-        }
-    ],
-    messages: [],
-    minBoundaryValue: -4.481096377933891,
-    maxBoundaryValue: 4.015252157854681,
-    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 }
-};
 
 const fileUploadPayload = {
     tableData: {
@@ -135,9 +44,86 @@ const fileUploadPayload = {
     potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 }
 };
 
+const ClOPayload = {
+    tableData: {
+        tableRows: [
+            {
+                optimalLikelihood: 0.249578727923112,
+                globalInstabilityIndex: 'NaN',
+                mixedValence: true,
+                counts: [0.25, 0.75, 1.0],
+                cifstring: null,
+                oxidationStates: [-1, 3, -2],
+                optimalMappedPotential: 0.8947254619577099,
+                symbols: ['Cl', 'Cl', 'O'],
+                boundaryPairs: [
+                    [-17.67580167400341, 7.692856311827473],
+                    [7.692856311827473, 7.692856311832366],
+                    [-17.393909848682924, 14.075423435770237]
+                ]
+            },
+            {
+                optimalLikelihood: 0.24957872792250035,
+                globalInstabilityIndex: 'NaN',
+                mixedValence: true,
+                counts: [0.5, 0.5, 1.0],
+                cifstring: null,
+                oxidationStates: [-1, 5, -2],
+                optimalMappedPotential: 0.8947254619581984,
+                symbols: ['Cl', 'Cl', 'O'],
+                boundaryPairs: [
+                    [-17.67580167400341, 7.692856311827473],
+                    [7.692856311832366, 7.692856311931472],
+                    [-17.393909848682924, 14.075423435770237]
+                ]
+            },
+            {
+                optimalLikelihood: 0.2495787279101122,
+                globalInstabilityIndex: 'NaN',
+                mixedValence: true,
+                counts: [0.625, 0.375, 1.0],
+                cifstring: null,
+                oxidationStates: [-1, 7, -2],
+                optimalMappedPotential: 0.8947254619680951,
+                symbols: ['Cl', 'Cl', 'O'],
+                boundaryPairs: [
+                    [-17.67580167400341, 7.692856311827473],
+                    [7.692856311931472, 15.321531719879193],
+                    [-17.393909848682924, 14.075423435770237]
+                ]
+            }
+        ]
+    },
+    composition: 'ClO',
+    oxidationStateRangeData: [
+        {
+            oxidationStates: [-1, 3, 5, 7],
+            ionTypeSymbol: 'Cl',
+            rangeBoundaries: [
+                -4.171191916484858, 0.8953974273014202, 0.8953974273023975, 0.8953974273221907, 2.418984743241711
+            ]
+        },
+        {
+            oxidationStates: [-2, -1],
+            ionTypeSymbol: 'O',
+            rangeBoundaries: [-4.114892914816463, 2.170113913850715, 4.015252157854681]
+        }
+    ],
+    messages: [
+        {
+            isErrorMessage: false,
+            messageString:
+                'Some of the following polyatomic ions may be present in this material: (ClO4). If so, then expressing your composition in terms of the polyatomic ions will usually produce more accurate results.'
+        }
+    ],
+    minBoundaryValue: -4.481096377933891,
+    maxBoundaryValue: 4.015252157854681,
+    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 }
+};
+
 export const InputSectionMockData: OxidationStatesTableItem[] = parseAPITableData(
-    parseOxidationData(LiMn2O4Payload),
-    LiMn2O4Payload.tableData.tableRows[0].optimalLikelihood
+    parseOxidationData(ClOPayload),
+    ClOPayload.tableData.tableRows[0].optimalLikelihood
 );
 
 export const FileUploadMockData: OxidationStatesTableItem[] = parseAPITableData(
