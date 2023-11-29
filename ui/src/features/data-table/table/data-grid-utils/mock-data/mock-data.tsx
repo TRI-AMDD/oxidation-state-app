@@ -41,7 +41,9 @@ const fileUploadPayload = {
     messages: [],
     minBoundaryValue: -4.481096377933891,
     maxBoundaryValue: 4.015252157854681,
-    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 }
+    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 },
+    minGraph: 0,
+    maxGraph: 0
 };
 
 const ClOPayload = {
@@ -118,7 +120,9 @@ const ClOPayload = {
     ],
     minBoundaryValue: -4.481096377933891,
     maxBoundaryValue: 4.015252157854681,
-    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 }
+    potentialMapper: { slope: 0.199718461521146, intercept: -0.641008 },
+    minGraph: 0,
+    maxGraph: 0
 };
 
 export const InputSectionMockData: OxidationStatesTableItem[] = parseAPITableData(
