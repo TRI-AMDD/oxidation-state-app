@@ -1,7 +1,7 @@
 import { TextField, Button, Typography } from '@mui/material';
 import styles from './input-section.module.css';
 import UploadIcon from '@mui/icons-material/Upload';
-import React, { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
@@ -12,15 +12,25 @@ interface InputSectionProps {
         setInputText: Dispatch<SetStateAction<string>>
     ) => void;
     handleSubmitClick: (inputText: string) => void;
-    handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
+    handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void
 }
 
 const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }: InputSectionProps) => {
-    const [inputText, setInputText] = useState('');
-
+    const storeddata = localStorage.getItem('input');
+    var inputvalue
+    if(storeddata == undefined){
+         inputvalue = ''
+    }
+    else if(storeddata != undefined){
+         inputvalue = JSON.parse(localStorage.getItem("input")||'')
+    }
+    const [inputText, setInputText] = useState(inputvalue);
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(event.target.value);
     };
+    useEffect(() => {
+        handleSubmitClick(inputText);
+    },[])
     return (
         <div className={styles.container}>
             <TextField

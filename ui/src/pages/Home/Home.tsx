@@ -1,5 +1,6 @@
 import styles from './Home.module.css';
 import { Grid } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import TitleAndDescription from '@/components/TitleAndDescription/TitleAndDescription';
 import HowToUse from '@/components/HowToUse/HowToUse';
 import GetStarted from '@/components/GetStarted/GetStarted';
@@ -10,8 +11,14 @@ import { useEffect } from 'react';
 import useInputs from '@/features/input-submission/input-hooks/use-inputs';
 
 function Home() {
-    const { handleFileUpload, handleSubmitClick, handleEnterClick } = useInputs();
-
+    const { handleFileUpload, handleSubmitClick, handleEnterClick} = useInputs();
+    const { input } = useParams();
+    if(input != null){
+        localStorage.setItem("input", JSON.stringify(input))
+    }
+    else{
+        localStorage.setItem("input",JSON.stringify(''))
+    }
     useEffect(() => {
         document.title = 'Oxidation State Analyzer';
     }, []);
@@ -47,6 +54,7 @@ function Home() {
             </Grid>
             <DataViewer />
         </PageWrapper>
+        
     );
 }
 
