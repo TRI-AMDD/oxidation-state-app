@@ -12,19 +12,15 @@ interface InputSectionProps {
         setInputText: Dispatch<SetStateAction<string>>
     ) => void;
     handleSubmitClick: (inputText: string) => void;
-    handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void
+    handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
+    inputFromUrl : any
 }
 
-const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }: InputSectionProps) => {
-    const storeddata = localStorage.getItem('input');
-    var inputvalue
-    if(storeddata == undefined){
-         inputvalue = ''
+const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick, inputFromUrl }: InputSectionProps) => {
+    const [inputText, setInputText] = useState(inputFromUrl);
+    if(inputText == null){
+        setInputText('')
     }
-    else if(storeddata != undefined){
-         inputvalue = JSON.parse(localStorage.getItem("input")||'')
-    }
-    const [inputText, setInputText] = useState(inputvalue);
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(event.target.value);
     };

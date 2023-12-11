@@ -13,12 +13,6 @@ import useInputs from '@/features/input-submission/input-hooks/use-inputs';
 function Home() {
     const { handleFileUpload, handleSubmitClick, handleEnterClick} = useInputs();
     const { input } = useParams();
-    if(input != null){
-        localStorage.setItem("input", JSON.stringify(input))
-    }
-    else{
-        localStorage.setItem("input",JSON.stringify(''))
-    }
     useEffect(() => {
         document.title = 'Oxidation State Analyzer';
     }, []);
@@ -49,6 +43,7 @@ function Home() {
                         handleFileUpload={handleFileUpload}
                         handleSubmitClick={handleSubmitClick}
                         handleEnterClick={handleEnterClick}
+                        inputFromUrl={input}
                     />
                 </Grid>
             </Grid>
