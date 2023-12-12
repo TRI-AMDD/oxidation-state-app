@@ -42,7 +42,7 @@ const ElectronicChemicalPotentialInput = ({ onChange, value }: ECPInputProps) =>
 
     return (
         <TextField
-            id='ecp-input'
+            id="ecp-input"
             inputRef={inputRef}
             variant="filled"
             className={styles.textFieldContainer}

@@ -15,20 +15,24 @@ interface InputSectionProps {
     handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
 }
 
-const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }: InputSectionProps & { inputvalue: string }) => {
-    
-    const [inputText, setInputText] = useState(inputvalue||'');
-    if(inputText == null){
-        setInputText('')
+const InputSection = ({
+    handleFileUpload,
+    handleSubmitClick,
+    handleEnterClick,
+    inputvalue
+}: InputSectionProps & { inputvalue: string }) => {
+    const [inputText, setInputText] = useState(inputvalue || '');
+    if (inputText == null) {
+        setInputText('');
     }
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputText(event.target.value);
     };
     useEffect(() => {
-        if(inputText != ''){
-        handleSubmitClick(inputText);
+        if (inputText != '') {
+            handleSubmitClick(inputText);
         }
-    },[])
+    }, []);
     return (
         <div className={styles.container}>
             <TextField
