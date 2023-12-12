@@ -25,6 +25,8 @@ export const structureWasUploadedAtom = atom<boolean>(false);
 
 export const uploadedFileNameAtom = atom<string>('');
 
+export const inputValueAtom = atom<string>('');
+
 export const oxidationDataAtom = atom<OxidationStatesAPI | null>(null);
 
 export const graphSliderPositionAtom = atom<number>(50);

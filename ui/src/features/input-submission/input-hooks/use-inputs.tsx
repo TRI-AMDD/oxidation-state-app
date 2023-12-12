@@ -1,4 +1,4 @@
-import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom } from '@/atoms/atoms';
+import { dataViewerStateAtom, structureWasUploadedAtom, uploadedFileNameAtom, inputValueAtom } from '@/atoms/atoms';
 import useTable from '../../data-table/table-hooks/use-table';
 import { useAtom } from 'jotai';
 import { LoadingState } from '@/features/data-table/table-models/data-viewer-model';
@@ -9,6 +9,8 @@ const useInputs = () => {
     const { grabOxidationStates } = useTable();
     const [, setDataViewerState] = useAtom(dataViewerStateAtom);
     const [structureWasUploaded, setStructureWasUploaded] = useAtom(structureWasUploadedAtom);
+
+    const [inputvalue] = useAtom(inputValueAtom);
 
     const handleFileUpload = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -61,6 +63,7 @@ const useInputs = () => {
         handleSubmitClick,
         handleEnterClick,
         structureWasUploaded,
+        inputvalue,
         uploadedFileName
     };
 };

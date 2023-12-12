@@ -13,10 +13,9 @@ interface InputSectionProps {
     ) => void;
     handleSubmitClick: (inputText: string) => void;
     handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
-    inputvalue: string;
 }
 
-const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }: InputSectionProps) => {
+const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }: InputSectionProps & { inputvalue: string }) => {
     
     const [inputText, setInputText] = useState(inputvalue||'');
     if(inputText == null){
