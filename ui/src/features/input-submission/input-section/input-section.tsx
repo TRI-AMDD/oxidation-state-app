@@ -28,7 +28,9 @@ const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }:
         setInputText(event.target.value);
     };
     useEffect(() => {
+        if(inputText != ''){
         handleSubmitClick(inputText);
+        }
     },[])
     return (
         <div className={styles.container}>
