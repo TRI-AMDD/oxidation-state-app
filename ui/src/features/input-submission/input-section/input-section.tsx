@@ -2,7 +2,6 @@ import { TextField, Button, Typography } from '@mui/material';
 import styles from './input-section.module.css';
 import UploadIcon from '@mui/icons-material/Upload';
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 
 const PLACEHOLDER_TEXT = 'ex. LiMn2O4';
 const LABEL_TEXT = 'Chemical Composition';
@@ -14,13 +13,12 @@ interface InputSectionProps {
     ) => void;
     handleSubmitClick: (inputText: string) => void;
     handleEnterClick: (event: React.KeyboardEvent<HTMLInputElement>, inputText: string) => void;
+    inputvalue: string;
 }
 
-const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick }: InputSectionProps) => {
-    const location = useLocation();
-    const param = new URLSearchParams(location.search);
-    const qparam = param.get('q');
-    const [inputText, setInputText] = useState(qparam||'');
+const InputSection = ({ handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }: InputSectionProps) => {
+    
+    const [inputText, setInputText] = useState(inputvalue||'');
     if(inputText == null){
         setInputText('')
     }
