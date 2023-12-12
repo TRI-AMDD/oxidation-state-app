@@ -8,13 +8,9 @@ import DataViewer from '@/components/DataViewer/DataViewer';
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { useEffect} from 'react';
 import useInputs from '@/features/input-submission/input-hooks/use-inputs';
-import { useLocation } from 'react-router-dom';
 
 function Home() {
-    const location = useLocation();
     const { handleFileUpload, handleSubmitClick, handleEnterClick} = useInputs();
-    const param = new URLSearchParams(location.search);
-    const qparam = param.get('q');
     useEffect(() => {
         document.title = 'Oxidation State Analyzer';
     }, []);
@@ -45,7 +41,6 @@ function Home() {
                         handleFileUpload={handleFileUpload}
                         handleSubmitClick={handleSubmitClick}
                         handleEnterClick={handleEnterClick}
-                        inputFromUrl={qparam}
                     />
                 </Grid>
             </Grid>
