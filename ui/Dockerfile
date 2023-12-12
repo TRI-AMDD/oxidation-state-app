@@ -5,6 +5,9 @@ RUN npm install
 COPY public ./public
 COPY src ./src
 COPY tsconfig.json ./
+COPY tsconfig.node.json ./
+COPY index.html ./
+COPY vite.config.ts ./
 RUN npm run build
 
 FROM nginx:alpine

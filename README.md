@@ -48,8 +48,9 @@ Run the UI in a separate terminal
 docker compose up --build
 ```
 
-Browser will automatically load the app at <http://localhost:3000/>
+Browser will automatically load the app at <http://localhost/>
 Learn more about [UI](ui/README.md)
+API is served at <http://localhost:7070/api>
 
 
 ## Using the oxidation state analyzer api 
