@@ -22,8 +22,8 @@ const GraphHeaders = () => {
                     <Tooltip
                         title={
                             <span>
-                                The ICSD-derived reduction <br /> potential ranges at which <br /> each oxidation state is
-                                likely <br /> to be observed
+                                The ICSD-derived reduction <br /> potential ranges at which <br /> each oxidation state
+                                is likely <br /> to be observed
                             </span>
                         }
                     >

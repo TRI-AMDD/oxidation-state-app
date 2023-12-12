@@ -11,7 +11,6 @@ import { InitalExportGraphSettingsState } from '@/models/ExportGraphModel';
 import { BAR_HEIGHT, renderExportGraph } from './render-export-graph';
 import keyImage from '@/Assets/Images/graphKey.svg';
 
-
 function fileSaveAs(uri: string, filename: string) {
     const link = document.createElement('a');
 

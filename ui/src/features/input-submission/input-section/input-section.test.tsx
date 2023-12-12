@@ -6,7 +6,7 @@ import useInputs from '../input-hooks/use-inputs';
 test('chemical composition input renders', () => {
     const {
         result: {
-            current: { handleFileUpload, handleSubmitClick, handleEnterClick }
+            current: { handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }
         }
     } = renderHook(useInputs);
 
@@ -15,6 +15,7 @@ test('chemical composition input renders', () => {
             handleFileUpload={handleFileUpload}
             handleSubmitClick={handleSubmitClick}
             handleEnterClick={handleEnterClick}
+            inputvalue={inputvalue}
         />
     );
     const chemCompositionInputElem = screen.getByTestId('input-section-chemical-composition');
@@ -24,7 +25,7 @@ test('chemical composition input renders', () => {
 test('submit button is disabled when chemical composition input box is empty', () => {
     const {
         result: {
-            current: { handleFileUpload, handleSubmitClick, handleEnterClick }
+            current: { handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }
         }
     } = renderHook(useInputs);
 
@@ -33,6 +34,7 @@ test('submit button is disabled when chemical composition input box is empty', (
             handleFileUpload={handleFileUpload}
             handleSubmitClick={handleSubmitClick}
             handleEnterClick={handleEnterClick}
+            inputvalue={inputvalue}
         />
     );
 
@@ -46,7 +48,7 @@ test('submit button is disabled when chemical composition input box is empty', (
 test('submit button should be enabled when chemcial composition input is filled', async () => {
     const {
         result: {
-            current: { handleFileUpload, handleSubmitClick, handleEnterClick }
+            current: { handleFileUpload, handleSubmitClick, handleEnterClick, inputvalue }
         }
     } = renderHook(useInputs);
 
@@ -55,6 +57,7 @@ test('submit button should be enabled when chemcial composition input is filled'
             handleFileUpload={handleFileUpload}
             handleSubmitClick={handleSubmitClick}
             handleEnterClick={handleEnterClick}
+            inputvalue={inputvalue}
         />
     );
 
@@ -71,7 +74,7 @@ test('submit button should be enabled when chemcial composition input is filled'
 test('onSubmit function should be called with string in checmical composition input whe submit button is clicked', async () => {
     const {
         result: {
-            current: { handleFileUpload, handleEnterClick }
+            current: { handleFileUpload, handleEnterClick, inputvalue }
         }
     } = renderHook(useInputs);
 
@@ -81,6 +84,7 @@ test('onSubmit function should be called with string in checmical composition in
             handleFileUpload={handleFileUpload}
             handleSubmitClick={handleSubmitClick}
             handleEnterClick={handleEnterClick}
+            inputvalue={inputvalue}
         />
     );
 
