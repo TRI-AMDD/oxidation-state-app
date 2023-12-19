@@ -1,0 +1,102 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validation of Graph Slider and RPV",
+    "line": 1,
+    "id": "validation-of-graph-slider-and-rpv",
+    "tags": [],
+    "uri": "rowInteraction.feature",
+    "elements": [
+      {
+        "id": "validation-of-graph-slider-and-rpv;validation-of-graph-slider-and-rpv-changes-by-clicking-different-rows",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Validation of Graph Slider and RPV changes by clicking different rows",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the Oxidation State Analyser website",
+            "result": {
+              "status": "passed",
+              "duration": 1710000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I enter \"LiFePO4\" in Chemical composition text box",
+            "result": {
+              "status": "passed",
+              "duration": 2195000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I click Submit",
+            "result": {
+              "status": "passed",
+              "duration": 382000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "I click row number 2",
+            "result": {
+              "status": "passed",
+              "duration": 2410000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I capture \"current\" RPV and graph slider position",
+            "result": {
+              "status": "passed",
+              "duration": 1025000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click row number 3",
+            "result": {
+              "status": "passed",
+              "duration": 387000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I capture \"new\" RPV and graph slider position",
+            "result": {
+              "status": "passed",
+              "duration": 643000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I validate the changes in RPV and graph slider position",
+            "result": {
+              "status": "passed",
+              "duration": 157000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
