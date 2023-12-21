@@ -6,7 +6,7 @@ module.exports = defineConfig({
 
     nonGlobalStepDefinitions: true,
 
-    step_definitions: './cypress/e2e/graphSlider/**/*.feature',
+    step_definitions: './cypress/e2e/**/*.feature',
 
   },
 

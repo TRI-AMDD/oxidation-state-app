@@ -1,10 +1,10 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 import "cypress-xpath";
-const genFilesPath = "oxidation-state-app/cypress/fixtures/rpv.text"
-const leFilesPath = "oxidation-state-app/cypress/fixtures/le.text"
-const newRpvPath = "oxidation-state-app/cypress/fixtures/newRpv.text"
-const newleFilesPath = "oxidation-state-app/cypress/fixtures/newLe.text"
-//cy.writeFile(genFilesPath,'test')
+const genFilesPath = "cypress/fixtures/rpv.text"
+const leFilesPath = "cypress/fixtures/le.text"
+const newRpvPath = "cypress/fixtures/newRpv.text"
+const newleFilesPath = "cypress/fixtures/newLe.text"
+//cy.writeFile(genFilesPath,'test') tested
 
 
 const sometext='';

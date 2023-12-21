@@ -1,0 +1,112 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validation of RPV and LE",
+    "line": 1,
+    "id": "validation-of-rpv-and-le",
+    "tags": [],
+    "uri": "graphSlider.feature",
+    "elements": [
+      {
+        "id": "validation-of-rpv-and-le;validation-of-rpv-and-le-changes-by-moving-oxi-states",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Validation of RPV and LE changes by moving Oxi States",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the Oxidation State Analyser website",
+            "result": {
+              "status": "passed",
+              "duration": 2509000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I enter LiMn2O4 in Chemical composition text box",
+            "result": {
+              "status": "passed",
+              "duration": 1745000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I click Submit",
+            "result": {
+              "status": "passed",
+              "duration": 379000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I capture current RPV",
+            "result": {
+              "status": "passed",
+              "duration": 4045000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I capture current LE",
+            "result": {
+              "status": "passed",
+              "duration": 267000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I click on new toggle value",
+            "result": {
+              "status": "passed",
+              "duration": 5878000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I capture new RPV",
+            "result": {
+              "status": "passed",
+              "duration": 5718000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I capture new LE",
+            "result": {
+              "status": "passed",
+              "duration": 320000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I verify the RPV and LE changes",
+            "result": {
+              "status": "passed",
+              "duration": 919000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

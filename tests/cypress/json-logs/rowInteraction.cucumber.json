@@ -22,7 +22,7 @@
             "name": "I open the Oxidation State Analyser website",
             "result": {
               "status": "passed",
-              "duration": 1710000000
+              "duration": 2050000000
             }
           },
           {
@@ -32,7 +32,7 @@
             "name": "I enter \"LiFePO4\" in Chemical composition text box",
             "result": {
               "status": "passed",
-              "duration": 2195000000
+              "duration": 902000000
             }
           },
           {
@@ -42,7 +42,7 @@
             "name": "I click Submit",
             "result": {
               "status": "passed",
-              "duration": 382000000
+              "duration": 433000000
             }
           },
           {
@@ -52,7 +52,7 @@
             "name": "I click row number 2",
             "result": {
               "status": "passed",
-              "duration": 2410000000
+              "duration": 1802000000
             }
           },
           {
@@ -62,7 +62,7 @@
             "name": "I capture \"current\" RPV and graph slider position",
             "result": {
               "status": "passed",
-              "duration": 1025000000
+              "duration": 1249000000
             }
           },
           {
@@ -72,7 +72,7 @@
             "name": "I click row number 3",
             "result": {
               "status": "passed",
-              "duration": 387000000
+              "duration": 336000000
             }
           },
           {
@@ -82,7 +82,7 @@
             "name": "I capture \"new\" RPV and graph slider position",
             "result": {
               "status": "passed",
-              "duration": 643000000
+              "duration": 950000000
             }
           },
           {
@@ -92,7 +92,7 @@
             "name": "I validate the changes in RPV and graph slider position",
             "result": {
               "status": "passed",
-              "duration": 157000000
+              "duration": 306000000
             }
           }
         ]

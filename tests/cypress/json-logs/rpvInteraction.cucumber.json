@@ -1,0 +1,112 @@
+[
+  {
+    "keyword": "Feature",
+    "name": "Validation of Graph Slider and LE",
+    "line": 1,
+    "id": "validation-of-graph-slider-and-le",
+    "tags": [],
+    "uri": "rpvInteraction.feature",
+    "elements": [
+      {
+        "id": "validation-of-graph-slider-and-le;validation-of-graph-slider-and-le-changes-by-changing-rpv-values",
+        "keyword": "Scenario",
+        "line": 3,
+        "name": "Validation of Graph Slider and LE changes by changing RPV values",
+        "tags": [],
+        "type": "scenario",
+        "steps": [
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I open the Oxidation State Analyser website",
+            "result": {
+              "status": "passed",
+              "duration": 1396000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 7,
+            "name": "I enter LiMn2O4 in Chemical composition text box",
+            "result": {
+              "status": "passed",
+              "duration": 1091000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 9,
+            "name": "I click Submit",
+            "result": {
+              "status": "passed",
+              "duration": 265000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I capture current graph slider position",
+            "result": {
+              "status": "passed",
+              "duration": 1758000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I capture current LE",
+            "result": {
+              "status": "passed",
+              "duration": 801000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I enter new RPV",
+            "result": {
+              "status": "passed",
+              "duration": 3943000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 17,
+            "name": "I capture new graph slider position",
+            "result": {
+              "status": "passed",
+              "duration": 436000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I capture new LE",
+            "result": {
+              "status": "passed",
+              "duration": 700000000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I verify the graph slider and LE changes",
+            "result": {
+              "status": "passed",
+              "duration": 856000000
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
