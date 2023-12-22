@@ -10,12 +10,7 @@ jobs:
         working-directory: ./tests
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Cypress run
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: cypress-io/github-action@v6
         with:
-          #node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          cache-dependency-path: tests/package-lock.json
-      - run: npx cypress open  
+          browser: chrome
