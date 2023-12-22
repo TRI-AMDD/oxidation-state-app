@@ -18,4 +18,4 @@ jobs:
           #node-version: ${{ matrix.node-version }}
           cache: 'npm'
           cache-dependency-path: tests/package-lock.json
-
+      - run: npx cypress open  
