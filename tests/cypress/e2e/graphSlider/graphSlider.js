@@ -13,12 +13,14 @@ Given('I open the Oxidation State Analyser website', () => {
 
   cy.visit('https://oxi.matr.io/'); // Replace with your website URL
   cy.log('NAVIGATING TO OXIDATION ANALYSER WEB')
+  cy.wait(10000)
+  cy.screenshot()
+  
     
 });
 
 
 When('I enter LiMn2O4 in Chemical composition text box', () => {
-
     cy.log('Entering LiMnO4 in chemical input')
     cy.get('#input-section-chemical-composition').should("be.visible")
       .type('LiMn2O4')
