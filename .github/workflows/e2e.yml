@@ -15,5 +15,5 @@ jobs:
         with:
           #browser: chrome
           #start: npm start
-          record: true
+          #record: true
           working-directory: tests
