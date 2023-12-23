@@ -20,7 +20,7 @@ Given('I open the Oxidation State Analyser website', () => {
 When('I enter LiMn2O4 in Chemical composition text box', () => {
 
     cy.log('Entering LiMnO4 in chemical input')
-    cy.get('#input-section-chemical-composition')
+    cy.get('#input-section-chemical-composition').should("be.visible")
       .type('LiMn2O4')
 
 }); 

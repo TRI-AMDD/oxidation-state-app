@@ -20,7 +20,7 @@ Given('I open the Oxidation State Analyser website', () => {
 When('I enter {string} in Chemical composition text box', chemical => {
 
     cy.log('Entering Chemical in chemical input')
-    cy.get('#input-section-chemical-composition')
+    cy.get('#input-section-chemical-composition').should("be.visible")
       .type(chemical)
 
 });
