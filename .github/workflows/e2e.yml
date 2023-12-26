@@ -31,7 +31,8 @@ jobs:
         with:
           #build : npm run build
           #start : npm start
-          #browser: firefox
+          build: npx cypress info
+          browser: chrome
           #start: npm start
           #record: true
           working-directory: tests
@@ -40,7 +41,7 @@ jobs:
         if: failure()
         with:
           name: cypress-screenshots
-          path: cypress/screenshots
+          path: tests/cypress/screenshots
           if-no-files-found: ignore # 'warn' or 'error' are also available, defaults to `warn`
       - uses: actions/upload-artifact@v3
         with:
