@@ -32,8 +32,8 @@ jobs:
           #build : npm run build
           #start : npm start
           #build: npx cypress info
-          command: npx cypress run
-          browser: chrome
+          command: npx cypress run --browser chrome --headless
+          #browser: chrome
           #start: npm start
           #record: true
           working-directory: tests
