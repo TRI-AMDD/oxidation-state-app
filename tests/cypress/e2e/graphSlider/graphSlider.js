@@ -12,7 +12,8 @@ const sometext='';
 Given('I open the Oxidation State Analyser website', () => {
 
   //cy.visit('https://oxi.matr.io/');
-  cy.visit('https://www.google.co.in/'); // Replace with your website URL
+  cy.visit('https://www.google.co.in/');
+  cy.screenshot() // Replace with your website URL
   cy.log('NAVIGATING TO OXIDATION ANALYSER WEB')
   cy.wait(20000)
   cy.get('#input-section-chemical-composition').should("be.visible")
