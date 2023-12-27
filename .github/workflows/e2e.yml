@@ -31,7 +31,7 @@ jobs:
         with:
           #build : npm run build
           #start : npm start
-          #build: npx cypress info
+          build: npx cypress info
           command: npx cypress run --browser firefox --headless
           #browser: chrome
           #start: npm start
