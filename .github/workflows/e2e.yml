@@ -28,11 +28,13 @@ jobs:
           cache: 'npm'
           cache-dependency-path: tests/package-lock.json
       - uses: cypress-io/github-action@v5
+        env:
+          DEBUG: 'cypress:*'
         with:
           #build : npm run build
           #start : npm start
           build: npx cypress info
-          command: npx cypress run --browser firefox --headless
+          command: npx cypress run --browser electron --headed
           #browser: chrome
           #start: npm start
           #record: true
