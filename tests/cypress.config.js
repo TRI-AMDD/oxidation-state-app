@@ -17,14 +17,16 @@ module.exports = defineConfig({
   e2e: {
 
     baseUrl: 'https://oxi.matr.io/',
-    experimentalModifyObstructiveThirdPartyCode: true,
-    experimentalSkipDomainInjection: [ '*.matr.io'],
+    ModifyObstructiveThirdPartyCode: true,
+    SkipDomainInjection: [ '*.matr.io'],
 
     setupNodeEvents(on, config) {
 
       return require('./cypress/plugins/index.js')(on, config)
 
     },
+
+    retries: 2,
 
     testIsolation: false,
 
