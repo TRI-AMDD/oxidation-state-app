@@ -4,6 +4,8 @@ module.exports = defineConfig({
 
   projectId:'ag5qdq',
 
+  chromeWebSecurity: false,
+
   'cypress-cucumber-preprocessor': {
 
     nonGlobalStepDefinitions: true,
@@ -23,6 +25,8 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
 
     },
+
+    testIsolation: false,
 
     specPattern: 'cypress/e2e/**/*.feature',
 
