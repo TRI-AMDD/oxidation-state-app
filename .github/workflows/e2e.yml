@@ -29,7 +29,7 @@ jobs:
           cache-dependency-path: tests/package-lock.json
       - uses: cypress-io/github-action@v5
         env:
-          DEBUG: 'cypress:*'
+          DEBUG: cypress:launcher*,cypress:server:browsers*
         with:
           #build : npm run build
           #start : npm start
