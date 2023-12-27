@@ -26,7 +26,7 @@ module.exports = defineConfig({
 
     },
 
-    retries: 2,
+    retries: 1,
 
     testIsolation: false,
 
