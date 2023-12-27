@@ -12,10 +12,12 @@ const sometext='';
 Given('I open the Oxidation State Analyser website', () => {
 
   //cy.visit('https://oxi.matr.io/');
-  cy.visit('https://www.google.co.in/');
+  //cy.visit('https://www.google.co.in/');
+  //cy.visit(baseUrl)
+  cy.visit(Cypress.config().baseUrl)
   cy.screenshot() // Replace with your website URL
   cy.log('NAVIGATING TO OXIDATION ANALYSER WEB')
-  cy.wait(20000)
+  cy.wait(10000)
   cy.get('#input-section-chemical-composition').should("be.visible")
   cy.screenshot()
   

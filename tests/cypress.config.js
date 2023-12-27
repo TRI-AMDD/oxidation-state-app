@@ -2,6 +2,8 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
 
+  projectId:'ag5qdq',
+
   'cypress-cucumber-preprocessor': {
 
     nonGlobalStepDefinitions: true,
@@ -11,6 +13,10 @@ module.exports = defineConfig({
   },
 
   e2e: {
+
+    baseUrl: 'https://oxi.matr.io/',
+    experimentalModifyObstructiveThirdPartyCode: true,
+    experimentalSkipDomainInjection: [ '*.matr.io'],
 
     setupNodeEvents(on, config) {
 
