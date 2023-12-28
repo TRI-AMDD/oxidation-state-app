@@ -4,3 +4,7 @@ import './commands'
 // require('./commands')
 
 require('@cypress/xpath')
+
+Cypress.on('certificate:error', (error, runnable) => {
+   return true;
+  });
