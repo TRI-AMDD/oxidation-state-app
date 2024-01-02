@@ -33,6 +33,12 @@ const InputSection = ({
             handleSubmitClick(inputText);
         }
     }, []);
+    useEffect(() => {
+        const currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('q', inputText);
+        window.history.replaceState({}, '', currentUrl.href);
+        }, [inputText]);
+        
     return (
         <div className={styles.container}>
             <TextField
