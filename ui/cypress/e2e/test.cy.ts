@@ -2,6 +2,8 @@ describe('Oxidation State', () => {
     it('Enter chemical composition and view results', () => {
         cy.visit('http://localhost:3000/');
 
+        cy.intercept('POST', '/api', { fixture: 'response.json' })
+
         cy.get('#input-section-chemical-composition').type('LiMn2O4');
 
         cy.get('[data-testid="input-section-submit-button"]').click();
