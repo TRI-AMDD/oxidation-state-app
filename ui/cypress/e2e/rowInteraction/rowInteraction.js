@@ -4,15 +4,12 @@ const rowsliderPath = "cypress/fixtures/rowslider.text"
 const rowrpvPath = "cypress/fixtures/rowrpv.text"
 const rownewSliderPath = "cypress/fixtures/rownewSlider.text"
 const rownewrpvPath = "cypress/fixtures/rownewrpv.text"
-//cy.writeFile(genFilesPath,'test')
 
 
 const sometext='';
 
 Given('I open the Oxidation State Analyser website', () => {
 
-  //cy.visit('https://oxi.matr.io/'); // Replace with your website URL
-  //cy.log('NAVIGATING TO OXIDATION ANALYSER WEB')
   cy.visit(Cypress.config().baseUrl)
   cy.intercept('POST', '/api', { fixture: 'response.json' })
   
@@ -48,7 +45,6 @@ When('I click row number {int}', (row) => {
 
 Then('I capture {string} RPV and graph slider position',currentorNew => {
     let filePath="cypress/fixtures/"+currentorNew+"rowrpv.text"
-    //cy.get('input[class="MuiInputBase-input MuiFilledInput-input css-2bxn45"]')
     cy.get('input[id="ecp-input"]')
     .invoke('val')
     .then(sometext => cy.writeFile(filePath,sometext));

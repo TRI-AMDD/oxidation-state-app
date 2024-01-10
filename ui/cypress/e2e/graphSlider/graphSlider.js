@@ -11,12 +11,8 @@ const sometext='';
 
 Given('I open the Oxidation State Analyser website', () => {
 
-  //cy.visit('https://oxi.matr.io/');
-  //cy.visit('https://www.google.co.in/');
-  //cy.visit(baseUrl)
   cy.visit(Cypress.config().baseUrl)
   cy.intercept('POST', '/api', { fixture: 'response.json' })
-  cy.screenshot() // Replace with your website URL
   cy.log('NAVIGATING TO OXIDATION ANALYSER WEB')
   cy.wait(10000)
   cy.get('#input-section-chemical-composition').should("be.visible")
@@ -43,20 +39,11 @@ When('I click Submit',()=> {
     
 
 Then('I capture current RPV', () => {
-   // describe(' Capturing values',function() {
-   // it('captures and writes to a file',function() {
-        //cy.get('input[class="MuiInputBase-input MuiFilledInput-input css-2bxn45"]')
-        cy.get('input[id="ecp-input"]')
+   cy.get('input[id="ecp-input"]')
         .invoke('val')
-        //.then(sometext => cy.log(sometext));
-       // cy.log(sometext)
-        .then(sometext => cy.writeFile(genFilesPath,sometext));
+       .then(sometext => cy.writeFile(genFilesPath,sometext));
         cy.log('The RPV value at first record is');
-    //})
-       
-   // })
-
-    
+     
 });
 
 Then('I capture current LE', () => {
@@ -65,8 +52,7 @@ Then('I capture current LE', () => {
     cy.get('[data-field="likelihoodCurrentElecChemPotential"]')
     .each(($li) => items.push($li.text()))
     .then( () => {
-        //cy.log(items.join(','))
-        cy.writeFile(leFilesPath,items)
+       cy.writeFile(leFilesPath,items)
     })
 })
     
@@ -78,24 +64,15 @@ Then('I click on new toggle value', () => {
     .should('be.visible')
     .click()
     .click()
-   //cy.get('#custom-handle-slider').scrollTo('right', { easing: 'linear' },{ensureScrollable: false})
-   // Move the focus to slider, by clicking on the slider's circle element
-    //cy.get("#custom-handle-slider").click({ multiple: true, force: true });
-    // Press right arrow two times
-    //cy.get("#custom-handle-slider").type("{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}{rightarrow}");
 });
 
 
 Then('I capture new RPV', () => {
     cy.wait(5000)
-   // describe(' Capturing and compraing values',function() {
-     //   it('captures and writes to a file',function() {
-        //cy.get('input[class="MuiInputBase-input MuiFilledInput-input css-2bxn45"]')
-        cy.get('input[id="ecp-input"]')
+   cy.get('input[id="ecp-input"]')
                 .invoke('val')
                 .then(newRpv => cy.writeFile(newRpvPath,newRpv));
         cy.readFile('cypress/fixtures/rpv.text')
-       // .should('not.contain.text', newRpv)
 })
 
 
@@ -125,8 +102,6 @@ Then('I verify the RPV and LE changes', () => {
         })
     })
 
-    //cy.task('sendMail', 'This will be output to email address')
-    //.then(result => console.log(result));
 })
 
 
