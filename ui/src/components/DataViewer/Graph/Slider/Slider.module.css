@@ -3,7 +3,7 @@
     background-color: #3747ac;
     box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.12), 0px 3px 4px rgba(0, 0, 0, 0.14), 0px 3px 3px rgba(0, 0, 0, 0.2);
     width: 2px;
-    height: 90%;
+    height: calc(100% - 16px);
     cursor: ew-resize;
     margin-left: 50%;
 }
