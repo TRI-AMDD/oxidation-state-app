@@ -2,7 +2,6 @@
   "name": "oxidation-state-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc --noEmit && vite build",
@@ -35,7 +34,7 @@
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
-    "@types/jest": "^29.5.7",
+    "@types/jest": "^29.5.11",
     "@types/plotly.js": "^2.12.22",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
@@ -44,7 +43,9 @@
     "@typescript-eslint/parser": "^5.61.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "@vitest/coverage-v8": "^0.34.6",
-    "cypress": "^13.5.1",
+    "cypress": "^13.6.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-xpath": "^2.0.1",
     "eslint": "^8.44.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -57,6 +58,17 @@
     "vite": "^4.4.0",
     "vite-plugin-svgr": "^3.2.0",
     "vitest": "^0.34.6",
-    "vitest-canvas-mock": "^0.3.3"
+    "vitest-canvas-mock": "^0.3.3",
+    "xpath": "0.0.29"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "cypress/e2e/",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/json-logs",
+      "filePrefix": "",
+      "fileSuffix": ".cucumber"
+    }
   }
 }
