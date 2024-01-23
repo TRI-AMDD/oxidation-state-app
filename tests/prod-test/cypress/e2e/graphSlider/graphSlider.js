@@ -1,13 +1,5 @@
 import { Given, When, Then, And } from 'cypress-cucumber-preprocessor/steps';
 import "cypress-xpath";
-const genFilesPath = "cypress/fixtures/rpv.text"
-const leFilesPath = "cypress/fixtures/le.text"
-const newRpvPath = "cypress/fixtures/newRpv.text"
-const newleFilesPath = "cypress/fixtures/newLe.text"
-//cy.writeFile(genFilesPath,'test') tested
-
-
-const sometext='';
 
 Given('I open the Oxidation State Analyser website', () => {
 
@@ -43,19 +35,21 @@ Then('I capture current RPV', () => {
      cy.wait(3000)
      cy.get('input[class="MuiInputBase-input MuiFilledInput-input css-2bxn45"]')
        .invoke('val')
-       .then(sometext => cy.writeFile(genFilesPath,sometext));
-        cy.log('The RPV value at first record is');
-     
+       .then(sometext => {
+        let currentRPV = sometext
+        cy.wrap(currentRPV).as('currentRPV')
+    })  
 });
 
 Then('I capture current LE', () => {
 
-    const items = []
+    const currentLE = []
     cy.get('[data-field="likelihoodCurrentElecChemPotential"]')
-    .each(($li) => items.push($li.text()))
-    .then( () => {
-       cy.writeFile(leFilesPath,items)
-    })
+    .each(($li) => {
+        currentLE.push($li.text())
+      })
+    .wrap(currentLE).as('currentLE')
+   
 })
     
 
@@ -73,38 +67,37 @@ Then('I capture new RPV', () => {
     cy.wait(5000)
    //cy.get('input[id="ecp-input"]')
    cy.get('input[class="MuiInputBase-input MuiFilledInput-input css-2bxn45"]')
-                .invoke('val')
-                .then(newRpv => cy.writeFile(newRpvPath,newRpv));
-        cy.readFile('cypress/fixtures/rpv.text')
+       .invoke('val')
+       .then(sometext => {
+        let newRPV = sometext
+        cy.wrap(newRPV).as('newRPV')
+    })
 })
 
 
 Then('I capture new LE', () => {
 
-    const items = []
+    const newLE = []
     cy.get('[data-field="likelihoodCurrentElecChemPotential"]')
-    .each(($li) => items.push($li.text()))
-    .then( () => {
-        //cy.log(items.join(','))
-        cy.writeFile(newleFilesPath,items)
-    })
+    .each(($li) => {
+        newLE.push($li.text())
+      })
+    .wrap(newLE).as('newLE')
 })
 
 
 Then('I verify the RPV and LE changes', () => {
 
-    cy.fixture('rpv.text').then(fixture => {
-        cy.readFile(newRpvPath).then(download => {
-           assert.notEqual(fixture,download, " RPV Changes")
+    cy.get('@newLE').then(newLE => {
+        cy.get('@currentLE').then(currentLE => {
+            assert.notDeepEqual(newLE,currentLE, " LE Changes")
         })
     })
-
-    cy.fixture('le.text').then(oldle => {
-        cy.readFile(newleFilesPath).then(newle => {
-           assert.notEqual(oldle,newle, "LE Changes")
-        })
+    cy.get('@newRPV').then(newRPV => {
+    cy.get('@currentRPV').then(currentRPV => {
+        assert.notEqual(newRPV,currentRPV, " RPV Changes")
     })
-
+    })
 })
 
 
