@@ -4,20 +4,18 @@ Feature: Validation of Graph Slider and LE
 
     Given I open the Oxidation State Analyser website
 
-    When I enter LiMn2O4 in Chemical composition text box
+    When I enter "LiMn2O4" in Chemical composition text box and submit
 
-    When I click Submit
+    Then I capture "current" graph slider position
 
-    Then I capture current graph slider position
+    Then I capture "current" LE
 
-    Then I capture current LE
+    Then I enter new RPV "5.0000"
 
-    Then I enter new RPV
+    Then I capture "new" graph slider position
 
-    Then I capture new graph slider position
+    Then I capture "new" LE
 
-    Then I capture new LE
-
-    Then I verify the graph slider and LE changes
+    Then I verify the "LE" and "Graph" changes
 
     #Then the indicator should move
