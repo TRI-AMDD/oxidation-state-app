@@ -32,8 +32,7 @@ module.exports = defineConfig({
     testIsolation: false,
 
     specPattern: 'cypress/e2e/**/*.feature',
-
-    supportFile:false
+    supportFile: 'cypress/support/commands.js',
 
   },
 
