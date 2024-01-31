@@ -11,7 +11,9 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "preview": "vite preview",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "e2e-stage": "cypress run --config-file stage.config.js",
+    "e2e-prod": "cypress run --config-file prod.config.js"
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^5.0.4",
