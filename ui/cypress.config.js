@@ -5,6 +5,7 @@ module.exports = defineConfig({
   projectId:'ag5qdq',
 
   chromeWebSecurity: false,
+  video : true,
 
   'cypress-cucumber-preprocessor': {
 
