@@ -15,5 +15,4 @@ plugins {
 rootProject.name = 'oxs-app'
 include('helper')
 include('oxidation-state-api-public')
-include('lambda')
 include('api')
