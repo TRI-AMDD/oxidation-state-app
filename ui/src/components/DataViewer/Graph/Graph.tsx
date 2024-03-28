@@ -5,7 +5,7 @@ import styles from './Graph.module.css';
 import GraphKey from './GraphKey/GraphKey';
 import ElectronicChemicalPotentialInput from './ElectronicChemicalPotentialInput/ElectronicChemicalPotentialInput';
 import { GraphType } from '@/models/PlotDataModel';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import Slider from './Slider/Slider';
 import useGraph from '@/hooks/useGraph';
 import useTable from '@/features/data-table/table-hooks/use-table';
@@ -22,10 +22,18 @@ const Graph = () => {
     const { ECPValue, handleMPVChange, handleNudgeChange } = useGraph();
     const { selectedRow } = useTable();
 
+    const initialPotentialValue = useMemo(() => {
+        if (selectedRow?.optimalMappedPotential) {
+            return selectedRow?.optimalMappedPotential;
+        }
+
+        return 0;
+    }, [selectedRow]);
+
     return (
         <div className={styles.container}>
             <ExportGraphButton />
-            {oxidationData && selectedRow && (
+            {oxidationData && (
                 <div id="graph-export" className={styles.graphExport}>
                     <div className={styles.graphHeader}>
                         <GraphHeaders />
@@ -40,7 +48,7 @@ const Graph = () => {
                         <div className={styles.canvasContainer}>
                             <Slider
                                 graphComponent={<CanvasGraph data={oxidationData} graphType={graphType} />}
-                                initValue={selectedRow.optimalMappedPotential}
+                                initValue={initialPotentialValue}
                                 oxidationData={oxidationData}
                                 ECPInputValue={ECPValue}
                                 handleSliderChange={handleMPVChange}
