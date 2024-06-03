@@ -1,7 +1,7 @@
 import { Link, Typography } from '@mui/material';
 import styles from './TitleAndDescription.module.css';
 import { Link as RouterLink } from 'react-router-dom';
-import { MANUSCRIPT_LINK } from '@/pages/FAQ/faq-util/faq-text';
+import { MANUSCRIPT_LINK } from '@/constants/links';
 
 const TitleAndDescription = () => {
     return (
