@@ -1,6 +1,7 @@
 import { Link, Typography } from '@mui/material';
 import styles from './TitleAndDescription.module.css';
 import { Link as RouterLink } from 'react-router-dom';
+import { MANUSCRIPT_LINK } from '@/pages/FAQ/faq-util/faq-text';
 
 const TitleAndDescription = () => {
     return (
@@ -11,12 +12,7 @@ const TitleAndDescription = () => {
             <Typography component={'div'} variant="body1" className={styles.description}>
                 This tool can be used to quickly identify likely oxidation states for a given composition, or assign
                 likely oxidation states to sites in a given structure, using the methods described{' '}
-                <Link
-                    component={'a'}
-                    href="https://chemrxiv.org/engage/chemrxiv/article-details/6542a27a48dad23120de97ee"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                >
+                <Link component={'a'} href={MANUSCRIPT_LINK} rel="noopener noreferrer" target="_blank">
                     here
                 </Link>
                 .
