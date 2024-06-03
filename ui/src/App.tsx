@@ -7,6 +7,7 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import { customTheme } from './theme';
 import { FAQ } from './pages/FAQ/FAQ';
 import Tutorial from './pages/Tutorial/Tutorial';
+import CodeAvailability from './pages/code-availability';
 
 const queryClient = new QueryClient();
 const Home = lazy(() => import('./pages/Home/Home'));
@@ -25,6 +26,7 @@ const App = () => (
                             <Route path="/about-us" element={<AboutUs />} />
                             <Route path="/faq" element={<FAQ />} />
                             <Route path="/tutorial" element={<Tutorial />} />
+                            <Route path="/github-code" element={<CodeAvailability />} />
                         </Routes>
                     </Suspense>
                 </Router>

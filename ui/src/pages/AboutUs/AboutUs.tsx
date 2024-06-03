@@ -36,12 +36,7 @@ const AboutUs = () => {
                         tutorial
                     </Link>
                     ). An open-source implementation of the web site and core algorithms is available{' '}
-                    <Link
-                        component={'a'}
-                        href="https://github.com/TRI-AMDD/oxidation-state-api-public"
-                        rel="noopener noreferrer"
-                        target="_blank"
-                    >
+                    <Link component={'a'} href="/github-code" rel="noopener noreferrer" target="_blank">
                         here.
                     </Link>
                     <br />
