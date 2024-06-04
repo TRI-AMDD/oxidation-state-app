@@ -3,6 +3,7 @@ import styles from './AboutUs.module.css';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { useEffect } from 'react';
+import { MANUSCRIPT_LINK } from '@/constants/links';
 
 const AboutUs = () => {
     useEffect(() => {
@@ -28,7 +29,7 @@ const AboutUs = () => {
                 >
                     The oxidation state analyzer is an open web application for predicting and analyzing oxidation
                     states in materials based on the approach described in{' '}
-                    <Link component={RouterLink} to="/" color="primary" underline="always">
+                    <Link component={RouterLink} to={MANUSCRIPT_LINK} color="primary" underline="always">
                         this manuscript
                     </Link>{' '}
                     (an overview of this approach is provided in the{' '}
