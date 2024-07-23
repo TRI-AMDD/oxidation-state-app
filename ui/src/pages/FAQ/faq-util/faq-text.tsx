@@ -1,4 +1,4 @@
-import { MANUSCRIPT_LINK } from '@/constants/links';
+import { MANUSCRIPT_LINK, GITHUB_LINK } from '@/constants/links';
 
 export interface FAQText {
     question: string;
@@ -6,8 +6,6 @@ export interface FAQText {
 }
 
 export const URL_FAQ_STRING_MATCH = 'faq-';
-
-const GITHUB_LINK = '/github-code';
 
 export const FAQ_ITEMS: FAQText[] = [
     {

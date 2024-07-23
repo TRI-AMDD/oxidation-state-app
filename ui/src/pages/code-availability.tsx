@@ -2,14 +2,13 @@ import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { Typography } from '@mui/material';
 import { useEffect } from 'react';
 import styles from './Tutorial/Tutorial.module.css';
-// import { GITHUB_LINK } from '@/constants/links';
+import { GITHUB_LINK } from '@/constants/links';
 
 const CodeAvailability = () => {
     useEffect(() => {
         document.title = 'Oxidation State Analyzer - Code Availability';
 
-        // TODO redirect to this url when the github repo is public
-        // window.location.replace(GITHUB_LINK);
+        window.location.replace(GITHUB_LINK);
     }, []);
 
     return (
