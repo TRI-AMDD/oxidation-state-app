@@ -6,8 +6,12 @@ const GetStarted = () => {
     return (
         <div className={styles.container}>
             <Typography component={'div'} variant="body1" className={styles.bodyText}>
-                <strong>Get Started:</strong> Enter a chemical composition or upload a structure file to generate a
-                ranked list of ways in which oxidation states can be assigned. To specify a composition in terms of{' '}
+                <strong>Get Started:</strong> Enter a chemical composition or{' '}
+                <Link component={RouterLink} to="/faq/#faq-9" rel="noopener noreferrer" target="_blank">
+                    upload a structure
+                </Link>{' '}
+                file to generate a ranked list of ways in which oxidation states can be assigned. To specify a
+                composition in terms of{' '}
                 <Link
                     component={RouterLink}
                     to="/tutorial/#tutorial-polyatomic-ions"
