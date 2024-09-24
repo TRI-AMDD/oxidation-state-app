@@ -46,6 +46,10 @@ export const FAQ_ITEMS: FAQText[] = [
         answer: `The global instability index can only be calculated if the structure is known, so it will not be calculated if only the composition is provided by the user. Thus if the tool is accessed via a URL that provides the composition (e.g.<a rel='noopener noreferrer' target='_blank' href='http://oxi.matr.io?q=LiMn02'>http://oxi.matr.io?q=LiMn02</a>), the global instability index will not be calculated.<br><br>It will also only be calculated if bond valence parameters are available in <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1021/ja00009a002'>this paper</a> for all elements in the material.`
     },
     {
+        question: 'What is the difference between uploading a structure and providing a composition?',
+        answer: 'There are three benefits to uploading a structure rather than just providing a composition: 1) polyatomic ions are automatically detected, 2) global instability indices can be calculated, and 3) the oxidation states can be assigned to individual atoms in the structure. The structure with assigned oxidation states can be downloaded by clicking on "Export -> Download CIF" above the table on the left of the main page. The algorithm used for calculating oxidation states is the same whether a structure is uploaded or the composition of that structure (including any polyatomic ions) is provided.'
+    },
+    {
         question: 'What file formats can I use to upload structures?',
         answer: 'We currently support the VASP POSCAR format and the Crystallographic Information Framework (CIF) format.'
     },
