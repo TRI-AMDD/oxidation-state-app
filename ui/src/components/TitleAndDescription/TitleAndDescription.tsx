@@ -19,7 +19,7 @@ const TitleAndDescription = () => {
             </Typography>
             <Typography component={'div'} variant="body1" className={styles.subtext}>
                 A&nbsp;
-                <Link component={RouterLink} to="/faq/#faq-11" rel="noopener noreferrer" target="_blank">
+                <Link component={RouterLink} to="/faq/#faq-12" rel="noopener noreferrer" target="_blank">
                     library
                 </Link>
                 &nbsp;implementing the underlying methods is available to download for offline use.
