@@ -1,4 +1,4 @@
-import { MANUSCRIPT_LINK, GITHUB_LINK } from '@/constants/links';
+import { MANUSCRIPT_LINK, GITHUB_LINK, PREPRINT_LINK } from '@/constants/links';
 
 export interface FAQText {
     question: string;
@@ -10,8 +10,15 @@ export const URL_FAQ_STRING_MATCH = 'faq-';
 export const FAQ_ITEMS: FAQText[] = [
     {
         question: 'How can I cite the Oxidation State Analyzer?',
-        //answer: 'If you would like to cite the oxidation state analyzer, please reference the following manuscript: PLACEHOLDER. You can directly export this reference to a citation manager by clicking on one of the following links: PLACEHOLDER'
-        answer: `A preprint of our manuscript is available <a href="${MANUSCRIPT_LINK}" rel="noopener noreferrer" target="_blank">here </a>.`
+        answer: `
+            Please cite the following paper:
+            <br />T. Mueller, J. Montoya, W. Ye, X. Lei, L. Hung, J. Hummelshøj, M. Puzon, D. Martinez, C. Fajardo, and R. Abela, An electrochemical series for materials. Proceedings of the National Academy of Sciences, 2024. 121(38): p. e2320134121
+            <br />The publication DOI is 10.1073/pnas.2320134121. You can download this reference in 
+            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.ris'>RIS</a>, 
+            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.enw'>EndNote</a>, or 
+            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.bib'>BibTeX</a> 
+            formats.  A <a href="${PREPRINT_LINK}" rel="noopener noreferrer" target="_blank">preprint</a> of this paper is available on ChemRxiv.
+        `
     },
     {
         question: 'For what species can oxidation states be calculated?',
@@ -67,6 +74,11 @@ export const FAQ_ITEMS: FAQText[] = [
     },
     {
         question: 'Can I download all of the oxidation state ranges?',
-        answer: `The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.`
+        answer: `
+        The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.
+        <br /> You can also download a high-resolution 
+        <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/IDES_all_elements.pdf'>graphical representation</a> 
+        of the oxidation state ranges for all 84 elements included in our model.
+        `
     }
 ];
