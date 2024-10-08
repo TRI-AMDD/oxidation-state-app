@@ -76,9 +76,6 @@ export const FAQ_ITEMS: FAQText[] = [
         question: 'Can I download all of the oxidation state ranges?',
         answer: `
         The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.
-        <br /> You can also download a high-resolution 
-        <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/IDES_all_elements.pdf'>graphical representation</a> 
-        of the oxidation state ranges for all 84 elements included in our model.
         `
     }
 ];
