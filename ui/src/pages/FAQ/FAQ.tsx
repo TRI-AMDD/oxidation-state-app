@@ -6,7 +6,6 @@ import { FAQ_ITEMS, URL_FAQ_STRING_MATCH } from './faq-util/faq-text';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useLocation } from 'react-router-dom';
-import IDESAllElements from '@/Assets/Images/IDES_all_elements.pdf';
 
 export function FAQ() {
     const [expanded, setExpanded] = useState<string[]>([]);
