@@ -108,31 +108,6 @@ export function FAQ() {
                                 </Accordion>
                             );
                         })}
-                        <Accordion
-                            expanded={expanded.includes(`panel${FAQ_ITEMS.length}`)}
-                            onChange={handleAccordianChange(`panel${FAQ_ITEMS.length}`)}
-                            id={`faq-${FAQ_ITEMS.length}`}
-                            key={`faq-${FAQ_ITEMS.length}`}
-                        >
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls={`panel${FAQ_ITEMS.length}-content`}
-                                id={`panel${FAQ_ITEMS.length}-header`}
-                            >
-                                <Typography component={'div'} variant="body1">
-                                    Do you have a printable figure of the electrochemical series including all elements?
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography component={'div'} variant="body1">
-                                    Yes, you may download this{' '}
-                                    <a href={IDESAllElements} download={`IDES_All_Elements.pdf`}>
-                                        figure
-                                    </a>
-                                    .
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
                     </div>
                 </div>
             </div>
