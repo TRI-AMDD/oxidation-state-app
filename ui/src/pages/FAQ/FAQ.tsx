@@ -6,7 +6,6 @@ import { FAQ_ITEMS, URL_FAQ_STRING_MATCH } from './faq-util/faq-text';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useLocation } from 'react-router-dom';
-import IDESAllElements from '@/Assets/Images/IDES_all_elements.pdf';
 
 export function FAQ() {
     const [expanded, setExpanded] = useState<string[]>([]);
@@ -108,31 +107,6 @@ export function FAQ() {
                                 </Accordion>
                             );
                         })}
-                        <Accordion
-                            expanded={expanded.includes(`panel${FAQ_ITEMS.length}`)}
-                            onChange={handleAccordianChange(`panel${FAQ_ITEMS.length}`)}
-                            id={`faq-${FAQ_ITEMS.length}`}
-                            key={`faq-${FAQ_ITEMS.length}`}
-                        >
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls={`panel${FAQ_ITEMS.length}-content`}
-                                id={`panel${FAQ_ITEMS.length}-header`}
-                            >
-                                <Typography component={'div'} variant="body1">
-                                    Do you have a printable figure of the electrochemical series including all elements?
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <Typography component={'div'} variant="body1">
-                                    Yes, you may download this{' '}
-                                    <a href={IDESAllElements} download={`IDES_All_Elements.pdf`}>
-                                        figure
-                                    </a>
-                                    .
-                                </Typography>
-                            </AccordionDetails>
-                        </Accordion>
                     </div>
                 </div>
             </div>
