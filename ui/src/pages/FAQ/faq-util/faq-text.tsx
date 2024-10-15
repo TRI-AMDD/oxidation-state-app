@@ -12,11 +12,11 @@ export const FAQ_ITEMS: FAQText[] = [
         question: 'How can I cite the Oxidation State Analyzer?',
         answer: `
             Please cite the following paper:
-            <br />T. Mueller, J. Montoya, W. Ye, X. Lei, L. Hung, J. Hummelshøj, M. Puzon, D. Martinez, C. Fajardo, and R. Abela, An electrochemical series for materials. Proceedings of the National Academy of Sciences, 2024. 121(38): p. e2320134121
-            <br />The publication DOI is 10.1073/pnas.2320134121. You can download this reference in 
-            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.ris'>RIS</a>, 
-            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.enw'>EndNote</a>, or 
-            <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/An_electrochemical_series_for_materials.bib'>BibTeX</a> 
+            <br /><br /><a rel='noopener noreferrer' target='_blank' href='https://www.pnas.org/doi/10.1073/pnas.2320134121'>T. Mueller, J. Montoya, W. Ye, X. Lei, L. Hung, J. Hummelshøj, M. Puzon, D. Martinez, C. Fajardo, and R. Abela, "An electrochemical series for materials." Proceedings of the National Academy of Sciences, 2024. 121(38): p. e2320134121.</a>
+            <br /><br />You can download this reference in 
+            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.ris'>RIS</a>, 
+            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.enw'>EndNote</a>, or 
+            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.bib'>BibTeX</a> 
             formats.  A <a href="${PREPRINT_LINK}" rel="noopener noreferrer" target="_blank">preprint</a> of this paper is available on ChemRxiv.
         `
     },
