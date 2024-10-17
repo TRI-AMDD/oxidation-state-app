@@ -14,15 +14,15 @@ export const FAQ_ITEMS: FAQText[] = [
             Please cite the following paper:
             <br /><br /><a rel='noopener noreferrer' target='_blank' href='https://www.pnas.org/doi/10.1073/pnas.2320134121'>T. Mueller, J. Montoya, W. Ye, X. Lei, L. Hung, J. Hummelshøj, M. Puzon, D. Martinez, C. Fajardo, and R. Abela, "An electrochemical series for materials." Proceedings of the National Academy of Sciences, 2024. 121(38): p. e2320134121.</a>
             <br /><br />You can download this reference in 
-            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.ris'>RIS</a>, 
-            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.enw'>EndNote</a>, or 
-            <a rel='noopener noreferrer' target='_blank' href='/An_electrochemical_series_for_materials.bib'>BibTeX</a> 
+            <a download href='/An_electrochemical_series_for_materials.ris'>RIS</a>, 
+            <a download href='/An_electrochemical_series_for_materials.enw'>EndNote</a>, or 
+            <a download href='/An_electrochemical_series_for_materials.bib'>BibTeX</a> 
             formats.  A <a href="${PREPRINT_LINK}" rel="noopener noreferrer" target="_blank">preprint</a> of this paper is available on ChemRxiv.
         `
     },
     {
         question: 'For what species can oxidation states be calculated?',
-        answer: `Oxidation states can be calculated for all elements up to atomic number 96 other than He, Ar, Kr, Pm, Po, At, Rn, Fr, Ra, Ac, and Pa. Oxidation states can also be calculated for the following polyatomic species: AsO<sub>4</sub>, BO<sub>3</sub>, C<sub>2</sub>O<sub>4</sub>, CIO<sub>4</sub>, CN, CO, CrO<sub>4</sub>, GeO<sub>4</sub>, MoO<sub>4</sub>, NO<sub>2</sub>, NO<sub>3</sub>, P<sub>2</sub>O<sub>7</sub>, PO<sub>3</sub>, PO<sub>4</sub>, PS<sub>4</sub>, SeO<sub>3</sub>, SeO<sub>4</sub>, SiO<sub>4</sub>, SO<sub>2</sub>, SO<sub>3</sub>, SO<sub>4</sub>, and WO<sub>4</sub>. Representative structures of these polyatomic ions in xyz format can be downloaded <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/polyatomic_ion_xyz_files.tar.gz'>here</a>.`
+        answer: `Oxidation states can be calculated for all elements up to atomic number 96 other than He, Ar, Kr, Pm, Po, At, Rn, Fr, Ra, Ac, and Pa. Oxidation states can also be calculated for the following polyatomic species: AsO<sub>4</sub>, BO<sub>3</sub>, C<sub>2</sub>O<sub>4</sub>, CIO<sub>4</sub>, CN, CO, CrO<sub>4</sub>, GeO<sub>4</sub>, MoO<sub>4</sub>, NO<sub>2</sub>, NO<sub>3</sub>, P<sub>2</sub>O<sub>7</sub>, PO<sub>3</sub>, PO<sub>4</sub>, PS<sub>4</sub>, SeO<sub>3</sub>, SeO<sub>4</sub>, SiO<sub>4</sub>, SO<sub>2</sub>, SO<sub>3</sub>, SO<sub>4</sub>, and WO<sub>4</sub>. Representative structures of these polyatomic ions in xyz format can be downloaded <a download href='https://www.oxi.matr.io/polyatomic_ion_xyz_files.tar.gz'>here</a>.`
     },
     {
         question: `Some possible combinations of oxidation states don't appear in the table. Why?`,
@@ -75,7 +75,7 @@ export const FAQ_ITEMS: FAQText[] = [
     {
         question: 'Can I download all of the oxidation state ranges?',
         answer: `
-        The oxidation state ranges for all available species can be downloaded in JSON format <a rel='noopener noreferrer' target='_blank' href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.
+        The oxidation state ranges for all available species can be downloaded in JSON format <a download href='https://www.oxi.matr.io/oxidation_boundaries.json'>here</a>. The units are the same as those used on this web site.
          <br /> <br />You can also download a high-resolution 
         <a rel='noopener noreferrer' target='_blank' href='/IDES_all_elements.pdf'>graphical representation</a> 
         of the oxidation state ranges for all 84 elements included in our model.
