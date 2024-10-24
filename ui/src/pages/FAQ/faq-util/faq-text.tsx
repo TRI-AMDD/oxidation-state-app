@@ -50,7 +50,7 @@ export const FAQ_ITEMS: FAQText[] = [
     },
     {
         question: 'Why is the global instability index (GII) sometimes "N/A"?',
-        answer: `The global instability index can only be calculated if the structure is known, so it will not be calculated if the user provides a composition rather than uploading a structure. Thus if the tool is accessed via a URL that provides the composition (e.g.<a rel='noopener noreferrer' target='_blank' href='http://oxi.matr.io?q=LiMn02'>http://oxi.matr.io?q=LiMn02</a>), the global instability index will not be calculated.<br><br>It will also only be calculated if bond valence parameters are available in <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1021/ja00009a002'>this paper</a> for all elements in the material.`
+        answer: `The global instability index can only be calculated if the structure is known, so it will not be calculated if the user provides a composition rather than uploading a structure. Thus if the tool is accessed via a URL that provides the composition (e.g.<a rel='noopener noreferrer' target='_blank' href='http://oxi.matr.io?q=LiMnO2'>http://oxi.matr.io?q=LiMnO2</a>), the global instability index will not be calculated.<br><br>It will also only be calculated if bond valence parameters are available in <a rel='noopener noreferrer' target='_blank' href='https://doi.org/10.1021/ja00009a002'>this paper</a> for all elements in the material.`
     },
     {
         question: 'What is the difference between uploading a structure and providing a composition?',
