@@ -3,13 +3,15 @@ FROM gradle:8.1-jdk17 as app_build
 WORKDIR /home/gradle
 COPY . .
 RUN gradle clean build
+# Extract here rather than in the final stage: RUN tar in eclipse-temurin:17 (Ubuntu 26.04)
+# fails with ENOSYS on the CodeBuild runner
+RUN mkdir /oxs && tar -xf api/build/distributions/api.tar -C /oxs
 
 FROM eclipse-temurin:17
 
 # Copy function code and runtime dependencies from Gradle layout
-COPY --from=app_build /home/gradle/api/build/distributions/api.tar /oxs/api.tar
+COPY --from=app_build /oxs /oxs
 COPY --from=app_build /home/gradle/oxidation-state-api-public/input_files /oxs/input_files
-RUN tar -xvf /oxs/api.tar -C /oxs
 
 
 # Set the CMD to your handler (could also be done as a parameter override outside of the Dockerfile)
