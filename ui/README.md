@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Requirement:
-* Node Version >=v16.20.2
+* Node Version >=v22.23.4 (or v24.22.1+)
 
 ## Available Scripts
 
